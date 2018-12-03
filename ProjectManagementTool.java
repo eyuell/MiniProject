@@ -90,43 +90,109 @@ public class ProjectManagementTool {
     }
 
     public void readStoredFile(){
-        //create project
-        LocalDate startDate = LocalDate.parse("2018-01-01");
+        LocalDate today = LocalDate.now();
+        LocalDate startDate = LocalDate.parse("2018-11-15");
         Project p1 = new Project("Project Management Tool Development","1", startDate);
         projects.add(p1);
 
-        Task t1 = new Task("code1","1",1);
-        Task t2 = new Task("code2","2",2);
-        Task t3 = new Task("code3","3",2);
-        Task t4 = new Task("code4","4",2);
+        Task t1 = new Task("General Tasks","1",1);
+        Task t2 = new Task("Cost Related","2",1);
+        Task t3 = new Task("Risk Matrix","3",1);
+        Task t4 = new Task("Participation on tasks","4",1);
+        Task t5 = new Task("Time spent on project","5",1);
+        Task t6 = new Task("Project schedule","6",1);
 
         p1.addTask(t1);
         p1.addTask(t2);
         p1.addTask(t3);
         p1.addTask(t4);
+        p1.addTask(t5);
+        p1.addTask(t6);
 
-        t1.setPlannedStart(LocalDate.parse("2018-02-02"));
-        t1.setPlannedDuration(6);
+        t1.setPlannedStart(LocalDate.parse("2018-11-16"));
+        t1.setPlannedFinish(LocalDate.parse("2019-01-20"));
 
-        t1.setActualStart(LocalDate.parse("2018-02-04"));
-        t1.setActualFinish(LocalDate.parse("2018-02-11"));
+        t2.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t2.setPlannedFinish(LocalDate.parse("2019-01-11"));
 
-        t2.setPlannedStart(LocalDate.parse("2018-02-07"));
-        t2.setPlannedDuration(5);
+        t3.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t3.setPlannedFinish(LocalDate.parse("2019-01-11"));
 
-        t2.setActualStart(LocalDate.parse("2018-02-15"));
-        t2.setActualFinish(LocalDate.parse("2018-03-15"));
+        t4.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t4.setPlannedFinish(LocalDate.parse("2019-01-11"));
 
-        t3.setPlannedStart(LocalDate.parse("2018-02-04"));
-        t3.setPlannedDuration(7);
+        t5.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t5.setPlannedFinish(LocalDate.parse("2019-01-11"));
 
-        t4.setPlannedStart(LocalDate.parse("2018-02-12"));
-        t4.setPlannedDuration(5);
+        t6.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t6.setPlannedFinish(LocalDate.parse("2019-01-11"));
+
+
+        t1.setActualStart(LocalDate.parse("2018-11-16"));
+        t1.setActualFinish(today);
+
+        t2.setActualStart(LocalDate.parse("2018-11-26"));
+        t2.setActualFinish(today);
+
+        t3.setActualStart(LocalDate.parse("2018-11-26"));
+        t3.setActualFinish(today);
+
+        t4.setActualStart(LocalDate.parse("2018-11-26"));
+        t4.setActualFinish(today);
+
+        t5.setActualStart(LocalDate.parse("2018-11-26"));
+        t5.setActualFinish(today);
+
+        t6.setActualStart(LocalDate.parse("2018-11-26"));
+        t6.setActualFinish(today);
 
         completenessCheck(t1);
         completenessCheck(t2);
         completenessCheck(t3);
         completenessCheck(t4);
+        completenessCheck(t5);
+        completenessCheck(t6);
+
+        manpower.add(new Manpower("TBA",207,t1,LocalDate.parse("2018-11-16")));
+        manpower.add(new Manpower("TBA",207,t1,LocalDate.parse("2018-12-10")));
+        manpower.add(new Manpower("TBA",208,t1,LocalDate.parse("2018-12-26")));
+        manpower.add(new Manpower("TBA",208,t1,LocalDate.parse("2019-01-20")));
+
+        manpower.add(new Manpower("TBA",37,t2,LocalDate.parse("2018-11-26")));
+        manpower.add(new Manpower("TBA",38,t2,LocalDate.parse("2018-12-06")));
+        manpower.add(new Manpower("TBA",38,t2,LocalDate.parse("2018-12-26")));
+        manpower.add(new Manpower("TBA",38,t2,LocalDate.parse("2019-01-11")));
+
+        manpower.add(new Manpower("TBA",37,t3,LocalDate.parse("2018-11-26")));
+        manpower.add(new Manpower("TBA",38,t3,LocalDate.parse("2018-12-06")));
+        manpower.add(new Manpower("TBA",38,t3,LocalDate.parse("2018-12-26")));
+        manpower.add(new Manpower("TBA",38,t3,LocalDate.parse("2019-01-11")));
+
+        manpower.add(new Manpower("TBA",37,t4,LocalDate.parse("2018-11-26")));
+        manpower.add(new Manpower("TBA",38,t4,LocalDate.parse("2018-12-06")));
+        manpower.add(new Manpower("TBA",38,t4,LocalDate.parse("2018-12-26")));
+        manpower.add(new Manpower("TBA",38,t4,LocalDate.parse("2019-01-11")));
+
+        manpower.add(new Manpower("TBA",37,t5,LocalDate.parse("2018-11-26")));
+        manpower.add(new Manpower("TBA",38,t5,LocalDate.parse("2018-12-06")));
+        manpower.add(new Manpower("TBA",38,t5,LocalDate.parse("2018-12-26")));
+        manpower.add(new Manpower("TBA",38,t5,LocalDate.parse("2019-01-11")));
+
+        manpower.add(new Manpower("TBA",37,t6,LocalDate.parse("2018-11-26")));
+        manpower.add(new Manpower("TBA",38,t6,LocalDate.parse("2018-12-06")));
+        manpower.add(new Manpower("TBA",38,t6,LocalDate.parse("2018-12-26")));
+        manpower.add(new Manpower("TBA",38,t6,LocalDate.parse("2019-01-11")));
+
+
+        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today);
+
+        //the hours here are just to make different times for each team member
+        teamMembers.add(new TeamMember("Armin Ghoroghi", "Software Developer", numberOfDays * 3.1, t2,today));
+        teamMembers.add(new TeamMember("James Wagabaza", "Software Developer", numberOfDays * 3.2, t3,today));
+        teamMembers.add(new TeamMember("Osman Osman", "Software Developer", numberOfDays * 3.3, t4,today));
+        teamMembers.add(new TeamMember("Hamidreza Yaghoobzadeh", "Software Developer", numberOfDays * 3.4, t5,today));
+        teamMembers.add(new TeamMember("Eyuell Hailemichael", "Software Developer", numberOfDays * 3.5, t6,today));
+
     }
 
     public boolean completenessCheck(Task task){
@@ -191,10 +257,9 @@ public class ProjectManagementTool {
                 LocalDate localDate = LocalDate.now();
                 LocalDate tasksStartDate = new DataEvaluator().tasksStartAndFinishDates("start",tasks);
                 LocalDate tasksFinishDate = new DataEvaluator().tasksStartAndFinishDates("finish",tasks);
-                //Period period = Period.between(tasksStartDate,tasksFinishDate);
-                //long duration = period.getDays();
+
                 long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate);
-                //
+
                 printEmpty(smallestIndent);
                 System.out.println("        Schedule for Project " + foundProject.getName() + " (" + foundProject.getProjectID() + ")");
                 printEmpty(smallestIndent);
@@ -247,9 +312,6 @@ public class ProjectManagementTool {
                             LocalDate thisFinish = currentTask.getActualFinish();
 
                             long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish);
-
-                            //Period period1 = Period.between(thisStart,thisFinish);
-                            //long actualDuration = period1.getDays();
 
                             print = true;
                             for(int m = 0; m < actualDuration; m++){
@@ -333,6 +395,24 @@ public class ProjectManagementTool {
         //Armins part
         System.out.println();
         System.out.println("Armin working on this part");
+
+        //for checking purpose (eyuell)
+        double plannedSum = 0.0;
+        for(int i = 0; i < manpower.size();i++){
+            plannedSum = plannedSum + manpower.get(i).getHoursWorked();
+        }
+
+        double actualSum = 0.0;
+        for(int i = 0; i < teamMembers.size();i++){
+            actualSum = actualSum + teamMembers.get(i).getHoursWorked();
+        }
+
+        double plannedBudget = plannedSum * 225.0;
+        double actualCost = actualSum * 225.0;
+        System.out.println("Project budjet = " + plannedBudget);
+        System.out.println("Project cost = " + actualCost);
+        System.out.println("Programm Progress = " + (actualCost/plannedBudget)*100.0 +" %"); //this is only monetary wise
+
     }
 
     public void monitorTimeSpent(){
