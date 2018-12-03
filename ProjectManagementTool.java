@@ -1,5 +1,9 @@
 package MiniProject;
 
+import ProjectScheduling.DataEvaluator;
+import ProjectScheduling.KeyboardInput;
+import ProjectScheduling.Task;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ public class ProjectManagementTool {
 
     public static void main(String [] args){
         System.out.println("This program works on project schedules");
-        ProjectManagementTool start = new ProjectManagementTool();
+        ProjectScheduling.ProjectManagementTool start = new ProjectScheduling.ProjectManagementTool();
         start.run();
     }
 
@@ -167,9 +171,162 @@ public class ProjectManagementTool {
     }
 
     public void printPlannedAndActualSchedule(){
-        //Eyuells part
+        Project foundProject = retrieveProject();
+        if (foundProject != null){
+            if(foundProject.getTasks() != null){
+                ArrayList<Task> tasks = foundProject.getTasks();
+                int taskNameLength = tasks.get(0).getName().length();
+                int taskIdLength = tasks.get(0).getId().length();
+                int smallestIndent = taskNameLength + taskIdLength;
+
+                for (int i = 1; i < tasks.size(); i++) {
+                    taskNameLength = tasks.get(i).getName().length();
+                    taskIdLength = tasks.get(i).getId().length();
+                    int indent = taskNameLength + taskIdLength;
+                    if(indent > smallestIndent){
+                        smallestIndent = indent;
+                    }
+                }
+                System.out.println(); //blank line
+                LocalDate localDate = LocalDate.now();
+                LocalDate tasksStartDate = new DataEvaluator().tasksStartAndFinishDates("start",tasks);
+                LocalDate tasksFinishDate = new DataEvaluator().tasksStartAndFinishDates("finish",tasks);
+                //Period period = Period.between(tasksStartDate,tasksFinishDate);
+                //long duration = period.getDays();
+                long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate);
+                //
+                printEmpty(smallestIndent);
+                System.out.println("        Schedule for Project " + foundProject.getName() + " (" + foundProject.getProjectID() + ")");
+                printEmpty(smallestIndent);
+                System.out.println("        Date: " + localDate);
+                System.out.println();
+                System.out.println();
+                int beforeText = smallestIndent/2;
+                printEmpty(beforeText);
+                System.out.print("Tasks");
+                int afterText = smallestIndent-beforeText - 5 + 4;
+                printEmpty(afterText);
+                for (long i = 0; i < duration; i++){//the days printed
+                    LocalDate day = tasksStartDate.plusDays(i);
+                    System.out.print("|" + day + "|");//12 pixels per day ?
+                }
+                System.out.println();
+                System.out.println();
+
+                for(int i = 0; i < tasks.size();i++){
+                    Task currentTask = tasks.get(i);
+                    int taskIndent = smallestIndent - currentTask.getName().length() - currentTask.getId().length() + 4 - 2;
+
+                    //planned plot
+                    System.out.print(currentTask.getName()+"(" + currentTask.getId()+")");
+                    printEmpty(taskIndent);
+                    boolean print;
+                    for (long j = 0; j < duration; j++){// project tasks duration
+                        LocalDate day = tasksStartDate.plusDays(j);
+                        print = true;
+                        for(long m = 0; m < currentTask.getPlannedDuration(); m++){
+                            LocalDate taskDates = currentTask.getPlannedStart().plusDays(m);
+                            if(day.equals(taskDates)){
+                                System.out.print("|==========|");//12 pixels per day ?
+                                print = false;
+                            }
+                        }
+                        if(print){
+                            System.out.print("|          |");//12 pixels per day ?
+                        }
+                    }
+                    System.out.println();
+
+                    //Actual plot
+                    if(currentTask.getActualStart() != null){
+                        printEmpty(smallestIndent + 4);
+                        for (long j = 0; j < duration; j++){// project tasks duration
+                            LocalDate day = tasksStartDate.plusDays(j);
+
+                            LocalDate thisStart = currentTask.getActualStart();
+                            LocalDate thisFinish = currentTask.getActualFinish();
+
+                            long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish);
+
+                            //Period period1 = Period.between(thisStart,thisFinish);
+                            //long actualDuration = period1.getDays();
+
+                            print = true;
+                            for(int m = 0; m < actualDuration; m++){
+                                LocalDate taskDates = thisStart.plusDays(m);
+                                if(day.equals(taskDates)){
+                                    System.out.print("|**********|");//12 pixels per day ?
+                                    print = false;
+                                }
+                            }
+                            if(print){
+                                System.out.print("|          |");//12 pixels per day ?
+                            }
+                        }
+                        System.out.println();
+                    }
+                    System.out.println();
+                }
+                //
+            }else{
+                System.out.println("There are no tasks in the project");
+            }
+
+        }else {
+            System.out.println("There are no projects to show");
+        }
+        pause();
+    }
+
+    public void printEmpty(int space){
+        for(int i = 0; i < space; i++){
+            System.out.print(" ");
+        }
+    }
+
+    public Project retrieveProject(){
+        boolean continueLooping;
+        Project foundProject = null;
+        String projectID;
+        if(projects != null){
+            System.out.println();
+            System.out.println("The following are the projects currently registered:");
+            System.out.println("Project ID:               Project Name: " );
+
+            for(int x = 0; x < projects.size(); x++){
+                System.out.println("    " + projects.get(x).getProjectID()+ "                      " + projects.get(x).getName());
+            }
+
+            System.out.println();
+            System.out.print("Enter a project ID number from above ");
+
+            do{
+                continueLooping = false;
+                projectID = new KeyboardInput().Line();
+
+                for(int i = 0; i < projects.size(); i++){
+                    if (projectID.equals(projects.get(i).getProjectID())){
+                        foundProject = projects.get(i);
+                    }else {
+                        continueLooping = true;
+                    }
+                }
+
+                if(continueLooping){
+                    System.out.println();
+                    System.out.println("Incorrect choice, try again !");
+                    System.out.print("Enter a correct project ID number");
+                }
+            } while (continueLooping);
+        }
+
+        return foundProject;
+    }
+
+    public void pause (){
         System.out.println();
-        System.out.println("Eyuell working on this part");
+        System.out.println("Enter to continue ... ");
+        new KeyboardInput().enter();
     }
 
     public void monitorProgress(){
