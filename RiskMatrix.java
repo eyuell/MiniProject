@@ -167,8 +167,8 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = findRisk(name);
-                            if (foundRisk.getRiskName().equals(name)) {
+                        Risk foundRisk = retrieveRegisteredRisk(name);
+                            if (foundRisk != null) {
                                 System.out.println("Enter new name:");
                                 String newName = new InputHandler().Line();
                                 newName = new RiskEvaluator().name(newName);
@@ -188,8 +188,8 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = findRisk(name);
-                        if (foundRisk.getRiskName().equals(name)){
+                        Risk foundRisk = retrieveRegisteredRisk(name);
+                        if (foundRisk != null ){
                             System.out.println("Enter the new probability value:");
                             double newProbability = new InputHandler().Double();
                             newProbability = new RiskEvaluator().probability(newProbability);
@@ -208,8 +208,8 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = findRisk(name);
-                        if(foundRisk.getRiskName().equals(name)){
+                        Risk foundRisk = retrieveRegisteredRisk(name);
+                        if(foundRisk != null){
                             System.out.println("Enter the new impact value :");
                             double newImpact = new InputHandler().Double();
                             newImpact = new RiskEvaluator().impact(newImpact);
@@ -227,8 +227,8 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = findRisk(name);
-                        if ( foundRisk.getRiskName().equals(name)){
+                        Risk foundRisk = retrieveRegisteredRisk(name);
+                        if ( foundRisk != null){
                             System.out.println("Are you sure you want to delete " + foundRisk.getRiskName() + "?" );
                             deleteRisk(foundRisk);
                         } else {
@@ -347,33 +347,38 @@ public class RiskMatrix {
      final int IMPACT = 2;
      final int QUIT = 3;
      int option ;
-     do {
-         System.out.println("1. CONVERT PROBABILITY");
-         System.out.println("2. CONVERT IMPACT.");
-         System.out.println("3. QUIT");
-         option = new InputHandler().Int();
-         switch (option) {
-             case PROBABILITY:
-                 probabilityPercentage();
-                 System.out.println("*************************************");
-                 break;
+     if(risks != null){
+         do {
+             System.out.println("1. CONVERT PROBABILITY");
+             System.out.println("2. CONVERT IMPACT.");
+             System.out.println("3. QUIT");
+             option = new InputHandler().Int();
+             switch (option) {
+                 case PROBABILITY:
+                     probabilityPercentage();
+                     System.out.println("*************************************");
+                     break;
 
-             case IMPACT:
-                 impactPercentage();
-                 System.out.println("****************************************");
-                 break;
+                 case IMPACT:
+                     impactPercentage();
+                     System.out.println("****************************************");
+                     break;
 
-             case QUIT:
-                 System.out.println("**********************************");
-                 break;
+                 case QUIT:
+                     System.out.println("**********************************");
+                     break;
 
-             default:
-                 System.out.println("Enter a valid input");
-                 break;
+                 default:
+                     System.out.println("Enter a valid input");
+                     break;
 
 
-         }
-     } while (option != QUIT);
+             }
+         } while (option != QUIT);
+     }else {
+         System.out.println("There are no registered risks ");
+     }
+     
     }
 
     public  void probabilityPercentage(){ // this method coverts probability value of a given risk to percentage value.
@@ -382,8 +387,8 @@ public class RiskMatrix {
         double maxPercentage = 100.0;
         String name = readRisk();
         name = new RiskEvaluator().name(name);
-        Risk foundRisk = findRisk(name);
-        if(foundRisk.getRiskName().equals(name)){
+        Risk foundRisk = retrieveRegisteredRisk(name);
+        if(foundRisk != null){
             double foundProbability = foundRisk.getProbability();
             double convertedProbability = (foundProbability/fixedProbability) * maxPercentage;
             System.out.println("The risk " + foundRisk.getRiskName() + " has a probability of " + convertedProbability
@@ -397,8 +402,8 @@ public class RiskMatrix {
         double maxPercentage = 100.0;
         String name = readRisk();
         name = new RiskEvaluator().name(name);
-        Risk foundRisk = findRisk(name);
-        if (foundRisk.getRiskName().equals(name)){
+        Risk foundRisk = retrieveRegisteredRisk(name);
+        if (foundRisk != null){
             double foundImpact = foundRisk.getImpact();
             double convertedImpact = (foundImpact/fixedImpact) * maxPercentage;
             System.out.println("The risk "+ foundRisk.getRiskName() + " has an impact of "+ convertedImpact + " %");
@@ -406,26 +411,9 @@ public class RiskMatrix {
         else
             System.out.println("The risk name does not exist");
     }
-    public Risk findRisk (String name){ // got stuck in a loop.// throws an exception.
-
-         if (retrieveRegisteredRisk(name) == null) {
-
-             do {
-                 System.out.println("There is no risk registered in that name , do one of the following steps.");
-
-             } while (retrieveRegisteredRisk(name)== null);
-
-         }
-
-        return retrieveRegisteredRisk(name);
-    }
 
     public static void main (String []args){ // This is where the program will run.
         RiskMatrix program = new RiskMatrix();
         program.run();
     }
-
 }
-
-
-
