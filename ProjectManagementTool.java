@@ -1,12 +1,9 @@
-package MiniProject;
-
-import ProjectScheduling.DataEvaluator;
-import ProjectScheduling.KeyboardInput;
-import ProjectScheduling.Task;
+package ProjectScheduling;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ProjectManagementTool {
     private ArrayList<Project> projects;
@@ -46,7 +43,8 @@ public class ProjectManagementTool {
         final int MONITOR_RISK = 5;
         final int QUIT = 6;
 
-        readStoredFile();
+        readStoredFile();//almost reading json file
+        //readFromJsonFile()
 
         do {
             printMenuOption();
@@ -86,6 +84,9 @@ public class ProjectManagementTool {
                     break;
             }
         } while (optionChoice != QUIT);
+
+        //here, we may need to write to json file
+        //writeToJsonFile()
 
     }
 
@@ -255,9 +256,10 @@ public class ProjectManagementTool {
                 }
                 System.out.println(); //blank line
                 LocalDate localDate = LocalDate.now();
-                LocalDate tasksStartDate = new DataEvaluator().tasksStartAndFinishDates("start",tasks);
-                LocalDate tasksFinishDate = new DataEvaluator().tasksStartAndFinishDates("finish",tasks);
+                LocalDate tasksStartDate = tasksStartAndFinishDates("start",tasks);
+                LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",tasks);
 
+                //project tasks total duration
                 long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate);
 
                 printEmpty(smallestIndent);
@@ -271,7 +273,7 @@ public class ProjectManagementTool {
                 System.out.print("Tasks");
                 int afterText = smallestIndent-beforeText - 5 + 4;
                 printEmpty(afterText);
-                for (long i = 0; i < duration; i++){//the days printed
+                for (long i = 0; i <= duration; i++){//the days printed
                     LocalDate day = tasksStartDate.plusDays(i);
                     System.out.print("|" + day + "|");//12 pixels per day ?
                 }
@@ -286,10 +288,10 @@ public class ProjectManagementTool {
                     System.out.print(currentTask.getName()+"(" + currentTask.getId()+")");
                     printEmpty(taskIndent);
                     boolean print;
-                    for (long j = 0; j < duration; j++){// project tasks duration
+                    for (long j = 0; j <= duration; j++){// project tasks duration
                         LocalDate day = tasksStartDate.plusDays(j);
                         print = true;
-                        for(long m = 0; m < currentTask.getPlannedDuration(); m++){
+                        for(long m = 0; m <= currentTask.getPlannedDuration(); m++){
                             LocalDate taskDates = currentTask.getPlannedStart().plusDays(m);
                             if(day.equals(taskDates)){
                                 System.out.print("|==========|");//12 pixels per day ?
@@ -305,7 +307,7 @@ public class ProjectManagementTool {
                     //Actual plot
                     if(currentTask.getActualStart() != null){
                         printEmpty(smallestIndent + 4);
-                        for (long j = 0; j < duration; j++){// project tasks duration
+                        for (long j = 0; j <= duration; j++){// project tasks duration
                             LocalDate day = tasksStartDate.plusDays(j);
 
                             LocalDate thisStart = currentTask.getActualStart();
@@ -314,7 +316,7 @@ public class ProjectManagementTool {
                             long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish);
 
                             print = true;
-                            for(int m = 0; m < actualDuration; m++){
+                            for(int m = 0; m <= actualDuration; m++){
                                 LocalDate taskDates = thisStart.plusDays(m);
                                 if(day.equals(taskDates)){
                                     System.out.print("|**********|");//12 pixels per day ?
@@ -389,6 +391,45 @@ public class ProjectManagementTool {
         System.out.println();
         System.out.println("Enter to continue ... ");
         new KeyboardInput().enter();
+    }
+
+    public LocalDate tasksStartAndFinishDates (String startOrFinish, ArrayList<Task> tasks){
+        int numberOfTasks = tasks.size();
+        ArrayList<LocalDate> starts = new ArrayList<>();
+        ArrayList<LocalDate> finishes = new ArrayList<>();
+        LocalDate plannedStartDate, actualStartDate;
+        LocalDate plannedFinishDate, actualFinishDate;
+        LocalDate result = null;
+
+        for (int i = 0; i < numberOfTasks; i++){
+            Task tas = tasks.get(i);
+
+            plannedStartDate = tas.getPlannedStart();
+            plannedFinishDate = tas.getPlannedFinish();
+
+            if(tas.getActualStart() != null){
+                actualStartDate = tas.getActualStart();
+                starts.add(actualStartDate);
+            }
+
+            if(tas.getActualFinish() != null){
+                actualFinishDate = tas.getActualFinish();
+                finishes.add(actualFinishDate);
+            }
+
+            starts.add(plannedStartDate);
+            finishes.add(plannedFinishDate);
+        }
+
+        if(startOrFinish.equals("start") && starts.size() > 0){
+            Collections.sort(starts);
+            result = starts.get(0);
+        }else if(startOrFinish.equals("finish") && finishes.size() > 0){
+            int numberOfFinishes = finishes.size();
+            Collections.sort(finishes);
+            result = finishes.get(numberOfFinishes - 1);
+        }
+        return result;
     }
 
     public void monitorProgress(){

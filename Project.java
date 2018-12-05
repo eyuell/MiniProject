@@ -1,4 +1,4 @@
-package MiniProject;
+package ProjectScheduling;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ public class Project {
     private String name;
     private String projectID;
     private ArrayList<Task> tasks;
+    //private ArrayList<Finance> finances;
+    //private ArrayList<Risk> risks;
     private long duration;
     private LocalDate startDate;
     private LocalDate finishDate;
@@ -17,6 +19,9 @@ public class Project {
         this.projectID = projectID;
         this.startDate = startDate;
         this.tasks = new ArrayList<>();
+        //this.finances = new ArrayList<>();
+        //this.risks = new ArrayList<>();
+
     }
 
     public String getName() {
@@ -37,6 +42,10 @@ public class Project {
         this.tasks.add(task);
     }
 
+    //public void addFinance(Finance finance){this.finances.add(finance);}
+
+    //public void addRisk(Risk risk){this.risks.add(risk);}
+
     public ArrayList<Task> getTasks() {
         return tasks;
     }
@@ -46,6 +55,10 @@ public class Project {
     public double getCost() {
         return cost;
     }
+
+    //public ArrayList<Finance> getFinances() { return finances; }
+
+    //public ArrayList<Risk> getRisks() { return risks; }
 
     public void setName(String name) {
         this.name = name;
