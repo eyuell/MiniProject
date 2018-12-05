@@ -451,17 +451,18 @@ public class ProjectManagementTool {
         double plannedBudget = plannedSum * 225.0;
         double actualCost = actualSum * 225.0;
         LocalDate today = LocalDate.now();
-        LocalDate tasksStartDate = tasksStartAndFinishDates("start",tasks);
-        LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",tasks);
+        LocalDate tasksStartDate = tasksStartAndFinishDates("start",projects.get(0).getTasks());
+        LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",projects.get(0).getTasks());
 
         //project tasks total duration
-        long projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate);
-        long durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today);
+        double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate);
+        double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today);
         
-        System.out.println("Project budjet = " + plannedBudget);
+        System.out.println("Project budget = " + plannedBudget);
         System.out.println("Project cost = " + actualCost);
-        System.out.println("Programm Excuted Progress = " + (actualCost/plannedBudget)*100.0 +" %"); //this is only monetary wise
-        System.out.println("Programm Schedule Progress = " + (durationTillToday/projectDuration)*100.0 +" %"); //this is time wise
+        System.out.println("Program Executed Progress = " + Math.round(((actualCost/plannedBudget)*100.0)*100)/100.0 +" %"); //this is only monetary wise
+        System.out.println("Program Schedule Progress = " + Math.round(((durationTillToday/projectDuration)*100.0)*100)/100.0 +" %"); //this is time wise
+
     }
 
     public void monitorTimeSpent(){
