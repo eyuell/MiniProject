@@ -1,0 +1,607 @@
+[
+  {
+    "name": "Project Management Tool Development",
+    "projectID": "1",
+    "startDate": {
+      "year": 2018,
+      "month": 11,
+      "day": 15
+    },
+    "duration": 0,
+    "milestones": [
+      {
+        "name": "Executing on Console",
+        "id": "1",
+        "date": {
+          "year": 2018,
+          "month": 12,
+          "day": 10
+        }
+      },
+      {
+        "name": "Executing using json",
+        "id": "1",
+        "date": {
+          "year": 2018,
+          "month": 12,
+          "day": 21
+        }
+      },
+      {
+        "name": "Executing on Console",
+        "id": "1",
+        "date": {
+          "year": 2019,
+          "month": 1,
+          "day": 7
+        }
+      }
+    ],
+    "tasks": [
+      {
+        "name": "General Tasks",
+        "id": "1",
+        "typeOfTask": 1,
+        "statusOfTask": false,
+        "plannedStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 16
+        },
+        "plannedFinish": {
+          "year": 2019,
+          "month": 1,
+          "day": 20
+        },
+        "plannedDuration": 66,
+        "actualStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 16
+        },
+        "actualFinish": {
+          "year": 2018,
+          "month": 12,
+          "day": 9
+        },
+        "actualDuration": 24,
+        "plannedManpower": [
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 207.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 207.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 208.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 208.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 20
+            }
+          }
+        ],
+        "actualTeamMembers": [],
+        "connectivity": []
+      },
+      {
+        "name": "Cost Related",
+        "id": "2",
+        "typeOfTask": 1,
+        "statusOfTask": false,
+        "plannedStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "plannedFinish": {
+          "year": 2019,
+          "month": 1,
+          "day": 11
+        },
+        "plannedDuration": 47,
+        "actualStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "actualFinish": {
+          "year": 2018,
+          "month": 12,
+          "day": 9
+        },
+        "actualDuration": 14,
+        "plannedManpower": [
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 37.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 11
+            }
+          }
+        ],
+        "actualTeamMembers": [
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 43.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          }
+        ],
+        "connectivity": []
+      },
+      {
+        "name": "Risk Matrix",
+        "id": "3",
+        "typeOfTask": 1,
+        "statusOfTask": false,
+        "plannedStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "plannedFinish": {
+          "year": 2019,
+          "month": 1,
+          "day": 11
+        },
+        "plannedDuration": 47,
+        "actualStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "actualFinish": {
+          "year": 2018,
+          "month": 12,
+          "day": 9
+        },
+        "actualDuration": 14,
+        "plannedManpower": [
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 37.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 11
+            }
+          }
+        ],
+        "actualTeamMembers": [
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 44.800000000000004,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          }
+        ],
+        "connectivity": []
+      },
+      {
+        "name": "Participation on tasks",
+        "id": "4",
+        "typeOfTask": 1,
+        "statusOfTask": false,
+        "plannedStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "plannedFinish": {
+          "year": 2019,
+          "month": 1,
+          "day": 11
+        },
+        "plannedDuration": 47,
+        "actualStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "actualFinish": {
+          "year": 2018,
+          "month": 12,
+          "day": 9
+        },
+        "actualDuration": 14,
+        "plannedManpower": [
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 37.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 11
+            }
+          }
+        ],
+        "actualTeamMembers": [
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 46.199999999999996,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          }
+        ],
+        "connectivity": []
+      },
+      {
+        "name": "Time spent on project",
+        "id": "5",
+        "typeOfTask": 1,
+        "statusOfTask": false,
+        "plannedStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "plannedFinish": {
+          "year": 2019,
+          "month": 1,
+          "day": 11
+        },
+        "plannedDuration": 47,
+        "actualStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "actualFinish": {
+          "year": 2018,
+          "month": 12,
+          "day": 9
+        },
+        "actualDuration": 14,
+        "plannedManpower": [
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 37.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 11
+            }
+          }
+        ],
+        "actualTeamMembers": [
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 47.6,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          }
+        ],
+        "connectivity": []
+      },
+      {
+        "name": "Project schedule",
+        "id": "6",
+        "typeOfTask": 1,
+        "statusOfTask": false,
+        "plannedStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "plannedFinish": {
+          "year": 2019,
+          "month": 1,
+          "day": 11
+        },
+        "plannedDuration": 47,
+        "actualStart": {
+          "year": 2018,
+          "month": 11,
+          "day": 26
+        },
+        "actualFinish": {
+          "year": 2018,
+          "month": 12,
+          "day": 9
+        },
+        "actualDuration": 14,
+        "plannedManpower": [
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 37.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 38.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 11
+            }
+          }
+        ],
+        "actualTeamMembers": [
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 49.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          }
+        ],
+        "connectivity": []
+      }
+    ],
+    "teamMembers": [
+      {
+        "name": "Armin Ghoroghi",
+        "id": "1",
+        "hourlyRate": 255.0,
+        "qualification": "Software Developer"
+      },
+      {
+        "name": "James Wagabaza",
+        "id": "2",
+        "hourlyRate": 255.0,
+        "qualification": "Software Developer"
+      },
+      {
+        "name": "Osman Osman",
+        "id": "3",
+        "hourlyRate": 255.0,
+        "qualification": "Software Developer"
+      },
+      {
+        "name": "Hamidreza Yaghoobzadeh",
+        "id": "4",
+        "hourlyRate": 255.0,
+        "qualification": "Software Developer"
+      },
+      {
+        "name": "Eyuell Hailemichael",
+        "id": "5",
+        "hourlyRate": 255.0,
+        "qualification": "Software Developer"
+      }
+    ],
+    "risks": []
+  }
+]
