@@ -1,50 +1,43 @@
+package MiniProject;
+
 import java.util.ArrayList;
-import java.util.List;
 
-public class systemStore {
-    private List<Finance> finances;
+public class SystemStore {
+    private ArrayList<Finance> finances;
 
-    public systemStore() {
+    public SystemStore(){
         this.finances = new ArrayList<>();
     }
 
-//Add new SV
-    public Finance registerScheduleVariance(double budget, double earnedValue, double projectDuration, double daysPassed, String projectID) {
-        Finance newSV = new scheduleVariance(budget, earnedValue, projectDuration, daysPassed, projectID);
+    //Add new SV
+    public Finance registerScheduleVariance(double budget, double earnedValue, double projectDuration, double daysPassed, String projectId) {
+
+        Finance newSV = new ScheduleVariance(budget, earnedValue, projectDuration, daysPassed, projectId);
         finances.add(newSV);
         return newSV;
     }
 
-//Add new CV
-    public Finance registerCostVariance(double budget, double earnedValue, double projectDuration, double daysPassed, double actualCost, String projectID) {
-        Finance newCV = new costVariance(budget, earnedValue, actualCost, projectDuration, daysPassed, projectID);
+    //Add new CV
+    public Finance registerCostVariance(double budget, double earnedValue, double projectDuration, double daysPassed, double actualCost, String projectId){
+        Finance newCV=new CostVariance(budget,earnedValue ,actualCost ,projectDuration ,daysPassed, projectId);
         finances.add(newCV);
         return newCV;
     }
 
-//Print a INT of how many Objects are stored in array
-    public int sizeOfArray() {
-        return finances.size();
-    }
-
-//Print all stored values for all projects.
-    public String printAllFinances() {
+    //Print all stored values for all projects.
+    public void printAllFinances() {
         for (int i = 0; i < finances.size(); i++) {
             if (finances.get(i) != null)
                 System.out.println(finances.get(i).toString());
         }
-        return null;
     }
-//Print all values for a specific project ID
-    public Finance printAllFinancesByID(String projectID) {
+
+    //Print all values for a specific project ID
+    public void printAllFinancesByID(String projectID) {
         for (int i = 0; i < finances.size(); i++) {
             if (finances.get(i) != null && finances.get(i).getProjectID().equals(projectID)) {
                 System.out.println(finances.get(i).toString());
             }
         }
-        return null;
     }
 }
-
-
-
