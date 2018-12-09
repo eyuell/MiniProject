@@ -1,8 +1,8 @@
-public class costVariance extends Finance {
+public class CostVariance extends Finance {
     private double actualCost;
 
-    public costVariance(double budget, double earnedValue, double actualCost, double projectDuration, double daysPassed, String projectID) {
-        super(budget, earnedValue, projectDuration, daysPassed, projectID);
+    public CostVariance(double budget, double earnedValue, double projectDuration, double daysPassed, double actualCost, String projectId) {
+        super(budget, earnedValue, projectDuration, daysPassed, projectId);
         this.actualCost = actualCost;
     }
 
@@ -23,11 +23,7 @@ public class costVariance extends Finance {
     public String toString(){
         String costString;
         costString =" ID      Budget($):      Earned Value($):       Cost Variance($):           Days passed:          Project length/Days:    ";
-        costString +="\n "+projectID+"       " + getBudget() + "        " + getEarnedValue() + "                   " +getCostVariance() + "                       " + getDaysPassed()+"               "+projectDuration;
+        costString +="\n " + getProjectId() +"       " + getBudget() + "        " + getEarnedValue() + "                   " + getCostVariance() + "                       " + getDaysPassed()+"               "+getProjectDuration();
         costString +="\n*****************************************************************************************************************";
         return costString;}
 }
-
-
-
-
