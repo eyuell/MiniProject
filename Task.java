@@ -8,26 +8,22 @@ public class Task {
     private String id;
     private int typeOfTask;
     private boolean statusOfTask;
+    private LocalDate plannedStart;
+    private LocalDate plannedFinish;
     private long plannedDuration;
-    private double plannedEffectiveHours; //three hours per day
-    private long actualDuration;
-    private double price;
-    private ArrayList<Double> plannedDailyHours, actualDailyHours;
-    private ArrayList<Cost> plannedCosts, actualCosts;
-    private ArrayList<Connectivity> connectivity;
     private LocalDate actualStart;
     private LocalDate actualFinish;
-    private LocalDate plannedFinish;
-    private LocalDate plannedStart;
+    private long actualDuration;
+    private ArrayList<ManpowerAllocation> plannedManpower;
+    private ArrayList<TeamMemberAllocation> actualTeamMembers;
+    private ArrayList<Connectivity> connectivity;
 
     public Task (String name, String id, int typeOfTask){
         this.name = name;
         this.id = id;
         this.typeOfTask = typeOfTask;
-        this.actualDailyHours = new ArrayList<>();
-        this.plannedDailyHours = new ArrayList<>();
-        this.plannedCosts = new ArrayList<>();
-        this.actualCosts = new ArrayList<>();
+        this.plannedManpower = new ArrayList<>();
+        this.actualTeamMembers = new ArrayList<>();
         this.connectivity = new ArrayList<>();
         setStatusOfTask(false);
     }
@@ -40,33 +36,15 @@ public class Task {
         return id;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public ArrayList<Cost> getActualCosts() {
-        return actualCosts;
-    }
-
-    public int getTypeOfTask() {
-        return typeOfTask;
-    }
+    public int getTypeOfTask() { return typeOfTask; }
 
     public boolean getStatusOfTask() {
         return statusOfTask;
     }
 
-    public ArrayList<Cost> getPlannedCosts() {
-        return plannedCosts;
-    }
+    public ArrayList<ManpowerAllocation> getPlannedManpower() { return plannedManpower; }
 
-    public ArrayList<Double> getActualDailyHours() {
-        return actualDailyHours;
-    }
-
-    public ArrayList<Double> getPlannedDailyHours() {
-        return plannedDailyHours;
-    }
+    public ArrayList<TeamMemberAllocation> getActualTeamMembers() { return actualTeamMembers; }
 
     public long getPlannedDuration() {
         return plannedDuration;
@@ -76,17 +54,8 @@ public class Task {
         return actualDuration;
     }
 
-
-    public double getPlannedEffectiveHours() {
-        return plannedEffectiveHours;
-    }
-
     public ArrayList<Connectivity> getConnectivity() {
         return connectivity;
-    }
-
-    public void addConnectivity(Connectivity connectivity){
-        this.connectivity.add(connectivity);
     }
 
     public LocalDate getPlannedStart() {
@@ -128,30 +97,6 @@ public class Task {
     public void setActualDuration(long actualDuration) {
         this.actualDuration = actualDuration;
     }
-
-    public void setPlannedEffectiveHours(double plannedEffectiveHours) {
-        this.plannedEffectiveHours = plannedEffectiveHours;
-    }
-
-    public void setActualCosts(ArrayList<Cost> actualCosts) {
-        this.actualCosts = actualCosts;
-    }
-
-    public void setActualDailyHours(ArrayList<Double> actualDailyHours) {
-        this.actualDailyHours = actualDailyHours;
-    }
-
-    public void setPlannedCosts(ArrayList<Cost> plannedCosts) {
-        this.plannedCosts = plannedCosts;
-    }
-
-    public void setPlannedDailyHours(ArrayList<Double> plannedDailyHours) {
-        this.plannedDailyHours = plannedDailyHours;
-    }
-
-    public void setPrice(double price) { this.price = price; }
-
-    //public void setConnectivity(ArrayList<Connectivity> connectivity) {        this.connectivity = connectivity;    }
 
     public void setPlannedStart(LocalDate plannedStart) { this.plannedStart = plannedStart; }
 
