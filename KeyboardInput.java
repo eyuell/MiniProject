@@ -5,7 +5,7 @@ import java.util.Scanner;
 //this class is to collect keyboard inputs throughout the project
 public class KeyboardInput {
 
-        //Integer inputs collection
+    //Integer inputs collection
     public int Int(){
         int evaluatedKey = 0;   //to be returned
         int multiplier = 1;     //reserved for negative numbers
@@ -17,7 +17,6 @@ public class KeyboardInput {
         Scanner newKeyTyped = new Scanner(System.in);
 
         String typedKey = newKeyTyped.nextLine();   //reading string
-
 
         while (repeat == YES ){
             int initialLength = typedKey.length();
@@ -82,7 +81,7 @@ public class KeyboardInput {
         return evaluatedKey;
     }
 
-        //Double inputs collection
+    //Double inputs collection
     public double Double(){
         double evaluatedKey = 0.0;
         double multiplier = 1.0;
