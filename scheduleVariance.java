@@ -1,23 +1,29 @@
-public class scheduleVariance extends Finance {
-    float scheduleVariance;
-    private double actualCost;
+package MiniProject;
 
-    public scheduleVariance(double budget, double earnedValue, double projectDuration,double daysPassed,String projectID) {
-        super(budget, earnedValue, projectDuration, daysPassed,projectID);
-    this.scheduleVariance= scheduleVariance;
+public class ScheduleVariance extends Finance {
+    private float scheduleVariance;
+    private double daysPassed;
+    private double projectDuration;
+
+    public ScheduleVariance(double budget, double earnedValue, double projectDuration, double daysPassed, String projectId) {
+        super(budget, earnedValue, projectDuration, daysPassed, projectId);
+        this.daysPassed = daysPassed;
+        this.projectDuration = projectDuration;
     }
 
     public float getScheduleVariance(){
-        this.scheduleVariance= (float) ((getEarnedValue())-(this.getPlannedValue()));
+        this.scheduleVariance = (float) ((getEarnedValue())-(this.getPlannedValue()));
         return scheduleVariance;
     }
+
     public double getPlannedValue() {
         double plannedValue;
         plannedValue=getBudget() * getPlannedPercentageCompleted();
         return plannedValue;
     }
+
     public double getPlannedPercentageCompleted(){
-       double plannedPercentageCompleted;
+        double plannedPercentageCompleted;
         plannedPercentageCompleted=(daysPassed/projectDuration);
         return plannedPercentageCompleted;
     }
@@ -25,7 +31,7 @@ public class scheduleVariance extends Finance {
     public String toString() {
         String costString;
         costString =" ID:     Budget($):      Earned Value($):       Schedule Variance($):       Days passed:      Project length/Days:    ";
-        costString +="\n "+projectID+"       " + getBudget() + "        " + getEarnedValue() + "                   " +getScheduleVariance() + "                      " + getDaysPassed()+"               "+projectDuration;
+        costString +="\n " + getProjectId() +"       " + getBudget() + "        " + getEarnedValue() + "                   " +getScheduleVariance() + "                      " + getDaysPassed()+"               "+projectDuration;
         costString +="\n*****************************************************************************************************************";
         return costString;}
 }
