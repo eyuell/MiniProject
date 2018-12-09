@@ -1,9 +1,6 @@
-package PersonalCodeTraining.ProjectManagement;
-
-import PersonalCodeTraining.InputHandler;
+package MiniProject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RiskMatrix {
     public static final int REGISTER_RISK = 1;
@@ -11,12 +8,7 @@ public class RiskMatrix {
     public static final int EDIT_RISKS = 3;
     public static final int CONVERT_PROBABILITY_AND_IMPACT_TO_PERCENTAGE = 4;
     public static final int QUIT = 5;
-
-    private List<Risk> risks;
-
-    public RiskMatrix(){
-        this.risks = new ArrayList<>();
-    }
+    private Project currentProject = new ProjectManagementTool().retrieveProject();
 
     public void printMenu (){
         System.out.println("SELECT FROM THE FOLLOWING OPTIONS");
@@ -27,11 +19,9 @@ public class RiskMatrix {
         System.out.println("4. CONVERT PROBABILITY AND IMPACT TO PERCENTAGE VALUE.");
         System.out.println("5. QUIT.");
         System.out.println();
-
-
     }
 
-    public void run(){ // this methods handles all the risk matrix functions.
+    public void runRisk(){ // this methods handles all the risk matrix functions.
         int option;
         int loopCounter = 0;
 
@@ -43,7 +33,7 @@ public class RiskMatrix {
             }
             printMenu();
             System.out.println("Enter an option from the above:");
-            option = new InputHandler().Int();
+            option = new KeyboardInput().positiveInt();
 
             switch (option){
                 case REGISTER_RISK:
@@ -69,31 +59,28 @@ public class RiskMatrix {
                     System.out.println("**************************************");
                     break;
 
-                    default:
-                        System.out.println("Enter the right value");
-                        break;
+                default:
+                    System.out.println("Enter the right value");
+                    break;
             }
-
-
         } while (option != QUIT);
     }
 
     public void registerRisk (){ //  this method handles risk registration
 
-        String riskName = readRiskName();
-
+        if(currentProject != null){
+            String riskName = readRiskName();
 
             System.out.println("Risk Probability:");
-            double probability = new InputHandler().Double();
+            double probability = new KeyboardInput().positiveDouble();
             probability = new RiskEvaluator().probability(probability);
 
             System.out.println("Risk Impact:");
-            double impact = new InputHandler().Double();
+            double impact = new KeyboardInput().positiveDouble();
             impact = new RiskEvaluator().impact(impact);
 
-            risks.add(new Risk(riskName, probability, impact));
-
-
+            currentProject.getRisks().add(new Risk(riskName, probability, impact));
+        }
     }
 
     public void printFunction (){
@@ -104,7 +91,6 @@ public class RiskMatrix {
         final int QUIT_PRINT_FUNCTION = 4;
 
         do {
-
             System.out.println("SELECT FROM THE FOLLOWING OPTIONS.");
             System.out.println();
             System.out.println("1. PRINT A SPECIFIC RISK.");
@@ -112,7 +98,7 @@ public class RiskMatrix {
             System.out.println("3. PRINT NUMBER OF REGISTERED RISKS.");
             System.out.println("4. QUIT PRINT FUNCTION.");
             System.out.println();
-            option = new InputHandler().Int();
+            option = new KeyboardInput().positiveInt();
 
             switch (option){
                 case PRINT_A_SPECIFIC_RISK:
@@ -134,12 +120,11 @@ public class RiskMatrix {
                     System.out.println("**************************************");
                     break;
 
-                    default:
-                        System.out.println("Enter a correct option.");
-                        break;
+                default:
+                    System.out.println("Enter a correct option.");
+                    break;
             }
         } while (option!=QUIT_PRINT_FUNCTION);
-
     }
 
     public void editRisk (){
@@ -151,7 +136,6 @@ public class RiskMatrix {
         int option;
 
         do {
-
             System.out.println("What would you like to edit?");
             System.out.println();
             System.out.println("1. Edit risk name.");
@@ -159,7 +143,7 @@ public class RiskMatrix {
             System.out.println("3. Edit risk impact.");
             System.out.println("4. Delete risk..");
             System.out.println("5. Quit edit function");
-            option = new InputHandler().Int();
+            option = new KeyboardInput().positiveInt();
 
             switch (option){
                 case NAME:
@@ -168,13 +152,13 @@ public class RiskMatrix {
                         repeat = false;
                         String name = readRisk();
                         Risk foundRisk = retrieveRegisteredRisk(name);
-                            if (foundRisk != null) {
-                                System.out.println("Enter new name:");
-                                String newName = new InputHandler().Line();
-                                newName = new RiskEvaluator().name(newName);
-                                foundRisk.setRiskName(newName);
-                                System.out.println("You have successfully updated the risk's name to " + foundRisk.getRiskName());
-                            }
+                        if (foundRisk != null) {
+                            System.out.println("Enter new name:");
+                            String newName = new KeyboardInput().Line();
+                            newName = new RiskEvaluator().name(newName);
+                            foundRisk.setRiskName(newName);
+                            System.out.println("You have successfully updated the risk's name to " + foundRisk.getRiskName());
+                        }
 
                         else {
                             System.out.println("The risk name your are trying to access is not registered");
@@ -191,11 +175,10 @@ public class RiskMatrix {
                         Risk foundRisk = retrieveRegisteredRisk(name);
                         if (foundRisk != null ){
                             System.out.println("Enter the new probability value:");
-                            double newProbability = new InputHandler().Double();
+                            double newProbability = new KeyboardInput().positiveDouble();
                             newProbability = new RiskEvaluator().probability(newProbability);
                             foundRisk.setProbability(newProbability);
                             System.out.println("You have successfully updated the risk's probability to " + foundRisk.getProbability());
-
                         }
                         else {
                             System.out.println("The risk name you are trying to access is not registered.");
@@ -211,7 +194,7 @@ public class RiskMatrix {
                         Risk foundRisk = retrieveRegisteredRisk(name);
                         if(foundRisk != null){
                             System.out.println("Enter the new impact value :");
-                            double newImpact = new InputHandler().Double();
+                            double newImpact = new KeyboardInput().positiveDouble();
                             newImpact = new RiskEvaluator().impact(newImpact);
                             foundRisk.setImpact(newImpact);
                             System.out.println("You have successfully updated the risk's impact to " + foundRisk.getImpact());
@@ -243,47 +226,46 @@ public class RiskMatrix {
                     System.out.println("*********************************************************");
                     break;
 
-                    default:
-                        System.out.println("Enter the right option");
-                        break;
-
-
+                default:
+                    System.out.println("Enter the right option");
+                    break;
             }
-
-
         } while (option != QUIT_EDIT);
-
     }
     public void deleteRisk(Risk foundRisk){ // this methods is handles the risk deletion functions
-        final int YES = 1;
-        int option;
+        if(currentProject != null){
+            final int YES = 1;
+            int option;
             System.out.println("Select "+"1 "+"to delete risk.");
             System.out.println("Select any other number  to abort.");
-            option = new InputHandler().Int();
+            option = new KeyboardInput().Int();
             if (option == YES){
-                risks.remove(foundRisk);
+                currentProject.getRisks().remove(foundRisk);
                 System.out.println("Risk deleted!.");
 
             } else {
                 System.out.println("Process aborted.");
             }
-
-
+        }
     }
 
     public Risk retrieveRegisteredRisk(String riskName){
-        if (risks !=null){
-            for(Risk risk : risks){
-                if (risk.getRiskName().equals(riskName)){
-                    return risk;
+        if(currentProject != null){
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if ( risks != null){
+                for(Risk risk : risks){
+                    if (risk.getRiskName().equals(riskName)){
+                        return risk;
+                    }
                 }
             }
         }
+
         return null;
     }
     public  String  readRiskName (){ // this methods handles all name input requests.
         System.out.println("Enter Risk Name:");
-        String name = new InputHandler().Line();
+        String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
 
         while (retrieveRegisteredRisk(name) != null) {
@@ -291,15 +273,15 @@ public class RiskMatrix {
             System.out.println("There exists a risk with the same name use, another name. ");
             System.out.println();
             System.out.println("Enter new Risk Name.");
-            name = new InputHandler().Line();
+            name = new KeyboardInput().Line();
             name = new RiskEvaluator().name(name);
         }
         return name;
-
     }
+
     public String readRisk (){
         System.out.println("Enter Risk Name :");
-        String name = new InputHandler().Line();
+        String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
         return name ;
     }
@@ -318,67 +300,75 @@ public class RiskMatrix {
     public void printAllRisks (){
         int i = 0;
         int empty = 0;
-        System.out.println("NAME OF RISK"+"       "+"PROBABILITY"+"   "+"IMPACT"+"   "+"RISK");
-        if(risks.size()!=empty){
-            for (Risk risk : risks){
-                i++;
-                System.out.println(i+ ":-"+ risk);
+        System.out.println("NAME OF RISK" + "       " + "PROBABILITY" + "   " + "IMPACT" + "   " + "RISK");
+        if(currentProject != null){
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if(risks.size()!=empty){
+                for (Risk risk : risks){
+                    i++;
+                    System.out.println(i + ":-" + risk);
+                }
+            } else {
+                System.out.println("There is no registered risk.");
             }
-        } else {
-            System.out.println("There is no registered risk.");
         }
     }
+
     public void printNumberOfRisk(){
         int numberOfRisks;
-        if (risks!=null){
-            numberOfRisks = risks.size();
-            if (numberOfRisks == 1){
-                System.out.println("There is " + risks.size() + " registered risk.");
+        if(currentProject != null){
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if (risks!=null){
+                numberOfRisks = risks.size();
+                if (numberOfRisks == 1){
+                    System.out.println("There is " + risks.size() + " registered risk.");
+                } else {
+                    System.out.println("There are " + risks.size() + " registered risks.");
+                }
             } else {
-                System.out.println("There are " + risks.size() + " registered risks.");
+                System.out.println("There is no registered risk.");
             }
-        } else {
-            System.out.println("There is no registered risk.");
         }
     }
 
     public void percentageConverter(){ // this methods handles the converting to percentage function.
-     final int PROBABILITY = 1;
-     final int IMPACT = 2;
-     final int QUIT = 3;
-     int option ;
-     if(risks != null){
-         do {
-             System.out.println("1. CONVERT PROBABILITY");
-             System.out.println("2. CONVERT IMPACT.");
-             System.out.println("3. QUIT");
-             option = new InputHandler().Int();
-             switch (option) {
-                 case PROBABILITY:
-                     probabilityPercentage();
-                     System.out.println("*************************************");
-                     break;
+        final int PROBABILITY = 1;
+        final int IMPACT = 2;
+        final int QUIT = 3;
+        int option ;
+        if(currentProject != null){
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if(risks != null){
+                do {
+                    System.out.println("1. CONVERT PROBABILITY");
+                    System.out.println("2. CONVERT IMPACT.");
+                    System.out.println("3. QUIT");
+                    option = new KeyboardInput().positiveInt();
 
-                 case IMPACT:
-                     impactPercentage();
-                     System.out.println("****************************************");
-                     break;
+                    switch (option) {
+                        case PROBABILITY:
+                            probabilityPercentage();
+                            System.out.println("*************************************");
+                            break;
 
-                 case QUIT:
-                     System.out.println("**********************************");
-                     break;
+                        case IMPACT:
+                            impactPercentage();
+                            System.out.println("****************************************");
+                            break;
 
-                 default:
-                     System.out.println("Enter a valid input");
-                     break;
+                        case QUIT:
+                            System.out.println("**********************************");
+                            break;
 
-
-             }
-         } while (option != QUIT);
-     }else {
-         System.out.println("There are no registered risks ");
-     }
-     
+                        default:
+                            System.out.println("Enter a valid input");
+                            break;
+                    }
+                } while (option != QUIT);
+            }else {
+                System.out.println("There are no registered risks ");
+            }
+        }
     }
 
     public  void probabilityPercentage(){ // this method coverts probability value of a given risk to percentage value.
@@ -388,11 +378,12 @@ public class RiskMatrix {
         String name = readRisk();
         name = new RiskEvaluator().name(name);
         Risk foundRisk = retrieveRegisteredRisk(name);
+
         if(foundRisk != null){
             double foundProbability = foundRisk.getProbability();
             double convertedProbability = (foundProbability/fixedProbability) * maxPercentage;
             System.out.println("The risk " + foundRisk.getRiskName() + " has a probability of " + convertedProbability
-            + " %");
+                    + " %");
         } else
             System.out.println("The risk name does not exist.");
     }
@@ -410,10 +401,5 @@ public class RiskMatrix {
         }
         else
             System.out.println("The risk name does not exist");
-    }
-
-    public static void main (String []args){ // This is where the program will run.
-        RiskMatrix program = new RiskMatrix();
-        program.run();
     }
 }
