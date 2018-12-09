@@ -1,10 +1,9 @@
-package PersonalCodeTraining.ProjectManagement;
+package MiniProject;
 
 public class Risk {
     private String riskName;
     private double probability;
     private  double impact;
-
 
     public Risk(String riskName, double probability, double impact){
         this.riskName = riskName;
