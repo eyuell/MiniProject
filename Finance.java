@@ -2,16 +2,16 @@
 public class Finance {//Super
     private double budget;
     private double earnedValue;
-    private int projectId;
 double projectDuration;
 double daysPassed;
+String projectID;
 
-
-    public Finance(double budget,double earnedValue,double projectDuration,double daysPassed) {
+    public Finance(double budget,double earnedValue,double projectDuration,double daysPassed,String projectID) {
         this.budget = budget;
         this.earnedValue = earnedValue;
         this.daysPassed = daysPassed;
     this.projectDuration=projectDuration;
+    this.projectID=projectID;
     }
 
     public double getBudget() {
@@ -30,13 +30,6 @@ double daysPassed;
         this.earnedValue = earnedValue;
     }
 
-    public int getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
-    }
 
     public double getDaysPassed() {
         return daysPassed;
@@ -52,5 +45,13 @@ double daysPassed;
 
     public void setProjectDuration(double projectDuration) {
         this.projectDuration = projectDuration;
+    }
+
+    public String getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(String projectID) {
+        this.projectID = projectID;
     }
 }
