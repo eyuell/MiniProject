@@ -1,6 +1,4 @@
-package PersonalCodeTraining.ProjectManagement;
-
-import PersonalCodeTraining.InputHandler;
+package MiniProject;
 
 public class RiskEvaluator {
 
@@ -14,10 +12,9 @@ public class RiskEvaluator {
         double maxValue = 10.0;
         while (probability < leastValue || probability > maxValue){
             System.out.println("Enter a value between 1 and 10");
-            probability = new InputHandler().Double();
-            probability = new RiskEvaluator().probability(probability);
+            probability = new KeyboardInput().positiveDouble();
+            probability = new MiniProject.RiskEvaluator().probability(probability);
         }
-
         return probability;
     }
 
@@ -26,8 +23,8 @@ public class RiskEvaluator {
         double maxValue = 10.0;
         while (impact < leastValue || impact > maxValue){
             System.out.println("Enter a value between 1 and 10.");
-            impact = new InputHandler().Double();
-            impact = new RiskEvaluator().impact(impact);
+            impact = new KeyboardInput().positiveDouble();
+            impact = new MiniProject.RiskEvaluator().impact(impact);
         }
         return  impact;
     }
