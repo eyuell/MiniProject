@@ -8,7 +8,11 @@ public class RiskMatrix {
     public static final int EDIT_RISKS = 3;
     public static final int CONVERT_PROBABILITY_AND_IMPACT_TO_PERCENTAGE = 4;
     public static final int QUIT = 5;
-    private Project currentProject = new ProjectManagementTool().retrieveProject();
+    //private Project currentProject;
+
+    public RiskMatrix(){
+        //currentProject = new ProjectManagementTool().getProjects().get(0);
+    }
 
     public void printMenu (){
         System.out.println("SELECT FROM THE FOLLOWING OPTIONS");
@@ -21,7 +25,13 @@ public class RiskMatrix {
         System.out.println();
     }
 
-    public void runRisk(){ // this methods handles all the risk matrix functions.
+//    public Project getProject (){
+//        ProjectManagementTool connect = new ProjectManagementTool();
+//
+//        return connect.getProjects().get(0);
+//    }
+
+    public void runRisk(Project project){ // this methods handles all the risk matrix functions.
         int option;
         int loopCounter = 0;
 
@@ -31,27 +41,30 @@ public class RiskMatrix {
                 System.out.println("========= RISK MATRIX =========");
                 System.out.println();
             }
+        if(project == null){
+            System.out.println("The project has data");
+        }
             printMenu();
             System.out.println("Enter an option from the above:");
             option = new KeyboardInput().positiveInt();
 
             switch (option){
                 case REGISTER_RISK:
-                    registerRisk();
+                    registerRisk(project);
                     System.out.println("**************************************");
                     break;
 
                 case PRINT_RISKS:
-                    printFunction();
+                    printFunction(project);
                     System.out.println("**************************************");
                     break;
 
                 case EDIT_RISKS:
-                    editRisk();
+                    editRisk(project);
                     System.out.println("**************************************");
 
                 case CONVERT_PROBABILITY_AND_IMPACT_TO_PERCENTAGE:
-                    percentageConverter();
+                    percentageConverter(project);
                     System.out.println("**************************************");
                     break;
 
@@ -66,10 +79,10 @@ public class RiskMatrix {
         } while (option != QUIT);
     }
 
-    public void registerRisk (){ //  this method handles risk registration
+    public void registerRisk (Project project){ //  this method handles risk registration
 
-        if(currentProject != null){
-            String riskName = readRiskName();
+        if(project != null){
+            String riskName = readRiskName(project);
 
             System.out.println("Risk Probability:");
             double probability = new KeyboardInput().positiveDouble();
@@ -79,11 +92,11 @@ public class RiskMatrix {
             double impact = new KeyboardInput().positiveDouble();
             impact = new RiskEvaluator().impact(impact);
 
-            currentProject.getRisks().add(new Risk(riskName, probability, impact));
+            project.getRisks().add(new Risk(riskName, probability, impact));
         }
     }
 
-    public void printFunction (){
+    public void printFunction (Project project){
         int option;
         final int PRINT_A_SPECIFIC_RISK = 1;
         final int PRINT_ALL_REGISTERED_RISKS = 2;
@@ -102,17 +115,17 @@ public class RiskMatrix {
 
             switch (option){
                 case PRINT_A_SPECIFIC_RISK:
-                    printSpecificRisk();
+                    printSpecificRisk(project);
                     System.out.println("**************************************");
                     break;
 
                 case PRINT_ALL_REGISTERED_RISKS:
-                    printAllRisks();
+                    printAllRisks(project);
                     System.out.println("**************************************");
                     break;
 
                 case PRINT_NUMBER_OF_REGISTERED_RISKS:
-                    printNumberOfRisk();
+                    printNumberOfRisk(project);
                     System.out.println("**************************************");
                     break;
 
@@ -127,7 +140,7 @@ public class RiskMatrix {
         } while (option!=QUIT_PRINT_FUNCTION);
     }
 
-    public void editRisk (){
+    public void editRisk (Project project){
         final int NAME = 1;
         final int PROBABILITY = 2;
         final int IMPACT = 3;
@@ -151,14 +164,14 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = retrieveRegisteredRisk(name);
-                        if (foundRisk != null) {
-                            System.out.println("Enter new name:");
-                            String newName = new KeyboardInput().Line();
-                            newName = new RiskEvaluator().name(newName);
-                            foundRisk.setRiskName(newName);
-                            System.out.println("You have successfully updated the risk's name to " + foundRisk.getRiskName());
-                        }
+                        Risk foundRisk = retrieveRegisteredRisk(name, project);
+                            if (foundRisk != null) {
+                                System.out.println("Enter new name:");
+                                String newName = new KeyboardInput().Line();
+                                newName = new RiskEvaluator().name(newName);
+                                foundRisk.setRiskName(newName);
+                                System.out.println("You have successfully updated the risk's name to " + foundRisk.getRiskName());
+                            }
 
                         else {
                             System.out.println("The risk name your are trying to access is not registered");
@@ -172,7 +185,7 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = retrieveRegisteredRisk(name);
+                        Risk foundRisk = retrieveRegisteredRisk(name, project);
                         if (foundRisk != null ){
                             System.out.println("Enter the new probability value:");
                             double newProbability = new KeyboardInput().positiveDouble();
@@ -191,7 +204,7 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = retrieveRegisteredRisk(name);
+                        Risk foundRisk = retrieveRegisteredRisk(name, project);
                         if(foundRisk != null){
                             System.out.println("Enter the new impact value :");
                             double newImpact = new KeyboardInput().positiveDouble();
@@ -210,10 +223,10 @@ public class RiskMatrix {
                     do{
                         repeat = false;
                         String name = readRisk();
-                        Risk foundRisk = retrieveRegisteredRisk(name);
+                        Risk foundRisk = retrieveRegisteredRisk(name, project);
                         if ( foundRisk != null){
                             System.out.println("Are you sure you want to delete " + foundRisk.getRiskName() + "?" );
-                            deleteRisk(foundRisk);
+                            deleteRisk(foundRisk, project);
                         } else {
                             System.out.println("The risk name you trying to access is not registered.");
                             repeat = true;
@@ -226,21 +239,21 @@ public class RiskMatrix {
                     System.out.println("*********************************************************");
                     break;
 
-                default:
-                    System.out.println("Enter the right option");
-                    break;
+                    default:
+                        System.out.println("Enter the right option");
+                        break;
             }
         } while (option != QUIT_EDIT);
     }
-    public void deleteRisk(Risk foundRisk){ // this methods is handles the risk deletion functions
-        if(currentProject != null){
+    public void deleteRisk(Risk foundRisk, Project project){ // this methods is handles the risk deletion functions
+        if(project != null){
             final int YES = 1;
             int option;
             System.out.println("Select "+"1 "+"to delete risk.");
             System.out.println("Select any other number  to abort.");
             option = new KeyboardInput().Int();
             if (option == YES){
-                currentProject.getRisks().remove(foundRisk);
+                project.getRisks().remove(foundRisk);
                 System.out.println("Risk deleted!.");
 
             } else {
@@ -249,9 +262,9 @@ public class RiskMatrix {
         }
     }
 
-    public Risk retrieveRegisteredRisk(String riskName){
-        if(currentProject != null){
-            ArrayList<Risk> risks = currentProject.getRisks();
+    public Risk retrieveRegisteredRisk(String riskName, Project project){
+        if(project != null){
+            ArrayList<Risk> risks = project.getRisks();
             if ( risks != null){
                 for(Risk risk : risks){
                     if (risk.getRiskName().equals(riskName)){
@@ -263,12 +276,12 @@ public class RiskMatrix {
 
         return null;
     }
-    public  String  readRiskName (){ // this methods handles all name input requests.
+    public  String  readRiskName (Project project){ // this methods handles all name input requests.
         System.out.println("Enter Risk Name:");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
 
-        while (retrieveRegisteredRisk(name) != null) {
+        while (retrieveRegisteredRisk(name, project) != null) {
             System.out.println();
             System.out.println("There exists a risk with the same name use, another name. ");
             System.out.println();
@@ -286,10 +299,10 @@ public class RiskMatrix {
         return name ;
     }
 
-    public void printSpecificRisk (){
+    public void printSpecificRisk (Project project){
         String name = readRisk();
         name = new RiskEvaluator().name(name);
-        Risk foundRisk = retrieveRegisteredRisk(name);
+        Risk foundRisk = retrieveRegisteredRisk(name, project);
         System.out.println("NAME OF RISK"+"        "+"PROBABILITY"+"   "+"IMPACT"+"   "+"RISK");
         if(foundRisk != null){
             System.out.println(foundRisk);
@@ -297,12 +310,12 @@ public class RiskMatrix {
             System.out.println("There is no registered risk in that name.");
         }
     }
-    public void printAllRisks (){
+    public void printAllRisks (Project project){
         int i = 0;
         int empty = 0;
         System.out.println("NAME OF RISK" + "       " + "PROBABILITY" + "   " + "IMPACT" + "   " + "RISK");
-        if(currentProject != null){
-            ArrayList<Risk> risks = currentProject.getRisks();
+        if(project != null){
+            ArrayList<Risk> risks = project.getRisks();
             if(risks.size()!=empty){
                 for (Risk risk : risks){
                     i++;
@@ -314,10 +327,10 @@ public class RiskMatrix {
         }
     }
 
-    public void printNumberOfRisk(){
+    public void printNumberOfRisk(Project project){
         int numberOfRisks;
-        if(currentProject != null){
-            ArrayList<Risk> risks = currentProject.getRisks();
+        if(project != null){
+            ArrayList<Risk> risks = project.getRisks();
             if (risks!=null){
                 numberOfRisks = risks.size();
                 if (numberOfRisks == 1){
@@ -331,13 +344,13 @@ public class RiskMatrix {
         }
     }
 
-    public void percentageConverter(){ // this methods handles the converting to percentage function.
+    public void percentageConverter(Project project){ // this methods handles the converting to percentage function.
         final int PROBABILITY = 1;
         final int IMPACT = 2;
         final int QUIT = 3;
         int option ;
-        if(currentProject != null){
-            ArrayList<Risk> risks = currentProject.getRisks();
+        if(project != null){
+            ArrayList<Risk> risks = project.getRisks();
             if(risks != null){
                 do {
                     System.out.println("1. CONVERT PROBABILITY");
@@ -347,12 +360,12 @@ public class RiskMatrix {
 
                     switch (option) {
                         case PROBABILITY:
-                            probabilityPercentage();
+                            probabilityPercentage(project);
                             System.out.println("*************************************");
                             break;
 
                         case IMPACT:
-                            impactPercentage();
+                            impactPercentage(project);
                             System.out.println("****************************************");
                             break;
 
@@ -371,29 +384,29 @@ public class RiskMatrix {
         }
     }
 
-    public  void probabilityPercentage(){ // this method coverts probability value of a given risk to percentage value.
+    public  void probabilityPercentage(Project project){ // this method coverts probability value of a given risk to percentage value.
 
         final double fixedProbability = 10.0;
         double maxPercentage = 100.0;
         String name = readRisk();
         name = new RiskEvaluator().name(name);
-        Risk foundRisk = retrieveRegisteredRisk(name);
+        Risk foundRisk = retrieveRegisteredRisk(name, project);
 
         if(foundRisk != null){
             double foundProbability = foundRisk.getProbability();
             double convertedProbability = (foundProbability/fixedProbability) * maxPercentage;
             System.out.println("The risk " + foundRisk.getRiskName() + " has a probability of " + convertedProbability
-                    + " %");
+            + " %");
         } else
             System.out.println("The risk name does not exist.");
     }
 
-    public void impactPercentage(){ // this method converts impact values of a given risk to percentage values.
+    public void impactPercentage(Project project){ // this method converts impact values of a given risk to percentage values.
         final double fixedImpact = 10.0;
         double maxPercentage = 100.0;
         String name = readRisk();
         name = new RiskEvaluator().name(name);
-        Risk foundRisk = retrieveRegisteredRisk(name);
+        Risk foundRisk = retrieveRegisteredRisk(name, project);
         if (foundRisk != null){
             double foundImpact = foundRisk.getImpact();
             double convertedImpact = (foundImpact/fixedImpact) * maxPercentage;
