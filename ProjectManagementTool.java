@@ -17,9 +17,13 @@ public class ProjectManagementTool{
         this.projects = new ArrayList<>();
     }
 
+    public ArrayList<Project> getProjects() {
+        return projects;
+    }
+
     public static void main(String [] args){
         System.out.println("This program works on project schedules");
-        MiniProject.ProjectManagementTool start = new MiniProject.ProjectManagementTool();
+        ProjectManagementTool start = new ProjectManagementTool();
         start.run();
     }
 
@@ -35,9 +39,9 @@ public class ProjectManagementTool{
         System.out.println("8. Monitor Progress");
         System.out.println("9. Monitor Time Spent");
         System.out.println("10. Monitor Participation");
-        System.out.println("12. Monitor Risk");
-        System.out.println("13. Edit Information");
-        System.out.println("14. QUIT Program");
+        System.out.println("11. Monitor Risk");
+        System.out.println("12. Edit Information");
+        System.out.println("13. QUIT Program");
         System.out.println("=========================================");
         System.out.println();
     }
@@ -736,7 +740,7 @@ public class ProjectManagementTool{
             System.out.println("Project cost = " + actualCost);
             System.out.println("Earned Value = " + earnedValue);
             System.out.println("Program Executed Progress = " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
-            System.out.println("Program ProjectManagementTool Progress = " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+            System.out.println("Program Time Based Progress = " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
 
             SystemStore drake = new MiniProject.SystemStore();
             drake.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() );
@@ -756,7 +760,8 @@ public class ProjectManagementTool{
     }
 
     public void monitorRisk(){
-        new RiskMatrix().runRisk();
+
+        new RiskMatrix().runRisk(projects.get(0));
     }
 
     public void editInfo(){
@@ -1146,130 +1151,6 @@ public class ProjectManagementTool{
         return result;
     }
 
-    public void readStoredFile(){
-        LocalDate today = LocalDate.now();
-        LocalDate startDate = LocalDate.parse("2018-11-15");
-        Project p1 = new Project("Project Management Tool Development","1", startDate);
-        projects.add(p1);
-
-        Task t1 = new Task("General Tasks","1",1);
-        Task t2 = new Task("Cost Related","2",1);
-        Task t3 = new Task("Risk Matrix","3",1);
-        Task t4 = new Task("Participation on tasks","4",1);
-        Task t5 = new Task("Time spent on project","5",1);
-        Task t6 = new Task("Project schedule","6",1);
-
-        Milestone milestone1 = new Milestone("Executing on Console","1",LocalDate.parse("2018-12-10"));
-        Milestone milestone2 = new Milestone("Executing using json","2",LocalDate.parse("2018-12-21"));
-        Milestone milestone3 = new Milestone("Executing graphically","3",LocalDate.parse("2019-01-07"));
-
-        p1.getMilestones().add(milestone1);
-        p1.getMilestones().add(milestone2);
-        p1.getMilestones().add(milestone3);
-
-        p1.getTasks().add(t1);
-        p1.getTasks().add(t2);
-        p1.getTasks().add(t3);
-        p1.getTasks().add(t4);
-        p1.getTasks().add(t5);
-        p1.getTasks().add(t6);
-
-        t1.setPlannedStart(LocalDate.parse("2018-11-16"));
-        t1.setPlannedFinish(LocalDate.parse("2019-01-20"));
-
-        t2.setPlannedStart(LocalDate.parse("2018-11-26"));
-        t2.setPlannedFinish(LocalDate.parse("2019-01-11"));
-
-        t3.setPlannedStart(LocalDate.parse("2018-11-26"));
-        t3.setPlannedFinish(LocalDate.parse("2019-01-11"));
-
-        t4.setPlannedStart(LocalDate.parse("2018-11-26"));
-        t4.setPlannedFinish(LocalDate.parse("2019-01-11"));
-
-        t5.setPlannedStart(LocalDate.parse("2018-11-26"));
-        t5.setPlannedFinish(LocalDate.parse("2019-01-11"));
-
-        t6.setPlannedStart(LocalDate.parse("2018-11-26"));
-        t6.setPlannedFinish(LocalDate.parse("2019-01-11"));
-
-        //
-        t1.setActualStart(LocalDate.parse("2018-11-16"));
-        t1.setActualFinish(today);
-
-        t2.setActualStart(LocalDate.parse("2018-11-26"));
-        t2.setActualFinish(today);
-
-        t3.setActualStart(LocalDate.parse("2018-11-26"));
-        t3.setActualFinish(today);
-
-        t4.setActualStart(LocalDate.parse("2018-11-26"));
-        t4.setActualFinish(today);
-
-        t5.setActualStart(LocalDate.parse("2018-11-26"));
-        t5.setActualFinish(today);
-
-        t6.setActualStart(LocalDate.parse("2018-11-26"));
-        t6.setActualFinish(today);
-
-        completenessCheck(t1);
-        completenessCheck(t2);
-        completenessCheck(t3);
-        completenessCheck(t4);
-        completenessCheck(t5);
-        completenessCheck(t6);
-
-        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),207,LocalDate.parse("2018-11-16")));
-        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),207,LocalDate.parse("2018-12-10")));
-        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),208,LocalDate.parse("2018-12-26")));
-        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),208,LocalDate.parse("2019-01-20")));
-
-        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),37,LocalDate.parse("2018-11-26")));
-        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-06")));
-        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-26")));
-        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2019-01-11")));
-
-        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),37,LocalDate.parse("2018-11-26")));
-        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-06")));
-        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-26")));
-        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2019-01-11")));
-
-        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),37,LocalDate.parse("2018-11-26")));
-        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-06")));
-        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-26")));
-        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2019-01-11")));
-
-        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),37,LocalDate.parse("2018-11-26")));
-        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-06")));
-        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-26")));
-        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2019-01-11")));
-
-        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),37,LocalDate.parse("2018-11-26")));
-        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-06")));
-        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2018-12-26")));
-        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),38,LocalDate.parse("2019-01-11")));
-
-        TeamMember team1 = new TeamMember("Armin Ghoroghi","1","Software Developer");
-        TeamMember team2 = new TeamMember("James Wagabaza","2","Software Developer");
-        TeamMember team3 = new TeamMember("Osman Osman","3","Software Developer");
-        TeamMember team4 = new TeamMember("Hamidreza Yaghoobzadeh","4","Software Developer");
-        TeamMember team5 = new TeamMember("Eyuell Hailemichael","5","Software Developer");
-
-        p1.getTeamMembers().add(team1);
-        p1.getTeamMembers().add(team2);
-        p1.getTeamMembers().add(team3);
-        p1.getTeamMembers().add(team4);
-        p1.getTeamMembers().add(team5);
-
-        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + 1;
-
-        //the hours here are just to make different times for each team member
-        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1,numberOfDays * 3.1,today));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2,numberOfDays * 3.2,today));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3,numberOfDays * 3.3,today));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4,numberOfDays * 3.4,today));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5,numberOfDays * 3.5,today));
-    }
-
     public LocalDate tasksStartAndFinishDates (String startOrFinish, ArrayList<Task> tasks){
         int numberOfTasks = tasks.size();
         ArrayList<LocalDate> starts = new ArrayList<>();
@@ -1351,5 +1232,573 @@ public class ProjectManagementTool{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void readStoredFile(){
+        LocalDate today = LocalDate.now();
+        LocalDate startDate = LocalDate.parse("2018-11-15");
+        Project p1 = new Project("Project Management Tool Development","1", startDate);
+        projects.add(p1);
+
+        Task t1 = new Task("General Tasks","1",1);
+        Task t2 = new Task("Cost Related","2",1);
+        Task t3 = new Task("Risk Matrix","3",1);
+        Task t4 = new Task("Participation on tasks","4",1);
+        Task t5 = new Task("Time spent on project","5",1);
+        Task t6 = new Task("Project schedule","6",1);
+
+        Milestone milestone1 = new Milestone("Executing on Console","1",LocalDate.parse("2018-12-10"));
+        Milestone milestone2 = new Milestone("Executing using json","2",LocalDate.parse("2018-12-21"));
+        Milestone milestone3 = new Milestone("Executing graphically","3",LocalDate.parse("2019-01-07"));
+
+        p1.getMilestones().add(milestone1);
+        p1.getMilestones().add(milestone2);
+        p1.getMilestones().add(milestone3);
+
+        p1.getTasks().add(t1);
+        p1.getTasks().add(t2);
+        p1.getTasks().add(t3);
+        p1.getTasks().add(t4);
+        p1.getTasks().add(t5);
+        p1.getTasks().add(t6);
+
+        t1.setPlannedStart(LocalDate.parse("2018-11-16"));
+        t1.setPlannedFinish(LocalDate.parse("2019-01-20"));
+
+        t2.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t2.setPlannedFinish(LocalDate.parse("2019-01-11"));
+
+        t3.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t3.setPlannedFinish(LocalDate.parse("2019-01-11"));
+
+        t4.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t4.setPlannedFinish(LocalDate.parse("2019-01-11"));
+
+        t5.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t5.setPlannedFinish(LocalDate.parse("2019-01-11"));
+
+        t6.setPlannedStart(LocalDate.parse("2018-11-26"));
+        t6.setPlannedFinish(LocalDate.parse("2019-01-11"));
+
+        //
+        t1.setActualStart(LocalDate.parse("2018-11-16"));
+        t1.setActualFinish(today);
+
+        t2.setActualStart(LocalDate.parse("2018-11-26"));
+        t2.setActualFinish(today);
+
+        t3.setActualStart(LocalDate.parse("2018-11-26"));
+        t3.setActualFinish(today);
+
+        t4.setActualStart(LocalDate.parse("2018-11-26"));
+        t4.setActualFinish(today);
+
+        t5.setActualStart(LocalDate.parse("2018-11-26"));
+        t5.setActualFinish(today);
+
+        t6.setActualStart(LocalDate.parse("2018-11-26"));
+        t6.setActualFinish(today);
+
+        completenessCheck(t1);
+        completenessCheck(t2);
+        completenessCheck(t3);
+        completenessCheck(t4);
+        completenessCheck(t5);
+        completenessCheck(t6);
+
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-16")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-17")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-18")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-19")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-20")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-21")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-22")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-23")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-24")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-25")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-26")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-27")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-28")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-29")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-11-30")));
+
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-01")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-02")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-03")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-04")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-05")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-06")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-07")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-08")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-09")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-10")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-11")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-12")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-13")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-14")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-15")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-16")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-17")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-18")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-19")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-20")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-21")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-22")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-23")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-24")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-25")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-26")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-27")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-28")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-29")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-30")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-31")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-01-01")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-02")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-03")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-04")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-05")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-06")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-07")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-08")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-09")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-10")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-11")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-12")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-13")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-14")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-15")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-16")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-17")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-18")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2019-01-19")));
+        t1.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2019-01-20")));
+
+
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-26")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-27")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-28")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-29")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-30")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-01")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-02")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-03")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-04")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-05")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-06")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-07")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-08")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-09")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-10")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-11")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-12")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-13")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-14")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-15")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-16")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-17")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-18")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-19")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-20")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-21")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-22")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-23")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-24")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-25")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-26")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-27")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-28")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-05")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-06")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-07")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-08")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-09")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-10")));
+        t2.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-11")));
+
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-26")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-27")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-28")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-29")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-30")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-01")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-02")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-03")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-04")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-05")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-06")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-07")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-08")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-09")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-10")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-11")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-12")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-13")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-14")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-15")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-16")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-17")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-18")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-19")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-20")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-21")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-22")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-23")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-24")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-25")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-26")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-27")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-28")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-05")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-06")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-07")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-08")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-09")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-10")));
+        t3.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-11")));
+
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-26")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-27")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-28")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-29")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-30")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-01")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-02")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-03")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-04")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-05")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-06")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-07")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-08")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-09")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-10")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-11")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-12")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-13")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-14")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-15")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-16")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-17")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-18")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-19")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-20")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-21")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-22")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-23")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-24")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-25")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-26")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-27")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-28")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-05")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-06")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-07")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-08")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-09")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-10")));
+        t4.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-11")));
+
+
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-26")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-27")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-28")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-29")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-30")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-01")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-02")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-03")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-04")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-05")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-06")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-07")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-08")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-09")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-10")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-11")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-12")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-13")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-14")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-15")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-16")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-17")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-18")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-19")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-20")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-21")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-22")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-23")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-24")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-25")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-26")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-27")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-28")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-05")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-06")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-07")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-08")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-09")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-10")));
+        t5.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-11")));
+
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-26")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-27")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-28")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-29")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-11-30")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-01")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-02")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-03")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-04")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-05")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-06")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-07")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-08")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-09")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-10")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-11")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-12")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-13")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-14")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-15")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-16")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-17")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-18")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-19")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-20")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-21")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-22")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-23")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-24")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-25")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-26")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-27")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-28")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-05")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-06")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-07")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-08")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-09")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-10")));
+        t6.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-11")));
+
+        TeamMember team1 = new TeamMember("Armin Ghoroghi","1","Software Developer");
+        TeamMember team2 = new TeamMember("James Wagabaza","2","Software Developer");
+        TeamMember team3 = new TeamMember("Osman Osman","3","Software Developer");
+        TeamMember team4 = new TeamMember("Hamidreza Yaghoobzadeh","4","Software Developer");
+        TeamMember team5 = new TeamMember("Eyuell Hailemichael","5","Software Developer");
+
+        p1.getTeamMembers().add(team1);
+        p1.getTeamMembers().add(team2);
+        p1.getTeamMembers().add(team3);
+        p1.getTeamMembers().add(team4);
+        p1.getTeamMembers().add(team5);
+
+        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + 1;
+
+        //the hours here are just to make different times for each team member
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-11-26")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-11-27")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-11-28")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-11-29")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-11-30")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-01")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-02")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-03")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-04")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-05")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-06")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-07")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-08")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-09")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team1, 1, LocalDate.parse("2018-12-10")));
+
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-11-26")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-11-27")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-11-28")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-11-29")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-11-30")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-01")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-02")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-03")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-04")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-05")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-06")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-07")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-08")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-09")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team2, 1, LocalDate.parse("2018-12-10")));
+
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-11-26")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-11-27")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-11-28")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-11-29")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-11-30")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-01")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-02")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-03")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-04")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-05")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-06")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-07")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-08")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-09")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team3, 1, LocalDate.parse("2018-12-10")));
+
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-11-26")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-11-27")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-11-28")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-11-29")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-11-30")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-01")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-02")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-03")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-04")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-05")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-06")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-07")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-08")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-09")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team4, 1, LocalDate.parse("2018-12-10")));
+
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-16")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-17")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-18")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-19")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-20")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-21")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-22")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-23")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-24")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-25")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-26")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-27")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-28")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-29")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-11-30")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-01")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-02")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-03")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-04")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-05")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-06")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-07")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-08")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-09")));
+        t1.getActualTeamMembers().add(new TeamMemberAllocation(team5, 1, LocalDate.parse("2018-12-10")));
+
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-11-26")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-11-27")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-11-28")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-11-29")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-11-30")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-01")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-02")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-03")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-04")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-05")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-06")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-07")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-08")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-09")));
+        t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-10")));
+
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-26")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-27")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-28")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-29")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-30")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-01")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-02")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-03")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-04")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-05")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-06")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-07")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-08")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-09")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-10")));
+
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-26")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-27")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-28")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-29")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-30")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-01")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-02")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-03")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-04")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-05")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-06")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-07")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-08")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-09")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-10")));
+
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-26")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-27")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-28")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-29")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-30")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-01")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-02")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-03")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-04")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-05")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-06")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-07")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-08")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-09")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-10")));
+
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-26")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-27")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-28")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-29")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-30")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-01")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-02")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-03")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-04")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-05")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-06")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-07")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-08")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-09")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-10")));
     }
 }
