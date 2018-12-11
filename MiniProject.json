@@ -8,6 +8,53 @@
       "day": 15
     },
     "duration": 0,
+    "risks": [
+      {
+        "riskName": "Lack of Trust",
+        "probability": 0.7,
+        "impact": 7.0
+      },
+      {
+        "riskName": "Conflict and tension",
+        "probability": 0.8,
+        "impact": 9.0
+      },
+      {
+        "riskName": "Lack of Commitment",
+        "probability": 0.9,
+        "impact": 9.0
+      },
+      {
+        "riskName": "Weak Information sharing",
+        "probability": 0.6,
+        "impact": 7.0
+      },
+      {
+        "riskName": "Misalignment with team-Goal",
+        "probability": 0.7,
+        "impact": 7.0
+      },
+      {
+        "riskName": "Lack of Team spirit",
+        "probability": 0.6,
+        "impact": 8.0
+      },
+      {
+        "riskName": "Lack of Organisation",
+        "probability": 0.6,
+        "impact": 7.0
+      },
+      {
+        "riskName": "Being out of schedule",
+        "probability": 0.7,
+        "impact": 8.0
+      },
+      {
+        "riskName": "Lack of Knowledge",
+        "probability": 0.7,
+        "impact": 7.0
+      }
+    ],
     "milestones": [
       {
         "name": "Executing on Console",
@@ -20,7 +67,7 @@
       },
       {
         "name": "Executing using json",
-        "id": "1",
+        "id": "2",
         "date": {
           "year": 2018,
           "month": 12,
@@ -28,8 +75,8 @@
         }
       },
       {
-        "name": "Executing on Console",
-        "id": "1",
+        "name": "Executing graphically",
+        "id": "3",
         "date": {
           "year": 2019,
           "month": 1,
@@ -62,15 +109,15 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 9
+          "day": 11
         },
-        "actualDuration": 24,
+        "actualDuration": 26,
         "plannedManpower": [
           {
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 207.0,
+            "workHours": 10.0,
             "date": {
               "year": 2018,
               "month": 11,
@@ -81,7 +128,260 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 207.0,
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -92,7 +392,172 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 208.0,
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -103,7 +568,271 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 208.0,
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2018,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 20.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 10.0,
             "date": {
               "year": 2019,
               "month": 1,
@@ -111,7 +840,1198 @@
             }
           }
         ],
-        "actualTeamMembers": [],
+        "actualTeamMembers": [
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          }
+        ],
         "connectivity": []
       },
       {
@@ -138,15 +2058,15 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 9
+          "day": 11
         },
-        "actualDuration": 14,
+        "actualDuration": 16,
         "plannedManpower": [
           {
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 37.0,
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 11,
@@ -157,7 +2077,106 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -168,7 +2187,216 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -179,7 +2407,172 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
             "date": {
               "year": 2019,
               "month": 1,
@@ -195,11 +2588,207 @@
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
-            "workHours": 43.4,
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
             "date": {
               "year": 2018,
               "month": 12,
               "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
             }
           }
         ],
@@ -229,15 +2818,15 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 9
+          "day": 11
         },
-        "actualDuration": 14,
+        "actualDuration": 16,
         "plannedManpower": [
           {
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 37.0,
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 11,
@@ -248,7 +2837,106 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -259,7 +2947,216 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -270,7 +3167,172 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
             "date": {
               "year": 2019,
               "month": 1,
@@ -281,16 +3343,212 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "James Wagabaza",
-              "id": "2",
+              "name": "Armin Ghoroghi",
+              "id": "1",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
-            "workHours": 44.800000000000004,
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
             "date": {
               "year": 2018,
               "month": 12,
               "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
             }
           }
         ],
@@ -320,15 +3578,15 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 9
+          "day": 11
         },
-        "actualDuration": 14,
+        "actualDuration": 16,
         "plannedManpower": [
           {
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 37.0,
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 11,
@@ -339,7 +3597,106 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -350,7 +3707,216 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -361,7 +3927,172 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
             "date": {
               "year": 2019,
               "month": 1,
@@ -372,16 +4103,212 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Osman Osman",
-              "id": "3",
+              "name": "Armin Ghoroghi",
+              "id": "1",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
-            "workHours": 46.199999999999996,
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
             "date": {
               "year": 2018,
               "month": 12,
               "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
             }
           }
         ],
@@ -411,15 +4338,15 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 9
+          "day": 11
         },
-        "actualDuration": 14,
+        "actualDuration": 16,
         "plannedManpower": [
           {
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 37.0,
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 11,
@@ -430,7 +4357,106 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -441,7 +4467,216 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -452,7 +4687,172 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
             "date": {
               "year": 2019,
               "month": 1,
@@ -463,16 +4863,212 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Hamidreza Yaghoobzadeh",
-              "id": "4",
+              "name": "Armin Ghoroghi",
+              "id": "1",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
-            "workHours": 47.6,
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
             "date": {
               "year": 2018,
               "month": 12,
               "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
             }
           }
         ],
@@ -502,15 +5098,15 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 9
+          "day": 11
         },
-        "actualDuration": 14,
+        "actualDuration": 16,
         "plannedManpower": [
           {
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 37.0,
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 11,
@@ -521,7 +5117,106 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -532,7 +5227,216 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
             "date": {
               "year": 2018,
               "month": 12,
@@ -543,7 +5447,172 @@
             "manpower": {
               "qualification": "TBA"
             },
-            "workHours": 38.0,
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 3.0,
+            "date": {
+              "year": 2018,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 3
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 4
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 5
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 6
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 7
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 8
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 9
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 10
+            }
+          },
+          {
+            "manpower": {
+              "qualification": "TBA"
+            },
+            "workHours": 4.0,
             "date": {
               "year": 2019,
               "month": 1,
@@ -554,16 +5623,212 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Eyuell Hailemichael",
-              "id": "5",
+              "name": "Armin Ghoroghi",
+              "id": "1",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
-            "workHours": 49.0,
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 11,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 3
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 4
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 5
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 6
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 7
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 8
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
             "date": {
               "year": 2018,
               "month": 12,
               "day": 9
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
             }
           }
         ],
@@ -601,7 +5866,6 @@
         "hourlyRate": 255.0,
         "qualification": "Software Developer"
       }
-    ],
-    "risks": []
+    ]
   }
 ]
