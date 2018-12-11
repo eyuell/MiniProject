@@ -1,8 +1,11 @@
 package MiniProject;
 
-import com.google.gson.Gson;
+import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -10,23 +13,31 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 
+//the project system Main class
 public class ProjectManagementTool{
+
+    //the system has projects but we work on one project.
+    // only for json we use the object
     private ArrayList<Project> projects;
 
+    //constructor
     public ProjectManagementTool(){
         this.projects = new ArrayList<>();
     }
 
+    //getter for the projects
     public ArrayList<Project> getProjects() {
         return projects;
     }
 
+    //Gateway to the system
     public static void main(String [] args)throws Exception{
         System.out.println("This program works on project schedules");
         ProjectManagementTool start = new ProjectManagementTool();
         start.run();
     }
 
+    //Main Menu of the program
     public void printMenuOption(){
         System.out.println("=========================================");
         System.out.println("1. Register Project");
@@ -46,7 +57,8 @@ public class ProjectManagementTool{
         System.out.println();
     }
 
-    public void run() throws Exception {
+    //the gate way to the menu
+    public void run()throws Exception {
         int optionChoice;
         final int REGISTER_PROJECT = 1;
         final int REGISTER_TASKS = 2;
@@ -62,8 +74,13 @@ public class ProjectManagementTool{
         final int EDIT_INFO = 12;
         final int QUIT = 13;
 
-        readStoredFile();
+        //readFromSystemClass(); //to read data by initiating a project with set values in the internal system
+        readFromJsonFile(); //to read data from stored json file
 
+        //checking all tasks are complete with major timeline info
+        projectCompletenessCheck();
+
+        //menu
         do {
             printMenuOption();
             System.out.print("Choose menu option ");
@@ -130,9 +147,10 @@ public class ProjectManagementTool{
             }
         } while (optionChoice != QUIT);
 
-        writeToJsonFile();
+        writeProjectToJsonFile(); //Writes to project data store in Json file
     }
 
+    //to register projects
     public void registerProject(){
         System.out.println();
         System.out.print("Enter name of a project ");
@@ -158,7 +176,8 @@ public class ProjectManagementTool{
         LocalDate projectStartDate = null;
         LocalDate projectFinishDate = null;
         long duration = 0;
-        if(choice != SECOND_OPTION){
+
+        if(choice != SECOND_OPTION){ //dates now
             System.out.println("Enter the Start date of the project: ");
             projectStartDate = new DataEvaluator().readDate();
 
@@ -587,7 +606,7 @@ public class ProjectManagementTool{
                 }
                 System.out.println();
                 printEmpty(smallestIndent);
-                System.out.println("        ProjectManagementTool for Project " + foundProject.getName() + " (" + foundProject.getProjectID() + ")");
+                System.out.println("        " + foundProject.getName() + " (" + foundProject.getProjectID() + ")");
                 printEmpty(smallestIndent);
                 System.out.println("        Date: " + localDate);
                 System.out.println();
@@ -668,29 +687,32 @@ public class ProjectManagementTool{
                 }
                 //Milestones
                 ArrayList<Milestone> milestones1 = foundProject.getMilestones();
-                for(int i = 0; i < milestones1.size();i++){
-                    Milestone currentMilestone = milestones1.get(i);
-                    int MilestoneIndent = smallestIndent - currentMilestone.getName().length() - currentMilestone.getId().length() + 4 - 2;
-                    System.out.print(currentMilestone.getName()+"(" + currentMilestone.getId()+")");
-                    printEmpty(MilestoneIndent);
-                    System.out.print("|");
-                    boolean print;
-                    for (int j = 0; j < duration; j++){// project tasks duration
-                        LocalDate day = tasksStartDate.plusDays(j);
-                        print = true;
-                        LocalDate milestoneDate = currentMilestone.getDate();
-                        if(day.equals(milestoneDate)){
-                            System.out.print("|##########|");//12 pixels per day ?
-                            print = false;
+                if(milestones1 != null){
+                    for(int i = 0; i < milestones1.size();i++){
+                        Milestone currentMilestone = milestones1.get(i);
+                        int MilestoneIndent = smallestIndent - currentMilestone.getName().length() - currentMilestone.getId().length() + 4 - 2;
+                        System.out.print(currentMilestone.getName()+"(" + currentMilestone.getId()+")");
+                        printEmpty(MilestoneIndent);
+                        System.out.print("|");
+                        boolean print;
+                        for (int j = 0; j < duration; j++){// project tasks duration
+                            LocalDate day = tasksStartDate.plusDays(j);
+                            print = true;
+                            LocalDate milestoneDate = currentMilestone.getDate();
+                            if(day.equals(milestoneDate)){
+                                System.out.print("|##########|");//12 pixels per day ?
+                                print = false;
 
+                            }
+                            if(print){
+                                System.out.print("            ");//12 pixels per day ?
+                            }
                         }
-                        if(print){
-                            System.out.print("            ");//12 pixels per day ?
-                        }
+                        System.out.println();
+                        System.out.println();
                     }
-                    System.out.println();
-                    System.out.println();
                 }
+
                 for(int i= 0;i<(smallestIndent + 5);i++){//horizontal line1
                     System.out.print("_");
                 }
@@ -703,8 +725,11 @@ public class ProjectManagementTool{
                 System.out.println("                     |==========| : Planned Tasks");
                 System.out.println();
                 System.out.println("                     |**********| : Actual Tasks");
-                System.out.println();
-                System.out.println("                     |##########| : Milestones");
+
+                if(milestones1 != null){
+                    System.out.println();
+                    System.out.println("                     |##########| : Milestones");
+                }
                 //
             }else{
                 System.out.println("There are no tasks in the project");
@@ -760,7 +785,6 @@ public class ProjectManagementTool{
     }
 
     public void monitorRisk(){
-
         new RiskMatrix().runRisk(projects.get(0));
     }
 
@@ -1190,15 +1214,6 @@ public class ProjectManagementTool{
         return result;
     }
 
-    public boolean checkTasksPlannedCompleteness(ArrayList<Task> existingTasks){
-        for(Task task:existingTasks){
-            if(!completenessCheck(task)){
-                return false;
-            }
-        }
-        return true;
-    }
-
     public boolean readActualTaskStatus(){
         boolean repeat;
         int option;
@@ -1220,12 +1235,33 @@ public class ProjectManagementTool{
         }
     }
 
-    public void writeToJsonFile(){
+    public void projectCompletenessCheck(){
+        if(projects != null){
+            for(int m = 0; m < projects.size(); m++){
+                for(int i = 0; i < projects.get(m).getTasks().size(); i++){
+                    completenessCheck(projects.get(m).getTasks().get(i));
+                }
+
+                Project currentProject = projects.get(m);
+
+                if(currentProject.getFinishDate() == null){
+
+                    LocalDate finish = tasksStartAndFinishDates("finish",currentProject.getTasks());
+                    currentProject.setFinishDate(finish);
+
+                    long duration = ChronoUnit.DAYS.between(finish, currentProject.getStartDate()) + 1;
+                    currentProject.setDuration(duration);
+                }
+            }
+        }
+    }
+
+    public void writeProjectToJsonFile(){
 
         try {
             FileWriter file = new FileWriter("MiniProject/MiniProject.json");
-            Gson gsonStructured = new GsonBuilder().setPrettyPrinting().create();
 
+            Gson gsonStructured = new GsonBuilder().setPrettyPrinting().create();
             file.write(gsonStructured.toJson(projects));
             file.flush();
 
@@ -1234,7 +1270,13 @@ public class ProjectManagementTool{
         }
     }
 
-    public void readStoredFile(){
+    public void readFromJsonFile()throws Exception {
+        Gson gson = new Gson();
+        BufferedReader br = new BufferedReader(new FileReader("MiniProject/MiniProject.json"));
+        projects = gson.fromJson(br, new TypeToken<ArrayList<Project>>(){}.getType());
+    }
+
+    public void readFromSystemClass(){
         LocalDate today = LocalDate.now();
         LocalDate startDate = LocalDate.parse("2018-11-15");
         Project p1 = new Project("Project Management Tool Development","1", startDate);
@@ -1800,13 +1842,15 @@ public class ProjectManagementTool{
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-08")));
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-09")));
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-10")));
-    }
 
-    public void readFromJsonFile()throws Exception {
-
-        Gson gson = new Gson();
-        BufferedReader br = new BufferedReader(new FileReader("Outputs/projectSchedule.json"));
-        projects = gson.fromJson(br, new TypeToken<ArrayList<Project>>(){}.getType());
-
+        p1.getRisks().add(new Risk("Lack of Trust",0.7,7));
+        p1.getRisks().add(new Risk("Conflict and tension",0.8,9));
+        p1.getRisks().add(new Risk("Lack of Commitment",0.9,9));
+        p1.getRisks().add(new Risk("Weak Information sharing",0.6,7));
+        p1.getRisks().add(new Risk("Misalignment with team-Goal",0.7,7));
+        p1.getRisks().add(new Risk("Lack of Team spirit",0.6,8));
+        p1.getRisks().add(new Risk("Lack of Organisation",0.6,7));
+        p1.getRisks().add(new Risk("Being out of schedule",0.7,8));
+        p1.getRisks().add(new Risk("Lack of Knowledge",0.7,7));
     }
 }
