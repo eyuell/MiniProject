@@ -21,7 +21,7 @@ public class ProjectManagementTool{
         return projects;
     }
 
-    public static void main(String [] args){
+    public static void main(String [] args)throws Exception{
         System.out.println("This program works on project schedules");
         ProjectManagementTool start = new ProjectManagementTool();
         start.run();
@@ -46,7 +46,7 @@ public class ProjectManagementTool{
         System.out.println();
     }
 
-    public void run() {
+    public void run() throws Exception {
         int optionChoice;
         final int REGISTER_PROJECT = 1;
         final int REGISTER_TASKS = 2;
@@ -1800,5 +1800,13 @@ public class ProjectManagementTool{
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-08")));
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-09")));
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-10")));
+    }
+
+    public void readFromJsonFile()throws Exception {
+
+        Gson gson = new Gson();
+        BufferedReader br = new BufferedReader(new FileReader("Outputs/projectSchedule.json"));
+        projects = gson.fromJson(br, new TypeToken<ArrayList<Project>>(){}.getType());
+
     }
 }
