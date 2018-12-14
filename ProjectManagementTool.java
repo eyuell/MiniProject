@@ -782,7 +782,23 @@ public class ProjectManagementTool{
 
     public void monitorParticipation(){
         System.out.println("To Be coded later");
+        Project currentProject = projects.get(0);
+        
+        ArrayList<Task> tasks = currentProject.getTasks();
+        ArrayList<TeamMember> teammembers = currentProject.getTeamMembers();
+        System.out.println("Enter the id of a team member");
+        String teamID = new KeyboardInput().Line();
+        teamMemberExist(currentProject, teamID);
+        
+        if(teamMemberExist(currentProject, teamID)== true) {
+        	TeamMember teamMember = retrieveTeamMember(currentProject,teamID);
+        	Task task = new Task(); 
+        	ArrayList<TeamMemberAllocation> teamAllocation =
+        }else {
+        	System.out.println("The ID number "+ teamID + " does not exit");
+        }
     }
+    
 
     public void monitorRisk(){
         new RiskMatrix().runRisk(projects.get(0));
