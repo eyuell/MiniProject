@@ -1,20 +1,9 @@
 package MiniProject;
 
-import com.google.gson.Gson; //to convert from object to json
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Set;
 
 //the project system Main class
 public class ProjectManagementTool{
@@ -71,14 +60,14 @@ public class ProjectManagementTool{
         final int REGISTER_ACTUAL_DATA = 6;
         final int PRINT_PLANED_ACTUAL_SCHEDULE = 7;
         final int MONITOR_PROGRESS = 8;
-        final int MONITOR_TIME_SPENT = 9;
+        final int   = 9;
         final int MONITOR_PARTICIPATION = 10;
         final int MONITOR_RISK = 11;
         final int EDIT_INFO = 12;
         final int QUIT = 13;
 
         //readFromSystemClass(); //to read data by initiating a project with set values in the internal system
-        readFromJsonFile(); //to read data from stored json file
+         readFromJsonFile(); //to read data from stored json file
 
         //checking all tasks are complete with major timeline info
         projectCompletenessCheck();
@@ -770,7 +759,7 @@ public class ProjectManagementTool{
             System.out.println("Program Executed Progress = " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
             System.out.println("Program Time Based Progress = " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
 
-            SystemStore drake = new MiniProject.SystemStore();
+            SystemStore drake = new SystemStore();
             drake.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() );
             drake.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID());
             System.out.println();
@@ -779,56 +768,42 @@ public class ProjectManagementTool{
         pause();
     }
 
-    public void monitorTimeSpent(){
-        System.out.println("To Be coded later");
-    }
+    public void monitorTimeSpent()
 
-    public void monitorParticipation(){
-        public void monitorParticipation(){
-            HashMap<String, Double> participation = new HashMap<>();
+    Project CurrentProject = projects.get(0);
+    if(CurrentProject != null) {
+        System.out.println("Enter the id of team member");
+        String memberId = new KeyboardInput().Line();
 
-            Set<Map.Entry<String, Double>> hashSet = participation.entrySet();
+        while (!teamMemberExists(CurrentProject,memberId)) {
+            System.out.println("Team member does not exist orwrong id.Enter id again");
+            memberId = new KeyboardInput().Line();
 
-            Project currentProject = projects.get(0);
-            if(currentProject != null){
-                System.out.println("Enter the id of a team member");
-                String teamID = new KeyboardInput().Line();
-
-                while (! teamMemberIDExists(currentProject, teamID)) {
-                    System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
-                    teamID = new KeyboardInput().Line();
-                }
-                String teamMemberName = "";
-                double totalHours;
-                ArrayList<Task> tasks = currentProject.getTasks();
-                if(tasks != null){
-                    for(Task currentTask : tasks){
-                        totalHours = 0.0;
-                        ArrayList<TeamMemberAllocation> allocations = currentTask.getActualTeamMembers();
-                        if(allocations != null){
-                            for(TeamMemberAllocation currentAllocation : allocations){
-                                if(currentAllocation.getTeamMember().getId().equals(teamID)){
-                                    teamMemberName = currentAllocation.getTeamMember().getName();
-                                    totalHours = totalHours + currentAllocation.getWorkHours();
-                                }
-                            }
-                        }
-                        if(totalHours != 0.0){
-                            participation.put(currentTask.getName(), totalHours);
+        }
+        double HoursOnTask = 0;
+        double TotalHours = 0;
+        ArrayList<Task> tasks = CurrentProject.getTasks();
+        if (tasks != null) {
+            for (Task OneTask : tasks) {
+                ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
+                if(allocations != null) {
+                    for(TeamMemberAllocation CurrentAllocation : allocations) {
+                        if(CurrentAllocation.getTeamMember().getId().equals(memberId)){
+                            HoursOnTask = CurrentAllocation.getWorkHours();
+                            System.out.println("This member has worked " + HoursOnTask +"hours on " +OneTask);
+                            TotalHours += HoursOnTask;
                         }
                     }
+
+                    }
                 }
-                if(! participation.isEmpty()){
-                    System.out.println(teamMemberName + " has participated on: ");
-                }
-                for(Map.Entry entry: hashSet ) {
-                    System.out.println("    " + entry.getKey()+" for "+entry.getValue() + " hours");
-                }
+            System.out.println("This member has worked " + TotalHours + "hours in total");
             }
-            pause();
+
         }
+    public void monitorParticipation(){
+        System.out.println("To Be coded later");
     }
-    
 
     public void monitorRisk(){
         new RiskMatrix().runRisk(projects.get(0));
@@ -844,16 +819,6 @@ public class ProjectManagementTool{
 
         for(int i = 0; i < project.getTeamMembers().size(); i++){
             if(project.getTeamMembers().get(i).getName().equals(name)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean teamMemberIDExists(Project project, String ID){
-
-        for(int i = 0; i < project.getTeamMembers().size(); i++){
-            if(project.getTeamMembers().get(i).getId().equals(ID)){
                 return true;
             }
         }
@@ -1336,9 +1301,7 @@ public class ProjectManagementTool{
         LocalDate today = LocalDate.now();
         LocalDate startDate = LocalDate.parse("2018-11-15");
         Project p1 = new Project("Project Management Tool Development","1", startDate);
-        p1.setBudget(401175.0); //SEK budget
         projects.add(p1);
-
 
         Task t1 = new Task("General Tasks","1",1);
         Task t2 = new Task("Cost Related","2",1);
@@ -1837,78 +1800,78 @@ public class ProjectManagementTool{
         t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-09")));
         t2.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.1, LocalDate.parse("2018-12-10")));
 
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-11-26")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-11-27")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-11-28")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-11-29")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-11-30")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-01")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-02")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-03")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-04")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-05")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-06")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-07")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-08")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-09")));
-        t3.getActualTeamMembers().add(new TeamMemberAllocation(team2, 3.2, LocalDate.parse("2018-12-10")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-26")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-27")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-28")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-29")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-11-30")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-01")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-02")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-03")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-04")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-05")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-06")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-07")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-08")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-09")));
+        t3.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.2, LocalDate.parse("2018-12-10")));
 
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-11-26")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-11-27")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-11-28")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-11-29")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-11-30")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-01")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-02")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-03")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-04")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-05")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-06")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-07")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-08")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-09")));
-        t4.getActualTeamMembers().add(new TeamMemberAllocation(team3, 3.3, LocalDate.parse("2018-12-10")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-26")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-27")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-28")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-29")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-11-30")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-01")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-02")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-03")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-04")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-05")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-06")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-07")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-08")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-09")));
+        t4.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.3, LocalDate.parse("2018-12-10")));
 
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-11-26")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-11-27")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-11-28")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-11-29")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-11-30")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-01")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-02")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-03")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-04")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-05")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-06")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-07")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-08")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-09")));
-        t5.getActualTeamMembers().add(new TeamMemberAllocation(team4, 3.4, LocalDate.parse("2018-12-10")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-26")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-27")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-28")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-29")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-11-30")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-01")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-02")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-03")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-04")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-05")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-06")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-07")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-08")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-09")));
+        t5.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.4, LocalDate.parse("2018-12-10")));
 
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-11-26")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-11-27")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-11-28")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-11-29")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-11-30")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-01")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-02")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-03")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-04")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-05")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-06")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-07")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-08")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-09")));
-        t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-10")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-26")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-27")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-28")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-29")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-11-30")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-01")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-02")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-03")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-04")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-05")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-06")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-07")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-08")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-09")));
+        t6.getActualTeamMembers().add(new TeamMemberAllocation(team1, 3.5, LocalDate.parse("2018-12-10")));
 
-        p1.getRisks().add(new Risk("1","Lack of Trust",0.7,7));
-        p1.getRisks().add(new Risk("2","Conflict and tension",0.8,9));
-        p1.getRisks().add(new Risk("3","Lack of Commitment",0.9,9));
-        p1.getRisks().add(new Risk("4","Weak Information sharing",0.6,7));
-        p1.getRisks().add(new Risk("5","Misalignment with team-Goal",0.7,7));
-        p1.getRisks().add(new Risk("6","Lack of Team spirit",0.6,8));
-        p1.getRisks().add(new Risk("7","Lack of Organisation",0.6,7));
-        p1.getRisks().add(new Risk("8","Being out of schedule",0.7,8));
-        p1.getRisks().add(new Risk("9","Lack of Knowledge",0.7,7));
+        p1.getRisks().add(new Risk("Lack of Trust",0.7,7));
+        p1.getRisks().add(new Risk("Conflict and tension",0.8,9));
+        p1.getRisks().add(new Risk("Lack of Commitment",0.9,9));
+        p1.getRisks().add(new Risk("Weak Information sharing",0.6,7));
+        p1.getRisks().add(new Risk("Misalignment with team-Goal",0.7,7));
+        p1.getRisks().add(new Risk("Lack of Team spirit",0.6,8));
+        p1.getRisks().add(new Risk("Lack of Organisation",0.6,7));
+        p1.getRisks().add(new Risk("Being out of schedule",0.7,8));
+        p1.getRisks().add(new Risk("Lack of Knowledge",0.7,7));
     }
 }
