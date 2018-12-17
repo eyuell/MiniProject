@@ -7,6 +7,16 @@ import java.util.Collections;
 
 //the project system Main class
 public class ProjectManagementTool{
+    // Reset
+    public static final String RESET = "\033[0m";  // Text Reset
+
+    // Regular Colors
+    public static final String RED = "\033[0;31m";     // RED
+    public static final String BLUE = "\033[0;34m";    // BLUE
+
+    // Background
+    public static final String RED_BACKGROUND = "\033[41m";    // RED
+    public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
 
     //the system has projects but we work on one project.
     // only for json we use the object
@@ -639,7 +649,7 @@ public class ProjectManagementTool{
                         for(long m = 0; m < currentTask.getPlannedDuration(); m++){
                             LocalDate taskDates = currentTask.getPlannedStart().plusDays(m);
                             if(day.equals(taskDates)){
-                                System.out.print("|==========|");//12 pixels per day ?
+                                System.out.print(BLUE + "|==========|" + RESET);//12 pixels per day ?
                                 print = false;
                             }
                         }
@@ -665,7 +675,7 @@ public class ProjectManagementTool{
                             for(int m = 0; m < actualDuration; m++){
                                 LocalDate taskDates = thisStart.plusDays(m);
                                 if(day.equals(taskDates)){
-                                    System.out.print("|**********|");//12 pixels per day ?
+                                    System.out.print(RED + "|**********|" + RESET);//12 pixels per day ?
                                     print = false;
                                 }
                             }
@@ -692,7 +702,7 @@ public class ProjectManagementTool{
                             print = true;
                             LocalDate milestoneDate = currentMilestone.getDate();
                             if(day.equals(milestoneDate)){
-                                System.out.print("|##########|");//12 pixels per day ?
+                                System.out.print(RED_BACKGROUND + "|##########|" + RESET);//12 pixels per day ?
                                 print = false;
 
                             }
