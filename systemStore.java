@@ -35,7 +35,7 @@ public class SystemStore {
     //Print all values for a specific project ID
     public void printAllFinancesByID(String projectID) {
         for (int i = 0; i < finances.size(); i++) {
-            if (finances.get(i) != null && finances.get(i).getProjectID().equals(projectID)) {
+            if (finances.get(i) != null && finances.get(i).getProjectId().equals(projectID)) {
                 System.out.println(finances.get(i).toString());
             }
         }
