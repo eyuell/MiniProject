@@ -3,6 +3,7 @@ package MiniProject;
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -52,20 +53,23 @@ public class ProjectManagementTool{
 
     //Main Menu of the program
     public void printMenuOption(){
-        System.out.println("=========================================");
         System.out.println("1. Register Project");
         System.out.println("2. Register Tasks and Milestones");
         System.out.println("3. Register Team members");
         System.out.println("4. Assign time to Tasks");
         System.out.println("5. Assign Manpower to Tasks");
-        System.out.println("6. Register Actual Resources to tasks");
-        System.out.println("7. Display Project Schedule");
-        System.out.println("8. Monitor Progress");
-        System.out.println("9. Monitor Time Spent");
-        System.out.println("10. Monitor Participation");
-        System.out.println("11. Monitor Risk");
-        System.out.println("12. Edit Information");
-        System.out.println("13. QUIT Program");
+        System.out.println("6. Register Actual Resources to Tasks");
+        System.out.println("7. Display All Tasks and Milestones");
+        System.out.println("8. Display All Team Members");
+        System.out.println("9. Display Project Schedule");
+        System.out.println("10. Monitor Earned Value");
+        System.out.println("11. Monitor Schedule Variance");
+        System.out.println("12. Monitor Cost Variance");
+        System.out.println("13. Monitor Time Spent");
+        System.out.println("14. Monitor Participation");
+        System.out.println("15. Monitor Risk");
+        System.out.println("16. Edit Information");
+        System.out.println("17. QUIT Program");
         System.out.println("=========================================");
         System.out.println();
     }
@@ -79,16 +83,20 @@ public class ProjectManagementTool{
         final int ASSIGN_TIME = 4;
         final int ASSIGN_MANPOWER = 5;
         final int REGISTER_ACTUAL_DATA = 6;
-        final int PRINT_PLANED_ACTUAL_SCHEDULE = 7;
-        final int MONITOR_PROGRESS = 8;
-        final int MONITOR_TIME_SPENT = 9;
-        final int MONITOR_PARTICIPATION = 10;
-        final int MONITOR_RISK = 11;
-        final int EDIT_INFO = 12;
-        final int QUIT = 13;
+        final int PRINT_TASKS_MILESTONES = 7;
+        final int PRINT_TEAM_MEMBERS = 8;
+        final int PRINT_PLANED_ACTUAL_SCHEDULE = 9;
+        final int MONITOR_EARNED_VALUE = 10;
+        final int MONITOR_SCHEDULE_VARIANCE = 11;
+        final int MONITOR_COST_VARIANCE = 12;
+        final int MONITOR_TIME_SPENT = 13;
+        final int MONITOR_PARTICIPATION = 14;
+        final int MONITOR_RISK = 15;
+        final int EDIT_INFO = 16;
+        final int QUIT = 17;
 
         //readFromSystemClass(); //to read data by initiating a project with set values in the internal system
-         readFromJsonFile(); //to read data from stored json file
+        readFromJsonFile(); //to read data from stored json file
 
         //checking all tasks are complete with major timeline info
         projectCompletenessCheck();
@@ -124,12 +132,28 @@ public class ProjectManagementTool{
                     registerActualData();
                     break;
 
+                case PRINT_TASKS_MILESTONES:
+                    printTasksAndMilestones();
+                    break;
+
+                case PRINT_TEAM_MEMBERS:
+                    printTeamMembers();
+                    break;
+
                 case PRINT_PLANED_ACTUAL_SCHEDULE:
                     printPlannedAndActualSchedule();
                     break;
 
-                case MONITOR_PROGRESS:
-                    monitorProgress();
+                case MONITOR_EARNED_VALUE:
+                    monitorEarnedValue();
+                    break;
+
+                case MONITOR_SCHEDULE_VARIANCE:
+                    monitorScheduleVariance();
+                    break;
+
+                case MONITOR_COST_VARIANCE:
+                    monitorCostVariance();
                     break;
 
                 case MONITOR_TIME_SPENT:
@@ -570,6 +594,15 @@ public class ProjectManagementTool{
         pause();
     }
 
+    public void printTasksAndMilestones(){
+
+
+    }
+
+    public void printTeamMembers(){
+
+    }
+
     public void printPlannedAndActualSchedule(){
         Project foundProject = retrieveProject();
         if (foundProject != null){
@@ -753,43 +786,19 @@ public class ProjectManagementTool{
         pause();
     }
 
-    public void monitorProgress(){
-        Project foundProject = retrieveProject();
-        if(foundProject != null){
-            System.out.println();
-            double plannedSum = totalPlannedHours(foundProject);
-            double actualSum = totalActualHours(foundProject);
+    public void monitorEarnedValue(){
 
-            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
-            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
-
-            LocalDate today = LocalDate.now();
-            LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
-            LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
-
-            //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
-            double ExecutedProgress = actualCost/plannedBudget;
-            double scheduleProgress = durationTillToday/projectDuration;
-            double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
-
-            System.out.println("Project budget = " + plannedBudget);
-            System.out.println("Project cost = " + actualCost);
-            System.out.println("Earned Value = " + earnedValue);
-            System.out.println("Program Executed Progress = " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
-            System.out.println("Program Time Based Progress = " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
-
-            SystemStore drake = new SystemStore();
-            drake.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() );
-            drake.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID());
-            System.out.println();
-            drake.printAllFinances();
-        }
-        pause();
     }
 
-    public void monitorTimeSpent()
+    public void monitorScheduleVariance(){
+
+    }
+
+    public void monitorCostVariance(){
+
+    }
+
+    public void monitorTimeSpent(){
 
     Project currentProject = projects.get(0);
     if(currentProject != null) {
@@ -816,12 +825,12 @@ public class ProjectManagementTool{
                         }
                     }
 
-                    }
                 }
-            System.out.println("This member has worked " + TotalHours + "hours in total");
             }
+            System.out.println("This member has worked " + TotalHours + "hours in total");
         }
-    
+    }
+
     public void monitorParticipation(){
         HashMap<String, Double> participation = new HashMap<>();
 
@@ -889,7 +898,7 @@ public class ProjectManagementTool{
         }
         return false;
     }
-    
+
     public boolean teamMemberIDExists(Project project, String ID){
         if(project != null){
             for(int i = 0; i < project.getTeamMembers().size(); i++){
