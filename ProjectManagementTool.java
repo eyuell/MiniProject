@@ -1,9 +1,20 @@
 package MiniProject;
 
+import com.google.gson.Gson; //to convert from object to json
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 //the project system Main class
 public class ProjectManagementTool{
@@ -856,7 +867,11 @@ public class ProjectManagementTool{
     }
 
     public void monitorRisk(){
-        new RiskMatrix().runRisk(projects.get(0));
+        if(projects != null){
+            new RiskMatrix(projects.get(0)).runRisk();
+        }else{
+            System.out.println("There is no registered project");
+        }
     }
 
     public void editInfo(){
@@ -870,6 +885,17 @@ public class ProjectManagementTool{
         for(int i = 0; i < project.getTeamMembers().size(); i++){
             if(project.getTeamMembers().get(i).getName().equals(name)){
                 return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean teamMemberIDExists(Project project, String ID){
+        if(project != null){
+            for(int i = 0; i < project.getTeamMembers().size(); i++){
+                if(project.getTeamMembers().get(i).getId().equals(ID)){
+                    return true;
+                }
             }
         }
         return false;
