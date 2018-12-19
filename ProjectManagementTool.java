@@ -1,4 +1,4 @@
-package MiniProject;
+﻿package MiniProject;
 
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
@@ -604,7 +604,20 @@ public class ProjectManagementTool {
 
     }
 
-    public void printTeamMembers(){
+     public void printTeamMembers(){
+    	Project currentProject = projects.get(0);
+        System.out.println("Enter the id of a team member");
+        String teamID = new KeyboardInput().Line();
+
+        while (! teamMemberIDExists(currentProject, teamID)) {
+            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+            teamID = new KeyboardInput().Line();
+        }
+        
+        TeamMember foundTeamMember = retrieveTeamMember(currentProject,teamID);
+        System.out.println(foundTeamMember);
+    	
+    	
 
     }
 
