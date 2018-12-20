@@ -963,9 +963,7 @@ public class ProjectManagementTool {
             System.out.print(" Type the option number: ");
 
             int option = new KeyboardInput().Int();
-            // that the user types after
-            // typing the integer option.
-
+         //Here is switch for Edit
             switch (option) {
                 case 1:
                 //editProjectName();
