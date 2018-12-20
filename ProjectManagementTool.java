@@ -76,6 +76,20 @@ public class ProjectManagementTool {
         System.out.println("=========================================");
         System.out.println();
     }
+      public void printMenuOptions(){
+        System.out.println("=========================================");
+        System.out.println("1. Edit Project Name");
+        System.out.println("2. Edit Project duration");
+        System.out.println("3. Edit Budget");
+        System.out.println("4. Edit Project ID");
+        System.out.println("5. Edit Tasks");
+        System.out.println("6. Add/remove Team Member");
+        System.out.println("7. Edit Current team Member information");
+        System.out.println("return");
+        System.out.println("=========================================");
+        System.out.println();
+    }
+
 
     //the gate way to the menu
     public void run() throws Exception {
@@ -942,7 +956,52 @@ public class ProjectManagementTool {
     }
 
     public void editInfo(){
-        System.out.println("To be coded later");
+            public void editInfo(){
+
+        do {
+            printMenuOptions();
+            System.out.print(" Type the option number: ");
+
+            int option = new KeyboardInput().Int();
+            // that the user types after
+            // typing the integer option.
+
+            switch (option) {
+                case 1:
+                //editProjectName();
+                    break;
+
+                case 2:
+                //editProjectDuration();
+                    break;
+
+                case 3:
+                   // editBudget();
+                    break;
+
+                case 4:
+                   //editProjectId();
+                    break;
+
+                case 5:
+                  //  editTasks();
+                    break;
+
+                case 6:
+                   // editTeamMember();
+                    System.out.println("EDIT CURRENT/ADD/REMOVE");
+                    break;
+
+                case 7:
+                   // returnToMenu();
+                    break;
+
+                default:
+                    System.out.println("Option " + option + " is not valid.");
+                    System.out.println();
+                    break;
+            }
+        } while (option!=7);
     }
 
     //
