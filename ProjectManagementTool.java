@@ -955,42 +955,51 @@ public class ProjectManagementTool {
         }
     }
 
-    public void editInfo(){
-            public void editInfo(){
-
+   public void editInfo(){
+            int option;
+            final int PROJECTNAME = 1;
+            final int PROJECT_DURATION = 2;
+            final int BUDGET = 3;
+            final int PROJECT_ID = 4;
+            final int TASKS = 5;
+            final int TEAM_MEMBERS = 6;
+            final int RETURN = 7;
+            
         do {
             printMenuOptions();
             System.out.print(" Type the option number: ");
 
-            int option = new KeyboardInput().Int();
-         //Here is switch for Edit
+            option = new KeyboardInput().Int();
+            // that the user types after
+            // typing the integer option.
+
             switch (option) {
-                case 1:
+                case PROJECTNAME:
                 //editProjectName();
                     break;
 
-                case 2:
+                case PROJECT_DURATION:
                 //editProjectDuration();
                     break;
 
-                case 3:
+                case BUDGET:
                    // editBudget();
                     break;
 
-                case 4:
+                case PROJECT_ID:
                    //editProjectId();
                     break;
 
-                case 5:
+                case TASKS:
                   //  editTasks();
                     break;
 
-                case 6:
+                case TEAM_MEMBERS:
                    // editTeamMember();
                     System.out.println("EDIT CURRENT/ADD/REMOVE");
                     break;
 
-                case 7:
+                case RETURN:
                    // returnToMenu();
                     break;
 
@@ -999,7 +1008,7 @@ public class ProjectManagementTool {
                     System.out.println();
                     break;
             }
-        } while (option!=7);
+        } while (option!=RETURN);
     }
 
     //
