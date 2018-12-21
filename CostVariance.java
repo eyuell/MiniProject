@@ -20,10 +20,10 @@ public class CostVariance extends Finance {
         this.actualCost = actualCost;
     }
 
-    public String toString(){
-        String costString;
-        costString =" ID      Budget($):      Earned Value($):       Cost Variance($):           Days passed:          Project length/Days:    ";
-        costString +="\n " + getProjectId() +"       " + getBudget() + "        " + getEarnedValue() + "                   " + getCostVariance() + "                       " + getDaysPassed()+"               "+getProjectDuration();
-        costString +="\n*****************************************************************************************************************";
-        return costString;}
+   public String toString(){
+       String costString;
+       costString ="ID: "+ projectID+"\n"+"Budget($):"+getBudget()+"\n"+"Earned Value($): "+getEarnedValue()+"\n"+"Cost Variance($):"+getCostVariance()+"\n"+"Days passed: "+getDaysPassed()+"\n"+"Project length/Days: "+getProjectDuration();
+       costString +="\n*****************************************************************************************************************";
+       return costString;}
+
 }

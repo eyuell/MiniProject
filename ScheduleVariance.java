@@ -28,10 +28,10 @@ public class ScheduleVariance extends Finance {
         return plannedPercentageCompleted;
     }
 
-    public String toString() {
+       public String toString(){
         String costString;
-        costString =" ID:     Budget($):      Earned Value($):       Schedule Variance($):       Days passed:      Project length/Days:    ";
-        costString +="\n " + getProjectId() +"       " + getBudget() + "        " + getEarnedValue() + "                   " +getScheduleVariance() + "                      " + getDaysPassed()+"               "+projectDuration;
+        costString ="ID: "+ projectID+"\n"+"Budget($):"+getBudget()+"\n"+"Earned Value($): "+getEarnedValue()+"\n"+"Schedule Variance($):"+getScheduleVariance()+"\n"+"Days passed: "+getDaysPassed()+"\n"+"Project length/Days: "+getProjectDuration();
         costString +="\n*****************************************************************************************************************";
         return costString;}
 }
+
