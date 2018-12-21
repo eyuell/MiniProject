@@ -1016,9 +1016,27 @@ public class ProjectManagementTool {
         int option= new KeyboardInput().Int();
         if(option==1){
         updateTeamMemberName();
+        } 
+        else if(option==2){
+            //editSalary();
+        }
+        else if(option==3){
+            removeTeamMember();
         }
 
     }
+
+    public void removeTeamMember(){
+        Project currentProject = projects.get(0);
+        System.out.println("Enter the id of a team member you wish to remove");
+
+        String memberID = new KeyboardInput().Line();
+        TeamMember member = retrieveTeamMember(currentProject, memberID);
+
+        currentProject.getTeamMembers().remove(member);
+        System.out.println("Successfully removed.");
+        }
+
 
     public void updateTeamMemberName() {
 
