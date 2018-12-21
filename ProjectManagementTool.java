@@ -114,7 +114,7 @@ public class ProjectManagementTool {
         final int QUIT = 17;
 
         //readFromSystemClass(); //to read data by initiating a project with set values in the internal system
-        readFromJsonFile(); //to read data from stored json file
+        //readFromJsonFile(); //to read data from stored json file
 
         //checking all tasks are complete with major timeline info
         projectCompletenessCheck();
@@ -1012,48 +1012,54 @@ public class ProjectManagementTool {
 
     public void editTeamMember(){
         System.out.println("What do you wish to edit?");
-        System.out.println("1. Name "+"\n"+"2. Salary"+"\n"+"3.Task"+"\n"+"4. Remove");
+        System.out.println("1. Name "+"\n"+"2. Salary"+"\n"+"3. Remove");
         int option= new KeyboardInput().Int();
         if(option==1){
         updateTeamMemberName();
-        } 
+        }
         else if(option==2){
             //editSalary();
         }
         else if(option==3){
             removeTeamMember();
         }
-
     }
 
-    public void removeTeamMember(){
-        Project currentProject = projects.get(0);
+    public void removeTeamMember() {
         System.out.println("Enter the id of a team member you wish to remove");
-
         String memberID = new KeyboardInput().Line();
-        TeamMember member = retrieveTeamMember(currentProject, memberID);
-
-        currentProject.getTeamMembers().remove(member);
-        System.out.println("Successfully removed.");
+        Project currentProject = projects.get(0);
+        while (! teamMemberIDExists(currentProject, memberID)) {
+            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+            memberID = new KeyboardInput().Line();
         }
+
+        TeamMember member = retrieveTeamMember(currentProject, memberID);
+        if(memberID.equals(member.getId()))
+            currentProject.getTeamMembers().remove(member);
+        System.out.println("Successfully removed.");
+
+    }
 
 
     public void updateTeamMemberName() {
 
-        Project currentProject = projects.get(0);
-        System.out.println("Enter the id of a team member");
-        String memberID = new KeyboardInput().Line();
+            Project currentProject = projects.get(0);
+            System.out.println("Enter the id of a team member");
+            String memberID = new KeyboardInput().Line();
 
-        TeamMember member = retrieveTeamMember(currentProject, memberID);
-        String name = new KeyboardInput().Line();
-        member.setName(name);
+            while (!teamMemberIDExists(currentProject, memberID)) {
+                System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+                memberID = new KeyboardInput().Line();
+            }
+            TeamMember member = retrieveTeamMember(currentProject, memberID);
+            System.out.println("Enter new Name: ");
 
-        while (!teamMemberIDExists(currentProject, memberID)) {
-            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+            String name = new KeyboardInput().Line();
+            member.setName(name);
 
-
-        }
     }
+
 
 
     public boolean teamMemberExists(Project project, String name){
@@ -1445,7 +1451,7 @@ public class ProjectManagementTool {
         return totalHours;
     }
 
-    public double earnedValue(LocalDate date){
+   /* public double earnedValue(LocalDate date){
 
         /*Earned Value (EV)
           Also known as Budgeted Cost of Work Performed (BCWP),
@@ -1453,7 +1459,7 @@ public class ProjectManagementTool {
           It is also calculated from the project budget.
           EV = Percent Complete (actual) x Project Budget */
 
-        System.out.print("Enter progress on date " + date + " : (0.0 - 100.0) ");
+        /*System.out.print("Enter progress on date " + date + " : (0.0 - 100.0) ");
         double percent = new KeyboardInput().positiveDouble();
         while (percent > 100.0){
             System.out.println("Enter value between 0.0 and 100.0. try again ");
@@ -1463,7 +1469,7 @@ public class ProjectManagementTool {
         percent = percent/100.0;
 
         return  Math.round((projects.get(0).getBudget() * percent) * 100.0)/100.0;
-    }
+    }*/
 
     public double actualCost(LocalDate date){
 
@@ -1477,7 +1483,7 @@ public class ProjectManagementTool {
         return  Math.round(actualSum * 189.0 * 100.0)/100.0;
     }
 
-   public double scheduleVariance (LocalDate date){
+   /* public double scheduleVariance (LocalDate date){
         /*Schedule Variance (SV)
         In this, the first output calculated in the earned value analysis,
         SV tells the amount that the project is ahead or behind schedule.
@@ -1489,23 +1495,23 @@ public class ProjectManagementTool {
         PV = Percent Complete (planned) x project Budget*/ // PV is schedule days wise
 
         //first we calculate PV
-        double plannedTotalSum = totalPlannedHours(projects.get(0));
+       /* double plannedTotalSum = totalPlannedHours(projects.get(0));
         double actualTillDateSum = actualHoursTillDate(date);
         double plannedPercentComplete = actualTillDateSum/plannedTotalSum;
 
         double plannedValueTillDate = Math.round((plannedPercentComplete * projects.get(0).getBudget()) * 100.0)/100.0;
 
         return earnedValue(date) - plannedValueTillDate;
-    }
+    }*/
 
-    public double costVariance(LocalDate date){
+    /*public double costVariance(LocalDate date){
         /*Cost Variance (CV)
         Similar to the schedule variance, the Cost Variance tells how far
         the project is over or under budget.
         CV = EV – AC*/
 
-        return (earnedValue(date) - actualCost(date));
-    }
+       /* return (earnedValue(date) - actualCost(date));
+    }*/
 
     public LocalDate choiceOfDate(){
 
@@ -1677,13 +1683,13 @@ public class ProjectManagementTool {
         }
     }
 
-    public void readFromJsonFile()throws Exception {
+    /*public void readFromJsonFile()throws Exception {
         Gson gson = new Gson();
         BufferedReader br = new BufferedReader(new FileReader("MiniProject/MiniProject.json"));
         projects = gson.fromJson(br, new TypeToken<ArrayList<Project>>(){}.getType());
     }
 
-    public void readFromSystemClass(){
+    /*public void readFromSystemClass(){
         LocalDate today = LocalDate.now();
         LocalDate startDate = LocalDate.parse("2018-11-15");
         Project p1 = new Project("Project Management Tool Development","1", startDate);
@@ -2252,18 +2258,6 @@ public class ProjectManagementTool {
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-09")));
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-10")));
 
-
-        p1.getRisks().add(new Risk("1","Lack of Trust",0.7,7));
-        p1.getRisks().add(new Risk("2","Conflict and tension",0.8,9));
-        p1.getRisks().add(new Risk("3","Lack of Commitment",0.9,9));
-        p1.getRisks().add(new Risk("4","Weak Information sharing",0.6,7));
-        p1.getRisks().add(new Risk("5","Misalignment with team-Goal",0.7,7));
-        p1.getRisks().add(new Risk("6","Lack of Team spirit",0.6,8));
-        p1.getRisks().add(new Risk("7","Lack of Organisation",0.6,7));
-        p1.getRisks().add(new Risk("8","Being out of schedule",0.7,8));
-        p1.getRisks().add(new Risk("9","Lack of Knowledge",0.7,7));
     }
-}
-    
-
+*/
 }
