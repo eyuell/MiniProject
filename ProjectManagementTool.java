@@ -2234,6 +2234,18 @@ public class ProjectManagementTool {
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-09")));
         t6.getActualTeamMembers().add(new TeamMemberAllocation(team5, 3.5, LocalDate.parse("2018-12-10")));
 
+
+        p1.getRisks().add(new Risk("1","Lack of Trust",0.7,7));
+        p1.getRisks().add(new Risk("2","Conflict and tension",0.8,9));
+        p1.getRisks().add(new Risk("3","Lack of Commitment",0.9,9));
+        p1.getRisks().add(new Risk("4","Weak Information sharing",0.6,7));
+        p1.getRisks().add(new Risk("5","Misalignment with team-Goal",0.7,7));
+        p1.getRisks().add(new Risk("6","Lack of Team spirit",0.6,8));
+        p1.getRisks().add(new Risk("7","Lack of Organisation",0.6,7));
+        p1.getRisks().add(new Risk("8","Being out of schedule",0.7,8));
+        p1.getRisks().add(new Risk("9","Lack of Knowledge",0.7,7));
     }
+}
+    
 
 }
