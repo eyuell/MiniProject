@@ -889,47 +889,7 @@ public class ProjectManagementTool {
     }
 
     public void monitorParticipation(){
-        HashMap<String, Double> participation = new HashMap<>();
-
-        Set<Entry<String, Double>> hashSet = participation.entrySet();
-
-        if(projects != null){
-            Project currentProject = projects.get(0);
-            System.out.println("Enter the id of a team member");
-            String teamID = new KeyboardInput().Line();
-
-            while (! teamMemberIDExists(currentProject, teamID)) {
-                System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
-                teamID = new KeyboardInput().Line();
-            }
-            String teamMemberName = "";
-            double totalHours;
-            ArrayList<Task> tasks = currentProject.getTasks();
-            if(tasks != null){
-                for(Task currentTask : tasks){
-                    totalHours = 0.0;
-                    ArrayList<TeamMemberAllocation> allocations = currentTask.getActualTeamMembers();
-                    if(allocations != null){
-                        for(TeamMemberAllocation currentAllocation : allocations){
-                            if(currentAllocation.getTeamMember().getId().equals(teamID)){
-                                teamMemberName = currentAllocation.getTeamMember().getName();
-                                totalHours = totalHours + currentAllocation.getWorkHours();
-                            }
-                        }
-                    }
-                    if(totalHours != 0.0){
-                        participation.put(currentTask.getName(), totalHours);
-                    }
-                }
-            }
-            if(! participation.isEmpty()){
-                System.out.println(teamMemberName + " has participated on: ");
-            }
-            for(Entry entry: hashSet ) {
-                System.out.println("    " + entry.getKey()+" for "+entry.getValue() + " hours");
-            }
-        }
-        pause();
+        
     }
 
     public void monitorRisk(){
