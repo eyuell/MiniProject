@@ -68,14 +68,12 @@ public class ProjectManagementTool {
         System.out.println("7. Display All Tasks and Milestones");
         System.out.println("8. Display All Team Members");
         System.out.println("9. Display Project Schedule");
-        System.out.println("10. Monitor Earned Value");
-        System.out.println("11. Monitor Schedule Variance");
-        System.out.println("12. Monitor Cost Variance");
-        System.out.println("13. Monitor Time Spent");
-        System.out.println("14. Monitor Participation");
-        System.out.println("15. Monitor Risk");
-        System.out.println("16. Edit Information");
-        System.out.println("17. QUIT Program");
+        System.out.println("10. Monitor Finances");
+        System.out.println("11. Monitor Time Spent");
+        System.out.println("12. Monitor Participation");
+        System.out.println("13. Monitor Risk");
+        System.out.println("14. Edit Information");
+        System.out.println("15. QUIT Program");
         System.out.println("=========================================");
         System.out.println();
     }
@@ -104,14 +102,12 @@ public class ProjectManagementTool {
         final int PRINT_TASKS_MILESTONES = 7;
         final int PRINT_TEAM_MEMBERS = 8;
         final int PRINT_PLANED_ACTUAL_SCHEDULE = 9;
-        final int MONITOR_EARNED_VALUE = 10;
-        final int MONITOR_SCHEDULE_VARIANCE = 11;
-        final int MONITOR_COST_VARIANCE = 12;
-        final int MONITOR_TIME_SPENT = 13;
-        final int MONITOR_PARTICIPATION = 14;
-        final int MONITOR_RISK = 15;
-        final int EDIT_INFO = 16;
-        final int QUIT = 17;
+      final int MONITOR_FINANCES=10;
+        final int MONITOR_TIME_SPENT = 11;
+        final int MONITOR_PARTICIPATION = 12;
+        final int MONITOR_RISK = 13;
+        final int EDIT_INFO = 14;
+        final int QUIT = 15;
 
         //readFromSystemClass(); //to read data by initiating a project with set values in the internal system
         //readFromJsonFile(); //to read data from stored json file
@@ -162,16 +158,8 @@ public class ProjectManagementTool {
                     printPlannedAndActualSchedule();
                     break;
 
-                case MONITOR_EARNED_VALUE:
-                    monitorEarnedValue();
-                    break;
-
-                case MONITOR_SCHEDULE_VARIANCE:
-                    monitorScheduleVariance();
-                    break;
-
-                case MONITOR_COST_VARIANCE:
-                    monitorCostVariance();
+                case MONITOR_FINANCES:
+                    monitorCosts();
                     break;
 
                 case MONITOR_TIME_SPENT:
@@ -876,17 +864,182 @@ public class ProjectManagementTool {
 //        pause();
 //    }
 
-    public void monitorEarnedValue(){
+    public void monitorCosts(){
+        System.out.println("What cost is it you wish to calculate?");
+        System.out.println("1. print all costs");
+        System.out.println("2. Print Schedule variance");
+        System.out.println("3. Print Cost Variance");
+        System.out.println("4. Print Earned value");
+            int option;
 
+            final int ALL_COSTS = 1;
+            final int SCHEDULE_VARIANCE = 2;
+            final int COST_VARIANCE = 3;
+            final int EARNED_VALUE= 4;
+            final int RETURN = 5;
+            do {
+                System.out.print(" Type the option number: ");
+
+                option = new KeyboardInput().Int();
+                // that the user types after
+                // typing the integer option.
+
+                switch (option) {
+                    case ALL_COSTS:
+                        printAllCosts();
+                        break;
+
+                    case SCHEDULE_VARIANCE:
+                        monitorScheduleVariance();
+                        break;
+
+                    case COST_VARIANCE:
+                        monitorCostVariance();
+                        break;
+
+                    case EARNED_VALUE:
+                        monitorEarnedValue();
+                        break;
+
+                    case RETURN:
+
+                        break;
+
+                    default:
+                        System.out.println("Option " + option + " is not valid.");
+                        System.out.println();
+                        break;
+                }
+            } while (option!=RETURN);
+        }
+public void printAllCosts(){
+    if(projects != null){
+        Project foundProject = projects.get(0);
+        System.out.println();
+        double plannedSum = totalPlannedHours(foundProject);
+        double actualSum = totalActualHours(foundProject);
+
+        double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
+        double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
+
+        LocalDate today = LocalDate.now();
+        LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
+        LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
+
+        //project tasks total duration
+        double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
+        double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+        double ExecutedProgress = actualCost/plannedBudget;
+        double scheduleProgress = durationTillToday/projectDuration;
+        double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
+
+        System.out.println("Project budget($): " + plannedBudget);
+        System.out.println("Project cost($): " + actualCost);
+        System.out.println("Earned Value($): " + earnedValue);
+        System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
+        System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+        SystemStore Costs = new MiniProject.SystemStore();
+        Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID());
+        Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
+        //System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
+        //System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
+        Costs.printAllFinances();
     }
 
+}
+
+    public void monitorEarnedValue() {
+        if (projects != null) {
+            Project foundProject = projects.get(0);
+            System.out.println();
+            double plannedSum = totalPlannedHours(foundProject);
+            double actualSum = totalActualHours(foundProject);
+
+            double plannedBudget = Math.round((plannedSum * 225.0) * 100) / 100.0;
+            double actualCost = Math.round((actualSum * 225.0) * 100) / 100.0;
+
+            LocalDate today = LocalDate.now();
+            LocalDate tasksStartDate = tasksStartAndFinishDates("start", foundProject.getTasks());
+            LocalDate tasksFinishDate = tasksStartAndFinishDates("finish", foundProject.getTasks());
+
+            //project tasks total duration
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double ExecutedProgress = actualCost / plannedBudget;
+            double scheduleProgress = durationTillToday / projectDuration;
+            double earnedValue = (Math.round((plannedBudget * scheduleProgress)) * 100) / 100.0;
+
+            System.out.println("Project budget($): " + plannedBudget);
+            System.out.println("Project cost($): " + actualCost);
+            System.out.println("Earned Value($): " + earnedValue);
+            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
+
+            System.out.println("The Earned Value($) is ammounted to : " + earnedValue);
+        }
+    }
     public void monitorScheduleVariance(){
+        if(projects != null){
+            Project foundProject = projects.get(0);
+            System.out.println();
+            double plannedSum = totalPlannedHours(foundProject);
+            double actualSum = totalActualHours(foundProject);
 
+            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
+            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
 
+            LocalDate today = LocalDate.now();
+            LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
+            LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
+
+             //project tasks total duration
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double ExecutedProgress = actualCost/plannedBudget;
+            double scheduleProgress = durationTillToday/projectDuration;
+            double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
+
+            System.out.println("Project budget($): " + plannedBudget);
+            System.out.println("Project cost($): " + actualCost);
+            System.out.println("Earned Value($): " + earnedValue);
+            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
+            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+            SystemStore Costs = new MiniProject.SystemStore();
+           Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
+            System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
+
+        }
     }
 
     public void monitorCostVariance(){
+        if(projects != null){
+            Project foundProject = projects.get(0);
+            System.out.println();
+            double plannedSum = totalPlannedHours(foundProject);
+            double actualSum = totalActualHours(foundProject);
 
+            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
+            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
+
+            LocalDate today = LocalDate.now();
+            LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
+            LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
+
+            //project tasks total duration
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double ExecutedProgress = actualCost/plannedBudget;
+            double scheduleProgress = durationTillToday/projectDuration;
+            double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
+
+            System.out.println("Project budget($): " + plannedBudget);
+            System.out.println("Project cost($): " + actualCost);
+            System.out.println("Earned Value($): " + earnedValue);
+            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
+            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+            SystemStore Costs = new MiniProject.SystemStore();
+            System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
+        }
 
     }
 
@@ -1067,7 +1220,7 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
     public void editTeamMember(){
         System.out.println("What do you wish to edit?");
         System.out.println("1. Name "+"\n"+"2. Salary"+"\n"+"3. Remove");
-        
+
         int option= new KeyboardInput().Int();
         if(option==1){
         updateTeamMemberName();
