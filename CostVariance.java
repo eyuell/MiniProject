@@ -1,3 +1,4 @@
+package MiniProject;
 public class CostVariance extends Finance {
     private double actualCost;
 
@@ -20,10 +21,9 @@ public class CostVariance extends Finance {
         this.actualCost = actualCost;
     }
 
-   public String toString(){
-       String costString;
-       costString ="ID: "+ projectID+"\n"+"Budget($):"+getBudget()+"\n"+"Earned Value($): "+getEarnedValue()+"\n"+"Cost Variance($):"+getCostVariance()+"\n"+"Days passed: "+getDaysPassed()+"\n"+"Project length/Days: "+getProjectDuration();
-       costString +="\n*****************************************************************************************************************";
-       return costString;}
-
+    public String toString(){
+        String costString;
+        costString =" Project ID:  " +getProjectId()+"\n"+"  Cost Variance($): "+ getCostVariance()+ "\n" +"Days Passed since start: "+getDaysPassed()+"\n"+"Project Duration: "+getProjectDuration();
+        costString +="\n*****************************************************************************************************************";
+        return costString;}
 }
