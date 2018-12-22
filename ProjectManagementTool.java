@@ -1,4 +1,4 @@
-﻿package MiniProject;
+package MiniProject;
 
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -80,13 +81,12 @@ public class ProjectManagementTool {
     }
     public void printMenuOptions(){
         System.out.println("=========================================");
-        System.out.println("1. Edit Project Name");
+        System.out.println("1. Edit Tasks");
         System.out.println("2. Edit Project duration");
         System.out.println("3. Edit Budget");
         System.out.println("4. Edit Project ID");
-        System.out.println("5. Edit Tasks");
-        System.out.println("6. Edit Current team Member information");
-        System.out.println("7. Return");
+        System.out.println("5. Edit Current team Member information");
+        System.out.println("6. Return");
         System.out.println("=========================================");
         System.out.println();
     }
@@ -614,17 +614,33 @@ public class ProjectManagementTool {
         pause();
     }
 
-    public void printTasksAndMilestones(){
+    public void printTasksAndMilestones() {//ONLY 1 TASK PRINT
+        Project currentProject = projects.get(0);
+        System.out.println("Enter the id of a task");
+        String taskID = new KeyboardInput().Line();
 
+        do {
+            if (retrieveTask(taskID, currentProject) == null)
+            {
+                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+                taskID = new KeyboardInput().Line();
+            }
+        }
+        while (this.retrieveTask(taskID, currentProject) == null) ;
 
+            Task foundTask = retrieveTask(taskID, currentProject);
+            System.out.println(foundTask.getName());
     }
+
+
 
     public void printTeamMembers(){
         Project currentProject = projects.get(0);
         System.out.println("Enter the id of a team member");
         String teamID = new KeyboardInput().Line();
 
-          while (! teamMemberIDExists(currentProject, teamID)) {
+          while (! teamMemberIDExists(currentProject, teamID))
+          {
             System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
             teamID = new KeyboardInput().Line();
         }
@@ -634,18 +650,22 @@ public class ProjectManagementTool {
 
     }
 
+
     public void printPlannedAndActualSchedule(){
 
-        if (projects != null){
+        if (projects != null)
+        {
             Project foundProject = projects.get(0);
-            if(foundProject.getTasks() != null){
+            if(foundProject.getTasks() != null)
+            {
                 ArrayList<Task> tasks = foundProject.getTasks();
                 int taskNameLength = tasks.get(0).getName().length();
                 int taskIdLength = tasks.get(0).getId().length();
                 int smallestIndent = taskNameLength + taskIdLength;
 
                 ArrayList<String> listOfNames = new ArrayList<>();
-                for (int i = 1; i < tasks.size(); i++) {
+                for (int i = 1; i < tasks.size(); i++)
+                {
                     String indent = tasks.get(i).getName() + tasks.get(i).getId();
                     listOfNames.add(indent);
                 }
@@ -956,13 +976,13 @@ public class ProjectManagementTool {
 
     public void editInfo(){
         int option;
-        final int PROJECTNAME = 1;
+
+        final int TASKS = 1;
         final int PROJECT_DURATION = 2;
         final int BUDGET = 3;
         final int PROJECT_ID = 4;
-        final int TASKS = 5;
-        final int TEAM_MEMBERS = 6;
-        final int RETURN = 7;
+        final int TEAM_MEMBERS = 5;
+        final int RETURN = 6;
 
         do {
             printMenuOptions();
@@ -973,8 +993,8 @@ public class ProjectManagementTool {
             // typing the integer option.
 
             switch (option) {
-                case PROJECTNAME:
-                    //editProjectName();
+                case TASKS:
+                    editTasks();
                     break;
 
                 case PROJECT_DURATION:
@@ -989,13 +1009,13 @@ public class ProjectManagementTool {
                     //editProjectId();
                     break;
 
-                case TASKS:
+               // case TASKS:
                     //  editTasks();
-                    break;
+                    //break;
 
                 case TEAM_MEMBERS:
                     editTeamMember();
-                    System.out.println("EDIT NAME/SALARY/TASK ASSIGNED?.");
+                    //System.out.println("EDIT NAME/SALARY/TASK ASSIGNED?.");
                     break;
 
                 case RETURN:
@@ -1010,9 +1030,44 @@ public class ProjectManagementTool {
         } while (option!=RETURN);
     }
 
+
+
+    public void editTaskName()
+    {
+        System.out.println("Enter the id of task you wish to rename: ");
+        String taskID = new KeyboardInput().Line();
+        Project currentProject = projects.get(0);
+do
+    {
+    if (retrieveTask(taskID, currentProject) == null)
+    {
+        System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+        taskID = new KeyboardInput().Line();
+    }
+}
+while (this.retrieveTask(taskID, currentProject) == null) ;
+
+        Task task = retrieveTask(taskID,currentProject );
+        System.out.println("Enter new Name: ");
+        String name = new KeyboardInput().Line();
+        task.setName(name);
+
+    }
+   /*
+            while (!teamMemberIDExists(currentProject, memberID)) {
+        System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+        memberID = new KeyboardInput().Line();
+    }
+    TeamMember member = retrieveTeamMember(currentProject, memberID);
+            System.out.println("Enter new Name: ");
+
+    String name = new KeyboardInput().Line();
+            member.setName(name);*/
+
     public void editTeamMember(){
         System.out.println("What do you wish to edit?");
         System.out.println("1. Name "+"\n"+"2. Salary"+"\n"+"3. Remove");
+        
         int option= new KeyboardInput().Int();
         if(option==1){
         updateTeamMemberName();
@@ -1025,11 +1080,30 @@ public class ProjectManagementTool {
         }
     }
 
+
+    public void editTasks(){
+        System.out.println("What do you wish to edit?");
+        System.out.println("1. Name ");
+        System.out.println("2. Remove Task");
+        int option= new KeyboardInput().Int();
+        if(option==1){
+            editTaskName();
+        }
+        else if(option==2){
+            removeTask();
+        }
+    }
+
+
+
+
+
     public void removeTeamMember() {
         System.out.println("Enter the id of a team member you wish to remove");
         String memberID = new KeyboardInput().Line();
         Project currentProject = projects.get(0);
-        while (! teamMemberIDExists(currentProject, memberID)) {
+        while (! teamMemberIDExists(currentProject, memberID))
+        {
             System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
             memberID = new KeyboardInput().Line();
         }
@@ -1041,6 +1115,26 @@ public class ProjectManagementTool {
 
     }
 
+    public void removeTask(){
+        System.out.println("Enter the id of the task you wish to remove");
+        String taskID = new KeyboardInput().Line();
+        Project currentProject = projects.get(0);
+        do {
+            if (retrieveTask(taskID, currentProject) == null)
+            {
+                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+                taskID = new KeyboardInput().Line();
+            }
+        }
+        while (this.retrieveTask(taskID, currentProject) == null) ;
+
+        Task task = retrieveTask(taskID,currentProject);
+        if(taskID.equals(task.getId()))
+            currentProject.getTasks().remove(task);
+        System.out.println("Successfully removed.");
+
+
+    }
 
     public void updateTeamMemberName() {
 
@@ -1048,7 +1142,8 @@ public class ProjectManagementTool {
             System.out.println("Enter the id of a team member");
             String memberID = new KeyboardInput().Line();
 
-            while (!teamMemberIDExists(currentProject, memberID)) {
+            while (!teamMemberIDExists(currentProject, memberID))
+            {
                 System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
                 memberID = new KeyboardInput().Line();
             }
@@ -1063,9 +1158,12 @@ public class ProjectManagementTool {
 
 
     public boolean teamMemberExists(Project project, String name){
-        if(project != null){
-            for(int i = 0; i < project.getTeamMembers().size(); i++){
-                if(project.getTeamMembers().get(i).getName().equals(name)){
+        if(project != null)
+        {
+            for(int i = 0; i < project.getTeamMembers().size(); i++)
+            {
+                if(project.getTeamMembers().get(i).getName().equals(name))
+                {
                     return true;
                 }
             }
@@ -1074,9 +1172,12 @@ public class ProjectManagementTool {
     }
 
     public boolean teamMemberIDExists(Project project, String ID){
-        if(project != null){
-            for(int i = 0; i < project.getTeamMembers().size(); i++){
-                if(project.getTeamMembers().get(i).getId().equals(ID)){
+        if(project != null)
+        {
+            for(int i = 0; i < project.getTeamMembers().size(); i++)
+            {
+                if(project.getTeamMembers().get(i).getId().equals(ID))
+                {
                     return true;
                 }
             }
@@ -1084,22 +1185,31 @@ public class ProjectManagementTool {
         return false;
     }
 
-    public TeamMember retrieveTeamMember(Project project, String id){
-        if(project != null){
+    public TeamMember retrieveTeamMember(Project project, String id) {
+        if(project != null)
+        {
             ArrayList<TeamMember> teamMembers = project.getTeamMembers();
 
-            if(teamMembers != null){
-                for(int i = 0; i < teamMembers.size(); i++){
-                    if(teamMembers.get(i).getId().equals(id)){
+            if(teamMembers != null)
+            {
+                for(int i = 0; i < teamMembers.size(); i++)
+                {
+                    if(teamMembers.get(i).getId().equals(id))
+                    {
                         return teamMembers.get(i);
                     }
                 }
-            }else{
+            }
+            else
+                {
                 System.out.println("There are no registered team members ");
             }
         }
         return null;
     }
+
+
+
 
     public int typeOfTask(){
         int taskChoice;
