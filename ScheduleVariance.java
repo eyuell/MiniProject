@@ -1,5 +1,7 @@
 package MiniProject;
 
+import javafx.scene.Scene;
+
 public class ScheduleVariance extends Finance {
     private float scheduleVariance;
     private double daysPassed;
@@ -28,10 +30,9 @@ public class ScheduleVariance extends Finance {
         return plannedPercentageCompleted;
     }
 
-       public String toString(){
+    public String toString() {
         String costString;
-        costString ="ID: "+ projectID+"\n"+"Budget($):"+getBudget()+"\n"+"Earned Value($): "+getEarnedValue()+"\n"+"Schedule Variance($):"+getScheduleVariance()+"\n"+"Days passed: "+getDaysPassed()+"\n"+"Project length/Days: "+getProjectDuration();
+        costString =" Project ID:  " +getProjectId()+"\n"+"  Schedule Variance($): "+ getScheduleVariance()+ "\n" +"Days Passed since start: "+getDaysPassed()+"\n"+"project Duration/Days: "+projectDuration;
         costString +="\n*****************************************************************************************************************";
         return costString;}
 }
-
