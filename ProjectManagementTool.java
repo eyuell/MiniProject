@@ -1070,33 +1070,59 @@ public void printAllCosts(){
     }
 
     public void monitorTimeSpent(){
-        Project CurrentProject = projects.get(0);
-        if(CurrentProject != null) {
+       Project CurrentProject = projects.get(0);
+    if(CurrentProject != null) {
+       do {
+           System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
+           String choice = new KeyboardInput().Line();
+       }while (!choice.equals("all") & choice.equals("specific"));
+        if(choice.equals("all")){
+            ArrayList<Task> tasks = CurrentProject.getTasks();
+            if(tasks != null) {
+                for (Task OneTask : tasks) {
+                    System.out.println(OneTask);
+                    ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
+                    if(allocations != null) {
+                        for(TeamMemberAllocation CurrentAllocation : allocations) {
+                            System.out.println(CurrentAllocation.getTeamMember().getId()+ " has worked "+CurrentAllocation.getWorkHours()+" hours");
+                        }
+
+                        }
+
+                        }
+            }else {
+                System.out.println("There are no tasks registered");
+            }
+        }else {
             System.out.println("Enter the id of team member");
             String memberId = new KeyboardInput().Line();
-            while (!teamMemberIDExists(CurrentProject, memberId)) {
-                System.out.println("Team member does not exist or wrong id. Enter id again");
+
+            while (!teamMemberExists(CurrentProject, memberId)) {
+                System.out.println("Team member does not exist or wrong id.Enter id again");
                 memberId = new KeyboardInput().Line();
+
             }
-            double HoursOnTask;
-            double TotalHours = 0.0;
+            double HoursOnTask = 0;
+            double TotalHours = 0;
             ArrayList<Task> tasks = CurrentProject.getTasks();
             if (tasks != null) {
                 for (Task OneTask : tasks) {
                     ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
-                    if(allocations != null){
-                        for(TeamMemberAllocation CurrentAllocation : allocations) {
-                            if(CurrentAllocation.getTeamMember().getId().equals(memberId)){
+                    if (allocations != null) {
+                        for (TeamMemberAllocation CurrentAllocation : allocations) {
+                            if (CurrentAllocation.getTeamMember().getId().equals(memberId)) {
                                 HoursOnTask = CurrentAllocation.getWorkHours();
-                                System.out.println("This member has worked " + HoursOnTask +" hours on " + OneTask);
+                                System.out.println("This member has worked " + HoursOnTask + "hours on " + OneTask);
                                 TotalHours += HoursOnTask;
                             }
                         }
+
                     }
                 }
-                System.out.println("This member has worked " + TotalHours + " hours in total");
+                System.out.println("This member has worked " + TotalHours + "hours in total");
             }
         }
+        
         pause();
     }
 
