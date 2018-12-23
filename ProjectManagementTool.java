@@ -66,7 +66,7 @@ public class ProjectManagementTool {
         System.out.println("5. Assign Manpower to Tasks");
         System.out.println("6. Register Actual Resources to Tasks");
         System.out.println("7. Display All Tasks and Milestones");
-        System.out.println("8. Display All Team Members");
+        System.out.println("8. Display Team Members");
         System.out.println("9. Display Project Schedule");
         System.out.println("10. Monitor Finances");
         System.out.println("11. Monitor Time Spent");
@@ -152,6 +152,7 @@ public class ProjectManagementTool {
 
                 case PRINT_TEAM_MEMBERS:
                     printTeamMembers();
+
                     break;
 
                 case PRINT_PLANED_ACTUAL_SCHEDULE:
@@ -623,6 +624,20 @@ public class ProjectManagementTool {
 
 
     public void printTeamMembers(){
+        System.out.println("Do you wish to print a specific or All team members? ");
+        System.out.println("1. All team members");
+        System.out.println("2. Specific team member");
+
+        int option= new KeyboardInput().Int();
+        if(option==1){
+            printAllTeamMembers();
+        }
+        else if(option==2){
+            printSpecificTeamMember();
+        }
+    }
+
+public void printSpecificTeamMember(){
         Project currentProject = projects.get(0);
         System.out.println("Enter the id of a team member");
         String teamID = new KeyboardInput().Line();
@@ -638,6 +653,17 @@ public class ProjectManagementTool {
 
     }
 
+
+
+public void printAllTeamMembers(){
+    Project currentProject = projects.get(0);
+    System.out.println("Enter the id of a team member");
+    for(int i = 0; i < currentProject.getTeamMembers().size(); i++)
+    System.out.println(currentProject.getTeamMembers().get(i).getName());
+
+
+
+}
 
     public void printPlannedAndActualSchedule(){
 
