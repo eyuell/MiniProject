@@ -1,4 +1,4 @@
-package MiniProject;
+﻿package MiniProject;
 
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
@@ -603,24 +603,18 @@ public class ProjectManagementTool {
         pause();
     }
 
-    public void printTasksAndMilestones() {//ONLY 1 TASK PRINT
-        Project currentProject = projects.get(0);
-        System.out.println("Enter the id of a task");
-        String taskID = new KeyboardInput().Line();
-
-        do {
-            if (retrieveTask(taskID, currentProject) == null)
-            {
-                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
-                taskID = new KeyboardInput().Line();
-            }
+    public void printTasksAndMilestones(){
+    	Project currentProject = projects.get(0);
+    	System.out.println("Enter the Task that you want to print");
+    	String taskID = new KeyboardInput().Line();
+    	while (! tasksIDExixsts(currentProject, taskID)) {
+            System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+            taskID = new KeyboardInput().Line();
         }
-        while (this.retrieveTask(taskID, currentProject) == null) ;
-
-            Task foundTask = retrieveTask(taskID, currentProject);
-            System.out.println(foundTask.getName());
+    	
+    	Task foundTask = retrieveTask(currentProject, taskID);
+    	foundTask.toString();
     }
-
 
 
     public void printTeamMembers(){
@@ -1390,6 +1384,17 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
         return false;
     }
 
+ public boolean tasksIDExixsts(Project project, String ID){
+        if(project != null){
+            for(int i = 0; i < project.getTasks().size(); i++){
+                if(project.getTasks().get(i).getId().equals(ID)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public TeamMember retrieveTeamMember(Project project, String id) {
         if(project != null)
         {
@@ -1539,20 +1544,21 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
         return taskID;
     }
 
-    public Task retrieveTask(String taskID, Project project){
-        Task foundTask = null;
-        if (project.getTasks().size() != 0){
-            ArrayList<Task> tasksCopy = project.getTasks();
-            for (int i = 0; i < tasksCopy.size(); i++){
-                if (tasksCopy.get(i).getId().equals(taskID)){
-                    foundTask = tasksCopy.get(i);
+     public Task retrieveTask(Project project, String id){
+        if(project != null){
+            ArrayList<Task> tasks = project.getTasks();
+
+            if(tasks != null){
+                for(int i = 0; i < tasks.size(); i++){
+                    if(tasks.get(i).getId().equals(id)){
+                        return tasks.get(i);
+                    }
                 }
+            }else{
+                System.out.println("This task is not registrered ");
             }
-        }else{
-            System.out.println("Currently, there are no tasks registered yet");
         }
-        System.out.println();
-        return foundTask;
+        return null;
     }
 
     public Task checkTaskExistence(String taskID, Project project){ //this one do not print a message if not found
