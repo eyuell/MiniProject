@@ -23,7 +23,11 @@ public class CostVariance extends Finance {
 
     public String toString(){
         String costString;
-        costString =" Project ID:  " +getProjectId()+"\n"+"  Cost Variance($): "+ getCostVariance()+ "\n" +"Days Passed since start: "+getDaysPassed()+"\n"+"Project Duration: "+getProjectDuration();
-        costString +="\n*****************************************************************************************************************";
+        costString ="Project ID:  " +getProjectId();
+        costString +="Days Passed since start: "+getDaysPassed()+" days";
+        costString +="project Duration/Days: "+getProjectDuration()+" days.";
+        costString +="*********************************************************************";
+        costString +="Cost Variance($): "+ getCostVariance();
+        costString +="*********************************************************************";
         return costString;}
 }
