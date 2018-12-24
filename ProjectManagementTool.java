@@ -3,6 +3,7 @@ package MiniProject;
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import javafx.print.Printer;
 //import com.sun.xml.internal.bind.v2.model.core.ID;
 
 import javax.naming.Name;
@@ -78,17 +79,15 @@ public class ProjectManagementTool {
         System.out.println("=========================================");
         System.out.println();
     }
-    public void printMenuOptions(){
+    //Second switch for option16 in menu
+ public void printMenuOptions(){
         System.out.println("=========================================");
         System.out.println("1. Edit Tasks");
         System.out.println("2. Edit Project duration");
-        System.out.println("3. Edit Budget");
-        System.out.println("4. Edit Project ID");
-        System.out.println("5. Edit Current team Member information");
-        System.out.println("6. Return");
+        System.out.println("3. Edit Current team Member information");
+        System.out.println("4. Return");
         System.out.println("=========================================");
         System.out.println();
-    }
 
 
     //the gate way to the menu
@@ -668,16 +667,6 @@ public class ProjectManagementTool {
     }*/
 
 
-   /* public boolean tasksIDExixsts(Project project, String ID){
-        if(project != null){
-            for(int i = 0; i < project.getTasks().size(); i++){
-                if(project.getTasks().get(i).getId().equals(ID)){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }*/
 
     public void printTeamMembers(){ //Armin
         System.out.println("Do you wish to print a specific or All team members? ");
@@ -713,10 +702,10 @@ public void printSpecificTeamMember(){//Armin
 //IF TEAM MEMBER DOES NOT EXIST, if no one is registered?
 public void printAllTeamMembers(){//Armin
     Project currentProject = projects.get(0);
-    System.out.println("Enter the id of a team member");
-    for(int i = 0; i < currentProject.getTeamMembers().size(); i++)
-    System.out.println(currentProject.getTeamMembers().get(i).getName());
-
+    for(int i = 0; i < currentProject.getTeamMembers().size(); i++) {
+        System.out.println("Here is a list of all Team members currently registered: ");
+        System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
+    }
 
 
 }
@@ -1130,7 +1119,7 @@ public void printAllCosts(){//Armin
     }
 
     public void monitorTimeSpent(){
-          Project CurrentProject = projects.get(0);
+           Project CurrentProject = projects.get(0);
     if(CurrentProject != null) {
        do {
            System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
@@ -1185,6 +1174,7 @@ public void printAllCosts(){//Armin
         
         pause();
     }
+
 
     public void monitorParticipation(){
         HashMap<String, Double> participation = new HashMap<>();
@@ -1244,10 +1234,8 @@ public void printAllCosts(){//Armin
 
         final int TASKS = 1;
         final int PROJECT_DURATION = 2;
-        final int BUDGET = 3;
-        final int PROJECT_ID = 4;
-        final int TEAM_MEMBERS = 5;
-        final int RETURN = 6;
+        final int TEAM_MEMBERS = 3;
+        final int RETURN = 4;
 
         do {
             printMenuOptions();
@@ -1266,18 +1254,9 @@ public void printAllCosts(){//Armin
                     //editProjectDuration();
                     break;
 
-                case BUDGET:
-                    // editBudget();
-                    break;
-
-                case PROJECT_ID:
-                    editProjectId();
-                    break;
-
 
                 case TEAM_MEMBERS: //
                     editTeamMember();
-                    //System.out.println("EDIT NAME/SALARY/TASK ASSIGNED?.");
                     break;
 
                 case RETURN:
@@ -1290,11 +1269,6 @@ public void printAllCosts(){//Armin
                     break;
             }
         } while (option!=RETURN);
-    }
-
-    public void editProjectId() {//Armin
-
-//thisneedsafix
     }
 
 
@@ -1481,6 +1455,23 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
         }
         return false;
     }
+
+
+    public boolean projectExists(Project project, String name){
+        if(project != null)
+        {
+            for(int i = 0; i < projects.size(); i++)
+            {
+                if(projects.get(i).getName().equals(name))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
 
     public boolean teamMemberIDExists(Project project, String ID){
         if(project != null)
