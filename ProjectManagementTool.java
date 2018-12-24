@@ -1232,18 +1232,20 @@ public void printAllCosts(){
     }
 
     public void editTaskID() {
-    	Project currentProject = projects.get(0);
-    	System.out.println("Type in id of the task you want to edit");
-    	String taskID = new KeyboardInput().Line();
-    	
-    	tasksIDExixsts(currentProject, taskID);
-    	while(!tasksIDExixsts(currentProject, taskID)) {
-    		 System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
-             taskID = new KeyboardInput().Line();
-    	}
-    	Task task = retrieveTask(currentProject, taskID);
-    	task.setId(taskID);
-    }
+		Project currentProject = projects.get(0);
+		System.out.println("Type in id of the task you want to edit");
+		String taskID = new KeyboardInput().Line();
+
+		tasksIDExixsts(currentProject, taskID);
+		while (!tasksIDExixsts(currentProject, taskID)) {
+			System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+			taskID = new KeyboardInput().Line();
+		}
+		Task task = retrieveTask(currentProject, taskID);
+		System.out.println("Enter the new:");
+		String newID = new KeyboardInput().Line();
+		task.setId(newID);
+	}
 
     public void editTaskName()
     {
