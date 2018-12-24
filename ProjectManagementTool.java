@@ -1326,7 +1326,19 @@ public void printAllCosts(){
         } while (option!=RETURN);
     }
 
-
+    public void editTaskID() {
+    	Project currentProject = projects.get(0);
+    	System.out.println("Type in id of the task you want to edit");
+    	String taskID = new KeyboardInput().Line();
+    	
+    	tasksIDExixsts(currentProject, taskID);
+    	while(!tasksIDExixsts(currentProject, taskID)) {
+    		 System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+             taskID = new KeyboardInput().Line();
+    	}
+    	Task task = retrieveTask(currentProject, taskID);
+    	task.setId(taskID);
+    }
 
     public void editTaskName()
     {
@@ -1380,12 +1392,17 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
     public void editTasks(){
         System.out.println("What do you wish to edit?");
         System.out.println("1. Name ");
-        System.out.println("2. Remove Task");
+        System.out.println("2. ID");
+        System.out.println("3. Remove Task");
         int option= new KeyboardInput().Int();
         if(option==1){
             editTaskName();
         }
-        else if(option==2){
+        else if(option == 2){
+        	editTaskID();
+        	}
+        
+        else if(option==3){
             removeTask();
         }
     }
