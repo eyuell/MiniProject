@@ -37,4 +37,21 @@ public class Finance {//Super
     public void setEarnedValue(double earnedValue) {
         this.earnedValue = earnedValue;
     }
+    
+      public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public void setProjectDuration(double projectDuration) {
+        this.projectDuration = projectDuration;
+    }
+
+    public void setDaysPassed(double daysPassed) {
+        this.daysPassed = daysPassed;
+    }
+}
 }
