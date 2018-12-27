@@ -208,10 +208,18 @@ public class ProjectManagementTool {
         System.out.print("Enter name of a project ");
         String projectName = new KeyboardInput().Line();
 
+         System.out.println();
+        String projectID;
+        do {
+            System.out.print("Enter project ID number ");
+            projectID = new KeyboardInput().Line();
+            if (ProjectExists(projectID) == true) {
+                System.out.println("A project with this id already exists");
+            }
+        } while (ProjectExists((projectID)) == true);
 
-        System.out.println();
-        System.out.print("Enter project ID number ");
-        String projectID = new KeyboardInput().Line();
+
+        rdInput().Line();
 
         int choice;
         final int SECOND_OPTION = 2;
@@ -1552,19 +1560,15 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
     }
 
 
-    public boolean projectExists(Project project, String name){
-        if(project != null)
-        {
-            for(int i = 0; i < projects.size(); i++)
-            {
-                if(projects.get(i).getName().equals(name))
-                {
+    public boolean ProjectExists (String id){
+
+            for (int i = 0; i < projects.size(); i++) {
+                if (projects.get(i).getProjectID().equals(id)) {
                     return true;
                 }
             }
+            return false;
         }
-        return false;
-    }
 
 
 
@@ -1836,17 +1840,14 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
         }
         return foundProject;
     }*/
-   public Project retrieveProject(String projectID, Project project) {
-       for (int i = 0; i < projects.size(); i++) {
-           if (projectID.equals(projects.get(i).getProjectID())) {
-               project = projects.get(i);
-           } else {
-               {
-                   System.out.println("There are no registered team members ");
-               }
-           }
-       }      return null;
-}
+   public Project retrieveProject(String projectID) {
+            for (int i = 0; i < projects.size(); i++) {
+                if (projectID.equals(projects.get(i).getProjectID())) {
+                    Project project = projects.get(i);
+                    return project;
+                }
+                return null;
+        }
 
 
 
