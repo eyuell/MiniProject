@@ -1297,47 +1297,51 @@ public void printAllCosts(){//Armin
     }
 
     public void editInfo(){//Armin
-        int option;
+            int option;
 
-        final int TASKS = 1;
-        final int PROJECT_DURATION = 2;
-        final int TEAM_MEMBERS = 3;
-        final int RETURN = 4;
+            final int TASKS = 1;
+            final int PROJECT_DURATION = 2;
+            final int TEAM_MEMBERS = 3;
+            final int PROJECT = 4
+            final int RETURN = 5;
 
-        do {
-            printMenuOptions();
-            System.out.print(" Type the option number: ");
+            do {
+                printMenuOptions();
+                System.out.print(" Type the option number: ");
 
-            option = new KeyboardInput().Int();
-            // that the user types after
-            // typing the integer option.
+                option = new KeyboardInput().Int();
+                // that the user types after
+                // typing the integer option.
 
-            switch (option) {
-                case TASKS:   //(DONE)
-                    editTasks();
-                    break;
+                switch (option) {
+                    case TASKS:   //(DONE)
+                        editTasks();
+                        break;
 
-                case PROJECT_DURATION:
-                    //editProjectDuration();
-                    break;
+                    case PROJECT_DURATION:
+                        //editProjectDuration();
+                        break;
 
 
-                case TEAM_MEMBERS: //
-                    editTeamMember();
-                    break;
+                    case TEAM_MEMBERS: //
+                        editTeamMember();
+                        break;
 
-                case RETURN:
-                    // returnToMenu();
-                    break;
+                    case PROJECT:
+                        editProject();
+                        break;
 
-                default:
-                    System.out.println("Option " + option + " is not valid.");
-                    System.out.println();
-                    break;
-            }
-        } while (option!=RETURN);
-    }
+                    case RETURN:
+                        // returnToMenu();
+                        break;
 
+                    default:
+                        System.out.println("Option " + option + " is not valid.");
+                        System.out.println();
+                        break;
+                }
+            } while (option!=RETURN);
+        }
 
     public void editTaskName()//Armin
     {
@@ -1418,7 +1422,31 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
         }
     }
 
+ public void editProjects() {
+                String id ;
+                do {
+                    System.out.println("What is the id of the project that you want to edit");
+                    id = new KeyboardInput().Line();
+                    if (projectExists(id) == false) {
+                        System.out.println("A project with this id doesn't exists");
+                    }
+                }while(projectExists(id) == false);
 
+            System.out.println("Do you want to edit project name or id ? (name/id)");
+            String option = new KeyboardInput().Line();
+            Project project = retrieveProject(id);
+            if(option.equalsIgnoreCase("name")) {
+                System.out.println("The name of this project is " +project.getName());
+                System.out.println("what is the new name that you want to put  ");
+                String newName = new KeyboardInput().Line();
+                project.setName(newName);
+                }
+            if(option.equalsIgnoreCase("id")) {
+                System.out.println("what is the new id that you want put ");
+                String newId = new KeyboardInput().Line();
+                project.setProjectID(newId);
+            }
+            }
 
 
     public boolean tasksIDExixsts(Project project, String ID){//OSMAN
