@@ -723,13 +723,15 @@ public void printAllMilestones() {
     }
 }
 
-
-    public void printProjects() {//Armin
+    public void printProjects(){
+        
+    }
+    
+    public void printAllProjects() {
         for (int i = 0; i < projects.size(); i++) {
             System.out.println(projects.get(i).getName());
         }
     }
-
 
 
 
