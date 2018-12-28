@@ -9,10 +9,11 @@ public class Project {
     private LocalDate startDate;
     private LocalDate finishDate;
     private long duration;
+    private double budget;
+    private ArrayList<Risk> risks;
     private ArrayList<Milestone> milestones;
     private ArrayList<Task> tasks;
     private ArrayList<TeamMember> teamMembers;
-    private ArrayList<Risk> risks;
 
     public Project (String name, String projectID, LocalDate startDate){
         this.name = name;
@@ -50,6 +51,8 @@ public class Project {
 
     public ArrayList<Milestone> getMilestones() { return milestones; }
 
+    public double getBudget() { return budget; }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -69,4 +72,6 @@ public class Project {
     public void setTasks(ArrayList<Task> tasks) {
         this.tasks = tasks;
     }
+
+    public void setBudget(double budget) { this.budget = budget; }
 }
