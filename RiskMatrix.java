@@ -102,42 +102,52 @@ public class RiskMatrix {
         final int PRINT_ALL_REGISTERED_RISKS = 2;
         final int PRINT_NUMBER_OF_REGISTERED_RISKS = 3;
         final int QUIT_PRINT_FUNCTION = 4;
+        
+        if(currentProject != null){
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if(risks != null){
+                do {
+                    System.out.println("SELECT FROM THE FOLLOWING OPTIONS.");
+                    System.out.println();
+                    System.out.println("1. PRINT A SPECIFIC RISK.");
+                    System.out.println("2. PRINT ALL REGISTERED RISKS.");
+                    System.out.println("3. PRINT NUMBER OF REGISTERED RISKS.");
+                    System.out.println("4. QUIT PRINT FUNCTION.");
+                    System.out.println();
+                    option = new KeyboardInput().positiveInt();
 
-        do {
-            System.out.println("SELECT FROM THE FOLLOWING OPTIONS.");
-            System.out.println();
-            System.out.println("1. PRINT A SPECIFIC RISK.");
-            System.out.println("2. PRINT ALL REGISTERED RISKS.");
-            System.out.println("3. PRINT NUMBER OF REGISTERED RISKS.");
-            System.out.println("4. QUIT PRINT FUNCTION.");
-            System.out.println();
-            option = new KeyboardInput().positiveInt();
+                    switch (option){
+                        case PRINT_A_SPECIFIC_RISK:
+                            printSpecificRisk();
+                            System.out.println("************************************************");
+                            break;
 
-            switch (option){
-                case PRINT_A_SPECIFIC_RISK:
-                    printSpecificRisk();
-                    System.out.println("**************************************");
-                    break;
+                        case PRINT_ALL_REGISTERED_RISKS:
+                            printAllRisks();
+                            System.out.println("************************************************");
+                            break;
 
-                case PRINT_ALL_REGISTERED_RISKS:
-                    printAllRisks();
-                    System.out.println("**************************************");
-                    break;
+                        case PRINT_NUMBER_OF_REGISTERED_RISKS:
+                            printNumberOfRisk();
+                            System.out.println("************************************************");
+                            break;
 
-                case PRINT_NUMBER_OF_REGISTERED_RISKS:
-                    printNumberOfRisk();
-                    System.out.println("**************************************");
-                    break;
+                        case QUIT_PRINT_FUNCTION:
+                            System.out.println("************************************************");
+                            break;
 
-                case QUIT_PRINT_FUNCTION:
-                    System.out.println("**************************************");
-                    break;
-
-                default:
-                    System.out.println("Enter a correct option.");
-                    break;
+                        default:
+                            System.out.println("Enter a correct option.");
+                            break;
+                    }
+                    new ProjectManagementTool().pause();
+                } while (option!=QUIT_PRINT_FUNCTION);
+            } else {
+                System.out.println("There is no registered risk.");
             }
-        } while (option!=QUIT_PRINT_FUNCTION);
+        } else {
+            System.out.println("There is no registered project.");
+        }
     }
 
     public void editRisk (){
@@ -149,99 +159,107 @@ public class RiskMatrix {
         int option;
 
         if(currentProject != null){
-            do {
-                System.out.println("What would you like to edit?");
-                System.out.println();
-                System.out.println("1. Edit risk name.");
-                System.out.println("2. Edit risk probability.");
-                System.out.println("3. Edit risk impact.");
-                System.out.println("4. Delete risk..");
-                System.out.println("5. Quit edit function");
-                option = new KeyboardInput().positiveInt();
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if(risks != null){
+                do {
+                    System.out.println("What would you like to edit?");
+                    System.out.println();
+                    System.out.println("1. Edit risk name.");
+                    System.out.println("2. Edit risk probability.");
+                    System.out.println("3. Edit risk impact.");
+                    System.out.println("4. Delete risk..");
+                    System.out.println("5. Quit edit function");
+                    option = new KeyboardInput().positiveInt();
 
-                switch (option){
-                    case NAME:
-                        boolean repeat;
-                        do{
-                            repeat = false;
-                            String name = readRisk();
-                            Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
-                            if (foundRisk != null) {
-                                System.out.println("Enter new name:");
-                                String newName = new KeyboardInput().Line();
-                                newName = new RiskEvaluator().name(newName);
-                                foundRisk.setRiskName(newName);
-                                System.out.println("You have successfully updated the risk's name to " + foundRisk.getRiskName());
-                            } else {
-                                System.out.println("The risk name your are trying to access is not registered");
-                                repeat = true;
-                            }
-                        } while (repeat);
-                        break;
+                    switch (option){
+                        case NAME:
+                            boolean repeat;
+                            do{
+                                repeat = false;
+                                String riskID = checkRiskID();
+                                Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
+                                if (foundRisk != null) {
+                                    System.out.println("Enter new name:");
+                                    String newName = new KeyboardInput().Line();
+                                    newName = new RiskEvaluator().name(newName);
+                                    foundRisk.setRiskName(newName);
+                                    System.out.println("You have successfully updated the risk's name to " + foundRisk.getRiskName());
+                                } else {
+                                    System.out.println("The risk name your are trying to access is not registered");
+                                    repeat = true;
+                                }
+                            } while (repeat);
+                            break;
 
-                    case PROBABILITY://
-                        do{
-                            repeat = false;
-                            String name = readRisk();
-                            Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
-                            if (foundRisk != null ){
-                                System.out.println("Enter the new probability value:");
-                                double newProbability = new KeyboardInput().positiveDouble();
-                                newProbability = new RiskEvaluator().probability(newProbability);
-                                foundRisk.setProbability(newProbability);
-                                System.out.println("You have successfully updated the risk's probability to " + foundRisk.getProbability());
-                            } else {
-                                System.out.println("The risk name you are trying to access is not registered.");
-                                repeat = true;
-                            }
-                        } while (repeat);
-                        break;
+                        case PROBABILITY://
+                            do{
+                                repeat = false;
+                                String riskID = checkRiskID();
+                                Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
+                                if (foundRisk != null ){
+                                    System.out.println("Enter the new probability value:");
+                                    double newProbability = new KeyboardInput().positiveDouble();
+                                    newProbability = new RiskEvaluator().probability(newProbability);
+                                    foundRisk.setProbability(newProbability);
+                                    System.out.println("You have successfully updated the risk's probability to " + foundRisk.getProbability());
+                                } else {
+                                    System.out.println("The risk name you are trying to access is not registered.");
+                                    repeat = true;
+                                }
+                            } while (repeat);
+                            break;
 
-                    case IMPACT:
-                        do{
-                            repeat = false;
-                            String name = readRisk();
-                            Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
-                            if(foundRisk != null){
-                                System.out.println("Enter the new impact value :");
-                                double newImpact = new KeyboardInput().positiveDouble();
-                                newImpact = new RiskEvaluator().impact(newImpact);
-                                foundRisk.setImpact(newImpact);
-                                System.out.println("You have successfully updated the risk's impact to " + foundRisk.getImpact());
-                            } else {
-                                System.out.println("The risk name you are trying to access is not registered.");
-                                repeat = true;
-                            }
-                        } while (repeat);
-                        break;
+                        case IMPACT:
+                            do{
+                                repeat = false;
+                                String riskID = checkRiskID();
+                                Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
+                                if(foundRisk != null){
+                                    System.out.println("Enter the new impact value :");
+                                    double newImpact = new KeyboardInput().positiveDouble();
+                                    newImpact = new RiskEvaluator().impact(newImpact);
+                                    foundRisk.setImpact(newImpact);
+                                    System.out.println("You have successfully updated the risk's impact to " + foundRisk.getImpact());
+                                } else {
+                                    System.out.println("The risk name you are trying to access is not registered.");
+                                    repeat = true;
+                                }
+                            } while (repeat);
+                            break;
 
-                    case REMOVE:
-                        do{
-                            repeat = false;
-                            String name = readRisk();
-                            Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
-                            if ( foundRisk != null){
-                                System.out.println("Are you sure you want to delete " + foundRisk.getRiskName() + "?" );
-                                deleteRisk(foundRisk, currentProject);
-                            } else {
-                                System.out.println("The risk name you trying to access is not registered.");
-                                repeat = true;
-                            }
-                        }  while (repeat);
-                        break;
+                        case REMOVE:
+                            do{
+                                repeat = false;
+                                String riskID = checkRiskID();
+                                Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
+                                if ( foundRisk != null){
+                                    System.out.println("Are you sure you want to delete " + foundRisk.getRiskName() + "?" );
+                                    deleteRisk(foundRisk, currentProject);
+                                } else {
+                                    System.out.println("The risk name you trying to access is not registered.");
+                                    repeat = true;
+                                }
+                            }  while (repeat);
+                            break;
 
-                    case QUIT:
-                        System.out.println("*********************************************************");
-                        break;
+                        case QUIT:
+                            System.out.println("*********************************************************");
+                            break;
 
-                    default:
-                        System.out.println("Enter the right option");
-                        break;
-                }
-            } while (option != QUIT_EDIT);
+                        default:
+                            System.out.println("Enter the right option");
+                            break;
+                    }
+                    new ProjectManagementTool().pause();
+                } while (option != QUIT_EDIT);
+            } else {
+                System.out.println("There is no registered risk.");
+            }
+        } else {
+            System.out.println("There is no registered project.");
         }
-
     }
+    
     public void deleteRisk(Risk foundRisk, Project project){ // this methods is handles the risk deletion functions
         if(project != null){
             final int YES = 1;
@@ -273,14 +291,38 @@ public class RiskMatrix {
         return null;
     }
 
-    public String readRiskID (){
+    public String readRiskID (){ // for new Risk ID
         String riskID = "";
         if(currentProject != null){
             System.out.println("Enter risk ID");
             riskID = new KeyboardInput().Line();
-            while (retrieveRiskByID(currentProject.getRisks(), riskID) !=null){
+            while (retrieveRiskByID(riskID, currentProject.getRisks()) != null){
                 System.out.print("ID is already registered by other risk. Enter another risk ID");
                 riskID = new KeyboardInput().Line();
+            }
+        }
+        return riskID;
+    }
+    
+    public String checkRiskID (){ // for existing risk ID
+        String riskID = "";
+        if(currentProject != null){
+            ArrayList<Risk> risks = currentProject.getRisks();
+            if(risks != null){
+                System.out.println("=================================");
+                System.out.println("    List of Risks (ID and Name) ");
+                for (Risk risk: risks) {
+                    System.out.println(risk.getRiskID() + " :- " + risk.getRiskName());
+                }
+                System.out.println();
+                System.out.println("Form the above list of Risks, enter risk ID ");
+                riskID = new KeyboardInput().Line();
+                while (retrieveRiskByID(riskID, risks) == null){
+                    System.out.print("The provided ID does not exist. Enter risk ID correctly");
+                    riskID = new KeyboardInput().Line();
+                }
+            } else {
+                System.out.println("There are no registered risks ");
             }
         }
         return riskID;
@@ -302,14 +344,14 @@ public class RiskMatrix {
         return name;
     }
 
-    public String readRisk (){
+    public String readRisk (){ // for new Risk Name
         System.out.println("Enter Risk Name :");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
         return name ;
     }
 
-    public Risk retrieveRiskByID(ArrayList<Risk> risks, String riskID){
+    public Risk retrieveRiskByID(String riskID, ArrayList<Risk> risks){
         for(int i = 0; i < risks.size(); i++){
             Risk currentRisk = risks.get(i);
             if(currentRisk.getRiskID().equals(riskID)){
@@ -319,11 +361,10 @@ public class RiskMatrix {
         return null;
     }
 
-    public void printSpecificRisk (){
+    public void printSpecificRisk (){ // print specific Risk by ID
 
-        String name = readRisk();
-        name = new RiskEvaluator().name(name);
-        Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
+        String riskID = checkRiskID();
+        Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
         int indent = foundRisk.getRiskName().length() + 3 ;
         if(indent < 12){
             indent = 12;
@@ -402,7 +443,6 @@ public class RiskMatrix {
         } else {
             System.out.println("There is no registered risk.");
         }
-        new ProjectManagementTool().pause();
     }
 
     public void printNumberOfRisk(){
@@ -439,7 +479,7 @@ public class RiskMatrix {
                     switch (option) {
                         case PROBABILITY:
                             probabilityPercentage();
-                            System.out.println("*************************************");
+                            System.out.println("****************************************");
                             break;
 
                         case IMPACT:
@@ -448,7 +488,7 @@ public class RiskMatrix {
                             break;
 
                         case QUIT:
-                            System.out.println("**********************************");
+                            System.out.println("****************************************");
                             break;
 
                         default:
@@ -462,14 +502,13 @@ public class RiskMatrix {
         }
     }
 
-    public  void probabilityPercentage(){ // this method coverts probability value of a given risk to percentage value.
+    public void probabilityPercentage(){ // this method coverts probability value of a given risk to percentage value.
 
         final double fixedProbability = 10.0;
         double maxPercentage = 100.0;
         if(currentProject != null){
-            String name = readRisk();
-            name = new RiskEvaluator().name(name);
-            Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
+            String riskID = checkRiskID();
+            Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
 
             if(foundRisk != null){
                 double foundProbability = foundRisk.getProbability();
@@ -486,9 +525,8 @@ public class RiskMatrix {
         final double fixedImpact = 10.0;
         double maxPercentage = 100.0;
         if(currentProject != null){
-            String name = readRisk();
-            name = new RiskEvaluator().name(name);
-            Risk foundRisk = retrieveRegisteredRisk(name, currentProject);
+            String riskID = checkRiskID();
+            Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
             if (foundRisk != null){
                 double foundImpact = foundRisk.getImpact();
                 double convertedImpact = (foundImpact/fixedImpact) * maxPercentage;
@@ -497,6 +535,6 @@ public class RiskMatrix {
                 System.out.println("The risk name does not exist");
             }
         }
-
     }
+    
 }
