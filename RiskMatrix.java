@@ -11,7 +11,7 @@ public class RiskMatrix {
 
     private Project currentProject;
 
-    public RiskMatrix(Project currentProject){
+    public RiskMatrix(Project currentProject){ //The risk matrix with a project
         this.currentProject = currentProject;
     }
 
@@ -36,7 +36,7 @@ public class RiskMatrix {
         int loopCounter = 0;
 
         do {
-            loopCounter++;
+            loopCounter++; // to display the header once
             if (loopCounter == 1){
                 System.out.println("========= RISK MATRIX =========");
                 System.out.println();
@@ -84,11 +84,11 @@ public class RiskMatrix {
 
             String riskName = readRiskName();
 
-            System.out.println("Risk Probability:");
+            System.out.println("Risk Probability (b/n 0.0 & 1.0) :");
             double probability = new KeyboardInput().positiveDouble();
             probability = new RiskEvaluator().probability(probability);
 
-            System.out.println("Risk Impact:");
+            System.out.println("Risk Impact (b/n 0.0 & 10.0) :");
             double impact = new KeyboardInput().positiveDouble();
             impact = new RiskEvaluator().impact(impact);
 
@@ -96,7 +96,7 @@ public class RiskMatrix {
         }
     }
 
-    public void printFunction (){
+    public void printFunction (){ //display the risks 
         int option;
         final int PRINT_A_SPECIFIC_RISK = 1;
         final int PRINT_ALL_REGISTERED_RISKS = 2;
@@ -119,28 +119,28 @@ public class RiskMatrix {
                     switch (option){
                         case PRINT_A_SPECIFIC_RISK:
                             printSpecificRisk();
-                            System.out.println("************************************************");
+                            System.out.println("*************************************************************");
                             break;
 
                         case PRINT_ALL_REGISTERED_RISKS:
                             printAllRisks();
-                            System.out.println("************************************************");
+                            System.out.println("*************************************************************");
                             break;
 
                         case PRINT_NUMBER_OF_REGISTERED_RISKS:
                             printNumberOfRisk();
-                            System.out.println("************************************************");
+                            System.out.println("*************************************************************");
                             break;
 
                         case QUIT_PRINT_FUNCTION:
-                            System.out.println("************************************************");
+                            System.out.println("*************************************************************");
                             break;
 
                         default:
                             System.out.println("Enter a correct option.");
                             break;
                     }
-                    new ProjectManagementTool().pause();
+                    new ProjectManagementTool().pause(); //pausing before displaying the options
                 } while (option!=QUIT_PRINT_FUNCTION);
             } else {
                 System.out.println("There is no registered risk.");
@@ -150,7 +150,7 @@ public class RiskMatrix {
         }
     }
 
-    public void editRisk (){
+    public void editRisk (){ //Editing Risk related informations
         final int NAME = 1;
         final int PROBABILITY = 2;
         final int IMPACT = 3;
@@ -250,7 +250,7 @@ public class RiskMatrix {
                             System.out.println("Enter the right option");
                             break;
                     }
-                    new ProjectManagementTool().pause();
+                    new ProjectManagementTool().pause(); // pausing before displaying the options
                 } while (option != QUIT_EDIT);
             } else {
                 System.out.println("There is no registered risk.");
@@ -294,7 +294,7 @@ public class RiskMatrix {
     public String readRiskID (){ // for new Risk ID
         String riskID = "";
         if(currentProject != null){
-            System.out.println("Enter risk ID");
+            System.out.println("Enter new risk ID");
             riskID = new KeyboardInput().Line();
             while (retrieveRiskByID(riskID, currentProject.getRisks()) != null){
                 System.out.print("ID is already registered by other risk. Enter another risk ID");
@@ -328,7 +328,7 @@ public class RiskMatrix {
         return riskID;
     }
 
-    public  String  readRiskName (){ // this methods handles all name input requests.
+    public  String  readRiskName (){ // this methods handles all new name input requests.
         System.out.println("Enter Risk Name:");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
@@ -344,7 +344,7 @@ public class RiskMatrix {
         return name;
     }
 
-    public String readRisk (){ // for new Risk Name
+    public String readRisk (){ // for existing Risk Name
         System.out.println("Enter Risk Name :");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
@@ -512,10 +512,10 @@ public class RiskMatrix {
 
             if(foundRisk != null){
                 double foundProbability = foundRisk.getProbability();
-                double convertedProbability = (foundProbability/fixedProbability) * maxPercentage;
+                double convertedProbability = foundProbability * maxPercentage;
                 System.out.println("The risk " + foundRisk.getRiskName() + " has a probability of " + convertedProbability
                         + " %");
-            } else{
+            } else {
                 System.out.println("The risk name does not exist.");
             }
         }
