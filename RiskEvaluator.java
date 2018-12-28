@@ -9,9 +9,9 @@ public class RiskEvaluator{
 
     public double probability (double probability){
         double leastValue = 0.0;
-        double maxValue = 10.0;
+        double maxValue = 1.0;
         while (probability < leastValue || probability > maxValue){
-            System.out.println("Enter a value between 1 and 10");
+            System.out.println("Enter a value between 0.0 and 1.0 ");
             probability = new KeyboardInput().positiveDouble();
             probability = new RiskEvaluator().probability(probability);
         }
@@ -22,7 +22,7 @@ public class RiskEvaluator{
         double leastValue = 0.0;
         double maxValue = 10.0;
         while (impact < leastValue || impact > maxValue){
-            System.out.println("Enter a value between 1 and 10.");
+            System.out.println("Enter a value between 0.0 and 10.0 ");
             impact = new KeyboardInput().positiveDouble();
             impact = new RiskEvaluator().impact(impact);
         }
