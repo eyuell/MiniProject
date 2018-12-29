@@ -3,8 +3,16 @@ This is an educational code designed to practice on team work and working on jso
 This code works on projects executed by teams. 
 
 ### Goals
-All tasks, milestones, risks, cost related, schedule and editing information are possible to be implemented.
+  * Create Projects
+  * Create Tasks and Milestones
+  * Create and assign Manpower and Team Members 
+  * Monitor Planned and Actual Schedule of the Project
+  * Monitor Finance ralated issues
+  * Monitor Participation of team members 
+  * Monitor Risks
+  * Read and Write with json files and
+  * Edit all the above information
 
 ### Disclaimer
 
-This is not an officially supported Google product.
+This is not an officially supported product.
