@@ -626,44 +626,47 @@ public class ProjectManagementTool {
     }
 
 
-    public void printTasks(){
+       public void printTasks(){
        System.out.println("What do you wish to edit?");
         System.out.println("1. All Tasks ");
         System.out.println("2. Specific Task");
-        int option= new KeyboardInput().Int();
-            if(option==1){
-           printAllTasksAndMilestones();
-        }
-            else if(option==2){
-            printSpecificTaskMilestone();
-        }
-        pause();
+    int option= new KeyboardInput().Int();
+        if(option==1){
+       printAllTasksAndMilestones();
+    }
+        else if(option==2){
+        printSpecifitTaskMilestones();
+    }
     }//Armin
 
 
-    public void printAllTasksAndMilestones(){
-        Project currentProject = projects.get(0);
-        ArrayList<Task> tasks = currentProject.getTasks();
+public void printAllTasksAndMilestones(){
+    Project currentProject = projects.get(0);
+    ArrayList<Task> tasks = currentProject.getTasks();
 
-        for (int i = 0; i <tasks.size() ; i++) {
-            System.out.println(tasks.get(i).getName());
-        }
+    for (int i = 0; i <tasks.size() ; i++) {
+        System.out.println(tasks.get(i).getName());
+    }
 
-        System.out.println("Do you wish to print milestones?");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
+    System.out.println("Do you wish to print milestones?");
+    System.out.println("1. Yes");
+    System.out.println("2. No");
 
-        int option = new KeyboardInput().Int();
+    int option = new KeyboardInput().Int();
 
-        if (option == 1) {
-            printMileStones();
-        } else if (option == 2) {
-            System.out.println("Milestones not printed.");
-        }
+    if (option == 1) {
+    printMileStones();
+    }
 
-    }//Armin
+    else if (option == 2) {
+        System.out.println("Milestones not printed.");
+    }
 
-    public void printSpecificTaskMilestone() {//ONLY 1 TASK PRINT //Armin partial
+}//Armin
+
+
+
+    public void printSpecifitTaskMilestones() {//ONLY 1 TASK PRINT //Armin parial
         Project currentProject = projects.get(0);
         System.out.println("Enter the id of a task");
         String taskID = new KeyboardInput().Line();
@@ -673,7 +676,8 @@ public class ProjectManagementTool {
                 System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
                 taskID = new KeyboardInput().Line();
             }
-        } while (retrieveTask(taskID, currentProject) == null);
+        }
+        while (this.retrieveTask(taskID, currentProject) == null);
 
         Task foundTask = retrieveTask(taskID, currentProject);
         System.out.println(foundTask.getName());
@@ -692,45 +696,45 @@ public class ProjectManagementTool {
         }
     }//Armin
 
-    public void printMileStones(){
-        System.out.println("Do you wish to print: ");
-        System.out.println("1. All Milestones");
-        System.out.println("2. Specific Milestone");
+public void printMileStones(){
+    System.out.println("Do you wish to print: ");
+    System.out.println("1. All Milestones");
+    System.out.println("2. Specific Milestone");
 
-        int option=new KeyboardInput().Int();
+    int option=new KeyboardInput().Int();
 
-        if (option==1){
-            printAllMilestones();
+    if (option==1){
+        printAllMilestones();
+    }
+    if (option==2){
+        printSpecificMileStones();
+    }
+}//Armin
+
+
+public void printSpecificMileStones(){
+    Project currentProject = projects.get(0);
+    System.out.println("Enter the id of a Milestone you wish to print");
+    String milestoneID = new KeyboardInput().Line();
+
+    Milestone foundMilestone = retrieveMilestone(currentProject,milestoneID);
+    System.out.println("Name: "+foundMilestone.getName());
+    System.out.println("milestone date: " + foundMilestone.getDate());
+
+}//Armin
+
+
+public void printAllMilestones() {
+    Project currentProject = projects.get(0);
+    ArrayList<Milestone> milestones = currentProject.getMilestones();
+    if (milestones != null) {
+        for (int i = 0; i < milestones.size(); i++) {
+            System.out.println("Name: "+milestones.get(i).getName());
+            System.out.println("Milestone Date: "+milestones.get(i).getDate());
+            System.out.println("*************************************");
         }
-        if (option==2){
-            printSpecificMileStone();
-        }
-    }//Armin
-
-
-    public void printSpecificMileStone(){
-        Project currentProject = projects.get(0);
-        System.out.println("Enter the id of a Milestone you wish to print");
-        String milestoneID = new KeyboardInput().Line();
-
-        Milestone foundMilestone = retrieveMilestone(currentProject, milestoneID);
-        System.out.println("Name: "+foundMilestone.getName());
-        System.out.println("Milestone date: " + foundMilestone.getDate());
-
-    }//Armin
-
-
-    public void printAllMilestones() {
-        Project currentProject = projects.get(0);
-        ArrayList<Milestone> milestones = currentProject.getMilestones();
-        if (milestones != null) {
-            for (int i = 0; i < milestones.size(); i++) {
-                System.out.println("Name: "+ milestones.get(i).getName());
-                System.out.println("Milestone Date: "+ milestones.get(i).getDate());
-                System.out.println("*************************************");
-            }
-        }
-    }//Armin
+    }
+}//Armin
 
 
     public void printProjects() {//Armin
@@ -745,13 +749,15 @@ public class ProjectManagementTool {
         if (option==2){
             System.out.println("HAMID METHOD HERE!!!");
         }
-    }//Armin
+        }//Armin
 
-    public void printAllProjects(){
-        for (int i = 0; i < projects.size(); i++) {
-            System.out.println(projects.get(i).getName());
-        }
+public void printAllProjects(){
+    for (int i = 0; i < projects.size(); i++) {
+        System.out.println(projects.get(i).getName());
     }
+}
+
+
 
     public void printTeamMembers(){ //Armin
         System.out.println("Do you wish to print a specific or All team members? ");
@@ -767,12 +773,13 @@ public class ProjectManagementTool {
         }
     }//Armin
 
-    public void printSpecificTeamMember(){//Armin
+public void printSpecificTeamMember(){//Armin
         Project currentProject = projects.get(0);
         System.out.println("Enter the id of a team member");
         String teamID = new KeyboardInput().Line();
 
-        while (! teamMemberIDExists(currentProject, teamID)){
+          while (! teamMemberIDExists(currentProject, teamID))
+          {
             System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
             teamID = new KeyboardInput().Line();
         }
@@ -783,17 +790,17 @@ public class ProjectManagementTool {
     }//Armin
 
 
-    //IF TEAM MEMBER DOES NOT EXIST, if no one is registered?
-    public void printAllTeamMembers(){//Armin
-        Project currentProject = projects.get(0);
-        TeamMember<ArrayList> teamMembers = currentProject.getTeamMembers();
-        if(teamMembers != null){
-            System.out.println("Here is a list of all Team members currently registered: ");
-            for(int i = 0; i < teamMembers.size(); i++) {
-                System.out.println("Name: " + teamMembers.get(i).getName());
-            }
-        }
-    }//Armin
+//IF TEAM MEMBER DOES NOT EXIST, if no one is registered?
+public void printAllTeamMembers(){//Armin
+    Project currentProject = projects.get(0);
+    for(int i = 0; i < currentProject.getTeamMembers().size(); i++) {
+        System.out.println("Here is a list of all Team members currently registered: ");
+        System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
+    }
+
+
+}//Armin
+
 
     public void printPlannedAndActualSchedule(){
 
@@ -1022,86 +1029,85 @@ public class ProjectManagementTool {
         System.out.println("2. Print Schedule variance");
         System.out.println("3. Print Cost Variance");
         System.out.println("4. Print Earned value");
-            
-        int option;
+            int option;
 
-        final int ALL_COSTS = 1;
-        final int SCHEDULE_VARIANCE = 2;
-        final int COST_VARIANCE = 3;
-        final int EARNED_VALUE= 4;
-        final int RETURN = 5;
-        do {
-            System.out.print(" Type the option number: ");
+            final int ALL_COSTS = 1;
+            final int SCHEDULE_VARIANCE = 2;
+            final int COST_VARIANCE = 3;
+            final int EARNED_VALUE= 4;
+            final int RETURN = 5;
+            do {
+                System.out.print(" Type the option number: ");
 
-            option = new KeyboardInput().Int();
-            // that the user types after
-            // typing the integer option.
+                option = new KeyboardInput().Int();
+                // that the user types after
+                // typing the integer option.
 
-            switch (option) {
-                case ALL_COSTS:
-                    printAllCosts();
-                    break;
+                switch (option) {
+                    case ALL_COSTS:
+                        printAllCosts();
+                        break;
 
-                case SCHEDULE_VARIANCE:
-                    monitorScheduleVariance();
-                    break;
+                    case SCHEDULE_VARIANCE:
+                        monitorScheduleVariance();
+                        break;
 
-                case COST_VARIANCE:
-                    monitorCostVariance();
-                    break;
+                    case COST_VARIANCE:
+                        monitorCostVariance();
+                        break;
 
-                case EARNED_VALUE:
-                    monitorEarnedValue();
-                    break;
+                    case EARNED_VALUE:
+                        monitorEarnedValue();
+                        break;
 
-                case RETURN:
+                    case RETURN:
 
-                    break;
+                        break;
 
-                default:
-                    System.out.println("Option " + option + " is not valid.");
-                    System.out.println();
-                    break;
-            }
-        } while (option!=RETURN);
-    }
-
-
-    public void printAllCosts(){//Armin
-        if(projects != null){
-            Project foundProject = projects.get(0);
-            System.out.println();
-            double plannedSum = totalPlannedHours(foundProject);
-            double actualSum = totalActualHours(foundProject);
-
-            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
-            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
-
-            LocalDate today = LocalDate.now();
-            LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
-            LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
-
-            //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
-            double ExecutedProgress = actualCost/plannedBudget;
-            double scheduleProgress = durationTillToday/projectDuration;
-            double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
-
-            System.out.println("Project budget($): " + plannedBudget);
-            System.out.println("Project cost($): " + actualCost);
-            System.out.println("Earned Value($): " + earnedValue);
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
-            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
-            SystemStore Costs = new MiniProject.SystemStore();
-            Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID());
-            Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
-            //System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
-            //System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
-            Costs.printAllFinances();
+                    default:
+                        System.out.println("Option " + option + " is not valid.");
+                        System.out.println();
+                        break;
+                }
+            } while (option!=RETURN);
         }
 
+
+public void printAllCosts(){//Armin
+    if(projects != null){
+        Project foundProject = projects.get(0);
+        System.out.println();
+        double plannedSum = totalPlannedHours(foundProject);
+        double actualSum = totalActualHours(foundProject);
+
+        double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
+        double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
+
+        LocalDate today = LocalDate.now();
+        LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
+        LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
+
+        //project tasks total duration
+        double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
+        double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+        double ExecutedProgress = actualCost/plannedBudget;
+        double scheduleProgress = durationTillToday/projectDuration;
+        double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
+
+        System.out.println("Project budget($): " + plannedBudget);
+        System.out.println("Project cost($): " + actualCost);
+        System.out.println("Earned Value($): " + earnedValue);
+        System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
+        System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+        SystemStore Costs = new MiniProject.SystemStore();
+        Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID());
+        Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
+        //System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
+        //System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
+        Costs.printAllFinances();
     }
+
+}
 
     public void monitorEarnedValue() {//Armin
         if (projects != null) {
@@ -1162,7 +1168,7 @@ public class ProjectManagementTool {
             System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
             SystemStore Costs = new MiniProject.SystemStore();
-            Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
+           Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
             System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
 
         }
@@ -1307,7 +1313,7 @@ public class ProjectManagementTool {
         }
     }
 
-    public void editInfo(){
+      public void editInfo(){
         int option;
 
         final int TASKS = 1;
@@ -1315,6 +1321,7 @@ public class ProjectManagementTool {
         final int TEAM_MEMBERS = 3;
         final int PROJECT = 4;
         final int RETURN = 5;
+
 
         do {
             printMenuOptions();
@@ -1325,7 +1332,7 @@ public class ProjectManagementTool {
             // typing the integer option.
 
             switch (option) {
-                case TASKS:  
+                case TASKS:   //(DONE)
                     editTasks();
                     break;
 
@@ -1334,7 +1341,7 @@ public class ProjectManagementTool {
                     break;
 
 
-                case TEAM_MEMBERS:
+                case TEAM_MEMBERS: //
                     editTeamMember();
                     break;
 
@@ -1353,6 +1360,8 @@ public class ProjectManagementTool {
             }
         } while (option!=RETURN);
     }//Armin
+
+
 
     public void editProject() {//HAMID
         String id ;
@@ -1382,18 +1391,19 @@ public class ProjectManagementTool {
         }
     }//HAMID
 
-    public void editTaskName(){
+     public void editTaskName(){
         System.out.println("Enter the id of task you wish to rename: ");
         String taskID = new KeyboardInput().Line();
         Project currentProject = projects.get(0);
-        
-        do {
-            if (retrieveTask(taskID, currentProject) == null)
-            {
-                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
-                taskID = new KeyboardInput().Line();
-            }
-        } while (this.retrieveTask(taskID, currentProject) == null) ;
+do
+    {
+    if (retrieveTask(taskID, currentProject) == null)
+    {
+        System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
+        taskID = new KeyboardInput().Line();
+    }
+}
+while (this.retrieveTask(taskID, currentProject) == null) ;
 
         Task task = retrieveTask(taskID,currentProject );
         System.out.println("Enter new Name: ");
@@ -1409,33 +1419,35 @@ public class ProjectManagementTool {
         int option= new KeyboardInput().Int();
         if(option==1){
         updateTeamMemberName();
-        } else if(option==2){
+        }
+        else if(option==2){
             editTeamMemberID();
-        } else if(option==3){
+        }
+        else if(option==3){
             removeTeamMember();
         }
     }//Armin
 
+
     public void editTeamMemberID(){
 
-        Project currentProject = projects.get(0);
-        System.out.println("Type in id of the Team member you want to edit:");
-        System.out.println("OBS! editing ID to an existing ID will override it.");
-        String teamMemberID = new KeyboardInput().Line();
+            Project currentProject = projects.get(0);
+            System.out.println("Type in id of the Team member you want to edit:");
+        System.out.println("OBS! editing ID to an existing ID will override them.");
+            String teamMemberID = new KeyboardInput().Line();
 
-        teamMemberExists(currentProject, teamMemberID);
-        while(!teamMemberExists(currentProject, teamMemberID)) {
-            System.out.print("TeamMember does not exist or wrong ID. Enter correct ID again ");
-            teamMemberID = new KeyboardInput().Line();
-        }
+            teamMemberExists(currentProject, teamMemberID);
+            while(!teamMemberExists(currentProject, teamMemberID)) {
+                System.out.print("TeamMember does not exist or wrong ID. Enter correct ID again ");
+                teamMemberID = new KeyboardInput().Line();
+            }
 
-        TeamMember teamMember = retrieveTeamMember(currentProject, teamMemberID );
-        System.out.println("Enter new ID: ");
+            TeamMember teamMember = retrieveTeamMember(currentProject,teamMemberID );
+            System.out.println("Enter new ID: ");
 
-        String newID = new KeyboardInput().Line();
-        teamMember.setId(newID);
-        System.out.println("Team Member ID is successfully changed to: " + newID);
-    }//Armin
+            String newID = new KeyboardInput().Line();
+            teamMember.setId(newID);
+        }//Armin
 
 
     public void editTasks(){
@@ -1455,7 +1467,7 @@ public class ProjectManagementTool {
             removeTask();
         }
     }//Armin
-
+        
     public boolean tasksIDExixsts(Project project, String ID){//OSMAN
         if(project != null){
             for(int i = 0; i < project.getTasks().size(); i++){
@@ -1489,8 +1501,8 @@ public class ProjectManagementTool {
         System.out.println("Enter the id of a team member you wish to remove");
         String memberID = new KeyboardInput().Line();
         Project currentProject = projects.get(0);
-        
-        while (! teamMemberIDExists(currentProject, memberID)){
+        while (! teamMemberIDExists(currentProject, memberID))
+        {
             System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
             memberID = new KeyboardInput().Line();
         }
@@ -1507,35 +1519,39 @@ public class ProjectManagementTool {
         String taskID = new KeyboardInput().Line();
         Project currentProject = projects.get(0);
         do {
-            if (retrieveTask(taskID, currentProject) == null){
+            if (retrieveTask(taskID, currentProject) == null)
+            {
                 System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
                 taskID = new KeyboardInput().Line();
             }
-        }while (this.retrieveTask(taskID, currentProject) == null) ;
+        }
+        while (this.retrieveTask(taskID, currentProject) == null) ;
 
         Task task = retrieveTask(taskID,currentProject);
         if(taskID.equals(task.getId()))
             currentProject.getTasks().remove(task);
         System.out.println("Successfully removed.");
+
+
     }//Armin
 
     public void updateTeamMemberName() {
 
-        Project currentProject = projects.get(0);
-        System.out.println("Enter the id of a team member");
-        String memberID = new KeyboardInput().Line();
+            Project currentProject = projects.get(0);
+            System.out.println("Enter the id of a team member");
+            String memberID = new KeyboardInput().Line();
 
-        while (!teamMemberIDExists(currentProject, memberID))
-        {
-            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
-            memberID = new KeyboardInput().Line();
-        }
-        TeamMember member = retrieveTeamMember(currentProject, memberID);
-        System.out.println("Enter new Name: ");
+            while (!teamMemberIDExists(currentProject, memberID))
+            {
+                System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+                memberID = new KeyboardInput().Line();
+            }
+            TeamMember member = retrieveTeamMember(currentProject, memberID);
+            System.out.println("Enter new Name: ");
 
-        String name = new KeyboardInput().Line();
-        member.setName(name);
-        System.out.println("Team Member Name is successfully changed to: " + name);
+            String name = new KeyboardInput().Line();
+            member.setName(name);
+            System.out.println("Name of teamMember is now changed!");
 
     }//Armin
 
@@ -1574,16 +1590,22 @@ public class ProjectManagementTool {
 
 
     public Milestone retrieveMilestone(Project project, String id) {
-        if(project != null){
+        if(project != null)
+        {
             ArrayList<Milestone> milestones = project.getMilestones();
 
-            if(milestones != null){
-                for(int i = 0; i < milestones.size(); i++){
-                    if(milestones.get(i).getId().equals(id)){
+            if(milestones != null)
+            {
+                for(int i = 0; i < milestones.size(); i++)
+                {
+                    if(milestones.get(i).getId().equals(id))
+                    {
                         return milestones.get(i);
                     }
                 }
-            } else {
+            }
+            else
+            {
                 System.out.println("There are no registered Milestones");
             }
         }
@@ -1744,7 +1766,7 @@ public class ProjectManagementTool {
         }
         System.out.println();
         return foundTask;
-    }//NOT SURE maybe Armin
+    }//NOT SURE MAYBE ARMIN
 
     public Task checkTaskExistence(String taskID, Project project){ //this one do not print a message if not found
         Task foundTask = null;
