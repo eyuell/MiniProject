@@ -1556,24 +1556,30 @@ public void editProjectDuration() {
 
 
 
-
-
-    public void removeTeamMember() {
+       public void removeTeamMember() {
         System.out.println("Enter the id of a team member you wish to remove");
         String memberID = new KeyboardInput().Line();
         Project currentProject = projects.get(0);
+        
         while (! teamMemberIDExists(currentProject, memberID))
         {
-            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+            System.out.println("Team member does not exist or wrong ID. Enter correct ID again ");
+            System.out.println("----------------------------------------------------------------");
             memberID = new KeyboardInput().Line();
         }
 
         TeamMember member = retrieveTeamMember(currentProject, memberID);
+        System.out.println("The team member you have removed is "+member.getName());
+        System.out.println("----------------------------------------------------------------");
+
         if(memberID.equals(member.getId()))
             currentProject.getTeamMembers().remove(member);
-        System.out.println("Successfully removed.");
 
+        System.out.println("Successfully removed.");
+    pause();
     }//Armin
+        
+        
 
     public void removeTask(){
         System.out.println("Enter the id of the task you wish to remove");
@@ -1592,7 +1598,6 @@ public void editProjectDuration() {
         if(taskID.equals(task.getId()))
             currentProject.getTasks().remove(task);
         System.out.println("Successfully removed.");
-
 
     }//Armin
 
