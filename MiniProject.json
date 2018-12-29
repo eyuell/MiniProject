@@ -7,52 +7,67 @@
       "month": 11,
       "day": 15
     },
-    "duration": 0,
+    "finishDate": {
+      "year": 2019,
+      "month": 1,
+      "day": 20
+    },
+    "duration": 67,
+    "budget": 401175.0,
     "risks": [
       {
-        "riskName": "Lack of Trust",
-        "probability": 0.7,
+        "riskID": "1",
+        "riskName": "LACK OF TRUST",
+        "probability": 0.75,
         "impact": 7.0
       },
       {
-        "riskName": "Conflict and tension",
+        "riskID": "2",
+        "riskName": "CONFLICT AND TENSION",
         "probability": 0.8,
         "impact": 9.0
       },
       {
-        "riskName": "Lack of Commitment",
+        "riskID": "3",
+        "riskName": "LACK OF COMMITMENT",
         "probability": 0.9,
         "impact": 9.0
       },
       {
-        "riskName": "Weak Information sharing",
-        "probability": 0.6,
+        "riskID": "4",
+        "riskName": "WEAK INFORMATION SHARING",
+        "probability": 0.5,
         "impact": 7.0
       },
       {
-        "riskName": "Misalignment with team-Goal",
-        "probability": 0.7,
-        "impact": 7.0
+        "riskID": "5",
+        "riskName": "MISALIGNMENT WITH TEAM-GOAL",
+        "probability": 0.75,
+        "impact": 6.0
       },
       {
-        "riskName": "Lack of Team spirit",
+        "riskID": "6",
+        "riskName": "LACK OF TEAM SPIRIT",
         "probability": 0.6,
         "impact": 8.0
       },
       {
-        "riskName": "Lack of Organisation",
-        "probability": 0.6,
-        "impact": 7.0
+        "riskID": "7",
+        "riskName": "LACK OF ORGANISATION",
+        "probability": 0.55,
+        "impact": 5.5
       },
       {
-        "riskName": "Being out of schedule",
-        "probability": 0.7,
-        "impact": 8.0
+        "riskID": "8",
+        "riskName": "BEING OUT OF SCHEDULE",
+        "probability": 0.4,
+        "impact": 5.0
       },
       {
-        "riskName": "Lack of Knowledge",
-        "probability": 0.7,
-        "impact": 7.0
+        "riskID": "9",
+        "riskName": "LACK OF KNOWLEDGE",
+        "probability": 0.65,
+        "impact": 6.0
       }
     ],
     "milestones": [
@@ -109,9 +124,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 11
+          "day": 29
         },
-        "actualDuration": 26,
+        "actualDuration": 44,
         "plannedManpower": [
           {
             "manpower": {
@@ -2058,9 +2073,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 11
+          "day": 29
         },
-        "actualDuration": 16,
+        "actualDuration": 34,
         "plannedManpower": [
           {
             "manpower": {
@@ -2818,9 +2833,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 11
+          "day": 29
         },
-        "actualDuration": 16,
+        "actualDuration": 34,
         "plannedManpower": [
           {
             "manpower": {
@@ -3343,8 +3358,8 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3357,8 +3372,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3371,8 +3386,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3385,8 +3400,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3399,8 +3414,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3413,8 +3428,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3427,8 +3442,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3441,8 +3456,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3455,8 +3470,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3469,8 +3484,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3483,8 +3498,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3497,8 +3512,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3511,8 +3526,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3525,8 +3540,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3539,8 +3554,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "James Wagabaza",
+              "id": "2",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -3578,9 +3593,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 11
+          "day": 29
         },
-        "actualDuration": 16,
+        "actualDuration": 34,
         "plannedManpower": [
           {
             "manpower": {
@@ -4103,8 +4118,8 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4117,8 +4132,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4131,8 +4146,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4145,8 +4160,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4159,8 +4174,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4173,8 +4188,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4187,8 +4202,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4201,8 +4216,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4215,8 +4230,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4229,8 +4244,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4243,8 +4258,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4257,8 +4272,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4271,8 +4286,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4285,8 +4300,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4299,8 +4314,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Osman Osman",
+              "id": "3",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4338,9 +4353,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 11
+          "day": 29
         },
-        "actualDuration": 16,
+        "actualDuration": 34,
         "plannedManpower": [
           {
             "manpower": {
@@ -4863,8 +4878,8 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4877,8 +4892,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4891,8 +4906,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4905,8 +4920,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4919,8 +4934,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4933,8 +4948,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4947,8 +4962,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4961,8 +4976,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4975,8 +4990,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -4989,8 +5004,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5003,8 +5018,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5017,8 +5032,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5031,8 +5046,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5045,8 +5060,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5059,8 +5074,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5098,9 +5113,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 11
+          "day": 29
         },
-        "actualDuration": 16,
+        "actualDuration": 34,
         "plannedManpower": [
           {
             "manpower": {
@@ -5623,8 +5638,8 @@
         "actualTeamMembers": [
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5637,8 +5652,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5651,8 +5666,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5665,8 +5680,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5679,8 +5694,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5693,8 +5708,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5707,8 +5722,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5721,8 +5736,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5735,8 +5750,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5749,8 +5764,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5763,8 +5778,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5777,8 +5792,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5791,8 +5806,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5805,8 +5820,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
@@ -5819,8 +5834,8 @@
           },
           {
             "teamMember": {
-              "name": "Armin Ghoroghi",
-              "id": "1",
+              "name": "Eyuell Hailemichael",
+              "id": "5",
               "hourlyRate": 255.0,
               "qualification": "Software Developer"
             },
