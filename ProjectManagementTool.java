@@ -790,7 +790,6 @@ public void printSpecificTeamMember(){//Armin
     }//Armin
 
 
-//IF TEAM MEMBER DOES NOT EXIST, if no one is registered?
 public void printAllTeamMembers(){//Armin
     Project currentProject = projects.get(0);
     for(int i = 0; i < currentProject.getTeamMembers().size(); i++) {
