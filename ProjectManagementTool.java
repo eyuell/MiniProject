@@ -1,4 +1,4 @@
-﻿package MiniProject;
+package MiniProject;
 
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
