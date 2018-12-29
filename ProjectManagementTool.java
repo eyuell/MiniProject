@@ -751,54 +751,69 @@ public void printAllMilestones() {
         }
         }//Armin
 
-public void printAllProjects(){
-    for (int i = 0; i < projects.size(); i++) {
-        System.out.println(projects.get(i).getName());
+public void printAllProjects() {
+        System.out.println("Here is a List of all Current projects: ");
+        System.out.println("----------------------------------------------------------------");
+        for (int i = 0; i < projects.size(); i++) {
+            System.out.println("Project ID Assigned: "+projects.get(i).getProjectID());
+            System.out.println("Project name: "+projects.get(i).getName());
+            System.out.println("Project Start date: "+projects.get(i).getStartDate());
+            System.out.println("Project End date: "+projects.get(i).getFinishDate());
+            System.out.println("----------------------------------------------------------------");
+
+        }
     }
-}
 
 
 
-    public void printTeamMembers(){ //Armin
+   public void printTeamMembers() { //Armin
         System.out.println("Do you wish to print a specific or All team members? ");
         System.out.println("1. All team members");
         System.out.println("2. Specific team member");
+        System.out.println("---------------------------------");
 
-        int option= new KeyboardInput().Int();
-        if(option==1){
+        int option = new KeyboardInput().Int();
+        if (option == 1) {
             printAllTeamMembers();
-        }
-        else if(option==2){
+        } 
+       else if (option == 2) {
             printSpecificTeamMember();
         }
     }//Armin
 
-public void printSpecificTeamMember(){//Armin
-        Project currentProject = projects.get(0);
-        System.out.println("Enter the id of a team member");
-        String teamID = new KeyboardInput().Line();
 
-          while (! teamMemberIDExists(currentProject, teamID))
-          {
+    public void printSpecificTeamMember() {//Armin
+        Project currentProject = projects.get(0);
+        System.out.println("Enter the id of a team member: ");
+        String teamID = new KeyboardInput().Line();
+        System.out.println("----------------------------------------------------------------");
+
+        while (!teamMemberIDExists(currentProject, teamID)) {
             System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
             teamID = new KeyboardInput().Line();
+            System.out.println("----------------------------------------------------------------");
+
         }
 
-        TeamMember foundTeamMember = retrieveTeamMember(currentProject,teamID);
-        System.out.println(foundTeamMember.getName());
-
-    }//Armin
-
-
-public void printAllTeamMembers(){//Armin
-    Project currentProject = projects.get(0);
-    for(int i = 0; i < currentProject.getTeamMembers().size(); i++) {
-        System.out.println("Here is a list of all Team members currently registered: ");
-        System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
-    }
-
+        TeamMember foundTeamMember = retrieveTeamMember(currentProject, teamID);
+        System.out.println("Name: "+foundTeamMember.getName());
+        System.out.println("proffesion: "+foundTeamMember.getQualification());
+        System.out.println("Hourly salary: "+foundTeamMember.getHourlyRate());
+        System.out.println("----------------------------------------------------------------");
 
 }//Armin
+
+
+    public void printAllTeamMembers() {//Armin
+        Project currentProject = projects.get(0);
+            System.out.println("Here is a list of all Team members currently registered: ");
+            System.out.println("----------------------------------------------------------------");
+            for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
+                    System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
+                    System.out.println("Proffession: " + currentProject.getTeamMembers().get(i).getQualification());
+                    System.out.println("----------------------------------------------------------------");
+            }
+    }//Armin
 
 
     public void printPlannedAndActualSchedule(){
