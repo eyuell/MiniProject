@@ -1189,9 +1189,10 @@ public class ProjectManagementTool {
 
     }
 
+   
     public void monitorTimeSpent() {
-        Project CurrentProject = projects.get(0);
-        if (CurrentProject != null) {
+        Project currentProject = projects.get(0);
+        if (currentProject != null) {
             String choice = "";
             boolean error = true;
             do {
@@ -1204,14 +1205,14 @@ public class ProjectManagementTool {
                 }
             } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) || error = true);
             if (choice.equals("all")) {
-                ArrayList<Task> tasks = CurrentProject.getTasks();
+                ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
-                    for (Task OneTask : tasks) {
-                        System.out.println(OneTask);
-                        ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
+                    for (Task oneTask : tasks) {
+                        System.out.println(oneTask.getName());
+                        ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
                         if (allocations != null) {
-                            for (TeamMemberAllocation CurrentAllocation : allocations) {
-                                System.out.println(CurrentAllocation.getTeamMember().getId() + " has worked " + CurrentAllocation.getWorkHours() + " hours");
+                            for (TeamMemberAllocation currentAllocation : allocations) {
+                                System.out.println(currentAllocation.getTeamMember().getId() + " has worked " + CurrentAllocation.getWorkHours() + " hours");
                             }
                         }
                     }
@@ -1229,28 +1230,28 @@ public class ProjectManagementTool {
                     } catch (Exception ex) {
                         System.out.println("The id can't start with a number or be a single character");
                     }
-                    if (teamMemberExists(CurrentProject, memberId) = false) {
+                    if (teamMemberExists(currentProject, memberId) = false) {
                         System.out.println("Team member does not exist or wrong id.");
                     }
-                } while (error2 = true || teamMemberExists(CurrentProject, memberId) = false);
+                } while (error2 = true || teamMemberExists(currentProject, memberId) = false);
 
-                double HoursOnTask = 0;
-                double TotalHours = 0;
-                ArrayList<Task> tasks = CurrentProject.getTasks();
+                double hoursOnTask = 0;
+                double totalHours = 0;
+                ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
                     for (Task OneTask : tasks) {
                         ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
                         if (allocations != null) {
                             for (TeamMemberAllocation CurrentAllocation : allocations) {
                                 if (CurrentAllocation.getTeamMember().getId().equals(memberId)) {
-                                    HoursOnTask = CurrentAllocation.getWorkHours();
-                                    System.out.println("This member has worked " + HoursOnTask + "hours on " + OneTask);
-                                    TotalHours += HoursOnTask;
+                                    hoursOnTask = CurrentAllocation.getWorkHours();
+                                    System.out.println("This member has worked " + hoursOnTask + "hours on " + OneTask);
+                                    totalHours += hoursOnTask;
                                 }
                             }
                         }
                     }
-                    System.out.println("This member has worked " + TotalHours + "hours in total");
+                    System.out.println("This member has worked " + totalHours + "hours in total");
                 } else {
                     System.out.println("There are no tasks registered");
                 }
@@ -1259,7 +1260,8 @@ public class ProjectManagementTool {
             System.out.println("There are no projects registered");
         }
     }
-
+	
+	
     public void monitorParticipation(){
         HashMap<String, Double> participation = new HashMap<>();
 
