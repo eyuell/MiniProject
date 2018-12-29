@@ -1451,24 +1451,33 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
 
 
     public void editTeamMemberID(){
-
-            Project currentProject = projects.get(0);
-            System.out.println("Type in id of the Team member you want to edit:");
+        Project currentProject = projects.get(0);
+        
+        System.out.println("----------------------------------------------------------------");
         System.out.println("OBS! editing ID to an existing ID will override them.");
-            String teamMemberID = new KeyboardInput().Line();
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Type in id of the Team member you want to edit:");
+            
+        String teamMemberID = new KeyboardInput().Line();
 
-            teamMemberExists(currentProject, teamMemberID);
-            while(!teamMemberExists(currentProject, teamMemberID)) {
+           teamMemberIDExists(currentProject, teamMemberID);
+            while(!teamMemberIDExists(currentProject, teamMemberID)) {
                 System.out.print("TeamMember does not exist or wrong ID. Enter correct ID again ");
                 teamMemberID = new KeyboardInput().Line();
+                System.out.println("----------------------------------------------------------------");
             }
 
             TeamMember teamMember = retrieveTeamMember(currentProject,teamMemberID );
-            System.out.println("Enter new ID: ");
+        System.out.println("Your team member ID is currently : "+teamMember.getId());
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("Enter new ID: ");
 
-            String newID = new KeyboardInput().Line();
-            teamMember.setId(newID);
-        }//Armin
+        String newID = new KeyboardInput().Line();
+        teamMember.setId(newID);
+
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("You have now changed your ID to "+ teamMember.getId());
+    }//Armin
 
 
     public void editTasks(){
