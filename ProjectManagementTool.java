@@ -1581,9 +1581,11 @@ public void editProjectDuration() {
         
         
 
-    public void removeTask(){
+        public void removeTask(){
         System.out.println("Enter the id of the task you wish to remove");
         String taskID = new KeyboardInput().Line();
+        System.out.println("----------------------------------------------------------------");
+
         Project currentProject = projects.get(0);
         do {
             if (retrieveTask(taskID, currentProject) == null)
@@ -1595,10 +1597,14 @@ public void editProjectDuration() {
         while (this.retrieveTask(taskID, currentProject) == null) ;
 
         Task task = retrieveTask(taskID,currentProject);
+        System.out.println("The task you are removing is "+task.getName());
+        System.out.println("----------------------------------------------------------------");
+
         if(taskID.equals(task.getId()))
             currentProject.getTasks().remove(task);
         System.out.println("Successfully removed.");
-
+        
+        pause();
     }//Armin
 
     public void updateTeamMemberName() {
@@ -1606,19 +1612,25 @@ public void editProjectDuration() {
             Project currentProject = projects.get(0);
             System.out.println("Enter the id of a team member");
             String memberID = new KeyboardInput().Line();
+            System.out.println("----------------------------------------------------------------");
 
             while (!teamMemberIDExists(currentProject, memberID))
             {
                 System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
                 memberID = new KeyboardInput().Line();
+                System.out.println("----------------------------------------------------------------");
             }
+            
             TeamMember member = retrieveTeamMember(currentProject, memberID);
-            System.out.println("Enter new Name: ");
+            System.out.println("The team Member name is currently "+member.getName()+".");
+            System.out.println("----------------------------------------------------------------");
 
+            System.out.println("Enter new Name: ");
             String name = new KeyboardInput().Line();
             member.setName(name);
-            System.out.println("Name of teamMember is now changed!");
 
+            System.out.println("Name changed to "+ name);
+            pause();
     }//Armin
 
     public boolean teamMemberExists(Project project, String name){
