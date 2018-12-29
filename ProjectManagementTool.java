@@ -1512,27 +1512,64 @@ public class ProjectManagementTool {
     }
 
 
-    public void editProjectDuration() {//OSMAN
-        Project currentProject = projects.get(FIRST);
+    public void editProjectDuration() {// OSMAN
+		Project currentProject = projects.get(FIRST);
 
-        LocalDate projectStartDate;
-        LocalDate projectFinishDate;
-        long duration;
+		LocalDate projectStartDate;
+		LocalDate projectFinishDate;
+		long duration;
+		int option;
 
-        System.out.println("Enter the NEW Start date of the project: ");
-        projectStartDate = new DataEvaluator().readDate();
+		do {
+			System.out.println();
+			System.out.println("What do you want to change");
+			System.out.println("1.Project Start Date");
+			System.out.println("2.Project End Date");
+			System.out.println("3.Both");
+			System.out.println("Press 1, 2 or 3!!");
+			option = new KeyboardInput().Int();
+		} while (option != 1 || option != 2 || option != 3);
 
-        System.out.println("Enter the NEW Finish date of the project: ");
-        projectFinishDate = new DataEvaluator().readDate();
+		if (option == 1) {
+			System.out.println("Enter the NEW Start date of the project");
+			projectStartDate = new DataEvaluator().readDate();
 
-        duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+			currentProject.setStartDate(projectStartDate);
 
-        currentProject.setStartDate(projectStartDate);
-        currentProject.setFinishDate(projectFinishDate);
+			currentProject.setDuration(duration);
+			checkWithProjectTimes(currentProject);
 
-        currentProject.setDuration(duration);
-        checkWithProjectTimes(currentProject);
-    }
+		} else if (option == 2) {
+			System.out.println("Enter NEW Finish Date");
+			projectFinishDate = new DataEvaluator().readDate();
+
+			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+			currentProject.setFinishDate(projectFinishDate);
+
+			currentProject.setDuration(duration);
+			checkWithProjectTimes(currentProject);
+		} else if (option == 3) {
+
+			System.out.println("Enter the NEW Start date of the project: ");
+			projectStartDate = new DataEvaluator().readDate();
+
+			System.out.println("Enter the NEW Finish date of the project: ");
+			projectFinishDate = new DataEvaluator().readDate();
+
+			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+
+			currentProject.setStartDate(projectStartDate);
+			currentProject.setFinishDate(projectFinishDate);
+
+			currentProject.setDuration(duration);
+			checkWithProjectTimes(currentProject);
+
+		} else {
+			System.out.println("Invalid Option");
+		}
+
+	}
 
 
     public void removeTeamMember() {
@@ -1641,7 +1678,7 @@ public class ProjectManagementTool {
             }
         }
         return false;
-    }
+    }//Osman
 
 
     public Milestone retrieveMilestone(Project project, String id) {
@@ -1676,7 +1713,7 @@ public class ProjectManagementTool {
             }
         }
         return null;
-    }
+    }//Osman
 
     public int typeOfTask(){
         int STAND_ALONE = 1;
