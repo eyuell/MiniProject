@@ -3,6 +3,17 @@ package MiniProject;
 import java.util.ArrayList;
 
 public class RiskMatrix {
+    // Background
+    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m"; //"\033[42m" Green
+    public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m"; // Yellow
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m"; // Red
+
+    // Bold
+    public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
+
+    // Reset
+    public static final String RESET = "\033[0m";  // Text Reset
+
     public static final int REGISTER_RISK = 1;
     public static final int PRINT_RISKS = 2;
     public static final int EDIT_RISKS = 3;
@@ -11,7 +22,7 @@ public class RiskMatrix {
 
     private Project currentProject;
 
-    public RiskMatrix(Project currentProject){ //The risk matrix with a project
+    public RiskMatrix(Project currentProject){
         this.currentProject = currentProject;
     }
 
@@ -36,7 +47,7 @@ public class RiskMatrix {
         int loopCounter = 0;
 
         do {
-            loopCounter++; // to display the header once
+            loopCounter++;
             if (loopCounter == 1){
                 System.out.println("========= RISK MATRIX =========");
                 System.out.println();
@@ -80,15 +91,15 @@ public class RiskMatrix {
     public void registerRisk ( ){ //  this method handles risk registration
 
         if(currentProject != null){
-            String riskID = readRiskID ();
+            String riskID = readRiskID();
 
             String riskName = readRiskName();
 
-            System.out.println("Risk Probability (b/n 0.0 & 1.0) :");
+            System.out.println("Risk Probability (b/n 0.0 and 1.0) :");
             double probability = new KeyboardInput().positiveDouble();
             probability = new RiskEvaluator().probability(probability);
 
-            System.out.println("Risk Impact (b/n 0.0 & 10.0) :");
+            System.out.println("Risk Impact (b/n 0.0 and 10.0):");
             double impact = new KeyboardInput().positiveDouble();
             impact = new RiskEvaluator().impact(impact);
 
@@ -96,27 +107,34 @@ public class RiskMatrix {
         }
     }
 
-    public void printFunction (){ //display the risks 
+    public void printFunction (){
         int option;
-        final int PRINT_A_SPECIFIC_RISK = 1;
-        final int PRINT_ALL_REGISTERED_RISKS = 2;
-        final int PRINT_NUMBER_OF_REGISTERED_RISKS = 3;
-        final int QUIT_PRINT_FUNCTION = 4;
-        
+        final int PRINT_RISK_MATRIX = 1;
+        final int PRINT_A_SPECIFIC_RISK = 2;
+        final int PRINT_ALL_REGISTERED_RISKS = 3;
+        final int PRINT_NUMBER_OF_REGISTERED_RISKS = 4;
+        final int QUIT_PRINT_FUNCTION = 5;
         if(currentProject != null){
             ArrayList<Risk> risks = currentProject.getRisks();
             if(risks != null){
                 do {
                     System.out.println("SELECT FROM THE FOLLOWING OPTIONS.");
                     System.out.println();
-                    System.out.println("1. PRINT A SPECIFIC RISK.");
-                    System.out.println("2. PRINT ALL REGISTERED RISKS.");
-                    System.out.println("3. PRINT NUMBER OF REGISTERED RISKS.");
-                    System.out.println("4. QUIT PRINT FUNCTION.");
+                    System.out.println("1. PRINT RISK MATRIX ");
+                    System.out.println("2. PRINT A SPECIFIC RISK ");
+                    System.out.println("3. PRINT ALL REGISTERED RISKS ");
+                    System.out.println("4. DISPLAY NUMBER OF REGISTERED RISKS ");
+                    System.out.println("5. QUIT PRINT FUNCTION ");
                     System.out.println();
                     option = new KeyboardInput().positiveInt();
 
                     switch (option){
+
+                        case PRINT_RISK_MATRIX:
+                            printRiskMatrix();
+                            System.out.println("*************************************************************");
+                            break;
+
                         case PRINT_A_SPECIFIC_RISK:
                             printSpecificRisk();
                             System.out.println("*************************************************************");
@@ -140,7 +158,7 @@ public class RiskMatrix {
                             System.out.println("Enter a correct option.");
                             break;
                     }
-                    new ProjectManagementTool().pause(); //pausing before displaying the options
+                    new ProjectManagementTool().pause();
                 } while (option!=QUIT_PRINT_FUNCTION);
             } else {
                 System.out.println("There is no registered risk.");
@@ -150,7 +168,7 @@ public class RiskMatrix {
         }
     }
 
-    public void editRisk (){ //Editing Risk related informations
+    public void editRisk (){
         final int NAME = 1;
         final int PROBABILITY = 2;
         final int IMPACT = 3;
@@ -250,7 +268,7 @@ public class RiskMatrix {
                             System.out.println("Enter the right option");
                             break;
                     }
-                    new ProjectManagementTool().pause(); // pausing before displaying the options
+                    new ProjectManagementTool().pause();
                 } while (option != QUIT_EDIT);
             } else {
                 System.out.println("There is no registered risk.");
@@ -259,7 +277,7 @@ public class RiskMatrix {
             System.out.println("There is no registered project.");
         }
     }
-    
+
     public void deleteRisk(Risk foundRisk, Project project){ // this methods is handles the risk deletion functions
         if(project != null){
             final int YES = 1;
@@ -291,7 +309,7 @@ public class RiskMatrix {
         return null;
     }
 
-    public String readRiskID (){ // for new Risk ID
+    public String readRiskID (){// for new risk ID
         String riskID = "";
         if(currentProject != null){
             System.out.println("Enter new risk ID");
@@ -303,7 +321,7 @@ public class RiskMatrix {
         }
         return riskID;
     }
-    
+
     public String checkRiskID (){ // for existing risk ID
         String riskID = "";
         if(currentProject != null){
@@ -328,7 +346,7 @@ public class RiskMatrix {
         return riskID;
     }
 
-    public  String  readRiskName (){ // this methods handles all new name input requests.
+    public  String  readRiskName (){ // this methods handles all name input requests.
         System.out.println("Enter Risk Name:");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
@@ -344,7 +362,7 @@ public class RiskMatrix {
         return name;
     }
 
-    public String readRisk (){ // for existing Risk Name
+    public String readRisk (){ // for Existing risk names
         System.out.println("Enter Risk Name :");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
@@ -361,8 +379,110 @@ public class RiskMatrix {
         return null;
     }
 
-    public void printSpecificRisk (){ // print specific Risk by ID
+    public void printRiskMatrix(){
+        ArrayList<Risk> risks = currentProject.getRisks();
+        if(risks != null){
+            System.out.println("        IMPACT");
+            System.out.println("          ʌ");
+            System.out.println("          |");
+            System.out.print("          |");
+            for(int i = 25; i >= 0 ;i--){
+                System.out.println();
+                if(i == 23){
+                    System.out.print("Extensive |");
+                } else if (i == 18){
+                    System.out.print("   Major  |");
+                } else if (i == 13){
+                    System.out.print("  Medium  |");
+                } else if (i == 8) {
+                    System.out.print("   Minor  |");
+                } else if (i == 3){
+                    System.out.print("No Impact |");
+                } else {
+                    System.out.print("          |");
+                }
 
+                for(int j = 0; j < 60 ;j++){
+                    if(i > 20){
+                        System.out.print(ANSI_RED_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 15 && j < 37){
+                        System.out.print(ANSI_YELLOW_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 15 && j > 36){
+                        System.out.print(ANSI_RED_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 10 && j < 13){
+                        System.out.print(ANSI_GREEN_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 10 && j < 49){
+                        System.out.print(ANSI_YELLOW_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 10 && j > 48){
+                        System.out.print(ANSI_RED_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 5 && j < 25){
+                        System.out.print(ANSI_GREEN_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if(i > 5 && j > 24){
+                        System.out.print(ANSI_YELLOW_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    } else if (i <= 5){
+                        System.out.print(ANSI_GREEN_BACKGROUND);
+                        printMatrixField(i, j);
+                        System.out.print(RESET);
+                    }
+                }
+            }
+            System.out.println();
+            System.out.println("           -----------.-----------.-----------.-----------.-----------.----->");
+            System.out.println("              Highly     Unlikely   Possible      Likely      Very            PROBABILITY");
+            System.out.println("             Unlikely                                        Likely ");
+            System.out.println();
+            System.out.println();
+            System.out.println("                             LEGEND:                ");
+            System.out.println("                                " + ANSI_GREEN_BACKGROUND + "        " + RESET + " Low Severity (Acceptable)");
+            System.out.println("                                " + ANSI_YELLOW_BACKGROUND + "        " + RESET + " Medium Severity ");
+            System.out.println("                                " + ANSI_RED_BACKGROUND + "        " + RESET + " High Severity (Not Acceptable)");
+            System.out.println();
+            System.out.println("                                        * single Risk plot ");
+            System.out.println("                                        ℗ more than one Risk plot ");
+        }
+
+    }
+
+    public void printMatrixField(int i, int j){
+        int impact, prob;
+        int counter = 0;
+        ArrayList<Risk> risks = currentProject.getRisks();
+        for (Risk risk:risks) {
+            impact = (int) Math.round(risk.getImpact()/10.0 * 25.0);
+            if (impact == i){
+                prob = (int) Math.round(risk.getProbability() * 60.0);
+                if (prob == j){
+                    counter = counter + 1;
+                }
+            }
+        }
+
+        if(counter == 0){
+            System.out.print(" ");
+        } else if (counter == 1){
+            System.out.print(BLACK_BOLD + "*");
+        } else {
+            System.out.print(BLACK_BOLD + "℗");
+        }
+    }
+
+    public void printSpecificRisk (){
         String riskID = checkRiskID();
         Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
         int indent = foundRisk.getRiskName().length() + 3 ;
@@ -479,16 +599,16 @@ public class RiskMatrix {
                     switch (option) {
                         case PROBABILITY:
                             probabilityPercentage();
-                            System.out.println("****************************************");
+                            System.out.println("*************************************");
                             break;
 
                         case IMPACT:
                             impactPercentage();
-                            System.out.println("****************************************");
+                            System.out.println("*************************************");
                             break;
 
                         case QUIT:
-                            System.out.println("****************************************");
+                            System.out.println("*************************************");
                             break;
 
                         default:
@@ -512,10 +632,10 @@ public class RiskMatrix {
 
             if(foundRisk != null){
                 double foundProbability = foundRisk.getProbability();
-                double convertedProbability = foundProbability * maxPercentage;
+                double convertedProbability = (foundProbability/fixedProbability) * maxPercentage;
                 System.out.println("The risk " + foundRisk.getRiskName() + " has a probability of " + convertedProbability
                         + " %");
-            } else {
+            } else{
                 System.out.println("The risk name does not exist.");
             }
         }
@@ -531,10 +651,10 @@ public class RiskMatrix {
                 double foundImpact = foundRisk.getImpact();
                 double convertedImpact = (foundImpact/fixedImpact) * maxPercentage;
                 System.out.println("The risk "+ foundRisk.getRiskName() + " has an impact of "+ convertedImpact + " %");
-            } else{
+            } else {
                 System.out.println("The risk name does not exist");
             }
         }
     }
-    
+
 }
