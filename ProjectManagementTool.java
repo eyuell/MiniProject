@@ -1189,58 +1189,75 @@ public class ProjectManagementTool {
 
     }
 
-    public void monitorTimeSpent(){
-         Project currentProject = projects.get(FIRST);
-        if(currentProject != null) {
+    public void monitorTimeSpent() {
+        Project CurrentProject = projects.get(0);
+        if (CurrentProject != null) {
+            String choice = "";
+            boolean error = true;
             do {
-                System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
-                String choice = new KeyboardInput().Line();
-            }while (!choice.equals("all") && !choice.equals("specific"));
-            
-            if(choice.equals("all")){
-                ArrayList<Task> tasks = currentProject.getTasks();
-                if(tasks != null) {
+                try {
+                    System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
+                    choice = new KeyboardInput().Line();
+                    error = false;
+                } catch (Exception e) {
+                    System.out.println("The id can not start with a number or be a single character");
+                }
+            } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) || error = true);
+            if (choice.equals("all")) {
+                ArrayList<Task> tasks = CurrentProject.getTasks();
+                if (tasks != null) {
                     for (Task OneTask : tasks) {
-                        System.out.print(OneTask);
+                        System.out.println(OneTask);
                         ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
-                        if(allocations != null) {
-                            for(TeamMemberAllocation CurrentAllocation : allocations) {
-                                System.out.println(CurrentAllocation.getTeamMember().getId()+ " has worked "+CurrentAllocation.getWorkHours()+" hours");
+                        if (allocations != null) {
+                            for (TeamMemberAllocation CurrentAllocation : allocations) {
+                                System.out.println(CurrentAllocation.getTeamMember().getId() + " has worked " + CurrentAllocation.getWorkHours() + " hours");
                             }
                         }
                     }
-                }else {
+                } else {
                     System.out.println("There are no tasks registered");
                 }
-            }else {
-                listTeamMembers();
-                System.out.println("Enter the id of team member");
-                String memberId = new KeyboardInput().Line();
+            } else {
+                boolean error2 = true;
+                String memberId = "";
+                do {
+                    try {
+                        System.out.println("Enter the id of team member");
+                        memberId = new KeyboardInput().Line();
+                        error2 = false;
+                    } catch (Exception ex) {
+                        System.out.println("The id can't start with a number or be a single character");
+                    }
+                    if (teamMemberExists(CurrentProject, memberId) = false) {
+                        System.out.println("Team member does not exist or wrong id.");
+                    }
+                } while (error2 = true || teamMemberExists(CurrentProject, memberId) = false);
 
-                while (!teamMemberExists(currentProject, memberId)) {
-                    System.out.println("Team member does not exist or wrong id.Enter id again");
-                    memberId = new KeyboardInput().Line();
-                }
-            double HoursOnTask = 0;
-            double TotalHours = 0;
-            ArrayList<Task> tasks = currentProject.getTasks();
-            if (tasks != null) {
-                for (Task OneTask : tasks) {
-                    ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
-                    if (allocations != null) {
-                        for (TeamMemberAllocation CurrentAllocation : allocations) {
-                            if (CurrentAllocation.getTeamMember().getId().equals(memberId)) {
-                                HoursOnTask = CurrentAllocation.getWorkHours();
-                                System.out.println("This member has worked " + HoursOnTask + "hours on " + OneTask);
-                                TotalHours += HoursOnTask;
+                double HoursOnTask = 0;
+                double TotalHours = 0;
+                ArrayList<Task> tasks = CurrentProject.getTasks();
+                if (tasks != null) {
+                    for (Task OneTask : tasks) {
+                        ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
+                        if (allocations != null) {
+                            for (TeamMemberAllocation CurrentAllocation : allocations) {
+                                if (CurrentAllocation.getTeamMember().getId().equals(memberId)) {
+                                    HoursOnTask = CurrentAllocation.getWorkHours();
+                                    System.out.println("This member has worked " + HoursOnTask + "hours on " + OneTask);
+                                    TotalHours += HoursOnTask;
+                                }
                             }
                         }
                     }
+                    System.out.println("This member has worked " + TotalHours + "hours in total");
+                } else {
+                    System.out.println("There are no tasks registered");
                 }
-                System.out.println("This member has worked " + TotalHours + "hours in total");
             }
+        }else{
+            System.out.println("There are no projects registered");
         }
-        pause();
     }
 
     public void monitorParticipation(){
