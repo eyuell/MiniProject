@@ -384,54 +384,54 @@ public class RiskMatrix {
         if(risks != null){
             System.out.println("        IMPACT");
             System.out.println("          ʌ");
-            System.out.println("          |");
-            System.out.print("          |");
+            System.out.println("          │");
+            System.out.print("          │");
             for(int i = 25; i >= 0 ;i--){
                 System.out.println();
                 if(i == 23){
-                    System.out.print("Extensive |");
+                    System.out.print("Extensive │");
                 } else if (i == 18){
-                    System.out.print("   Major  |");
+                    System.out.print("   Major  │");
                 } else if (i == 13){
-                    System.out.print("  Medium  |");
+                    System.out.print("  Medium  │");
                 } else if (i == 8) {
-                    System.out.print("   Minor  |");
+                    System.out.print("   Minor  │");
                 } else if (i == 3){
-                    System.out.print("No Impact |");
+                    System.out.print("No Impact │");
                 } else {
-                    System.out.print("          |");
+                    System.out.print("          │");
                 }
 
-                for(int j = 0; j < 60 ;j++){
+                for(int j = 0; j < 120 ;j++){
                     if(i > 20){
                         System.out.print(ANSI_RED_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 15 && j < 37){
+                    } else if(i > 15 && j < 73){
                         System.out.print(ANSI_YELLOW_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 15 && j > 36){
+                    } else if(i > 15 && j > 72){
                         System.out.print(ANSI_RED_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 10 && j < 13){
+                    } else if(i > 10 && j < 25){
                         System.out.print(ANSI_GREEN_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 10 && j < 49){
+                    } else if(i > 10 && j < 97){
                         System.out.print(ANSI_YELLOW_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 10 && j > 48){
+                    } else if(i > 10 && j > 96){
                         System.out.print(ANSI_RED_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 5 && j < 25){
+                    } else if(i > 5 && j < 49){
                         System.out.print(ANSI_GREEN_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
-                    } else if(i > 5 && j > 24){
+                    } else if(i > 5 && j > 48){
                         System.out.print(ANSI_YELLOW_BACKGROUND);
                         printMatrixField(i, j);
                         System.out.print(RESET);
@@ -443,9 +443,8 @@ public class RiskMatrix {
                 }
             }
             System.out.println();
-            System.out.println("           -----------.-----------.-----------.-----------.-----------.----->");
-            System.out.println("              Highly     Unlikely   Possible      Likely      Very            PROBABILITY");
-            System.out.println("             Unlikely                                        Likely ");
+            System.out.println("           ────────────────────────.───────────────────────.───────────────────────.───────────────────────.───────────────────────.──────>");
+            System.out.println("          │     Highly Unlikely    │       Unlikely        │       Possible        │         Likely        │      Very Likely      │       PROBABILITY");
             System.out.println();
             System.out.println();
             System.out.println("                             LEGEND:                ");
@@ -466,7 +465,7 @@ public class RiskMatrix {
         for (Risk risk:risks) {
             impact = (int) Math.round(risk.getImpact()/10.0 * 25.0);
             if (impact == i){
-                prob = (int) Math.round(risk.getProbability() * 60.0);
+                prob = (int) Math.round(risk.getProbability() * 120.0);
                 if (prob == j){
                     counter = counter + 1;
                 }
