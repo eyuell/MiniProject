@@ -1405,9 +1405,10 @@ public void printAllCosts(){//Armin
         }
     }//HAMID
 
-     public void editTaskName(){
+    public void editTaskName(){
         System.out.println("Enter the id of task you wish to rename: ");
         String taskID = new KeyboardInput().Line();
+        System.out.println("----------------------------------------------------------------");
         Project currentProject = projects.get(0);
 do
     {
@@ -1415,14 +1416,20 @@ do
     {
         System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
         taskID = new KeyboardInput().Line();
+        System.out.println("----------------------------------------------------------------");
     }
 }
 while (this.retrieveTask(taskID, currentProject) == null) ;
 
         Task task = retrieveTask(taskID,currentProject );
+        
+        System.out.println(" The name of task is currently: "+task.getName());
+        System.out.println("----------------------------------------------------------------");
         System.out.println("Enter new Name: ");
+        
         String name = new KeyboardInput().Line();
         task.setName(name);
+        System.out.println("The name is now set to: "+task.getName()+".");
 
     }//Armin
 
