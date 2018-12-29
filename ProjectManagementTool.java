@@ -1,4 +1,4 @@
-package MiniProject;
+﻿package MiniProject;
 
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
@@ -1336,7 +1336,7 @@ public void printAllCosts(){//Armin
                     break;
 
                 case PROJECT_DURATION:
-                    //editProjectDuration();
+                    editProjectDuration();
                     break;
 
 
@@ -1495,6 +1495,37 @@ while (this.retrieveTask(taskID, currentProject) == null) ;
         String newID = new KeyboardInput().Line();
         task.setId(newID);
     }
+
+
+
+public void editProjectDuration() {
+    	 
+     
+         Project currentProject = projects.get(0);
+         
+         LocalDate projectStartDate;
+         LocalDate projectFinishDate;
+         long duration;
+         
+             System.out.println("Enter the NEW Start date of the project: ");
+             projectStartDate = new DataEvaluator().readDate();
+
+             System.out.println("Enter the NEW Finish date of the project: ");
+             projectFinishDate = new DataEvaluator().readDate();
+
+             duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+             
+             currentProject.setStartDate(projectStartDate);
+             currentProject.setFinishDate(projectFinishDate);
+             
+             currentProject.setDuration(duration);
+         }
+
+
+
+
+
+
 
     public void removeTeamMember() {
         System.out.println("Enter the id of a team member you wish to remove");
