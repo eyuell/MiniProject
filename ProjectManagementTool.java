@@ -34,6 +34,8 @@ public class ProjectManagementTool {
     public static final String RED_BACKGROUND = "\033[41m";    // RED
     public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
 
+    private static final int FIRST = 0;
+
     //the system has projects but we work on one project.
     // only for json we use the object
     private ArrayList<Project> projects;
@@ -256,7 +258,7 @@ public class ProjectManagementTool {
         System.out.println();
         System.out.println("Project '" + projectName + "' is registered successfully !");
         pause();
-    }
+    }//Eyuell & Hamid
 
     //method to register tasks and Milestones with error handling
     public void registerTasksAndMilestones(){
@@ -324,7 +326,7 @@ public class ProjectManagementTool {
             System.out.println("A project does not exist to add tasks on ");
         }
         pause();
-    }
+    }//Eyuell
 
     //register team members with error handeling
     public void registerTeamMember(){
@@ -368,7 +370,7 @@ public class ProjectManagementTool {
             System.out.println("The project does not exist");
         }
         pause();
-    }
+    }//Eyuell
 
     //assign start, finish and duration of tasks
     public void assignTime(){
@@ -482,7 +484,7 @@ public class ProjectManagementTool {
             System.out.println("The project does not exist");
         }
         pause();
-    }
+    }//Eyuell
 
     public void assignManPower(){
 
@@ -525,7 +527,7 @@ public class ProjectManagementTool {
             System.out.println("There are no projects to show");
         }
         pause();
-    }
+    }//Eyuell
 
     public void registerActualData(){
         LocalDate today = LocalDate.now();
@@ -632,7 +634,7 @@ public class ProjectManagementTool {
             System.out.println("There are no projects to show ");
         }
         pause();
-    }
+    }//Eyuell
 
 
     public void printTasks(){
@@ -1003,7 +1005,7 @@ public class ProjectManagementTool {
             System.out.println("There are no projects to show");
         }
         pause();
-    }
+    }//Eyuell
 
 
     public void monitorCosts(){//Armin
@@ -1191,7 +1193,7 @@ public class ProjectManagementTool {
 
    
     public void monitorTimeSpent() {
-        Project currentProject = projects.get(0);
+        Project currentProject = projects.get(FIRST);
         if (currentProject != null) {
             String choice = "";
             boolean error = true;
@@ -1315,7 +1317,7 @@ public class ProjectManagementTool {
             System.out.println("There is no registered project");
             pause();
         }
-    }
+    }//James
 
       public void editInfo(){
         int option;
@@ -1658,7 +1660,7 @@ public class ProjectManagementTool {
             }
         }
         return false;
-    }
+    }//Eyuell
 
 
     public boolean projectExists (String id){
@@ -1730,14 +1732,14 @@ public class ProjectManagementTool {
         } while ((taskChoice != STAND_ALONE && taskChoice != DEPENDANT));
 
         return taskChoice;
-    }
+    }//Eyuell
 
     public void updateDates(Task task, LocalDate plannedStrart, LocalDate plannedFinish, LocalDate actualStart, LocalDate actualFinish){
         task.setPlannedStart(plannedStrart);
         task.setPlannedFinish(plannedFinish);
         task.setActualStart(actualStart);
         task.setActualFinish(actualFinish);
-    }
+    }//Eyuell
 
     public void checkWithProjectTimes(Project project){
         LocalDate projectStart = project.getStartDate();
@@ -1770,7 +1772,7 @@ public class ProjectManagementTool {
 
         long duration = ChronoUnit.DAYS.between(project.getStartDate(), project.getFinishDate()) + 1;
         project.setDuration(duration);
-    }
+    }//Eyuell
 
     public int readLengthOfTask(){
         int BY_DURATION = 1;
@@ -1785,13 +1787,13 @@ public class ProjectManagementTool {
         } while ((taskChoice != BY_DURATION && taskChoice != BY_FINISH_DATE));
 
         return taskChoice;
-    }
+    }//Eyuell
 
     public String readConnectivityType(){
         System.out.print("Which type of connectivity does the task has? Is it SS, FS, SF, or FF ? ");
         String connectivityType = new KeyboardInput().Line();
         return new DataEvaluator().connectivityType(connectivityType);
-    }
+    }//Eyuell
 
     public String readNewTaskID(Project project){
         String taskID;
@@ -1808,7 +1810,7 @@ public class ProjectManagementTool {
         }while(repeatLoop);
 
         return taskID;
-    }
+    }//Eyuell
 
     public String readNewMilestoneID(Project project){
         String milestoneID;
@@ -1825,7 +1827,7 @@ public class ProjectManagementTool {
         } while(repeatLoop);
 
         return milestoneID;
-    }
+    }//Eyuell
 
     public String readExistingTaskID(Project project){
         String taskID;
@@ -1843,7 +1845,7 @@ public class ProjectManagementTool {
         } while(repeatLoop);
 
         return taskID;
-    }
+    }//Eyuell
 
     public Task retrieveTask(String taskID, Project project){
         Task foundTask = null;
@@ -1996,7 +1998,7 @@ public class ProjectManagementTool {
             complete = true;
         }
         return complete;
-    }
+    }//Eyuell
 
     public double totalPlannedHours(Project foundProject){
         double totalHours = 0.0;
