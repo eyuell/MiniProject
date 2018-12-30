@@ -791,30 +791,43 @@ public class ProjectManagementTool {
     }//Armin
 
 
-    public void printSpecificTeamMember() {//Armin
-        Project currentProject = projects.get(FIRST);
+    public boolean printSpecificTeamMember() {//Armin
+        Project currentProject = projects.get(0);
         listTeamMembers();
-        System.out.println("Enter the id of a team member: ");
-        String teamID = new KeyboardInput().Line();
-        System.out.println("----------------------------------------------------------------");
+        String teamID = "";
 
-        while (!teamMemberIDExists(currentProject, teamID)) {
-            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
-            teamID = new KeyboardInput().Line();
-            System.out.println("----------------------------------------------------------------");
+        if (currentProject != null) {
+            boolean error;
+            for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
+                do {
+                    try {
+                        System.out.println("Enter the id of a team member: ");
+                        teamID = new KeyboardInput().Line();
+                        System.out.println("----------------------------------------------------------------");
 
+                        TeamMember foundTeamMember = retrieveTeamMember(currentProject, teamID);
+                        System.out.println("Name: " + foundTeamMember.getName());
+                        System.out.println("proffesion: " + foundTeamMember.getQualification());
+                        System.out.println("Hourly salary: " + foundTeamMember.getHourlyRate());
+                        System.out.println("----------------------------------------------------------------");
+                        pause();
+
+                        return false;
+
+                    } catch (Exception e) {
+                        System.out.println("Input not a String or member does not exist with that ID");
+                        System.out.println("----------------------------------------------------------------");
+
+                        error=true;
+                    }
+                } while (error == true);
+            }
         }
-
-        TeamMember foundTeamMember = retrieveTeamMember(currentProject, teamID);
-        System.out.println("Name: "+foundTeamMember.getName());
-        System.out.println("proffesion: "+foundTeamMember.getQualification());
-        System.out.println("Hourly salary: "+foundTeamMember.getHourlyRate());
-        System.out.println("----------------------------------------------------------------");
-
+        return false;
     }//Armin
 
 
-    public void printAllTeamMembers() {//Armin
+    public void printAllTeamMembers() {
         Project currentProject = projects.get(FIRST);
         System.out.println("Here is a list of all Team members currently registered: ");
         System.out.println("----------------------------------------------------------------");
