@@ -441,6 +441,7 @@ public class RiskMatrix {
                         System.out.print(RESET);
                     }
                 }
+                sideLegend(i);
             }
             System.out.println();
             System.out.println("           ────────────────────────.───────────────────────.───────────────────────.───────────────────────.───────────────────────.──────>");
@@ -454,6 +455,7 @@ public class RiskMatrix {
             System.out.println();
             System.out.println("                                        * single Risk plot ");
             System.out.println("                                        ℗ more than one Risk plot ");
+            System.out.println("                             Side Legends RiskID: (probability, Impact) ");
         }
 
     }
@@ -481,6 +483,25 @@ public class RiskMatrix {
         }
     }
 
+    public void sideLegend(int index){
+        int impact;
+        int counter = 0;
+        ArrayList<Risk> risks = currentProject.getRisks();
+        for (Risk risk:risks) {
+            impact = (int) Math.round(risk.getImpact()/10.0 * 25.0);
+            if (impact == index){
+                if(counter == 0){
+                    System.out.print("  ID " + risk.getRiskID() + ": (" +
+                            risk.getProbability() + ", " + risk.getImpact() + ")");
+                }else {
+                    System.out.print(" , " + risk.getRiskID() + ": (" +
+                            risk.getProbability() + ", " + risk.getImpact() + ")");
+                }
+                counter = counter + 1;
+            }
+        }
+    }
+    
     public void printSpecificRisk (){
         String riskID = checkRiskID();
         Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
