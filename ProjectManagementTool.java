@@ -775,20 +775,39 @@ public class ProjectManagementTool {
     }
 
 
-    public void printTeamMembers() { //Armin
-        System.out.println("Do you wish to print a specific or All team members? ");
-        System.out.println("1. All team members");
-        System.out.println("2. Specific team member");
-        System.out.println("---------------------------------");
+   public void printTeamMembers() {
+      int option;
+      boolean input = true;
 
-        int option = new KeyboardInput().Int();
-        if (option == 1) {
-            printAllTeamMembers();
-        } else if (option == 2) {
-            printSpecificTeamMember();
-        }
-        pause();
+      do {
+          while (input) {
+              System.out.println("Do you wish to print a specific or All team members? ");
+              System.out.println("1. All team members");
+              System.out.println("2. Specific team member");
+              System.out.println("3. Return");
+              System.out.println("---------------------------------");
+              option = new KeyboardInput().Int();
+
+              if (option == 1) {
+                  printAllTeamMembers();
+                  input = false;
+
+              } else if (option == 2) {
+                  printSpecificTeamMember();
+                  input = false;
+
+              } else if(option==3){
+                  System.out.println();
+                  input=false;
+
+              }else{
+                  System.out.println("Options are 1, 2 or 3.");
+                  input=true;
+              }
+          }
+      }while (input==true);
     }//Armin
+
 
 
     public boolean printSpecificTeamMember() {//Armin
