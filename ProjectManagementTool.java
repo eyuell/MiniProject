@@ -751,32 +751,63 @@ public class ProjectManagementTool {
         }
 }//Armin
 
-    public void printMileStones(){
-        System.out.println("Do you wish to print: ");
-        System.out.println("1. All Milestones");
-        System.out.println("2. Specific Milestone");
+        public void printMileStones() {
+        int option;
+        boolean input = true;
+        do {
+            while (input) {
+                System.out.println("Do you wish to print: ");
+                System.out.println("1. All Milestones");
+                System.out.println("2. Specific Milestone");
+                System.out.println("3. Return");
+                option = new KeyboardInput().Int();
 
-        int option=new KeyboardInput().Int();
+                if (option == 1){
+                printAllMilestones();
+                input = false;
 
-        if (option==1){
-            printAllMilestones();
-        }
-        if (option==2){
-            printSpecificMileStones();
-        }
+                } else if(option == 2){
+                printSpecificMileStones();
+                input = false;
+
+                } else {
+                    System.out.println("Options are 1, 2 or 3.");
+                    System.out.println("----------------------------------------------------------------");
+                    input = true;
+                }
+            }
+        }while (input == true) ;
     }//Armin
 
 
-    public void printSpecificMileStones(){
+    public void printSpecificMileStones() {
         Project currentProject = projects.get(FIRST);
         listMilestones();
-        System.out.println("Enter the id of a Milestone you wish to print");
-        String milestoneID = new KeyboardInput().Line();
+        String teamID = "";
 
-        Milestone foundMilestone = retrieveMilestone(currentProject,milestoneID);
-        System.out.println("Name: "+foundMilestone.getName());
-        System.out.println("milestone date: " + foundMilestone.getDate());
+        if (currentProject != null) {
+            boolean error;
+            String milestoneID="";
+            do {
+                try {
+                    System.out.println("Enter the id of a Milestone you wish to print");
+                    milestoneID = new KeyboardInput().Line();
+                    System.out.println("----------------------------------------------------------------");
 
+                    Milestone foundMilestone = retrieveMilestone(currentProject, milestoneID);
+                    System.out.println("Name: " + foundMilestone.getName());
+                    System.out.println("milestone date: " + foundMilestone.getDate());
+                    System.out.println("----------------------------------------------------------------");
+                    error = false;
+
+                }catch (Exception e){
+                    System.out.println("Input integer.");
+                    System.out.println("----------------------------------------------------------------");
+                    error = true;
+                }
+
+            }while (error==true);
+        }pause();
     }//Armin
 
 
@@ -787,9 +818,10 @@ public class ProjectManagementTool {
             for (int i = 0; i < milestones.size(); i++) {
                 System.out.println("Name: "+milestones.get(i).getName());
                 System.out.println("Milestone Date: "+milestones.get(i).getDate());
-                System.out.println("*************************************");
+                System.out.println("----------------------------------------------------------------");
             }
         }
+        pause();
     }//Armin
 
 
