@@ -647,6 +647,7 @@ public class ProjectManagementTool {
         } else if(option==2){
             printSpecifitTaskMilestones();
         }
+        pause();
     }//Armin
 
 
@@ -757,6 +758,7 @@ public class ProjectManagementTool {
         if (option==2){
             System.out.println("HAMID METHOD HERE!!!");
         }
+        pause();
     }//Armin
 
     public void printAllProjects() {
@@ -785,6 +787,7 @@ public class ProjectManagementTool {
         } else if (option == 2) {
             printSpecificTeamMember();
         }
+        pause();
     }//Armin
 
 
@@ -1199,7 +1202,7 @@ public class ProjectManagementTool {
             boolean error = true;
             do {
                 try {
-                    System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
+                    System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific)");
                     choice = new KeyboardInput().Line();
                     error = false;
                 } catch (Exception e) {
@@ -1261,6 +1264,7 @@ public class ProjectManagementTool {
         }else{
             System.out.println("There are no projects registered");
         }
+        pause();
     }
 	
 	
@@ -1395,6 +1399,7 @@ public class ProjectManagementTool {
             project.setProjectID(newId);
             System.out.println("Project ID is successfully changed to: " + newId);
         }
+        pause();
     }//HAMID
 
     public void editTaskName(){
@@ -1437,6 +1442,7 @@ public class ProjectManagementTool {
         else if(option==3){
             removeTeamMember();
         }
+        pause();
     }//Armin
 
 
@@ -1483,6 +1489,7 @@ public class ProjectManagementTool {
         } else if(option==3){
             removeTask();
         }
+        pause();
     }//Armin
         
     public boolean tasksIDExixsts(Project project, String ID){//OSMAN
@@ -1572,7 +1579,7 @@ public class ProjectManagementTool {
 		} else {
 			System.out.println("Invalid Option");
 		}
-
+        pause();
 	}
 
 
