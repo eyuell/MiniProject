@@ -1391,7 +1391,7 @@ public class ProjectManagementTool {
             // typing the integer option.
 
             switch (option) {
-                case TASKS:   //(DONE)
+                case TASKS: 
                     editTasks();
                     break;
 
@@ -1400,7 +1400,7 @@ public class ProjectManagementTool {
                     break;
 
 
-                case TEAM_MEMBERS: //
+                case TEAM_MEMBERS: 
                     editTeamMember();
                     break;
 
@@ -1451,30 +1451,41 @@ public class ProjectManagementTool {
         pause();
     }//HAMID
 
+	
     public void editTaskName(){
+        Project currentProject = projects.get(0);
         listTasks();
-        System.out.println("Enter the id of task you wish to rename: ");
-        String taskID = new KeyboardInput().Line();
-        System.out.println("----------------------------------------------------------------");
-        Project currentProject = projects.get(FIRST);
-        do {
-            if (retrieveTask(taskID, currentProject) == null){
-                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
-                taskID = new KeyboardInput().Line();
-                System.out.println("----------------------------------------------------------------");
-            }
-        } while (this.retrieveTask(taskID, currentProject) == null) ;
-
-        Task task = retrieveTask(taskID,currentProject );
         
-        System.out.println(" The name of task is currently: "+task.getName());
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("Enter new Name: ");
-        
-        String name = new KeyboardInput().Line();
-        task.setName(name);
-        System.out.println("The name is now set to: "+task.getName()+".");
+        if (currentProject!=null) {
+            boolean error;
+            String taskID = "";
+            Task task = retrieveTask(taskID, currentProject);
+            do {
+                try {
+                    System.out.println("Enter the id of task you wish to rename: ");
+                    taskID = new KeyboardInput().Line();
+                    System.out.println("----------------------------------------------------------------");
+                    task = retrieveTask(taskID, currentProject);
+                    
+                    if(task.getId()!=null)
+                        System.out.println(" The name of task is currently: " + task.getName());
+                        System.out.println("----------------------------------------------------------------");
+                        System.out.println("Enter new Name: ");
 
+                        String name = new KeyboardInput().Line();
+                        task.setName(name);
+                        System.out.println("The name is now set to: " + task.getName() + ".");
+			System.out.println("---------------------------------------------------------------");
+                        error = false;
+                        
+                } catch (Exception e) {
+                    System.out.println("ID must be inputted as a number.");
+                    System.out.println("---------------------------------------------------------------");
+                    error=true;
+                }
+                
+            } while (error == true);
+        }
     }//Armin
 
     public void editTeamMember(){
