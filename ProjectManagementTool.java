@@ -1636,21 +1636,45 @@ public class ProjectManagementTool {
     }//Armin
 
 
+	
     public void editTasks(){
-        System.out.println("What do you wish to edit?");
-        System.out.println("1. Name ");
-        System.out.println("2. ID");
-        System.out.println("3. Remove Task");
-        int option= new KeyboardInput().Int();
-        if(option==1){
-            editTaskName();
-        } else if(option == 2){
-            editTaskID();//OSMAN
-        } else if(option==3){
-            removeTask();
-        }
-        pause();
+        int option;
+        boolean input = true;
+        do {
+            while (input) {
+                System.out.println("What do you wish to edit?");
+                System.out.println("1. Name ");
+                System.out.println("2. ID");
+                System.out.println("3. Remove Task");
+                System.out.println("4. Return");
+                option = new KeyboardInput().Int();
+		System.out.println("----------------------------------------------------------------");
+
+                if (option == 1) {
+                    editTaskName();
+                    input = false;
+
+                } else if (option == 2) {
+                    editTaskID();//OSMAN
+                    input = false;
+
+                } else if (option == 3) {
+                    removeTask();
+                    input = false;
+
+                } else if (option == 4) {
+                    System.out.println(" ");
+                    input = false;
+
+                } else {
+                    System.out.println("Option " + option + " is not valid.");
+                    System.out.println(" ");
+                    input = true;
+                }
+            }
+        }while (input == true) ;
     }//Armin
+
         
     public boolean tasksIDExixsts(Project project, String ID){//OSMAN
         if(project != null){
