@@ -33,6 +33,8 @@ public class ProjectManagementTool {
     // Background
     public static final String RED_BACKGROUND = "\033[41m";    // RED
     public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
     private static final int FIRST = 0;
 
@@ -828,7 +830,7 @@ public class ProjectManagementTool {
 
 
     public boolean printSpecificTeamMember() {//Armin
-        Project currentProject = projects.get(0);
+        Project currentProject = projects.get(FIRST);
         listTeamMembers();
         String teamID = "";
 
@@ -918,10 +920,10 @@ public class ProjectManagementTool {
                 long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
                 //
                 for(int i = 0;i < (smallestIndent + 5); i++){//horizontal line1
-                    System.out.print("_");
+                    System.out.print(WHITE_BACKGROUND + "_" + RESET);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
-                    System.out.print("____________");
+                    System.out.print(WHITE_BACKGROUND + "____________" + RESET);
                 }
                 System.out.println();
                 printEmpty(smallestIndent);
@@ -942,10 +944,10 @@ public class ProjectManagementTool {
                 }
                 System.out.println();
                 for(int i= 0;i<(smallestIndent + 5);i++){//horizontal line1
-                    System.out.print("_");
+                    System.out.print(WHITE_BACKGROUND + "_" + RESET);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
-                    System.out.print("____________");
+                    System.out.print(WHITE_BACKGROUND + "____________" + RESET);
                 }
                 System.out.println();
                 System.out.println();
@@ -966,7 +968,7 @@ public class ProjectManagementTool {
                         for(long m = 0; m < currentTask.getPlannedDuration(); m++){
                             LocalDate taskDates = currentTask.getPlannedStart().plusDays(m);
                             if(day.equals(taskDates)){
-                                System.out.print(BLUE + "|==========|" + RESET);//12 pixels per day ?
+                                System.out.print(ANSI_BLUE_BACKGROUND + "|==========|" + RESET);//12 pixels per day ?
                                 print = false;
                             }
                         }
@@ -992,7 +994,7 @@ public class ProjectManagementTool {
                             for(int m = 0; m < actualDuration; m++){
                                 LocalDate taskDates = thisStart.plusDays(m);
                                 if(day.equals(taskDates)){
-                                    System.out.print(RED + "|**********|" + RESET);//12 pixels per day ?
+                                    System.out.print(ANSI_RED_BACKGROUND + "|**********|" + RESET);//12 pixels per day ?
                                     print = false;
                                 }
                             }
@@ -1033,21 +1035,21 @@ public class ProjectManagementTool {
                 }
 
                 for(int i= 0;i<(smallestIndent + 5);i++){//horizontal line1
-                    System.out.print("_");
+                    System.out.print(WHITE_BACKGROUND + "_" + RESET);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
-                    System.out.print("____________");
+                    System.out.print(WHITE_BACKGROUND + "____________" + RESET);
                 }
                 //Legend
                 System.out.println();
                 System.out.println("                 Legend:");
-                System.out.println(BLUE + "                     |==========|"+ RESET + " : Planned Tasks" + RESET);
+                System.out.println("                     " + ANSI_BLUE_BACKGROUND + "|==========|" + RESET + " : Planned Tasks" + RESET);
                 System.out.println();
-                System.out.println(RED + "                     |**********|"+ RESET + " : Actual Tasks" + RESET);
+                System.out.println("                     " + ANSI_RED_BACKGROUND+ "|**********|" + RESET + " : Actual Tasks" + RESET);
 
                 if(milestones1 != null){
                     System.out.println();
-                    System.out.println("                     " + RED_BACKGROUND +"|##########|" + RESET + " : Milestones");
+                    System.out.println("                     " + RED_BACKGROUND + "|##########|" + RESET + " : Milestones");
                 }
                 //
             }else{
@@ -1453,7 +1455,7 @@ public class ProjectManagementTool {
 
 	
     public void editTaskName(){
-        Project currentProject = projects.get(0);
+        Project currentProject = projects.get(FIRST);
         listTasks();
         
         if (currentProject!=null) {
@@ -1486,6 +1488,7 @@ public class ProjectManagementTool {
                 
             } while (error == true);
         }
+        pause();
     }//Armin
 
     public void editTeamMember(){
