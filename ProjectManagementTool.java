@@ -1205,7 +1205,7 @@ public class ProjectManagementTool {
                 } catch (Exception e) {
                     System.out.println("The id can not start with a number or be a single character");
                 }
-            } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) || error = true);
+            } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) && ! error );
             if (choice.equals("all")) {
                 ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
@@ -1214,7 +1214,7 @@ public class ProjectManagementTool {
                         ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
                         if (allocations != null) {
                             for (TeamMemberAllocation currentAllocation : allocations) {
-                                System.out.println(currentAllocation.getTeamMember().getId() + " has worked " + CurrentAllocation.getWorkHours() + " hours");
+                                System.out.println(currentAllocation.getTeamMember().getId() + " has worked " + currentAllocation.getWorkHours() + " hours");
                             }
                         }
                     }
@@ -1232,22 +1232,22 @@ public class ProjectManagementTool {
                     } catch (Exception ex) {
                         System.out.println("The id can't start with a number or be a single character");
                     }
-                    if (teamMemberExists(currentProject, memberId) = false) {
+                    if (! teamMemberExists(currentProject, memberId)) {
                         System.out.println("Team member does not exist or wrong id.");
                     }
-                } while (error2 = true || teamMemberExists(currentProject, memberId) = false);
+                } while (!error2  && ! teamMemberExists(currentProject, memberId));
 
                 double hoursOnTask = 0;
                 double totalHours = 0;
                 ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
-                    for (Task OneTask : tasks) {
-                        ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
+                    for (Task oneTask : tasks) {
+                        ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
                         if (allocations != null) {
-                            for (TeamMemberAllocation CurrentAllocation : allocations) {
-                                if (CurrentAllocation.getTeamMember().getId().equals(memberId)) {
-                                    hoursOnTask = CurrentAllocation.getWorkHours();
-                                    System.out.println("This member has worked " + hoursOnTask + "hours on " + OneTask);
+                            for (TeamMemberAllocation currentAllocation : allocations) {
+                                if (currentAllocation.getTeamMember().getId().equals(memberId)) {
+                                    hoursOnTask = currentAllocation.getWorkHours();
+                                    System.out.println("This member has worked " + hoursOnTask + "hours on " + oneTask);
                                     totalHours += hoursOnTask;
                                 }
                             }
@@ -1393,7 +1393,7 @@ public class ProjectManagementTool {
             System.out.println("what is the new id that you want put ");
             String newId = new KeyboardInput().Line();
             project.setProjectID(newId);
-            System.out.println("Project ID is successfully changed to: " + newID);
+            System.out.println("Project ID is successfully changed to: " + newId);
         }
     }//HAMID
 
@@ -1519,8 +1519,8 @@ public class ProjectManagementTool {
     public void editProjectDuration() {// OSMAN
 		Project currentProject = projects.get(FIRST);
 
-		LocalDate projectStartDate;
-		LocalDate projectFinishDate;
+        LocalDate projectStartDate = currentProject.getStartDate(); //if not changed under to keep the existing
+        LocalDate projectFinishDate = currentProject.getFinishDate(); //if not changed under to keep the existing
 		long duration;
 		int option;
 
@@ -1532,7 +1532,7 @@ public class ProjectManagementTool {
 			System.out.println("3.Both");
 			System.out.println("Press 1, 2 or 3!!");
 			option = new KeyboardInput().Int();
-		} while (option != 1 || option != 2 || option != 3);
+		} while (option != 1 && option != 2 && option != 3);
 
 		if (option == 1) {
 			System.out.println("Enter the NEW Start date of the project");
