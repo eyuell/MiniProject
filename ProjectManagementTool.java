@@ -653,58 +653,103 @@ public class ProjectManagementTool {
     }//Armin
 
 
-    public void printAllTasksAndMilestones(){
+        public void printAllTasksAndMilestones(){
         Project currentProject = projects.get(FIRST);
         ArrayList<Task> tasks = currentProject.getTasks();
+        int option;
+        boolean error;
 
         for (int i = 0; i <tasks.size() ; i++) {
-            System.out.println(tasks.get(i).getName());
+            System.out.println("Name of task: " + tasks.get(i).getName());
+            System.out.println("Planned startdate: " + tasks.get(i).getPlannedStart());
+            System.out.println("Planned finishdate: " + tasks.get(i).getPlannedFinish());
+            System.out.println("Actual date of start: " + tasks.get(i).getActualStart());
+            System.out.println("Actual Enddate: " + tasks.get(i).getActualFinish());
+            System.out.println("Planned duration of task is "+tasks.get(i).getPlannedDuration()+" days.");
+            System.out.println("------------------------------------------------------------");
         }
 
-        System.out.println("Do you wish to print milestones?");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
+        do{
+            System.out.println("------------------------------------------------------------");
+            System.out.println("Do you wish to print milestones?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
 
-        int option = new KeyboardInput().Int();
+            option = new KeyboardInput().Int();
+            System.out.println("------------------------------------------------------------");
 
-        if (option == 1) {
-            printMileStones();
-        } else if (option == 2) {
-            System.out.println("Milestones not printed.");
-        }
+            if(option == 1){
+                printMileStones();
+                error = false;
 
-    }//Armin
+            }else if (option == 2){
+                System.out.println("Milestones not printed.");
+                error = false;
 
-
-
-    public void printSpecifitTaskMilestones() {//ONLY 1 TASK PRINT //Armin parial
-        Project currentProject = projects.get(FIRST);
-        listTasks();
-        System.out.println("Enter the id of a task");
-        String taskID = new KeyboardInput().Line();
-
-        do {
-            if (retrieveTask(taskID, currentProject) == null) {
-                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
-                taskID = new KeyboardInput().Line();
+            }else{
+                System.out.println("Options are 1 or 2");
+                System.out.println("----------------------------------------------------------------");
+                error=true;
             }
-        }
-        while (this.retrieveTask(taskID, currentProject) == null);
-
-        Task foundTask = retrieveTask(taskID, currentProject);
-        System.out.println(foundTask.getName());
-
-        System.out.println("Do you wish to print milestones?");
-        System.out.println("1. Yes");
-        System.out.println("2. No");
-
-        int option = new KeyboardInput().Int();
-        if (option == 1) {
-            printMileStones();
-        } else if (option == 2) {
-            System.out.println("Milestones not printed.");
-        }
+        }while (error==true);
     }//Armin
+
+
+
+    public void printSpecificTaskMilestones() {
+        Project currentProject = projects.get(FIRST);
+
+        if (currentProject != null) {
+            listTasks();
+            String taskID = "";
+            boolean error;
+            int option;
+            do {
+                try {
+                    System.out.println("Enter the id of a task");
+                    taskID = new KeyboardInput().Line();
+                    System.out.println("------------------------------------------------------------");
+                    Task foundTask = retrieveTask(taskID, currentProject);
+
+                    System.out.println("Name of task: " + foundTask.getName());
+                    System.out.println("Planned startdate: " + foundTask.getPlannedStart());
+                    System.out.println("Planned finishdate: " + foundTask.getPlannedFinish());
+                    System.out.println("Actual date of start: " + foundTask.getActualStart());
+                    System.out.println("Actual Enddate: " + foundTask.getActualFinish());
+                    System.out.println("Planned duration of task is "+foundTask.getPlannedDuration()+" days.");
+                    error = false;
+
+                } catch (Exception e) {
+                    System.out.println("Input integer, or wrong taskID was inputted.");
+                    System.out.println("------------------------------------------------------------");
+                    error = true;
+                }
+                do {
+                        System.out.println("------------------------------------------------------------");
+                        System.out.println("Do you wish to print milestones?");
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+
+                        option = new KeyboardInput().Int();
+                        System.out.println("------------------------------------------------------------");
+
+                        if (option == 1) {
+                            printMileStones();
+                            error = false;
+
+                        } else if (option == 2) {
+                            System.out.println("Milestones not printed.");
+                            error = false;
+
+                        }else{
+                            System.out.println("Options are 1 or 2");
+                            System.out.println("----------------------------------------------------------------");
+                            error=true;
+                        }
+                }while (error==true);
+            } while (error == true);
+        }
+}//Armin
 
     public void printMileStones(){
         System.out.println("Do you wish to print: ");
