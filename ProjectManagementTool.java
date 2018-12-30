@@ -640,16 +640,36 @@ public class ProjectManagementTool {
 
 
     public void printTasks(){
-        System.out.println("What do you wish to edit?");
-        System.out.println("1. All Tasks ");
-        System.out.println("2. Specific Task");
-        int option= new KeyboardInput().Int();
-        if(option==1){
-            printAllTasksAndMilestones();
-        } else if(option==2){
-            printSpecifitTaskMilestones();
-        }
-        pause();
+        int option;
+        boolean input = true;
+
+        do {
+            while (input) {
+                System.out.println("What do you wish to edit?");
+                System.out.println("1. All Tasks ");
+                System.out.println("2. Specific Task");
+                System.out.println("3. Return");
+                option = new KeyboardInput().Int();
+
+                if (option == 1) {
+                    printAllTasksAndMilestones();
+                    input = false;
+
+                } else if (option == 2) {
+                    printSpecificTaskMilestones();
+                    input = false;
+
+                } else if (option == 3) {
+                    //Return
+                    System.out.println("");
+                    input = false;
+
+                } else {
+                    System.out.println("option must be 1-3. ");
+                    input = true;
+                }
+            }
+        }while (input == true);
     }//Armin
 
 
