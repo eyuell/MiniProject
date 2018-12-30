@@ -746,19 +746,36 @@ public class ProjectManagementTool {
     }//Armin
 
 
-    public void printProjects() {//Armin
+    public void printProjects() {
         int option;
-        System.out.println("Do you wish to print: ");
-        System.out.println("1. All projects");
-        System.out.println("2. Specific Project");
-        option= new KeyboardInput().Int();
-        if (option==1){
-            printAllProjects();
-        }
-        if (option==2){
-            System.out.println("HAMID METHOD HERE!!!");
-        }
-        pause();
+        boolean input = true;
+        do {
+            while (input) {
+                System.out.println("Do you wish to print: ");
+                System.out.println("1. All projects");
+                System.out.println("2. Specific Project");
+                System.out.println("3. Return");
+                option = new KeyboardInput().Int();
+
+                if (option == 1) {
+                    printAllProjects();
+                    input = false;
+
+                } else if (option == 2) {
+                    System.out.println("HAMID METHOD HERE!!!");
+                    input = false;
+
+                }else if (option==3){
+                    System.out.println("");
+                    input = false;
+                    
+                } else {
+                    System.out.println("Options are 1, 2 or 3.");
+                    System.out.println("----------------------------------------------------------------");
+                    input = true;
+                }
+            }
+        }while (input == true) ;
     }//Armin
 
     public void printAllProjects() {
