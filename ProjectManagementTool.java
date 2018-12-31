@@ -1400,23 +1400,27 @@ public class ProjectManagementTool {
 
     }//Armin
 
-   
+
     public void monitorTimeSpent() {
         Project currentProject = projects.get(FIRST);
         Double ZERO = 0.0;
+        double DIGIT_LIMITER = 10.0;
         if (currentProject != null) {
             String choice = "";
             boolean error = true;
             do {
                 try {
-                    System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
+                    System.out.println("Do you want to see the Time Spent of :");
+                    System.out.println("    1. All team members");
+                    System.out.println("    2. Specific team member");
+                    System.out.println(" Enter onr of the two options (1 or 2) ?");
                     choice = new KeyboardInput().Line();
                     error = false;
                 } catch (Exception e) {
                     System.out.println("Error , wrong input type");
                 }
-            } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) || error );
-            if (choice.equalsIgnoreCase("all")) {
+            } while ((!choice.equalsIgnoreCase("1") && !choice.equalsIgnoreCase("2")) || error );
+            if (choice.equalsIgnoreCase("1")) {
                 ArrayList<Task> tasks = currentProject.getTasks();
                 Map<String, Double> memberIdHours = new HashMap<String,Double>();
                 double hoursWorked = 0;
@@ -1425,23 +1429,24 @@ public class ProjectManagementTool {
                         ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
                         if (allocations != null) {
                             for (TeamMemberAllocation currentAllocation : allocations) {
-                            String thisMemberId = currentAllocation.getTeamMember().getId();
-                            double thisWorkedHours = currentAllocation.getWorkHours();
+                                String thisMemberId = currentAllocation.getTeamMember().getId();
+                                double thisWorkedHours = currentAllocation.getWorkHours();
                                 if(memberIdHours.containsKey(thisMemberId)) {
-                                double newHoursWorked = memberIdHours.get(thisMemberId) + thisWorkedHours;
-                                memberIdHours.put(thisMemberId,newHoursWorked);
-                            }else {
-                               memberIdHours.put(thisMemberId,thisWorkedHours);
+                                    double newHoursWorked = memberIdHours.get(thisMemberId) + thisWorkedHours;
+                                    memberIdHours.put(thisMemberId,newHoursWorked);
+                                } else {
+                                    memberIdHours.put(thisMemberId,thisWorkedHours);
                                 }
+                            }
                         }
-                    }
-                    } for(Map.Entry<String,Double> entry: memberIdHours.entrySet()) {
-                        System.out.println(entry.getKey() + "has worked " + entry.getValue() + " hours on this project ");
+                    } for(Map.Entry<String, Double> entry: memberIdHours.entrySet()) {
+                        String memberName = retrieveTeamMember(currentProject, entry.getKey()).getName();
+                        System.out.println( memberName + " has worked " + Math.round(entry.getValue() * DIGIT_LIMITER) / DIGIT_LIMITER + " hours on the project ");
                     }
                 } else {
                     System.out.println("There are no tasks registered");
                 }
-            } else if(choice.equalsIgnoreCase("Specific")) {
+            } else if(choice.equalsIgnoreCase("2")) {
                 boolean error2 = true;
                 String memberId = "";
                 do {
@@ -1452,10 +1457,10 @@ public class ProjectManagementTool {
                     } catch (Exception ex) {
                         System.out.println("Error , wrong input type");
                     }
-                    if (!teamMemberExists(currentProject, memberId)) {
+                    if (!teamMemberIDExists(currentProject, memberId)) {
                         System.out.println("Team member does not exist or wrong id.");
                     }
-                } while (error2  || !teamMemberExists(currentProject, memberId));
+                } while (error2  || !teamMemberIDExists(currentProject, memberId));
 
                 double totalHours = 0;
                 ArrayList<Task> tasks = currentProject.getTasks();
@@ -1470,7 +1475,7 @@ public class ProjectManagementTool {
                             }
                         }
                     }
-                    System.out.println("This member has worked " + totalHours + "hours in total");
+                    System.out.println(retrieveTeamMember(currentProject,memberId).getName() + " has worked " + Math.round(totalHours * DIGIT_LIMITER) / DIGIT_LIMITER + " hours in total");
                 } else {
                     System.out.println("There are no tasks registered");
                 }
@@ -1478,8 +1483,6 @@ public class ProjectManagementTool {
         }else{
             System.out.println("There are no projects registered");
         }
-    }
-
         pause();
     }
 	
@@ -2157,7 +2160,7 @@ public class ProjectManagementTool {
     public Project retrieveProjectByID(String projectID) {
        for (int i = 0; i < projects.size(); i++) {
            if (projectID.equals(projects.get(i).getProjectID())) {
-               return projects.get(i);;
+               return projects.get(i);
            }
        }
        return null;
@@ -2454,13 +2457,14 @@ public class ProjectManagementTool {
     }//Eyuell
 
     public String readQualification(){
-        int SOFT_DEV = 1;
-        int GAME_DEV = 2;
-        int SOFT_ENG = 3;
-        int REQ_ENG = 4;
-        int TEST_ENG = 5;
-        int NETW_ADMIN = 6;
-        int AVAILABLE_CHOICES = 6;
+        final int SOFT_DEV = 1;
+        final int GAME_DEV = 2;
+        final int SOFT_ENG = 3;
+        final int REQ_ENG = 4;
+        final int TEST_ENG = 5;
+        final int NETW_ADMIN = 6;
+        final int AVAILABLE_CHOICES = 6;
+
         int choice;
         String result = "";
         do {
