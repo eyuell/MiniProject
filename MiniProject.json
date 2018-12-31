@@ -13,59 +13,77 @@
       "day": 20
     },
     "duration": 67,
-    "budget": 401175.0,
+    "budget": 404175.0,
     "risks": [
       {
         "riskID": "1",
         "riskName": "LACK OF TRUST",
+        "riskType": "Predicted",
+        "riskStatus": "Managed",
         "probability": 0.75,
         "impact": 7.0
       },
       {
         "riskID": "2",
         "riskName": "CONFLICT AND TENSION",
+        "riskType": "Predicted",
+        "riskStatus": "Disappeared",
         "probability": 0.8,
         "impact": 9.0
       },
       {
         "riskID": "3",
         "riskName": "LACK OF COMMITMENT",
+        "riskType": "Predicted",
+        "riskStatus": "Disappeared",
         "probability": 0.9,
         "impact": 9.0
       },
       {
         "riskID": "4",
         "riskName": "WEAK INFORMATION SHARING",
+        "riskType": "Predicted",
+        "riskStatus": "Disappeared",
         "probability": 0.5,
         "impact": 7.0
       },
       {
         "riskID": "5",
         "riskName": "MISALIGNMENT WITH TEAM-GOAL",
+        "riskType": "Predicted",
+        "riskStatus": "Effort Made",
         "probability": 0.75,
         "impact": 6.0
       },
       {
         "riskID": "6",
         "riskName": "LACK OF TEAM SPIRIT",
+        "riskType": "Predicted",
+        "riskStatus": "Disappeared",
         "probability": 0.6,
         "impact": 8.0
       },
       {
         "riskID": "7",
         "riskName": "LACK OF ORGANISATION",
+        "riskType": "Predicted",
+        "riskStatus": "Managed",
         "probability": 0.55,
         "impact": 5.5
       },
       {
         "riskID": "8",
         "riskName": "BEING OUT OF SCHEDULE",
+        "riskType": "Predicted",
+        "riskStatus": "Managed",
         "probability": 0.4,
         "impact": 5.0
       },
       {
         "riskID": "9",
         "riskName": "LACK OF KNOWLEDGE",
+        "riskType": "Predicted",
+        "riskStatus": "Effort Made",
         "probability": 0.65,
         "impact": 6.0
       }
@@ -124,9 +142,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 29
+          "day": 31
         },
-        "actualDuration": 44,
+        "actualDuration": 46,
         "plannedManpower": [
           {
             "manpower": {
@@ -2073,9 +2091,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 29
+          "day": 31
         },
-        "actualDuration": 34,
+        "actualDuration": 36,
         "plannedManpower": [
           {
             "manpower": {
@@ -2833,9 +2851,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 29
+          "day": 31
         },
-        "actualDuration": 34,
+        "actualDuration": 36,
         "plannedManpower": [
           {
             "manpower": {
@@ -3593,9 +3611,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 29
+          "day": 31
         },
-        "actualDuration": 34,
+        "actualDuration": 36,
         "plannedManpower": [
           {
             "manpower": {
@@ -4353,9 +4371,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 29
+          "day": 31
         },
-        "actualDuration": 34,
+        "actualDuration": 36,
         "plannedManpower": [
           {
             "manpower": {
@@ -5113,9 +5131,9 @@
         "actualFinish": {
           "year": 2018,
           "month": 12,
-          "day": 29
+          "day": 31
         },
-        "actualDuration": 34,
+        "actualDuration": 36,
         "plannedManpower": [
           {
             "manpower": {
