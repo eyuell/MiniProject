@@ -1460,8 +1460,8 @@ public class ProjectManagementTool {
                 double totalHours = 0;
                 ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
-                    for (Task OneTask : tasks) {
-                        ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
+                    for (Task oneTask : tasks) {
+                        ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
                         if (allocations != null) {
                             for (TeamMemberAllocation currentAllocation : allocations) {
                                 if (currentAllocation.getTeamMember().getId().equals(memberId)) {
@@ -2609,7 +2609,7 @@ public class ProjectManagementTool {
     }//Eyuell
 
     public void readFromSystemClass(){
-        double BUDGET = 401175.0; //SEK budget
+        double BUDGET = 404175.0; //SEK budget (1585 * 255)
         LocalDate today = LocalDate.now();
         LocalDate startDate = LocalDate.parse("2018-11-15");
         Project mgmtTool = new Project("Project Management Tool Development","1", startDate);
@@ -3004,8 +3004,9 @@ public class ProjectManagementTool {
         mgmtTool.getTeamMembers().add(hamid);
         mgmtTool.getTeamMembers().add(eyuell);
 
-        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + DATE_SUBSTRUCTION_CORRECTION;
+        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + 1;
 
+        //the hours here are just to make different times for each team member
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-26")));
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-27")));
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-28")));
@@ -3176,15 +3177,25 @@ public class ProjectManagementTool {
         schedule.getActualTeamMembers().add(new TeamMemberAllocation(eyuell, 3.5, LocalDate.parse("2018-12-09")));
         schedule.getActualTeamMembers().add(new TeamMemberAllocation(eyuell, 3.5, LocalDate.parse("2018-12-10")));
 
-        mgmtTool.getRisks().add(new Risk("1","Lack of Trust",0.75,7));
-        mgmtTool.getRisks().add(new Risk("2","Conflict and tension",0.8,9));
-        mgmtTool.getRisks().add(new Risk("3","Lack of Commitment",0.9,9));
-        mgmtTool.getRisks().add(new Risk("4","Weak Information sharing",0.5,7));
-        mgmtTool.getRisks().add(new Risk("5","Misalignment with team-Goal",0.75,6));
-        mgmtTool.getRisks().add(new Risk("6","Lack of Team spirit",0.6,8));
-        mgmtTool.getRisks().add(new Risk("7","Lack of Organisation",0.55,5.5));
-        mgmtTool.getRisks().add(new Risk("8","Being out of schedule",0.4,5));
-        mgmtTool.getRisks().add(new Risk("9","Lack of Knowledge",0.65,6));
+        mgmtTool.getRisks().add(new Risk("1","Lack of Trust", "Predicted",0.75,7));
+        mgmtTool.getRisks().add(new Risk("2","Conflict and tension", "Predicted",0.8,9));
+        mgmtTool.getRisks().add(new Risk("3","Lack of Commitment", "Predicted",0.9,9));
+        mgmtTool.getRisks().add(new Risk("4","Weak Information sharing", "Predicted",0.5,7));
+        mgmtTool.getRisks().add(new Risk("5","Misalignment with team-Goal", "Predicted",0.75,6));
+        mgmtTool.getRisks().add(new Risk("6","Lack of Team spirit", "Predicted",0.6,8));
+        mgmtTool.getRisks().add(new Risk("7","Lack of Organisation", "Predicted",0.55,5.5));
+        mgmtTool.getRisks().add(new Risk("8","Being out of schedule", "Predicted",0.4,5));
+        mgmtTool.getRisks().add(new Risk("9","Lack of Knowledge", "Predicted",0.65,6));
+
+        mgmtTool.getRisks().get(0).setRiskStatus("Managed");
+        mgmtTool.getRisks().get(1).setRiskStatus("Disappeared");
+        mgmtTool.getRisks().get(2).setRiskStatus("Disappeared");
+        mgmtTool.getRisks().get(3).setRiskStatus("Disappeared");
+        mgmtTool.getRisks().get(4).setRiskStatus("Effort Made");
+        mgmtTool.getRisks().get(5).setRiskStatus("Disappeared");
+        mgmtTool.getRisks().get(6).setRiskStatus("Managed");
+        mgmtTool.getRisks().get(7).setRiskStatus("Managed");
+        mgmtTool.getRisks().get(8).setRiskStatus("Effort Made");
     }//Eyuell & James
 
 }
