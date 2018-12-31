@@ -3,14 +3,18 @@ package MiniProject;
 public class Risk {
     private String riskID;
     private String riskName;
+    private String riskType;
+    private String riskStatus;
     private double probability;
     private  double impact;
 
-    public Risk(String riskID, String riskName, double probability, double impact){
+    public Risk(String riskID, String riskName, String riskType, double probability, double impact){
         this.riskID = riskID;
         this.riskName = riskName.toUpperCase();
+        this.riskType = riskType;
         this.probability = probability;
         this.impact = impact;
+        setRiskStatus("To be Addressed");
     }
 
     public String getRiskID() {
@@ -29,6 +33,10 @@ public class Risk {
         return riskName;
     }
 
+    public String getRiskType() { return riskType; }
+
+    public String getRiskStatus() { return riskStatus; }
+
     public void setRiskID(String riskID) {
         this.riskID = riskID;
     }
@@ -45,7 +53,14 @@ public class Risk {
         this.riskName = riskName;
     }
 
-    public double getCalculatedRisk (){ return (Math.round(this.probability * this.impact *100.0)/100.0); }
+    public void setRiskType(String riskType) { this.riskType = riskType; }
+
+    public void setRiskStatus(String riskStatus) { this.riskStatus = riskStatus; }
+
+    public double getCalculatedRisk (){
+        double DIGIT_LIMIT = 100.0;
+        return (Math.round(this.probability * this.impact * DIGIT_LIMIT)/DIGIT_LIMIT);
+    }
 
     @Override
     public String toString() {
