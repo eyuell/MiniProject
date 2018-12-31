@@ -2426,6 +2426,13 @@ public class ProjectManagementTool {
     }//Eyuell
 
     public String readQualification(){
+        int SOFT_DEV = 1;
+        int GAME_DEV = 2;
+        int SOFT_ENG = 3;
+        int REQ_ENG = 4;
+        int TEST_ENG = 5;
+        int NETW_ADMIN = 6;
+        int AVAILABLE_CHOICES = 6;
         int choice;
         String result = "";
         do {
@@ -2439,28 +2446,28 @@ public class ProjectManagementTool {
             System.out.println();
             System.out.print("Enter qualification number ");
             choice = new KeyboardInput().positiveInt();
-        }while(choice > 6);
+        }while(choice > AVAILABLE_CHOICES);
 
         switch (choice){
-            case 1:
+            case SOFT_DEV:
                 result = "Software Developer";
                 break;
-            case 2:
+            case GAME_DEV:
                 result = "Video Game Developer";
                 break;
-            case 3:
+            case SOFT_ENG:
                 result = "Software Engineer";
                 break;
-            case 4:
+            case REQ_ENG:
                 result = "Requirements Engineer";
                 break;
-            case 5:
+            case TEST_ENG:
                 result = "Test Engineer";
                 break;
-            case 6:
+            case NETW_ADMIN:
                 result = "Network Administrator";
                 break;
-            default:
+            default: //otherwise
                 System.out.println("You may want to choose the correct number !");
                 break;
         }
@@ -2468,7 +2475,10 @@ public class ProjectManagementTool {
     }//Eyuell
 
     public LocalDate tasksStartAndFinishDates (String startOrFinish, ArrayList<Task> tasks){
+        int ZERO = 0;
+        int ONE = 1;
         int numberOfTasks = tasks.size();
+
         ArrayList<LocalDate> starts = new ArrayList<>();
         ArrayList<LocalDate> finishes = new ArrayList<>();
         LocalDate plannedStartDate, actualStartDate;
@@ -2495,13 +2505,13 @@ public class ProjectManagementTool {
             finishes.add(plannedFinishDate);
         }
 
-        if(startOrFinish.equals("start") && starts.size() > 0){
+        if(startOrFinish.equals("start") && starts.size() > ZERO){
             Collections.sort(starts);
-            result = starts.get(0);
-        }else if(startOrFinish.equals("finish") && finishes.size() > 0){
+            result = starts.get(ZERO);
+        }else if(startOrFinish.equals("finish") && finishes.size() > ZERO){
             int numberOfFinishes = finishes.size();
             Collections.sort(finishes);
-            result = finishes.get(numberOfFinishes - 1);
+            result = finishes.get(numberOfFinishes - ONE);
         }
         return result;
     }//Eyuell
