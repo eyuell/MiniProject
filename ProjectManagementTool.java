@@ -979,17 +979,23 @@ public class ProjectManagementTool {
 
 
     public void printPlannedAndActualSchedule(){
+        int INDENT_ADJUSTMENT1 = 4 - 2;
+        int INDENT_ADJUSTMENT2 = 5;
+        int INDENT_ADJUSTMENT3 = 4;
+        int INDENT_ADJUSTMENT4 = 4 - 16;
+        int QUARTER = 4;
+        int MIN_INDENT = 20;
 
         if (projects != null){
             Project foundProject = projects.get(FIRST);
             if(foundProject.getTasks() != null){
                 ArrayList<Task> tasks = foundProject.getTasks();
-                int taskNameLength = tasks.get(0).getName().length();
-                int taskIdLength = tasks.get(0).getId().length();
+                int taskNameLength = tasks.get(FIRST).getName().length();
+                int taskIdLength = tasks.get(FIRST).getId().length();
                 int smallestIndent = taskNameLength + taskIdLength;
 
                 ArrayList<String> listOfNames = new ArrayList<>();
-                for (int i = 1; i < tasks.size(); i++){
+                for (int i = 1; i < tasks.size(); i++){//the first index already considered above
                     String indent = tasks.get(i).getName() + tasks.get(i).getId();
                     listOfNames.add(indent);
                 }
@@ -1009,8 +1015,8 @@ public class ProjectManagementTool {
                     }
                 }
 
-                if( smallestIndent < 20){
-                    smallestIndent = 20;
+                if( smallestIndent < MIN_INDENT){
+                    smallestIndent = MIN_INDENT;
                 }
 
                 System.out.println(); //blank line
@@ -1020,7 +1026,7 @@ public class ProjectManagementTool {
 
                 long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
                 //
-                for(int i = 0;i < (smallestIndent + 5); i++){//horizontal line1
+                for(int i = 0;i < (smallestIndent + INDENT_ADJUSTMENT2); i++){//horizontal line1
                     System.out.print(WHITE_BACKGROUND + "_" + RESET);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
@@ -1033,10 +1039,10 @@ public class ProjectManagementTool {
                 System.out.println("        Date: " + localDate);
                 System.out.println();
                 System.out.println();
-                int beforeText = smallestIndent/4;
+                int beforeText = smallestIndent / QUARTER;
                 printEmpty(beforeText);
                 System.out.print("Tasks/Milestones");
-                int afterText = smallestIndent-beforeText - 16 + 4;
+                int afterText = smallestIndent - beforeText + INDENT_ADJUSTMENT4;
                 printEmpty(afterText);
                 System.out.print("|");
                 for (long i = 0; i < duration; i++){//the days printed
@@ -1044,7 +1050,7 @@ public class ProjectManagementTool {
                     System.out.print("|" + day + "|");//12 pixels per day ?
                 }
                 System.out.println();
-                for(int i= 0;i<(smallestIndent + 5);i++){//horizontal line1
+                for(int i= 0;i<(smallestIndent + INDENT_ADJUSTMENT2);i++){//horizontal line1
                     System.out.print(WHITE_BACKGROUND + "_" + RESET);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
@@ -1056,7 +1062,7 @@ public class ProjectManagementTool {
 
                 for(int i = 0; i < tasks.size();i++){
                     Task currentTask = tasks.get(i);
-                    int taskIndent = smallestIndent - currentTask.getName().length() - currentTask.getId().length() + 4 - 2;
+                    int taskIndent = smallestIndent - currentTask.getName().length() - currentTask.getId().length() + INDENT_ADJUSTMENT1;
 
                     //planned plot
                     System.out.print(currentTask.getName()+"(" + currentTask.getId()+")");
@@ -1081,7 +1087,7 @@ public class ProjectManagementTool {
 
                     //Actual plot
                     if(currentTask.getActualStart() != null){
-                        printEmpty(smallestIndent + 4);
+                        printEmpty(smallestIndent + INDENT_ADJUSTMENT3);
                         System.out.print("|");
                         for (long j = 0; j < duration; j++){// project tasks duration
                             LocalDate day = tasksStartDate.plusDays(j);
@@ -1112,7 +1118,7 @@ public class ProjectManagementTool {
                 if(milestones1 != null){
                     for(int i = 0; i < milestones1.size();i++){
                         Milestone currentMilestone = milestones1.get(i);
-                        int MilestoneIndent = smallestIndent - currentMilestone.getName().length() - currentMilestone.getId().length() + 4 - 2;
+                        int MilestoneIndent = smallestIndent - currentMilestone.getName().length() - currentMilestone.getId().length() + INDENT_ADJUSTMENT1;
                         System.out.print(currentMilestone.getName()+"(" + currentMilestone.getId()+")");
                         printEmpty(MilestoneIndent);
                         System.out.print("|");
@@ -1135,7 +1141,7 @@ public class ProjectManagementTool {
                     }
                 }
 
-                for(int i= 0;i<(smallestIndent + 5);i++){//horizontal line1
+                for(int i= 0;i<(smallestIndent + INDENT_ADJUSTMENT2);i++){//horizontal line1
                     System.out.print(WHITE_BACKGROUND + "_" + RESET);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
@@ -1394,6 +1400,7 @@ public class ProjectManagementTool {
 
    
     public void monitorTimeSpent() {
+        double ZERO = 0.0;
         Project currentProject = projects.get(FIRST);
         if (currentProject != null) {
             String choice = "";
@@ -1438,8 +1445,8 @@ public class ProjectManagementTool {
                     }
                 } while (!error2  && ! teamMemberExists(currentProject, memberId));
 
-                double hoursOnTask = 0;
-                double totalHours = 0;
+                double hoursOnTask = ZERO;
+                double totalHours = ZERO;
                 ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
                     for (Task oneTask : tasks) {
@@ -1467,6 +1474,7 @@ public class ProjectManagementTool {
 	
 	
     public void monitorParticipation(){
+        double ZERO = 0.0;
         HashMap<String, Double> participation = new HashMap<>();
 
         Set<Entry<String, Double>> hashSet = participation.entrySet();
@@ -1486,7 +1494,7 @@ public class ProjectManagementTool {
             ArrayList<Task> tasks = currentProject.getTasks();
             if(tasks != null){
                 for(Task currentTask : tasks){
-                    totalHours = 0.0;
+                    totalHours = ZERO;
                     ArrayList<TeamMemberAllocation> allocations = currentTask.getActualTeamMembers();
                     if(allocations != null){
                         for(TeamMemberAllocation currentAllocation : allocations){
@@ -1496,7 +1504,7 @@ public class ProjectManagementTool {
                             }
                         }
                     }
-                    if(totalHours != 0.0){
+                    if(totalHours != ZERO){
                         participation.put(currentTask.getName(), totalHours);
                     }
                 }
@@ -1509,7 +1517,7 @@ public class ProjectManagementTool {
             }
         }
         pause();
-    }
+    }//OSMAN
 
     public void monitorRisk(){
 
@@ -2090,7 +2098,8 @@ public class ProjectManagementTool {
 
     public Task retrieveTask(String taskID, Project project){
         Task foundTask = null;
-        if (project.getTasks().size() != 0){
+        int EMPTY = 0;
+        if (project.getTasks().size() != EMPTY){
             ArrayList<Task> tasksCopy = project.getTasks();
             for (int i = 0; i < tasksCopy.size(); i++){
                 if (tasksCopy.get(i).getId().equals(taskID)){
@@ -2106,7 +2115,8 @@ public class ProjectManagementTool {
 
     public Task checkTaskExistence(String taskID, Project project){ //this one do not print a message if not found
         Task foundTask = null;
-        if (project.getTasks().size() != 0){
+        int EMPTY = 0;
+        if (project.getTasks().size() != EMPTY){
             ArrayList<Task> tasksCopy = project.getTasks();
             for (int i = 0; i < tasksCopy.size(); i++){
                 if (tasksCopy.get(i).getId().equals(taskID)){
@@ -2120,8 +2130,9 @@ public class ProjectManagementTool {
 
     public Milestone checkMilestoneExistence(String milestoneID, Project project){
         Milestone foundMilestone = null;
+        int EMPTY = 0;
         ArrayList<Milestone> milestones = project.getMilestones();
-        if (milestones.size() != 0){
+        if (milestones.size() != EMPTY){
             for (int i = 0; i < milestones.size(); i++){
                 if (milestones.get(i).getId().equals(milestoneID)){
                     foundMilestone = milestones.get(i);
