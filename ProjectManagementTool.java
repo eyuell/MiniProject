@@ -1594,31 +1594,65 @@ public class ProjectManagementTool {
 
 
     public void editProject() {//HAMID
-        String id ;
-        do {
-            System.out.println("What is the id of the project that you want to edit");
-            id = new KeyboardInput().Line();
-            if (!projectExists(id)) {
-                System.out.println("A project with this id doesn't exists");
-            }
-        }while(!projectExists(id));
+        String id="";
+        String option= "";
+        boolean error = true ;
 
-        System.out.println("Do you want to edit project name or id ? (name/id)");
-        String option = new KeyboardInput().Line();
-        Project project = retrieveProjectByID(id);
-        if(option.equalsIgnoreCase("name")) {
-            System.out.println("The name of this project is " +project.getName());
-            System.out.println("what is the new name that you want to put  ");
-            String newName = new KeyboardInput().Line();
-            project.setName(newName);
-            System.out.println("Project name is successfully changed to: " + newName);
-        }
-        if(option.equalsIgnoreCase("id")) {
-            System.out.println("what is the new id that you want put ");
-            String newId = new KeyboardInput().Line();
-            project.setProjectID(newId);
-            System.out.println("Project ID is successfully changed to: " + newId);
-        }
+                do {
+                    try {
+                        System.out.println("What is the id of the project that you want to edit");
+                        id = new KeyboardInput().Line();
+                        error = false;
+                    }catch(Exception e){
+                        System.out.println("Error , wrong input type");
+                    }
+                    if (!projectExists(id)) {
+                        System.out.println("A project with this id doesn't exists");
+                    }
+                } while (!projectExists(id) || error );
+
+                error = true;
+               do {
+                   try {
+                       System.out.println("Do you want to edit project name or id ? (name/id)");
+                       option = new KeyboardInput().Line();
+                       error= false;
+                   } catch (Exception e) {
+                       System.out.println("Error, wrong input type");
+                   }
+               }while((!option.equalsIgnoreCase("name") && !option.equalsIgnoreCase("id")) || error);
+                Project project = retrieveProjectByID(id);
+                error = true;
+                if (option.equalsIgnoreCase("name")) {
+                    System.out.println("The name of this project is " + project.getName());
+                    do {
+                        try {
+                            System.out.println("what is the new name that you want to put  ");
+                            String newName = new KeyboardInput().Line();
+                            project.setName(newName);
+                            error = false;
+                        } catch (Exception e) {
+                            System.out.println("Error, wrong input type");
+                        }
+                    }while(error);
+                }
+                error = true;
+                if (option.equalsIgnoreCase("id")) {
+                    do {
+                        try {
+                            System.out.println("what is the new id that you want put ");
+                            String newId = new KeyboardInput().Line();
+                            error = false;
+                            if (projectExists(newId)) {
+                                System.out.println("This id already exists");
+                            } else {
+                                project.setProjectID(newId);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Error, wrong input type");
+                        }
+                    }while(projectExists(newId) || error );
+                }
         pause();
     }//HAMID
 
