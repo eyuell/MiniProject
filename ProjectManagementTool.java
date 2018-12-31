@@ -1402,36 +1402,46 @@ public class ProjectManagementTool {
 
    
     public void monitorTimeSpent() {
-        double ZERO = 0.0;
         Project currentProject = projects.get(FIRST);
+        Double ZERO = 0.0;
         if (currentProject != null) {
             String choice = "";
             boolean error = true;
             do {
                 try {
-                    System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific)");
+                    System.out.println("Do you want to see search for a specific id or see all the members contributions? (all/specific");
                     choice = new KeyboardInput().Line();
                     error = false;
                 } catch (Exception e) {
-                    System.out.println("The id can not start with a number or be a single character");
+                    System.out.println("Error , wrong input type");
                 }
-            } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) && ! error );
-            if (choice.equals("all")) {
+            } while ((!choice.equalsIgnoreCase("all") && !choice.equalsIgnoreCase("specific")) || error );
+            if (choice.equalsIgnoreCase("all")) {
                 ArrayList<Task> tasks = currentProject.getTasks();
+                Map<String, Double> memberIdHours = new HashMap<String,Double>();
+                double hoursWorked = 0;
                 if (tasks != null) {
                     for (Task oneTask : tasks) {
-                        System.out.println(oneTask.getName());
                         ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
                         if (allocations != null) {
                             for (TeamMemberAllocation currentAllocation : allocations) {
-                                System.out.println(currentAllocation.getTeamMember().getId() + " has worked " + currentAllocation.getWorkHours() + " hours");
-                            }
+                            String thisMemberId = currentAllocation.getTeamMember().getId();
+                            double thisWorkedHours = currentAllocation.getWorkHours();
+                                if(memberIdHours.containsKey(thisMemberId)) {
+                                double newHoursWorked = memberIdHours.get(thisMemberId) + thisWorkedHours;
+                                memberIdHours.put(thisMemberId,newHoursWorked);
+                            }else {
+                               memberIdHours.put(thisMemberId,thisWorkedHours);
+                                }
                         }
+                    }
+                    } for(Map.Entry<String,Double> entry: memberIdHours.entrySet()) {
+                        System.out.println(entry.getKey() + "has worked " + entry.getValue() + " hours on this project ");
                     }
                 } else {
                     System.out.println("There are no tasks registered");
                 }
-            } else {
+            } else if(choice.equalsIgnoreCase("Specific")) {
                 boolean error2 = true;
                 String memberId = "";
                 do {
@@ -1440,25 +1450,22 @@ public class ProjectManagementTool {
                         memberId = new KeyboardInput().Line();
                         error2 = false;
                     } catch (Exception ex) {
-                        System.out.println("The id can't start with a number or be a single character");
+                        System.out.println("Error , wrong input type");
                     }
-                    if (! teamMemberExists(currentProject, memberId)) {
+                    if (!teamMemberExists(currentProject, memberId)) {
                         System.out.println("Team member does not exist or wrong id.");
                     }
-                } while (!error2  && ! teamMemberExists(currentProject, memberId));
+                } while (error2  || !teamMemberExists(currentProject, memberId));
 
-                double hoursOnTask = ZERO;
-                double totalHours = ZERO;
+                double totalHours = 0;
                 ArrayList<Task> tasks = currentProject.getTasks();
                 if (tasks != null) {
-                    for (Task oneTask : tasks) {
-                        ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
+                    for (Task OneTask : tasks) {
+                        ArrayList<TeamMemberAllocation> allocations = OneTask.getActualTeamMembers();
                         if (allocations != null) {
                             for (TeamMemberAllocation currentAllocation : allocations) {
                                 if (currentAllocation.getTeamMember().getId().equals(memberId)) {
-                                    hoursOnTask = currentAllocation.getWorkHours();
-                                    System.out.println("This member has worked " + hoursOnTask + "hours on " + oneTask);
-                                    totalHours += hoursOnTask;
+                                    totalHours += currentAllocation.getWorkHours();
                                 }
                             }
                         }
@@ -1471,6 +1478,8 @@ public class ProjectManagementTool {
         }else{
             System.out.println("There are no projects registered");
         }
+    }
+
         pause();
     }
 	
