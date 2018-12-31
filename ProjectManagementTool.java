@@ -971,7 +971,7 @@ public class ProjectManagementTool {
             System.out.println("Proffession: " + currentProject.getTeamMembers().get(i).getQualification());
             System.out.println("----------------------------------------------------------------");
         }
-    }//Armin
+    }//OSMAN
 
 
     public void printPlannedAndActualSchedule(){
