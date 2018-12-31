@@ -8,6 +8,8 @@ public class RiskMatrix {
     public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m"; // Yellow
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m"; // Red
 
+    public static final String WHITE_UNDERLINED = "\033[4;37m";  // WHITE
+
     // Bold
     public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
 
@@ -501,7 +503,7 @@ public class RiskMatrix {
             }
         }
     }
-    
+
     public void printSpecificRisk (){
         String riskID = checkRiskID();
         Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
@@ -557,6 +559,7 @@ public class RiskMatrix {
             }
             int before = (indent - 12)/3;
             int after = indent - 12 - before;
+            System.out.println(WHITE_UNDERLINED);
             printEmpty(before + 2);
             System.out.print("NAME OF RISK");
             printEmpty(after);
@@ -565,19 +568,19 @@ public class RiskMatrix {
             System.out.print("IMPACT");
             printEmpty(4);
             System.out.print("RISK");
-            System.out.println();
+            System.out.println(RESET);
 
             for ( Risk foundRisk : risks) {
                 System.out.print(foundRisk.getRiskName());
                 int afterName = indent - foundRisk.getRiskName().length();
                 printEmpty(afterName);
                 printEmpty(6);
-                System.out.print(foundRisk.getProbability());
-                printEmpty(8);
-                printEmpty(2);
-                System.out.print(foundRisk.getImpact());
+                System.out.print(String.format("%.2f", foundRisk.getProbability()));
+                printEmpty(7);
+                printEmpty(1);
+                System.out.print(String.format("%.1f", foundRisk.getImpact()));
                 printEmpty(6);
-                System.out.print(foundRisk.getCalculatedRisk());
+                System.out.print(String.format("%.2f", foundRisk.getCalculatedRisk()));
                 System.out.println();
             }
         } else {
