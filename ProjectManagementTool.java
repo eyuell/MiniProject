@@ -38,6 +38,8 @@ public class ProjectManagementTool {
 
     private static final int FIRST = 0;
     private static final int DATE_SUBSTRUCTION_CORRECTION = 1;
+    private static final double SALARY = 189.0;
+    private static final double PAY = 255.0;
 
     //the system has projects but we work on one project.
     // only for json we use the object
@@ -895,7 +897,7 @@ public class ProjectManagementTool {
     }
 
 
-   public void printTeamMembers() {
+    public void printTeamMembers() {
       int option;
       boolean input = true;
 
@@ -1237,8 +1239,8 @@ public class ProjectManagementTool {
             double plannedSum = totalPlannedHours(foundProject);
             double actualSum = totalActualHours(foundProject);
 
-            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
-            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
+            double plannedBudget = Math.round((plannedSum * PAY)*100)/100.0;
+            double actualCost = Math.round((actualSum * SALARY)*100)/100.0;
 
             LocalDate today = LocalDate.now();
             LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
@@ -1284,8 +1286,8 @@ public class ProjectManagementTool {
             double plannedSum = totalPlannedHours(foundProject);
             double actualSum = totalActualHours(foundProject);
 
-            double plannedBudget = Math.round((plannedSum * 225.0) * 100) / 100.0;
-            double actualCost = Math.round((actualSum * 225.0) * 100) / 100.0;
+            double plannedBudget = Math.round((plannedSum * PAY) * 100) / 100.0;
+            double actualCost = Math.round((actualSum * SALARY) * 100) / 100.0;
 
             LocalDate today = LocalDate.now();
             LocalDate tasksStartDate = tasksStartAndFinishDates("start", foundProject.getTasks());
@@ -1330,8 +1332,8 @@ public class ProjectManagementTool {
             double plannedSum = totalPlannedHours(foundProject);
             double actualSum = totalActualHours(foundProject);
 
-            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
-            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
+            double plannedBudget = Math.round((plannedSum * PAY)*100)/100.0;
+            double actualCost = Math.round((actualSum * SALARY)*100)/100.0;
 
             LocalDate today = LocalDate.now();
             LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
@@ -1373,8 +1375,8 @@ public class ProjectManagementTool {
             double plannedSum = totalPlannedHours(foundProject);
             double actualSum = totalActualHours(foundProject);
 
-            double plannedBudget = Math.round((plannedSum * 225.0)*100)/100.0;
-            double actualCost = Math.round((actualSum * 225.0)*100)/100.0;
+            double plannedBudget = Math.round((plannedSum * PAY)*100)/100.0;
+            double actualCost = Math.round((actualSum * SALARY)*100)/100.0;
 
             LocalDate today = LocalDate.now();
             LocalDate tasksStartDate = tasksStartAndFinishDates("start",foundProject.getTasks());
@@ -2146,8 +2148,7 @@ public class ProjectManagementTool {
     public Project retrieveProjectByID(String projectID) {
        for (int i = 0; i < projects.size(); i++) {
            if (projectID.equals(projects.get(i).getProjectID())) {
-               Project project = projects.get(i);
-               return project;
+               return projects.get(i);;
            }
        }
        return null;
@@ -2204,6 +2205,8 @@ public class ProjectManagementTool {
     public boolean completenessCheck(Task task){
         int outOfThree = 0;
         int DEFAULT_VALUE = 0;
+        int TWO = 2;
+        int THREE = 3;
         boolean complete = false;
         LocalDate today = LocalDate.now();
 
@@ -2229,9 +2232,9 @@ public class ProjectManagementTool {
             task.setActualDuration(ChronoUnit.DAYS.between(task.getActualStart(), task.getActualFinish()) + DATE_SUBSTRUCTION_CORRECTION);
         }
 
-        if(outOfThree == 2){
+        if(outOfThree == TWO){
             if(task.getPlannedStart() != null){
-                if(task.getPlannedDuration() != 0){
+                if(task.getPlannedDuration() != DEFAULT_VALUE){
                     LocalDate finish = task.getPlannedStart().plusDays(task.getPlannedDuration());
                     task.setPlannedFinish(finish);
                 }else{
@@ -2247,7 +2250,7 @@ public class ProjectManagementTool {
             complete = true;
         }
 
-        if (outOfThree == 3){
+        if (outOfThree == THREE){
             complete = true;
         }
         return complete;
@@ -2376,7 +2379,7 @@ public class ProjectManagementTool {
 
         double actualSum = actualHoursTillDate(date);
 
-        return  Math.round(actualSum * 189.0 * 100.0)/100.0;
+        return  Math.round(actualSum * SALARY * 100.0)/100.0;
     }
 
    /* public double scheduleVariance (LocalDate date){
@@ -2597,10 +2600,11 @@ public class ProjectManagementTool {
     }//Eyuell
 
     public void readFromSystemClass(){
+        double BUDGET = 401175.0; //SEK budget
         LocalDate today = LocalDate.now();
         LocalDate startDate = LocalDate.parse("2018-11-15");
         Project mgmtTool = new Project("Project Management Tool Development","1", startDate);
-        mgmtTool.setBudget(401175.0); //SEK budget
+        mgmtTool.setBudget(BUDGET);
         projects.add(mgmtTool);
 
         Task general = new Task("General Tasks","1",1);
@@ -2993,7 +2997,6 @@ public class ProjectManagementTool {
 
         long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + DATE_SUBSTRUCTION_CORRECTION;
 
-        //the hours here are just to make different times for each team member
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-26")));
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-27")));
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-28")));
