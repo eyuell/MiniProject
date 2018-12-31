@@ -37,6 +37,7 @@ public class ProjectManagementTool {
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
     private static final int FIRST = 0;
+    private static final int DATE_SUBSTRUCTION_CORRECTION = 1;
 
     //the system has projects but we work on one project.
     // only for json we use the object
@@ -250,7 +251,7 @@ public class ProjectManagementTool {
             System.out.println("Enter the Finish date of the project: ");
             projectFinishDate = new DataEvaluator().readDate();
 
-            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
         }
 
         Project project = new Project(projectName, projectID, projectStartDate);
@@ -415,7 +416,7 @@ public class ProjectManagementTool {
                                 taskFinishDate = new DataEvaluator().readDate();
                                 currentTask.setPlannedFinish(taskFinishDate);
 
-                                long duration = ChronoUnit.DAYS.between(currentTask.getPlannedStart(), taskFinishDate) + 1;
+                                long duration = ChronoUnit.DAYS.between(currentTask.getPlannedStart(), taskFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
 
                                 currentTask.setPlannedDuration(duration);
                             }
@@ -427,20 +428,23 @@ public class ProjectManagementTool {
                             do{
                                 repeat = false;
                                 Task foundTask;
+                                int ONE = 1;
                                 System.out.println("How many connectivity does this task has with other tasks ?");
                                 int numberOfConnectivity = new KeyboardInput().positiveInt();
-                                for(int j = 0; j < numberOfConnectivity; j++){
-                                    System.out.println("Connectivity " + (j + 1) + ": ");
-                                    System.out.println("On which task does the current task depend on ? ");
-                                    String toBeConnectedToTaskID = readExistingTaskID(foundProject);
-                                    foundTask = retrieveTask(toBeConnectedToTaskID, foundProject);
+                                if (numberOfConnectivity >= ONE){
+                                    for(int j = ONE; j <= numberOfConnectivity; j++){ // if  there is connectivity, it should start from one
+                                        System.out.println("Connectivity " + ( j ) + ": ");
+                                        System.out.println("On which task does the current task depend on ? ");
+                                        String toBeConnectedToTaskID = readExistingTaskID(foundProject);
+                                        foundTask = retrieveTask(toBeConnectedToTaskID, foundProject);
 
-                                    connectivityType = readConnectivityType();
+                                        connectivityType = readConnectivityType();
 
-                                    System.out.print("Enter the duration of connectivity. (It could be negative if applicable) ");
-                                    connectivityDuration = new KeyboardInput().Int();
+                                        System.out.print("Enter the duration of connectivity. (It could be negative if applicable) ");
+                                        connectivityDuration = new KeyboardInput().Int();
 
-                                    currentTask.getConnectivity().add(new Connectivity(foundTask, connectivityType, connectivityDuration));
+                                        currentTask.getConnectivity().add(new Connectivity(foundTask, connectivityType, connectivityDuration));
+                                    }
                                 }
 
                                 LocalDate startDate = new DataEvaluator().extractConnectivityDate("start",currentTask.getConnectivity() );
@@ -449,7 +453,7 @@ public class ProjectManagementTool {
                                 if(startDate != null &&  finishDate != null){
                                     if(finishDate.isAfter(startDate)){
 
-                                        long duration = ChronoUnit.DAYS.between(startDate, finishDate) +1;
+                                        long duration = ChronoUnit.DAYS.between(startDate, finishDate) + DATE_SUBSTRUCTION_CORRECTION;
 
                                         currentTask.setPlannedStart(startDate);
                                         currentTask.setPlannedFinish(finishDate);
@@ -1014,7 +1018,7 @@ public class ProjectManagementTool {
                 LocalDate tasksStartDate = tasksStartAndFinishDates("start",tasks);
                 LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",tasks);
 
-                long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
+                long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
                 //
                 for(int i = 0;i < (smallestIndent + 5); i++){//horizontal line1
                     System.out.print(WHITE_BACKGROUND + "_" + RESET);
@@ -1085,7 +1089,7 @@ public class ProjectManagementTool {
                             LocalDate thisStart = currentTask.getActualStart();
                             LocalDate thisFinish = currentTask.getActualFinish();
 
-                            long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish) + 1;
+                            long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish) + DATE_SUBSTRUCTION_CORRECTION;
 
                             print = true;
                             for(int m = 0; m < actualDuration; m++){
@@ -1235,8 +1239,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget *scheduleProgress ))*100)/100.0;
@@ -1282,8 +1286,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish", foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
             double scheduleProgress = percentageDone;
             double ExecutedProgress = actualCost / plannedBudget;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress)) * 100) / 100.0;
@@ -1328,8 +1332,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
@@ -1371,8 +1375,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + 1;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + 1;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
@@ -1775,7 +1779,7 @@ public class ProjectManagementTool {
 			System.out.println("Enter the NEW Start date of the project");
 			projectStartDate = new DataEvaluator().readDate();
 
-			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
 			currentProject.setStartDate(projectStartDate);
 
 			currentProject.setDuration(duration);
@@ -1785,7 +1789,7 @@ public class ProjectManagementTool {
 			System.out.println("Enter NEW Finish Date");
 			projectFinishDate = new DataEvaluator().readDate();
 
-			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
 			currentProject.setFinishDate(projectFinishDate);
 
 			currentProject.setDuration(duration);
@@ -1798,7 +1802,7 @@ public class ProjectManagementTool {
 			System.out.println("Enter the NEW Finish date of the project: ");
 			projectFinishDate = new DataEvaluator().readDate();
 
-			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + 1;
+			duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
 
 			currentProject.setStartDate(projectStartDate);
 			currentProject.setFinishDate(projectFinishDate);
@@ -2007,7 +2011,7 @@ public class ProjectManagementTool {
             project.setFinishDate(projectTasksFinishDate);
         }
 
-        long duration = ChronoUnit.DAYS.between(project.getStartDate(), project.getFinishDate()) + 1;
+        long duration = ChronoUnit.DAYS.between(project.getStartDate(), project.getFinishDate()) + DATE_SUBSTRUCTION_CORRECTION;
         project.setDuration(duration);
     }//Eyuell
 
@@ -2188,6 +2192,7 @@ public class ProjectManagementTool {
     //check if all info of task is complete
     public boolean completenessCheck(Task task){
         int outOfThree = 0;
+        int DEFAULT_VALUE = 0;
         boolean complete = false;
         LocalDate today = LocalDate.now();
 
@@ -2195,7 +2200,7 @@ public class ProjectManagementTool {
             outOfThree++;
         }
 
-        if(task.getPlannedDuration() != 0){
+        if(task.getPlannedDuration() != DEFAULT_VALUE){
             outOfThree++;
         }
 
@@ -2210,7 +2215,7 @@ public class ProjectManagementTool {
         }
 
         if(task.getActualFinish() != null){
-            task.setActualDuration(ChronoUnit.DAYS.between(task.getActualStart(), task.getActualFinish()) + 1);
+            task.setActualDuration(ChronoUnit.DAYS.between(task.getActualStart(), task.getActualFinish()) + DATE_SUBSTRUCTION_CORRECTION);
         }
 
         if(outOfThree == 2){
@@ -2220,7 +2225,7 @@ public class ProjectManagementTool {
                     task.setPlannedFinish(finish);
                 }else{
 
-                    long duration = ChronoUnit.DAYS.between(task.getPlannedStart(), task.getPlannedFinish()) + 1;
+                    long duration = ChronoUnit.DAYS.between(task.getPlannedStart(), task.getPlannedFinish()) + DATE_SUBSTRUCTION_CORRECTION;
 
                     task.setPlannedDuration(duration);
                 }
@@ -2553,7 +2558,7 @@ public class ProjectManagementTool {
                     LocalDate finish = tasksStartAndFinishDates("finish",currentProject.getTasks());
                     currentProject.setFinishDate(finish);
 
-                    long duration = ChronoUnit.DAYS.between(currentProject.getStartDate(), finish) + 1;
+                    long duration = ChronoUnit.DAYS.between(currentProject.getStartDate(), finish) + DATE_SUBSTRUCTION_CORRECTION;
                     currentProject.setDuration(duration);
                 }
             }
@@ -2975,7 +2980,7 @@ public class ProjectManagementTool {
         mgmtTool.getTeamMembers().add(hamid);
         mgmtTool.getTeamMembers().add(eyuell);
 
-        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + 1;
+        long numberOfDays = ChronoUnit.DAYS.between(LocalDate.parse("2018-11-26"), today) + DATE_SUBSTRUCTION_CORRECTION;
 
         //the hours here are just to make different times for each team member
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1, LocalDate.parse("2018-11-26")));
