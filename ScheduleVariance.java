@@ -32,11 +32,9 @@ public class ScheduleVariance extends Finance {
 
     public String toString() {
         String costString;
-        costString ="Project ID:  " +getProjectId();
-        costString +="Days Passed since start: "+getDaysPassed()+" days";
-        costString +="project Duration/Days: "+projectDuration+" days.";
-        costString +="*********************************************************************";
-        costString +="Schedule Variance($): "+ getScheduleVariance();        
-        costString +="*********************************************************************";
+        costString ="Project ID:  " +getProjectId()+System.lineSeparator();
+        costString +="*********************************************************************"+System.lineSeparator();
+        costString +="Schedule Variance($): "+ getScheduleVariance()+System.lineSeparator();
+        costString +="*********************************************************************"+System.lineSeparator();
         return costString;}
 }
