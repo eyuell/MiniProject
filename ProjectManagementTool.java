@@ -963,12 +963,11 @@ public class ProjectManagementTool {
     }//Armin
 
 
-
-    public boolean printSpecificTeamMember() {//Armin
+    public boolean printSpecificTeamMember() {
         Project currentProject = projects.get(FIRST);
         listTeamMembers();
         String teamID = "";
-
+	    
         if (currentProject != null) {
             boolean error;
             for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
@@ -988,7 +987,7 @@ public class ProjectManagementTool {
                         return false;
 
                     } catch (Exception e) {
-                        System.out.println("Input not a String or member does not exist with that ID");
+                        System.out.println("Input not a number or member does not exist with that ID");
                         System.out.println("----------------------------------------------------------------");
 
                         error=true;
@@ -996,6 +995,7 @@ public class ProjectManagementTool {
                 } while (error == true);
             }
         }
+        pause();
         return false;
     }//Armin
 
