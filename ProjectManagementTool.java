@@ -1697,11 +1697,19 @@ public class ProjectManagementTool {
         pause();
     }//Armin
 
-    public void editTeamMember(){
+    public void editTeamMember(){ 
+    boolean error = true;
+    Integer option = 0;
+    do {
+        try{ 	    
         System.out.println("What do you wish to edit?");
         System.out.println("1. Name "+"\n"+"2. change ID"+"\n"+"3. Remove");
-
-        int option= new KeyboardInput().Int();
+        option= new KeyboardInput().Int();
+	error = false;	
+	}catch (Exception e) {
+                System.out.println("Error, wrong input type");
+                }
+       }while((option>3 && option <1) || error);
         if(option==1){
         updateTeamMemberName();
         }
