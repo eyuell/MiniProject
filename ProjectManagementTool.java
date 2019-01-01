@@ -1255,7 +1255,7 @@ public class ProjectManagementTool {
         } while (option!=RETURN);
     }//Armin
 
-    public void printAllCosts(){
+public void printAllCosts(){
         if(projects != null){
             Project foundProject = projects.get(FIRST);
             System.out.println();
@@ -1263,9 +1263,12 @@ public class ProjectManagementTool {
             double percentageDone;
             int option;
             System.out.println("How many percentage have been completed of the project ?");
+            System.out.println("input between 0 and 1.");
+            System.out.println("! 1 is 100% and 0 is 0% !");
+
             percentageDone = new KeyboardInput().Double();{
                 if(percentageDone>1){
-                    percentageDone=percentageDone/100;
+                    percentageDone=1;
                 }
             }
 
@@ -1285,21 +1288,24 @@ public class ProjectManagementTool {
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget *scheduleProgress ))*100)/100.0;
-
+            String projectID=projects.get(FIRST).getProjectID();
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
-            System.out.println("Earned Value($): " + earnedValue);
             System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress))*100)*100/100.0 +" %"); //this is time wise
             SystemStore costs = new MiniProject.SystemStore();
+            System.out.println("------------------------------------------------------------------------------------------------");
             System.out.println(costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()));
-            costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
-            //System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
-            //System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
-            costs.printAllFinances();
-        }
+            System.out.println(costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
 
-    }//Armin*/
+            System.out.println("Project ID:  "+projectID);
+            System.out.println("*********************************************************************");
+            System.out.println("Earned Value($): " + earnedValue);
+            System.out.println("*********************************************************************");
+		
+	    pause();	
+        }
+    }//Armin
 
 
     public void monitorEarnedValue() {//Armin
@@ -1310,15 +1316,18 @@ public class ProjectManagementTool {
             double percentageDone;
             int option;
             System.out.println("How many percentage have been completed of the project ?");
+            System.out.println("input between 0 and 1.");
+            System.out.println("! 1 is 100% and 0 is 0% !");
+
             percentageDone = new KeyboardInput().Double();{
                 if(percentageDone>1){
-                    percentageDone=percentageDone/100;
+                    percentageDone=1;
                 }
             }
 
             double plannedSum = totalPlannedHours(foundProject);
             double actualSum = totalActualHours(foundProject);
-
+            String projectID=projects.get(FIRST).getProjectID();
             double plannedBudget = Math.round((plannedSum * PAY) * 100) / 100.0;
             double actualCost = Math.round((actualSum * SALARY) * 100) / 100.0;
 
@@ -1335,16 +1344,17 @@ public class ProjectManagementTool {
 
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
-            System.out.println("Earned Value($): " + earnedValue);
             System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
-
+            System.out.println(" ");
+            System.out.println("Project ID: "+projectID);
+            System.out.println("*********************************************************************");
             System.out.println("The Earned Value($) is ammounted to : " + earnedValue);
+            System.out.println("*********************************************************************");
+            
+            pause();
         }
     }//Armin
-
-
-
 
 
     public void monitorScheduleVariance(){
@@ -1356,9 +1366,12 @@ public class ProjectManagementTool {
             double percentageDone;
             int option;
             System.out.println("How many percentage have been completed of the project ?");
+            System.out.println("input between 0 and 1.");
+            System.out.println("! 1 is 100% and 0 is 0% !");
+
             percentageDone = new KeyboardInput().Double();{
                 if(percentageDone>1){
-                    percentageDone=percentageDone/100;
+                    percentageDone=1;
                 }
             }
 
@@ -1387,7 +1400,8 @@ public class ProjectManagementTool {
             SystemStore Costs = new MiniProject.SystemStore();
             Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
             System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
-
+            
+            pause();
         }
     }//Armin
 
@@ -1399,9 +1413,12 @@ public class ProjectManagementTool {
             double percentageDone;
             int option;
             System.out.println("How many percentage have been completed of the project ?");
+            System.out.println("input between 0 and 1.");
+            System.out.println("! 1 is 100% and 0 is 0% !");
+
             percentageDone = new KeyboardInput().Double();{
                 if(percentageDone>1){
-                    percentageDone=percentageDone/100;
+                    percentageDone=1;
                 }
             }
 
@@ -1429,9 +1446,11 @@ public class ProjectManagementTool {
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
             SystemStore Costs = new MiniProject.SystemStore();
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
+            
+            pause();
         }
-
     }//Armin
+
 
 
     public void monitorTimeSpent() {
@@ -2402,10 +2421,10 @@ public class ProjectManagementTool {
                     Task task = foundProject.getTasks().get(i);
                     ArrayList<TeamMemberAllocation> teamMembers = task.getActualTeamMembers();
                     for(int j = 0; j < teamMembers.size(); j++){
-                        totalHours = totalHours + teamMembers.get(j).getWorkHours();
+                        totalHours = (totalHours + teamMembers.get(j).getWorkHours());
                     }
                 }
-                System.out.println("Total Actual hours = " + totalHours);
+                System.out.println("Total Actual hours = " + (float)totalHours);
             }else{
                 System.out.println("There are no tasks in the project");
             }
