@@ -711,10 +711,10 @@ public class ProjectManagementTool {
     }//Armin
 
 
-        public void printAllTasksAndMilestones(){
+    public void printAllTasksAndMilestones(){
         Project currentProject = projects.get(FIRST);
         ArrayList<Task> tasks = currentProject.getTasks();
-        int option;
+        String option;
         boolean error;
 
         for (int i = 0; i <tasks.size() ; i++) {
@@ -733,16 +733,17 @@ public class ProjectManagementTool {
             System.out.println("1. Yes");
             System.out.println("2. No");
 
-            option = new KeyboardInput().Int();
+            option = new KeyboardInput().Line();
             System.out.println("------------------------------------------------------------");
 
-            if(option == 1){
+            if(option.equalsIgnoreCase("1")||option.equalsIgnoreCase("yes")){
                 printMileStones();
                 error = false;
 
-            }else if (option == 2){
+            }else if (option.equalsIgnoreCase("2")||option.equalsIgnoreCase("no")){
                 System.out.println("Milestones not printed.");
                 error = false;
+                pause();
 
             }else{
                 System.out.println("Options are 1 or 2");
@@ -750,8 +751,8 @@ public class ProjectManagementTool {
                 error=true;
             }
         }while (error==true);
-    }//Armin
 
+    }//Armin
 
 
     public void printSpecificTaskMilestones() {
@@ -761,7 +762,7 @@ public class ProjectManagementTool {
             listTasks();
             String taskID = "";
             boolean error;
-            int option;
+            String option;
             do {
                 try {
                     System.out.println("Enter the id of a task");
@@ -788,14 +789,14 @@ public class ProjectManagementTool {
                         System.out.println("1. Yes");
                         System.out.println("2. No");
 
-                        option = new KeyboardInput().Int();
+                        option = new KeyboardInput().Line();
                         System.out.println("------------------------------------------------------------");
 
-                        if (option == 1) {
+                        if (option.equalsIgnoreCase("1")||option.equalsIgnoreCase("yes")) {
                             printMileStones();
                             error = false;
 
-                        } else if (option == 2) {
+                        } else if (option.equalsIgnoreCase("2")||option.equalsIgnoreCase("no")) {
                             System.out.println("Milestones not printed.");
                             error = false;
 
