@@ -293,4 +293,21 @@ public class DataEvaluator {
         }
         return evaluatedKey;
     }
+
+    public double roundDouble(double number, int digitAfterDecimal){
+        double multiplier = 1.0;
+        double STANDARD = 10.0;
+
+        while (digitAfterDecimal < 0){
+            System.out.println("Digit after decimal should not be negative.");
+            System.out.println("Enter a positive number for the digits after the decimal");
+            digitAfterDecimal = new KeyboardInput().positiveInt();
+        }
+
+        for(int i = 0; i < digitAfterDecimal; i++){
+            multiplier = STANDARD * multiplier;
+        }
+
+        return Math.round(number * multiplier) / multiplier;
+    }
 }
