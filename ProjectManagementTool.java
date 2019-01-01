@@ -1624,11 +1624,12 @@ public class ProjectManagementTool {
                 Project project = retrieveProjectByID(id);
                 error = true;
                 if (option.equalsIgnoreCase("name")) {
-                    System.out.println("The name of this project is " + project.getName());
+		String newName ="";	
+                System.out.println("The name of this project is " + project.getName());
                     do {
                         try {
                             System.out.println("what is the new name that you want to put  ");
-                            String newName = new KeyboardInput().Line();
+                            newName = new KeyboardInput().Line();
                             project.setName(newName);
                             error = false;
                         } catch (Exception e) {
