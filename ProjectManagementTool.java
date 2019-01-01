@@ -1636,23 +1636,25 @@ public class ProjectManagementTool {
                         }
                     }while(error);
                 }
-                error = true;
-                if (option.equalsIgnoreCase("id")) {
-                    do {
-                        try {
-                            System.out.println("what is the new id that you want put ");
-                            String newId = new KeyboardInput().Line();
-                            error = false;
-                            if (projectExists(newId)) {
-                                System.out.println("This id already exists");
-                            } else {
-                                project.setProjectID(newId);
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Error, wrong input type");
-                        }
-                    }while(projectExists(newId) || error );
+            error = true;
+            if (option.equalsIgnoreCase("id")) { 
+            String newId = "";
+            do {
+                try {
+                    System.out.println("what is the new id that you want put ");
+                    newId = new KeyboardInput().Line();
+                    error = false;
+                    if (projectExists(newId)) {
+                        System.out.println("This id already exists");
+                    } else {
+                        project.setProjectID(newId);
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error, wrong input type");
                 }
+            }while(projectExists(newId) || error );
+        }
         pause();
     }//HAMID
 
