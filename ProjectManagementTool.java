@@ -31,7 +31,7 @@ public class ProjectManagementTool {
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
 
     private static final int FIRST = 0;
-    private static final int DATE_SUBSTRUCTION_CORRECTION = 1;
+    private static final int DATE_SUBTRACTION_CORRECTION = 1;
     private static final double SALARY = 189.0;
     private static final double PAY = 255.0;
 
@@ -104,7 +104,7 @@ public class ProjectManagementTool {
         final int ASSIGN_MANPOWER = 5;
         final int REGISTER_ACTUAL_DATA = 6;
         final int PRINT_ALL_PROJECTS = 7;
-        final int PRINT_TASKS = 8;
+        final int PRINT_TASKS_MILESTONES = 8;
         final int PRINT_TEAM_MEMBERS = 9;
         final int PRINT_PLANED_ACTUAL_SCHEDULE = 10;
         final int MONITOR_FINANCES = 11;
@@ -155,7 +155,7 @@ public class ProjectManagementTool {
                     printProjects();
                     break;
 
-                case PRINT_TASKS:
+                case PRINT_TASKS_MILESTONES:
                     printTasksAndMilestones();
                     break;
 
@@ -247,7 +247,7 @@ public class ProjectManagementTool {
             System.out.println("Enter the Finish date of the project: ");
             projectFinishDate = new DataEvaluator().readDate();
 
-            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBTRACTION_CORRECTION;
         }
 
         Project project = new Project(projectName, projectID, projectStartDate);
@@ -327,7 +327,7 @@ public class ProjectManagementTool {
         pause();
     }//Eyuell
 
-    //register team members with error handeling
+    //register team members with error handling
     public void registerTeamMember(){
 
         if(projects != null){
@@ -412,7 +412,7 @@ public class ProjectManagementTool {
                                 taskFinishDate = new DataEvaluator().readDate();
                                 currentTask.setPlannedFinish(taskFinishDate);
 
-                                long duration = ChronoUnit.DAYS.between(currentTask.getPlannedStart(), taskFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+                                long duration = ChronoUnit.DAYS.between(currentTask.getPlannedStart(), taskFinishDate) + DATE_SUBTRACTION_CORRECTION;
 
                                 currentTask.setPlannedDuration(duration);
                             }
@@ -449,7 +449,7 @@ public class ProjectManagementTool {
                                 if(startDate != null &&  finishDate != null){
                                     if(finishDate.isAfter(startDate)){
 
-                                        long duration = ChronoUnit.DAYS.between(startDate, finishDate) + DATE_SUBSTRUCTION_CORRECTION;
+                                        long duration = ChronoUnit.DAYS.between(startDate, finishDate) + DATE_SUBTRACTION_CORRECTION;
 
                                         currentTask.setPlannedStart(startDate);
                                         currentTask.setPlannedFinish(finishDate);
@@ -713,10 +713,10 @@ public class ProjectManagementTool {
 
         for (int i = 0; i <tasks.size() ; i++) {
             System.out.println("Name of task: " + tasks.get(i).getName());
-            System.out.println("Planned startdate: " + tasks.get(i).getPlannedStart());
-            System.out.println("Planned finishdate: " + tasks.get(i).getPlannedFinish());
+            System.out.println("Planned start date: " + tasks.get(i).getPlannedStart());
+            System.out.println("Planned finish date: " + tasks.get(i).getPlannedFinish());
             System.out.println("Actual date of start: " + tasks.get(i).getActualStart());
-            System.out.println("Actual Enddate: " + tasks.get(i).getActualFinish());
+            System.out.println("Actual End date: " + tasks.get(i).getActualFinish());
             System.out.println("Planned duration of task is "+tasks.get(i).getPlannedDuration()+" days.");
             System.out.println("------------------------------------------------------------");
         }
@@ -765,10 +765,10 @@ public class ProjectManagementTool {
                     Task foundTask = retrieveTask(taskID, currentProject);
 
                     System.out.println("Name of task: " + foundTask.getName());
-                    System.out.println("Planned startdate: " + foundTask.getPlannedStart());
-                    System.out.println("Planned finishdate: " + foundTask.getPlannedFinish());
+                    System.out.println("Planned start date: " + foundTask.getPlannedStart());
+                    System.out.println("Planned finish date: " + foundTask.getPlannedFinish());
                     System.out.println("Actual date of start: " + foundTask.getActualStart());
-                    System.out.println("Actual Enddate: " + foundTask.getActualFinish());
+                    System.out.println("Actual End date: " + foundTask.getActualFinish());
                     System.out.println("Planned duration of task is "+foundTask.getPlannedDuration()+" days.");
                     error = false;
 
@@ -880,34 +880,35 @@ public class ProjectManagementTool {
 
     public void printProjects() {
         int option;
-        boolean input = true;
+        boolean input;
         do {
-            while (input) {
-                System.out.println("Do you wish to print: ");
-                System.out.println("1. All projects");
-                System.out.println("2. Specific Project");
-                System.out.println("3. Return");
-                option = new KeyboardInput().Int();
 
-                if (option == 1) {
-                    printAllProjects();
-                    input = false;
+            System.out.println("Do you wish to print: ");
+            System.out.println("1. All projects");
+            System.out.println("2. Specific Project");
+            System.out.println("3. Return");
+            option = new KeyboardInput().Int();
 
-                } else if (option == 2) {
-                    System.out.println("HAMID METHOD HERE!!!");
-                    input = false;
+            if (option == 1) {
+                printAllProjects();
+                input = false;
 
-                }else if (option==3){
-                    System.out.println("");
-                    input = false;
+            } else if (option == 2) {
+                System.out.println("HAMID METHOD HERE!!!");
+                input = false;
 
-                } else {
-                    System.out.println("Options are 1, 2 or 3.");
-                    System.out.println("----------------------------------------------------------------");
-                    input = true;
-                }
+            }else if (option==3){
+                System.out.println();
+                input = false;
+
+            } else {
+                System.out.println("Options are 1, 2 or 3.");
+                System.out.println("----------------------------------------------------------------");
+                input = true;
             }
-        }while (input == true) ;
+
+        }while (input) ;
+        pause();
     }//Armin
 
     public void printAllProjects() {
@@ -926,47 +927,49 @@ public class ProjectManagementTool {
 
     public void printTeamMembers() {
         int option;
-        boolean input = true;
+        boolean input;
 
         do {
-            while (input) {
-                System.out.println("Do you wish to print a specific or All team members? ");
-                System.out.println("1. All team members");
-                System.out.println("2. Specific team member");
-                System.out.println("3. Return");
-                System.out.println("---------------------------------");
-                option = new KeyboardInput().Int();
 
-                if (option == 1) {
-                    printAllTeamMembers();
-                    input = false;
+            System.out.println("Do you wish to print a specific or All team members? ");
+            System.out.println("1. All team members");
+            System.out.println("2. Specific team member");
+            System.out.println("3. Return");
+            System.out.println("---------------------------------");
+            option = new KeyboardInput().Int();
 
-                } else if (option == 2) {
-                    printSpecificTeamMember();
-                    input = false;
+            if (option == 1) {
+                printAllTeamMembers();
+                input = false;
 
-                } else if(option==3){
-                    System.out.println();
-                    input=false;
+            } else if (option == 2) {
+                printSpecificTeamMember();
+                input = false;
 
-                }else{
-                    System.out.println("Options are 1, 2 or 3.");
-                    input=true;
-                }
+            } else if(option==3){
+                System.out.println();
+                input=false;
+
+            }else{
+                System.out.println("Options are 1, 2 or 3.");
+                input=true;
             }
-        }while (input==true);
+
+        }while (input);
+        pause();
     }//Armin
 
 
-    public boolean printSpecificTeamMember() {
+    public void printSpecificTeamMember() {
         Project currentProject = projects.get(FIRST);
         listTeamMembers();
-        String teamID = "";
+        String teamID;
 
         if (currentProject != null) {
             boolean error;
             for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
                 do {
+                    error = false;
                     try {
                         System.out.println("Enter the id of a team member: ");
                         teamID = new KeyboardInput().Line();
@@ -974,12 +977,10 @@ public class ProjectManagementTool {
 
                         TeamMember foundTeamMember = retrieveTeamMember(currentProject, teamID);
                         System.out.println("Name: " + foundTeamMember.getName());
-                        System.out.println("proffesion: " + foundTeamMember.getQualification());
+                        System.out.println("Profession: " + foundTeamMember.getQualification());
                         System.out.println("Hourly salary: " + foundTeamMember.getHourlyRate());
                         System.out.println("----------------------------------------------------------------");
                         pause();
-
-                        return false;
 
                     } catch (Exception e) {
                         System.out.println("Input not a number or member does not exist with that ID");
@@ -987,11 +988,11 @@ public class ProjectManagementTool {
 
                         error=true;
                     }
-                } while (error == true);
+                } while (error);
             }
         }
         pause();
-        return false;
+
     }//Armin
 
 
@@ -1001,7 +1002,7 @@ public class ProjectManagementTool {
         System.out.println("----------------------------------------------------------------");
         for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
             System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
-            System.out.println("Proffession: " + currentProject.getTeamMembers().get(i).getQualification());
+            System.out.println("Profession: " + currentProject.getTeamMembers().get(i).getQualification());
             System.out.println("----------------------------------------------------------------");
         }
     }//OSMAN
@@ -1053,7 +1054,7 @@ public class ProjectManagementTool {
                 LocalDate tasksStartDate = tasksStartAndFinishDates("start",tasks);
                 LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",tasks);
 
-                long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+                long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
                 //
                 for(int i = 0;i < (smallestIndent + INDENT_ADJUSTMENT2); i++){//horizontal line1
                     System.out.print(WHITE_BACKGROUND + "_" + RESET);
@@ -1124,7 +1125,7 @@ public class ProjectManagementTool {
                             LocalDate thisStart = currentTask.getActualStart();
                             LocalDate thisFinish = currentTask.getActualFinish();
 
-                            long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish) + DATE_SUBSTRUCTION_CORRECTION;
+                            long actualDuration = ChronoUnit.DAYS.between(thisStart, thisFinish) + DATE_SUBTRACTION_CORRECTION;
 
                             print = true;
                             for(int m = 0; m < actualDuration; m++){
@@ -1277,8 +1278,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget *scheduleProgress ))*100)/100.0;
@@ -1338,8 +1339,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish", foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
             double scheduleProgress = percentageDone;
             double ExecutedProgress = actualCost / plannedBudget;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress)) * 100) / 100.0;
@@ -1357,7 +1358,7 @@ public class ProjectManagementTool {
             System.out.println(" ");
             System.out.println("Project ID: "+projectID);
             System.out.println("*********************************************************************");
-            System.out.println("The Earned Value($) is ammounted to : " + earnedValue);
+            System.out.println("The Earned Value($) is amounted to : " + earnedValue);
             System.out.println("*********************************************************************");
 
             pause();
@@ -1394,8 +1395,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
@@ -1448,8 +1449,8 @@ public class ProjectManagementTool {
             LocalDate tasksFinishDate = tasksStartAndFinishDates("finish",foundProject.getTasks());
 
             //project tasks total duration
-            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
-            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBSTRUCTION_CORRECTION;
+            double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
+            double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
@@ -1600,7 +1601,7 @@ public class ProjectManagementTool {
                 System.out.println(teamMemberName + " has participated on: ");
             }
             for(Entry entry: hashSet ) {
-                System.out.println("    " + entry.getKey()+" for "+entry.getValue() + " hours");
+                System.out.println("    " + entry.getKey()+" for "+ new DataEvaluator().roundDouble((double)entry.getValue(),1) + " hours");
             }
         }
         pause();
@@ -1829,44 +1830,45 @@ public class ProjectManagementTool {
 
     public void editTasks(){
         int option;
-        boolean input = true;
+        boolean input;
         do {
-            while (input) {
-                System.out.println("What do you wish to edit?");
-                System.out.println("1. Name ");
-                System.out.println("2. ID");
-                System.out.println("3. Remove Task");
-                System.out.println("4. Return");
-                option = new KeyboardInput().Int();
-                System.out.println("----------------------------------------------------------------");
+            input = true;
 
-                if (option == 1) {
-                    editTaskName();
-                    input = false;
+            System.out.println("What do you wish to edit?");
+            System.out.println("1. Name ");
+            System.out.println("2. ID");
+            System.out.println("3. Remove Task");
+            System.out.println("4. Return");
+            option = new KeyboardInput().Int();
+            System.out.println("----------------------------------------------------------------");
 
-                } else if (option == 2) {
-                    editTaskID();//OSMAN
-                    input = false;
+            if (option == 1) {
+                editTaskName();
+                input = false;
 
-                } else if (option == 3) {
-                    removeTask();
-                    input = false;
+            } else if (option == 2) {
+                editTaskID();//OSMAN
+                input = false;
 
-                } else if (option == 4) {
-                    System.out.println(" ");
-                    input = false;
+            } else if (option == 3) {
+                removeTask();
+                input = false;
 
-                } else {
-                    System.out.println("Option " + option + " is not valid.");
-                    System.out.println(" ");
-                    input = true;
-                }
+            } else if (option == 4) {
+                System.out.println(" ");
+                input = false;
+
+            } else {
+                System.out.println("Option " + option + " is not valid.");
+                System.out.println(" ");
+                input = true;
             }
-        }while (input == true) ;
+
+        }while (input) ;
     }//Armin
 
 
-    public boolean tasksIDExixsts(Project project, String ID){//OSMAN
+    public boolean tasksIDExists(Project project, String ID){//OSMAN
         if(project != null){
             for(int i = 0; i < project.getTasks().size(); i++){
                 if(project.getTasks().get(i).getId().equals(ID)){
@@ -1883,8 +1885,8 @@ public class ProjectManagementTool {
         System.out.println("Type in id of the task you want to edit");
         String taskID = new KeyboardInput().Line();
 
-        tasksIDExixsts(currentProject, taskID);
-        while(!tasksIDExixsts(currentProject, taskID)) {
+        tasksIDExists(currentProject, taskID);
+        while(!tasksIDExists(currentProject, taskID)) {
             System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
             taskID = new KeyboardInput().Line();
         }
@@ -1919,7 +1921,7 @@ public class ProjectManagementTool {
             System.out.println("Enter the NEW Start date of the project");
             projectStartDate = new DataEvaluator().readDate();
 
-            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBTRACTION_CORRECTION;
             currentProject.setStartDate(projectStartDate);
 
             currentProject.setDuration(duration);
@@ -1929,12 +1931,12 @@ public class ProjectManagementTool {
             System.out.println("Enter NEW Finish Date");
             projectFinishDate = new DataEvaluator().readDate();
 
-            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBTRACTION_CORRECTION;
             currentProject.setFinishDate(projectFinishDate);
 
             currentProject.setDuration(duration);
             checkWithProjectTimes(currentProject);
-        } else if (option == 3) {
+        } else { //the remaining option is 3
 
             System.out.println("Enter the NEW Start date of the project: ");
             projectStartDate = new DataEvaluator().readDate();
@@ -1942,7 +1944,7 @@ public class ProjectManagementTool {
             System.out.println("Enter the NEW Finish date of the project: ");
             projectFinishDate = new DataEvaluator().readDate();
 
-            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBSTRUCTION_CORRECTION;
+            duration = ChronoUnit.DAYS.between(projectStartDate, projectFinishDate) + DATE_SUBTRACTION_CORRECTION;
 
             currentProject.setStartDate(projectStartDate);
             currentProject.setFinishDate(projectFinishDate);
@@ -1950,8 +1952,6 @@ public class ProjectManagementTool {
             currentProject.setDuration(duration);
             checkWithProjectTimes(currentProject);
 
-        } else {
-            System.out.println("Invalid Option");
         }
         pause();
     }
@@ -2151,7 +2151,7 @@ public class ProjectManagementTool {
             project.setFinishDate(projectTasksFinishDate);
         }
 
-        long duration = ChronoUnit.DAYS.between(project.getStartDate(), project.getFinishDate()) + DATE_SUBSTRUCTION_CORRECTION;
+        long duration = ChronoUnit.DAYS.between(project.getStartDate(), project.getFinishDate()) + DATE_SUBTRACTION_CORRECTION;
         project.setDuration(duration);
     }//Eyuell
 
@@ -2359,7 +2359,7 @@ public class ProjectManagementTool {
         }
 
         if(task.getActualFinish() != null){
-            task.setActualDuration(ChronoUnit.DAYS.between(task.getActualStart(), task.getActualFinish()) + DATE_SUBSTRUCTION_CORRECTION);
+            task.setActualDuration(ChronoUnit.DAYS.between(task.getActualStart(), task.getActualFinish()) + DATE_SUBTRACTION_CORRECTION);
         }
 
         if(outOfThree == TWO){
@@ -2369,7 +2369,7 @@ public class ProjectManagementTool {
                     task.setPlannedFinish(finish);
                 }else{
 
-                    long duration = ChronoUnit.DAYS.between(task.getPlannedStart(), task.getPlannedFinish()) + DATE_SUBSTRUCTION_CORRECTION;
+                    long duration = ChronoUnit.DAYS.between(task.getPlannedStart(), task.getPlannedFinish()) + DATE_SUBTRACTION_CORRECTION;
 
                     task.setPlannedDuration(duration);
                 }
@@ -2703,7 +2703,7 @@ public class ProjectManagementTool {
                     LocalDate finish = tasksStartAndFinishDates("finish",currentProject.getTasks());
                     currentProject.setFinishDate(finish);
 
-                    long duration = ChronoUnit.DAYS.between(currentProject.getStartDate(), finish) + DATE_SUBSTRUCTION_CORRECTION;
+                    long duration = ChronoUnit.DAYS.between(currentProject.getStartDate(), finish) + DATE_SUBTRACTION_CORRECTION;
                     currentProject.setDuration(duration);
                 }
             }
