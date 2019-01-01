@@ -1288,11 +1288,19 @@ public void printAllCosts(){
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget *scheduleProgress ))*100)/100.0;
+
+            double deadline=projects.get(FIRST).getDuration()-durationTillToday;
+            double projectLength=projects.get(FIRST).getDuration();
             String projectID=projects.get(FIRST).getProjectID();
+
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
-            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress))*100)*100/100.0 +" %"); //this is time wise
+            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
+            System.out.println("Days passed since start: "+ durationTillToday+" days");
+            System.out.println("Project length: "+projectLength+" days");
+            System.out.println("Days until Deadline: "+ deadline+ " days");
+            System.out.println(" ");
             SystemStore costs = new MiniProject.SystemStore();
             System.out.println("------------------------------------------------------------------------------------------------");
             System.out.println(costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()));
@@ -1302,8 +1310,8 @@ public void printAllCosts(){
             System.out.println("*********************************************************************");
             System.out.println("Earned Value($): " + earnedValue);
             System.out.println("*********************************************************************");
-		
-	    pause();	
+
+            pause();
         }
     }//Armin
 
@@ -1328,8 +1336,8 @@ public void printAllCosts(){
             double plannedSum = totalPlannedHours(foundProject);
             double actualSum = totalActualHours(foundProject);
             String projectID=projects.get(FIRST).getProjectID();
-            double plannedBudget = Math.round((plannedSum * PAY) * 100) / 100.0;
-            double actualCost = Math.round((actualSum * SALARY) * 100) / 100.0;
+            double plannedBudget = Math.round((plannedSum * PAY)*100)/100.0;
+            double actualCost = Math.round((actualSum * SALARY)*100)/100.0;
 
             LocalDate today = LocalDate.now();
             LocalDate tasksStartDate = tasksStartAndFinishDates("start", foundProject.getTasks());
@@ -1341,17 +1349,23 @@ public void printAllCosts(){
             double scheduleProgress = percentageDone;
             double ExecutedProgress = actualCost / plannedBudget;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress)) * 100) / 100.0;
+            
+            double deadline=projects.get(FIRST).getDuration()-durationTillToday;
+            double projectLength=projects.get(FIRST).getDuration();
 
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
             System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
+            System.out.println("Days passed since start: "+ durationTillToday+" days");
+            System.out.println("Project length: "+projectLength+" days");
+            System.out.println("Days until Deadline: "+ deadline+ " days");
             System.out.println(" ");
             System.out.println("Project ID: "+projectID);
             System.out.println("*********************************************************************");
             System.out.println("The Earned Value($) is ammounted to : " + earnedValue);
             System.out.println("*********************************************************************");
-            
+
             pause();
         }
     }//Armin
@@ -1391,16 +1405,23 @@ public void printAllCosts(){
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
+           
+            double deadline=projects.get(FIRST).getDuration()-durationTillToday;
+            double projectLength=projects.get(FIRST).getDuration();
 
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
-            System.out.println("Earned Value($): " + earnedValue);
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
-            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
+            System.out.println("Days passed since start: "+ durationTillToday+" days");
+            System.out.println("Project length: "+projectLength+" days");
+            System.out.println("Days until Deadline: "+ deadline+ " days");
+            System.out.println(" ");
+            
             SystemStore Costs = new MiniProject.SystemStore();
             Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString();
             System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ).toString());
-            
+
             pause();
         }
     }//Armin
@@ -1438,15 +1459,21 @@ public void printAllCosts(){
             double ExecutedProgress = actualCost/plannedBudget;
             double scheduleProgress = percentageDone;
             double earnedValue = (Math.round((plannedBudget * scheduleProgress))*100)/100.0;
+           
+            double deadline=projects.get(FIRST).getDuration()-durationTillToday;
+            double projectLength=projects.get(FIRST).getDuration();
 
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
-            System.out.println("Earned Value($): " + earnedValue);
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress)*100.0)*100)/100.0 +" %"); //this is only monetary wise
-            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress)*100.0)*100)/100.0 +" %"); //this is time wise
+            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
+            System.out.println("Days passed since start: "+ durationTillToday+" days");
+            System.out.println("Project length: "+projectLength+" days");
+            System.out.println("Days until Deadline: "+ deadline+ " days");
+            System.out.println(" ");
             SystemStore Costs = new MiniProject.SystemStore();
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
-            
+
             pause();
         }
     }//Armin
