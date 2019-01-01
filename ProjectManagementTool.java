@@ -73,7 +73,7 @@ public class ProjectManagementTool {
         System.out.println("4. Assign time to Tasks");
         System.out.println("5. Assign Manpower to Tasks");
         System.out.println("6. Register Actual Resources to Tasks");
-        System.out.println("7. Display All projects:");
+        System.out.println("7. Display All projects");
         System.out.println("8. Display Tasks and Milestones");
         System.out.println("9. Display Team Members");
         System.out.println("10. Display Project Schedule");
@@ -162,7 +162,7 @@ public class ProjectManagementTool {
                     break;
 
                 case PRINT_TASKS:
-                    printTasks();
+                    printTasksAndMilestones();
                     break;
 
                 case PRINT_TEAM_MEMBERS:
@@ -645,6 +645,38 @@ public class ProjectManagementTool {
     }//Eyuell
 
 
+    public void printTasksAndMilestones() {
+        int option;
+        boolean input = true;
+
+        do {
+            System.out.println("What do you wish to print?");
+            System.out.println("1. Tasks ");
+            System.out.println("2. Milestones");
+            System.out.println("3. Return");
+            option = new KeyboardInput().Int();
+
+            if (option == 1) {
+                printTask();
+                input = false;
+
+            } else if (option == 2) {
+                printMileStones();
+                input = false;
+
+            } else if (option == 3) {
+                //Return
+                System.out.println("");
+                input = false;
+
+            } else {
+                System.out.println("option must be 1-3. ");
+                input = true;
+            }
+
+        }while (input == true);
+    }//Armin	
+	
     public void printTasks(){
         int option;
         boolean input = true;
