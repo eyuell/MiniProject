@@ -140,11 +140,11 @@
           "day": 16
         },
         "actualFinish": {
-          "year": 2018,
-          "month": 12,
-          "day": 31
+          "year": 2019,
+          "month": 1,
+          "day": 2
         },
-        "actualDuration": 46,
+        "actualDuration": 48,
         "plannedManpower": [
           {
             "manpower": {
@@ -2062,6 +2062,1686 @@
               "year": 2018,
               "month": 12,
               "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 1.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
             }
           }
         ],
@@ -2089,11 +3769,11 @@
           "day": 26
         },
         "actualFinish": {
-          "year": 2018,
-          "month": 12,
-          "day": 31
+          "year": 2019,
+          "month": 1,
+          "day": 2
         },
-        "actualDuration": 36,
+        "actualDuration": 38,
         "plannedManpower": [
           {
             "manpower": {
@@ -2822,6 +4502,342 @@
               "year": 2018,
               "month": 12,
               "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Armin Ghoroghi",
+              "id": "1",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.1,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
             }
           }
         ],
@@ -2849,11 +4865,11 @@
           "day": 26
         },
         "actualFinish": {
-          "year": 2018,
-          "month": 12,
-          "day": 31
+          "year": 2019,
+          "month": 1,
+          "day": 2
         },
-        "actualDuration": 36,
+        "actualDuration": 38,
         "plannedManpower": [
           {
             "manpower": {
@@ -3582,6 +5598,342 @@
               "year": 2018,
               "month": 12,
               "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "James Wagabaza",
+              "id": "2",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.2,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
             }
           }
         ],
@@ -3609,11 +5961,11 @@
           "day": 26
         },
         "actualFinish": {
-          "year": 2018,
-          "month": 12,
-          "day": 31
+          "year": 2019,
+          "month": 1,
+          "day": 2
         },
-        "actualDuration": 36,
+        "actualDuration": 38,
         "plannedManpower": [
           {
             "manpower": {
@@ -4342,6 +6694,342 @@
               "year": 2018,
               "month": 12,
               "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Osman Osman",
+              "id": "3",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.3,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
             }
           }
         ],
@@ -4369,11 +7057,11 @@
           "day": 26
         },
         "actualFinish": {
-          "year": 2018,
-          "month": 12,
-          "day": 31
+          "year": 2019,
+          "month": 1,
+          "day": 2
         },
-        "actualDuration": 36,
+        "actualDuration": 38,
         "plannedManpower": [
           {
             "manpower": {
@@ -5102,6 +7790,342 @@
               "year": 2018,
               "month": 12,
               "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Hamidreza Yaghoobzadeh",
+              "id": "4",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.4,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
             }
           }
         ],
@@ -5129,11 +8153,11 @@
           "day": 26
         },
         "actualFinish": {
-          "year": 2018,
-          "month": 12,
-          "day": 31
+          "year": 2019,
+          "month": 1,
+          "day": 2
         },
-        "actualDuration": 36,
+        "actualDuration": 38,
         "plannedManpower": [
           {
             "manpower": {
@@ -5862,6 +8886,342 @@
               "year": 2018,
               "month": 12,
               "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 10
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 11
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 12
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 13
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 14
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 15
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 16
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 17
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 18
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 19
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 20
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 21
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 22
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 23
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 24
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 25
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 26
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 27
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 28
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 29
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 30
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2018,
+              "month": 12,
+              "day": 31
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 1
+            }
+          },
+          {
+            "teamMember": {
+              "name": "Eyuell Hailemichael",
+              "id": "5",
+              "hourlyRate": 255.0,
+              "qualification": "Software Developer"
+            },
+            "workHours": 3.5,
+            "date": {
+              "year": 2019,
+              "month": 1,
+              "day": 2
             }
           }
         ],
