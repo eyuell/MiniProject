@@ -23,6 +23,7 @@ public class ProjectManagementTool {
     // Regular Colors
     public static final String RED = "\033[0;31m";     // RED
     public static final String BLUE = "\033[0;34m";    // BLUE
+    public static final String CYAN_BRIGHT = "\033[0;96m";   // CYAN
 
     // Background
     public static final String RED_BACKGROUND = "\033[41m";    // RED
@@ -53,14 +54,14 @@ public class ProjectManagementTool {
     //Gateway to the system
     public static void main(String [] args) throws Exception {
 
-        System.out.println("This program works on project schedules");
+        System.out.println(CYAN_BRIGHT + "This program works on project schedules");
         ProjectManagementTool start = new ProjectManagementTool();
         start.run();
     }
 
     //Main Menu of the program
     public void printMenuOption(){
-        System.out.println("=========================================");
+        System.out.println(CYAN_BRIGHT + "=========================================");
         System.out.println("1. Register Project");
         System.out.println("2. Register Tasks and Milestones");
         System.out.println("3. Register Team members");
@@ -505,7 +506,7 @@ public class ProjectManagementTool {
                         do{
                             repeat = true;
                             System.out.println("Enter Man hour need for Task ID (" + task.getId() + ") on date " + date + ": ");
-                            System.out.println("    Enter * to escape to another day ");
+                            System.out.print("    Enter * to escape to another day ");
                             String timeInput = new KeyboardInput().Line();
                             if(timeInput.equals("*")){
                                 completenessCheck(task); // this may not be needed
@@ -1027,14 +1028,14 @@ public class ProjectManagementTool {
                 ArrayList<String> listOfNames = new ArrayList<>();
                 for (int i = 1; i < tasks.size(); i++){//the first index already considered above
                     String indent = tasks.get(i).getName() + tasks.get(i).getId();
-                    listOfNames.add(indent);
+                    listOfNames.add(indent);//indent from tasks
                 }
 
                 ArrayList<Milestone> milestones = foundProject.getMilestones();
                 if(milestones != null){
                     for(int i = 0; i < milestones.size();i++){
                         String indent = milestones.get(i).getName() + milestones.get(i).getId();
-                        listOfNames.add(indent);
+                        listOfNames.add(indent); //indent from milestones
                     }
                 }
 
@@ -1057,10 +1058,10 @@ public class ProjectManagementTool {
                 long duration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
                 //
                 for(int i = 0;i < (smallestIndent + INDENT_ADJUSTMENT2); i++){//horizontal line1
-                    System.out.print(WHITE_BACKGROUND + "_" + RESET);
+                    System.out.print(WHITE_BACKGROUND + "_" + CYAN_BRIGHT);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
-                    System.out.print(WHITE_BACKGROUND + "____________" + RESET);
+                    System.out.print(WHITE_BACKGROUND + "____________" + CYAN_BRIGHT);
                 }
                 System.out.println();
                 printEmpty(smallestIndent);
@@ -1081,10 +1082,10 @@ public class ProjectManagementTool {
                 }
                 System.out.println();
                 for(int i= 0;i<(smallestIndent + INDENT_ADJUSTMENT2);i++){//horizontal line1
-                    System.out.print(WHITE_BACKGROUND + "_" + RESET);
+                    System.out.print(WHITE_BACKGROUND + "_" + CYAN_BRIGHT);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
-                    System.out.print(WHITE_BACKGROUND + "____________" + RESET);
+                    System.out.print(WHITE_BACKGROUND + "____________" + CYAN_BRIGHT);
                 }
                 System.out.println();
                 System.out.println();
@@ -1105,7 +1106,7 @@ public class ProjectManagementTool {
                         for(long m = 0; m < currentTask.getPlannedDuration(); m++){
                             LocalDate taskDates = currentTask.getPlannedStart().plusDays(m);
                             if(day.equals(taskDates)){
-                                System.out.print(ANSI_BLUE_BACKGROUND + "|==========|" + RESET);//12 pixels per day ?
+                                System.out.print(ANSI_BLUE_BACKGROUND + "|==========|" + CYAN_BRIGHT);//12 pixels per day ?
                                 print = false;
                             }
                         }
@@ -1131,7 +1132,7 @@ public class ProjectManagementTool {
                             for(int m = 0; m < actualDuration; m++){
                                 LocalDate taskDates = thisStart.plusDays(m);
                                 if(day.equals(taskDates)){
-                                    System.out.print(ANSI_RED_BACKGROUND + "|**********|" + RESET);//12 pixels per day ?
+                                    System.out.print(ANSI_RED_BACKGROUND + "|**********|" + CYAN_BRIGHT);//12 pixels per day ?
                                     print = false;
                                 }
                             }
@@ -1158,7 +1159,7 @@ public class ProjectManagementTool {
                             print = true;
                             LocalDate milestoneDate = currentMilestone.getDate();
                             if(day.equals(milestoneDate)){
-                                System.out.print(RED_BACKGROUND + "|##########|" + RESET);//12 pixels per day ?
+                                System.out.print(RED_BACKGROUND + "|##########|" + CYAN_BRIGHT);//12 pixels per day ?
                                 print = false;
 
                             }
@@ -1172,21 +1173,21 @@ public class ProjectManagementTool {
                 }
 
                 for(int i= 0;i<(smallestIndent + INDENT_ADJUSTMENT2);i++){//horizontal line1
-                    System.out.print(WHITE_BACKGROUND + "_" + RESET);
+                    System.out.print(WHITE_BACKGROUND + "_" + CYAN_BRIGHT);
                 }
                 for (long i = 0; i < duration; i++){//horizontal line2
-                    System.out.print(WHITE_BACKGROUND + "____________" + RESET);
+                    System.out.print(WHITE_BACKGROUND + "____________" + CYAN_BRIGHT);
                 }
                 //Legend
                 System.out.println();
                 System.out.println("                 Legend:");
-                System.out.println("                     " + ANSI_BLUE_BACKGROUND + "|==========|" + RESET + " : Planned Tasks" + RESET);
+                System.out.println("                     " + ANSI_BLUE_BACKGROUND + "|==========|" + CYAN_BRIGHT + " : Planned Tasks" + CYAN_BRIGHT);
                 System.out.println();
-                System.out.println("                     " + ANSI_RED_BACKGROUND+ "|**********|" + RESET + " : Actual Tasks" + RESET);
+                System.out.println("                     " + ANSI_RED_BACKGROUND+ "|**********|" + CYAN_BRIGHT + " : Actual Tasks" + CYAN_BRIGHT);
 
                 if(milestones1 != null){
                     System.out.println();
-                    System.out.println("                     " + RED_BACKGROUND + "|##########|" + RESET + " : Milestones");
+                    System.out.println("                     " + RED_BACKGROUND + "|##########|" + CYAN_BRIGHT + " : Milestones");
                 }
                 //
             }else{
@@ -1487,7 +1488,7 @@ public class ProjectManagementTool {
                     System.out.println("Do you want to see the Time Spent of :");
                     System.out.println("    1. All team members");
                     System.out.println("    2. Specific team member");
-                    System.out.println(" Enter onr of the two options (1 or 2) ?");
+                    System.out.print(" Enter onr of the two options (1 or 2) ?");
                     choice = new KeyboardInput().Line();
                     error = false;
                 } catch (Exception e) {
@@ -1525,7 +1526,7 @@ public class ProjectManagementTool {
                 String memberId = "";
                 do {
                     try {
-                        System.out.println("Enter the id of team member");
+                        System.out.print("Enter the id of team member ");
                         memberId = new KeyboardInput().Line();
                         error2 = false;
                     } catch (Exception ex) {
@@ -1570,7 +1571,7 @@ public class ProjectManagementTool {
         if(projects != null){
             Project currentProject = projects.get(FIRST);
             listTeamMembers();
-            System.out.println("Enter the id of a team member");
+            System.out.print("Enter the id of a team member ");
             String teamID = new KeyboardInput().Line();
 
             while (! teamMemberIDExists(currentProject, teamID)) {
@@ -1674,7 +1675,7 @@ public class ProjectManagementTool {
 
         do {
             try {
-                System.out.println("What is the id of the project that you want to edit");
+                System.out.print("What is the id of the project that you want to edit ");
                 id = new KeyboardInput().Line();
                 error = false;
             }catch(Exception e){
@@ -1688,7 +1689,7 @@ public class ProjectManagementTool {
         error = true;
         do {
             try {
-                System.out.println("Do you want to edit project name or id ? (name/id)");
+                System.out.print("Do you want to edit project name or id ? (name/id) ");
                 option = new KeyboardInput().Line();
                 error= false;
             } catch (Exception e) {
@@ -1702,7 +1703,7 @@ public class ProjectManagementTool {
             System.out.println("The name of this project is " + project.getName());
             do {
                 try {
-                    System.out.println("what is the new name that you want to put  ");
+                    System.out.print("What is the new name that you want to put? ");
                     newName = new KeyboardInput().Line();
                     project.setName(newName);
                     error = false;
@@ -1716,7 +1717,7 @@ public class ProjectManagementTool {
             String newId = "";
             do {
                 try {
-                    System.out.println("what is the new id that you want put ");
+                    System.out.print("What is the new id that you want put? ");
                     newId = new KeyboardInput().Line();
                     error = false;
                     if (projectExists(newId)) {
@@ -1740,11 +1741,11 @@ public class ProjectManagementTool {
 
         if (currentProject!=null) {
             boolean error;
-            String taskID = "";
-            Task task = retrieveTask(taskID, currentProject);
+            String taskID;
+            Task task;
             do {
                 try {
-                    System.out.println("Enter the id of task you wish to rename: ");
+                    System.out.print("Enter the id of task you wish to rename: ");
                     taskID = new KeyboardInput().Line();
                     System.out.println("----------------------------------------------------------------");
                     task = retrieveTask(taskID, currentProject);
@@ -1752,7 +1753,7 @@ public class ProjectManagementTool {
                     if(task.getId()!=null)
                         System.out.println(" The name of task is currently: " + task.getName());
                     System.out.println("----------------------------------------------------------------");
-                    System.out.println("Enter new Name: ");
+                    System.out.print("Enter new Name: ");
 
                     String name = new KeyboardInput().Line();
                     task.setName(name);
@@ -1766,7 +1767,7 @@ public class ProjectManagementTool {
                     error=true;
                 }
 
-            } while (error == true);
+            } while (error);
         }
         pause();
     }//Armin
@@ -1832,7 +1833,6 @@ public class ProjectManagementTool {
         int option;
         boolean input;
         do {
-            input = true;
 
             System.out.println("What do you wish to edit?");
             System.out.println("1. Name ");
@@ -1882,7 +1882,7 @@ public class ProjectManagementTool {
     public void editTaskID() {//OSMAN
         Project currentProject = projects.get(FIRST);
         listTasks();
-        System.out.println("Type in id of the task you want to edit");
+        System.out.print("Type in id of the task you want to edit ");
         String taskID = new KeyboardInput().Line();
 
         tasksIDExists(currentProject, taskID);
@@ -1892,7 +1892,7 @@ public class ProjectManagementTool {
         }
 
         Task task = retrieveTask(taskID,currentProject );
-        System.out.println("Enter new ID: ");
+        System.out.print("Enter new ID: ");
 
         String newID = new KeyboardInput().Line();
         task.setId(newID);
@@ -1959,7 +1959,7 @@ public class ProjectManagementTool {
 
     public void removeTeamMember() {
         listTeamMembers();
-        System.out.println("Enter the id of a team member you wish to remove");
+        System.out.print("Enter the id of a team member you wish to remove ");
         String memberID = new KeyboardInput().Line();
         Project currentProject = projects.get(FIRST);
 
@@ -1983,7 +1983,7 @@ public class ProjectManagementTool {
 
     public void removeTask(){
         listTasks();
-        System.out.println("Enter the id of the task you wish to remove");
+        System.out.print("Enter the id of the task you wish to remove ");
         String taskID = new KeyboardInput().Line();
         System.out.println("----------------------------------------------------------------");
 
