@@ -7,6 +7,7 @@ public class RiskMatrix {
     public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m"; //"\033[42m" Green
     public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m"; // Yellow
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m"; // Red
+    public static final String CYAN_BRIGHT = "\033[0;96m";   // CYAN
 
     public static final String WHITE_UNDERLINED = "\033[4;37m";  // WHITE
 
@@ -62,7 +63,7 @@ public class RiskMatrix {
             }
 
             printMenu();
-            System.out.println("Enter an option from the above:");
+            System.out.print("Enter an option from the above: ");
             option = new KeyboardInput().positiveInt();
 
             switch (option){
@@ -105,11 +106,11 @@ public class RiskMatrix {
 
             String riskType = readRiskType();
 
-            System.out.println("Risk Probability (b/n 0.0 and 1.0) :");
+            System.out.print("Risk Probability (b/n 0.0 and 1.0) : ");
             double probability = new KeyboardInput().positiveDouble();
             probability = new RiskEvaluator().probability(probability);
 
-            System.out.println("Risk Impact (b/n 0.0 and 10.0):");
+            System.out.print("Risk Impact (b/n 0.0 and 10.0):");
             double impact = new KeyboardInput().positiveDouble();
             impact = new RiskEvaluator().impact(impact);
 
@@ -211,7 +212,7 @@ public class RiskMatrix {
                                 String riskID = checkRiskID();
                                 Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
                                 if (foundRisk != null) {
-                                    System.out.println("Enter new name:");
+                                    System.out.print("Enter new name: ");
                                     String newName = new KeyboardInput().Line();
                                     newName = new RiskEvaluator().name(newName);
                                     foundRisk.setRiskName(newName);
@@ -229,7 +230,7 @@ public class RiskMatrix {
                                 String riskID = checkRiskID();
                                 Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
                                 if (foundRisk != null ){
-                                    System.out.println("Enter the new probability value:");
+                                    System.out.print("Enter the new probability value: ");
                                     double newProbability = new KeyboardInput().positiveDouble();
                                     newProbability = new RiskEvaluator().probability(newProbability);
                                     foundRisk.setProbability(newProbability);
@@ -247,7 +248,7 @@ public class RiskMatrix {
                                 String riskID = checkRiskID();
                                 Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
                                 if(foundRisk != null){
-                                    System.out.println("Enter the new impact value :");
+                                    System.out.print("Enter the new impact value : ");
                                     double newImpact = new KeyboardInput().positiveDouble();
                                     newImpact = new RiskEvaluator().impact(newImpact);
                                     foundRisk.setImpact(newImpact);
@@ -259,82 +260,82 @@ public class RiskMatrix {
                             } while (repeat);
                             break;
                         case TYPE:
-                            {
-                                String riskID = checkRiskID();
-                                Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
-                                if(foundRisk != null){
-                                    System.out.println("Do you want to change the current type of risk : (" + foundRisk.getRiskType() + ") ?");
-                                    System.out.print("Enter Y or N ");
-                                    String choice = new KeyboardInput().Line();
-                                    choice = new DataEvaluator().yesOrNo(choice);
-                                    if(choice.equals("Y")){
-                                        if(foundRisk.getRiskType().equals("Predicted")){
-                                            foundRisk.setRiskType("   New   "); //intentional spaces
-                                        } else {
-                                            foundRisk.setRiskType("Predicted");
-                                        }
-                                        System.out.println("Risk type successfully changed to: " + foundRisk.getRiskType());
+                        {
+                            String riskID = checkRiskID();
+                            Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
+                            if(foundRisk != null){
+                                System.out.println("Do you want to change the current type of risk : (" + foundRisk.getRiskType() + ") ?");
+                                System.out.print("Enter Y or N ");
+                                String choice = new KeyboardInput().Line();
+                                choice = new DataEvaluator().yesOrNo(choice);
+                                if(choice.equals("Y")){
+                                    if(foundRisk.getRiskType().equals("Predicted")){
+                                        foundRisk.setRiskType("   New   "); //intentional spaces
                                     } else {
-                                        System.out.println("Editing the type has been left unchanged");
+                                        foundRisk.setRiskType("Predicted");
                                     }
+                                    System.out.println("Risk type successfully changed to: " + foundRisk.getRiskType());
+                                } else {
+                                    System.out.println("Editing the type has been left unchanged");
                                 }
                             }
-                            break;
+                        }
+                        break;
                         case STATUS:
-                            {
-                                final int TBM = 1;
-                                final int MANAGED = 2;
-                                final int COMMUNICATE = 3;
-                                final int EFFORT = 4;
-                                final int GONE = 5;
-                                final int QUIT = 6;
+                        {
+                            final int TBM = 1;
+                            final int MANAGED = 2;
+                            final int COMMUNICATE = 3;
+                            final int EFFORT = 4;
+                            final int GONE = 5;
+                            final int QUIT = 6;
 
-                                String riskID = checkRiskID();
-                                Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
-                                if (foundRisk != null){
-                                    int choice;
-                                    do{
-                                        System.out.println("  Options of Risk Status update: ");
-                                        System.out.println("    1. To be Managed,");
-                                        System.out.println("    2. Managed,");
-                                        System.out.println("    3. Communicated,");
-                                        System.out.println("    4. Effort Made,");
-                                        System.out.println("    5. Disappeared,");
-                                        System.out.println("    6. Quit Updating.");
-                                        System.out.println("Choose option of Status ");
-                                        choice = new KeyboardInput().positiveInt();
-                                    } while (choice > QUIT);
+                            String riskID = checkRiskID();
+                            Risk foundRisk = retrieveRiskByID(riskID, currentProject.getRisks());
+                            if (foundRisk != null){
+                                int choice;
+                                do{
+                                    System.out.println("  Options of Risk Status update: ");
+                                    System.out.println("    1. To be Managed,");
+                                    System.out.println("    2. Managed,");
+                                    System.out.println("    3. Communicated,");
+                                    System.out.println("    4. Effort Made,");
+                                    System.out.println("    5. Disappeared,");
+                                    System.out.println("    6. Quit Updating.");
+                                    System.out.println("Choose option of Status ");
+                                    choice = new KeyboardInput().positiveInt();
+                                } while (choice > QUIT);
 
-                                    switch (choice){
-                                        case TBM:
-                                            foundRisk.setRiskStatus("To Be Managed");
-                                            break;
+                                switch (choice){
+                                    case TBM:
+                                        foundRisk.setRiskStatus("To Be Managed");
+                                        break;
 
-                                        case MANAGED:
-                                            foundRisk.setRiskStatus("Managed");
-                                            break;
+                                    case MANAGED:
+                                        foundRisk.setRiskStatus("Managed");
+                                        break;
 
-                                        case COMMUNICATE:
-                                            foundRisk.setRiskStatus("Communicated");
-                                            break;
+                                    case COMMUNICATE:
+                                        foundRisk.setRiskStatus("Communicated");
+                                        break;
 
-                                        case EFFORT:
-                                            foundRisk.setRiskStatus("Effort Made");
-                                            break;
-                                        case GONE:
-                                            foundRisk.setRiskStatus("Disappeared");
-                                            break;
+                                    case EFFORT:
+                                        foundRisk.setRiskStatus("Effort Made");
+                                        break;
+                                    case GONE:
+                                        foundRisk.setRiskStatus("Disappeared");
+                                        break;
 
-                                        default: //if not all the above
-                                            System.out.println("Exiting....");
-                                    }
+                                    default: //if not all the above
+                                        System.out.println("Exiting....");
+                                }
 
-                                    if(choice < QUIT){
-                                        System.out.println("Status successfully updated to : " + foundRisk.getRiskStatus());
-                                    }
+                                if(choice < QUIT){
+                                    System.out.println("Status successfully updated to : " + foundRisk.getRiskStatus());
                                 }
                             }
-                            break;
+                        }
+                        break;
 
                         case REMOVE:
                             do{
@@ -374,7 +375,7 @@ public class RiskMatrix {
             final int YES = 1;
             int option;
             System.out.println("Enter" + " 1 " + "to delete risk,");
-            System.out.println("Enter any other number to abort.");
+            System.out.print("Enter any other number to abort. ");
             option = new KeyboardInput().Int();
             if (option == YES){
                 project.getRisks().remove(foundRisk);
@@ -403,10 +404,11 @@ public class RiskMatrix {
     public String readRiskID (){// for new risk ID
         String riskID = "";
         if(currentProject != null){
-            System.out.println("Enter new risk ID");
+            System.out.print("Enter new risk ID ");
             riskID = new KeyboardInput().Line();
             while (retrieveRiskByID(riskID, currentProject.getRisks()) != null){
-                System.out.print("ID is already registered by other risk. Enter another risk ID");
+                System.out.println("ID is already registered by other risk.");
+                System.out.print("Enter another risk ID ");
                 riskID = new KeyboardInput().Line();
             }
         }
@@ -419,15 +421,16 @@ public class RiskMatrix {
             ArrayList<Risk> risks = currentProject.getRisks();
             if(risks != null){
                 System.out.println("=================================");
-                System.out.println(WHITE_UNDERLINED + "    List of Risks (ID and Name)  " + RESET);
+                System.out.println(WHITE_UNDERLINED + "    List of Risks (ID and Name)  " + CYAN_BRIGHT);
                 for (Risk risk: risks) {
                     System.out.println(risk.getRiskID() + " :- " + risk.getRiskName());
                 }
                 System.out.println();
-                System.out.println("Form the above list of Risks, enter risk ID ");
+                System.out.print("Form the above list of Risks, enter risk ID ");
                 riskID = new KeyboardInput().Line();
                 while (retrieveRiskByID(riskID, risks) == null){
-                    System.out.print("The provided ID does not exist. Enter risk ID correctly");
+                    System.out.println("The provided ID does not exist.");
+                    System.out.print("Enter risk ID correctly ");
                     riskID = new KeyboardInput().Line();
                 }
             } else {
@@ -438,7 +441,7 @@ public class RiskMatrix {
     }
 
     public  String  readRiskName (){ // this methods handles all name input requests.
-        System.out.println("Enter Risk Name:");
+        System.out.print("Enter Risk Name: ");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
 
@@ -446,7 +449,7 @@ public class RiskMatrix {
             System.out.println();
             System.out.println("There exists a risk with the same name use, another name. ");
             System.out.println();
-            System.out.println("Enter new Risk Name.");
+            System.out.print("Enter new Risk Name.");
             name = new KeyboardInput().Line();
             name = new RiskEvaluator().name(name);
         }
@@ -459,7 +462,7 @@ public class RiskMatrix {
             System.out.println("  List of Risk Types");
             System.out.println("    1. PREDICTED ");
             System.out.println("    2. NEW ");
-            System.out.println("Enter the type of risk (1 or 2 ?)");
+            System.out.print("Enter the type of risk (1 or 2 ?) ");
             type = new KeyboardInput().Line();
         } while (! type.equals("1") && ! type.equals("2") );
 
@@ -471,7 +474,7 @@ public class RiskMatrix {
     }
 
     public String readRisk (){ // for Existing risk names
-        System.out.println("Enter Risk Name :");
+        System.out.print("Enter Risk Name :");
         String name = new KeyboardInput().Line();
         name = new RiskEvaluator().name(name);
         return name ;
@@ -514,39 +517,39 @@ public class RiskMatrix {
                     if(i > 20){
                         System.out.print(ANSI_RED_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 15 && j < 73){
                         System.out.print(ANSI_YELLOW_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 15 && j > 72){
                         System.out.print(ANSI_RED_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 10 && j < 25){
                         System.out.print(ANSI_GREEN_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 10 && j < 97){
                         System.out.print(ANSI_YELLOW_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 10 && j > 96){
                         System.out.print(ANSI_RED_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 5 && j < 49){
                         System.out.print(ANSI_GREEN_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if(i > 5 && j > 48){
                         System.out.print(ANSI_YELLOW_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     } else if (i <= 5){
                         System.out.print(ANSI_GREEN_BACKGROUND);
                         printMatrixField(i, j);
-                        System.out.print(RESET);
+                        System.out.print(CYAN_BRIGHT);
                     }
                 }
                 sideLegend(i);
@@ -557,9 +560,9 @@ public class RiskMatrix {
             System.out.println();
             System.out.println();
             System.out.println("                             LEGEND:                ");
-            System.out.println("                                " + ANSI_GREEN_BACKGROUND + "        " + RESET + " Low Severity (Acceptable)");
-            System.out.println("                                " + ANSI_YELLOW_BACKGROUND + "        " + RESET + " Medium Severity ");
-            System.out.println("                                " + ANSI_RED_BACKGROUND + "        " + RESET + " High Severity (Not Acceptable)");
+            System.out.println("                                " + ANSI_GREEN_BACKGROUND + "        " + CYAN_BRIGHT + " Low Severity (Acceptable)");
+            System.out.println("                                " + ANSI_YELLOW_BACKGROUND + "        " + CYAN_BRIGHT + " Medium Severity ");
+            System.out.println("                                " + ANSI_RED_BACKGROUND + "        " + CYAN_BRIGHT + " High Severity (Not Acceptable)");
             System.out.println();
             System.out.println("                                        * single Risk plot ");
             System.out.println("                                        ℗ more than one Risk plot ");
@@ -641,7 +644,7 @@ public class RiskMatrix {
         System.out.print("TYPE");
         printEmpty(MIN_INDENT);
         System.out.print("STATUS    ");
-        System.out.println(RESET);
+        System.out.println(CYAN_BRIGHT);
 
         System.out.print(foundRisk.getRiskName() + " (" + foundRisk.getRiskID() + ")");
         int afterName = indent - foundRisk.getRiskName().length();
@@ -701,7 +704,7 @@ public class RiskMatrix {
             System.out.print("TYPE");
             printEmpty(INDENT6);
             System.out.print("STATUS    ");
-            System.out.println(RESET);
+            System.out.println(CYAN_BRIGHT);
 
             for ( Risk foundRisk : risks) {
                 System.out.print(foundRisk.getRiskName() + " (" + foundRisk.getRiskID() + ")");
