@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -24,6 +25,8 @@ public class ProjectManagementTool {
     public static final String RED = "\033[0;31m";     // RED
     public static final String BLUE = "\033[0;34m";    // BLUE
     public static final String CYAN_BRIGHT = "\033[0;96m";   // CYAN
+
+    public static final String WHITE_UNDERLINED = "\033[4;37m";  // WHITE
 
     // Background
     public static final String RED_BACKGROUND = "\033[41m";    // RED
@@ -72,12 +75,13 @@ public class ProjectManagementTool {
         System.out.println("8. Display Tasks and Milestones");
         System.out.println("9. Display Team Members");
         System.out.println("10. Display Project Schedule");
-        System.out.println("11. Monitor Finances");
-        System.out.println("12. Monitor Time Spent");
-        System.out.println("13. Monitor Participation");
-        System.out.println("14. Monitor Risk");
-        System.out.println("15. Edit Information");
-        System.out.println("16. QUIT Program");
+        System.out.println("11. Display Resource Histogram");
+        System.out.println("12. Monitor Finances");
+        System.out.println("13. Monitor Time Spent");
+        System.out.println("14. Monitor Participation");
+        System.out.println("15. Monitor Risk");
+        System.out.println("16. Edit Information");
+        System.out.println("17. QUIT Program");
         System.out.println("=========================================");
         System.out.println();
     }
@@ -108,12 +112,13 @@ public class ProjectManagementTool {
         final int PRINT_TASKS_MILESTONES = 8;
         final int PRINT_TEAM_MEMBERS = 9;
         final int PRINT_PLANED_ACTUAL_SCHEDULE = 10;
-        final int MONITOR_FINANCES = 11;
-        final int MONITOR_TIME_SPENT = 12;
-        final int MONITOR_PARTICIPATION = 13;
-        final int MONITOR_RISK = 14;
-        final int EDIT_INFO = 15;
-        final int QUIT = 16;
+        final int PRINT_RESOURCE_HISTOGRAM = 11;
+        final int MONITOR_FINANCES = 12;
+        final int MONITOR_TIME_SPENT = 13;
+        final int MONITOR_PARTICIPATION = 14;
+        final int MONITOR_RISK = 15;
+        final int EDIT_INFO = 16;
+        final int QUIT = 17;
 
         readFromSystemClass(); //to read data by initiating a project with set values in the internal system
         //readFromJsonFile(); //to read data from stored json file
@@ -166,6 +171,10 @@ public class ProjectManagementTool {
 
                 case PRINT_PLANED_ACTUAL_SCHEDULE:
                     printPlannedAndActualSchedule();
+                    break;
+
+                case PRINT_RESOURCE_HISTOGRAM:
+                    printResourceHistogram();
                     break;
 
                 case MONITOR_FINANCES:
@@ -1199,6 +1208,226 @@ public class ProjectManagementTool {
         pause();
     }//Eyuell
 
+
+    public void printResourceHistogram() throws Exception{
+        int WEEK_NUMBERS = 52;
+
+        int weekNum;
+        HashMap<String, Double> planned = new HashMap<>();
+        HashMap<String, Double> actual = new HashMap<>();
+
+        Set<Entry<String, Double>> hashSetPlanned = planned.entrySet();
+        Set<Entry<String, Double>> hashSetActual = actual.entrySet();
+
+        if(projects != null){
+            Project currentProject = projects.get(FIRST);
+            ArrayList<Task> tasks = currentProject.getTasks();
+            if(tasks != null){
+                for(int i = WEEK_NUMBERS; i > FIRST; i--){
+
+                    for(Task currentTask : tasks){
+                        ArrayList<TeamMemberAllocation> allocations = currentTask.getActualTeamMembers();
+                        if(allocations != null){
+                            for(TeamMemberAllocation currentAllocation : allocations){
+
+                                weekNum = weekNumber(currentAllocation.getDate());
+
+                                String key = weekString(currentAllocation.getDate());
+
+                                if(weekNum == i){
+                                    double previousValue;
+                                    if(actual.get(key) == null){
+                                        previousValue = 0.0;
+                                    } else {
+                                        previousValue = actual.get(key);
+                                    }
+
+                                    double newValue = previousValue + currentAllocation.getWorkHours();
+                                    actual.put(key,newValue);
+                                }
+                            }
+                        }
+
+                        ArrayList<ManpowerAllocation> manpower = currentTask.getPlannedManpower();
+                        if(manpower != null){
+                            for(ManpowerAllocation manpowerAllocation : manpower){
+
+                                weekNum = weekNumber(manpowerAllocation.getDate());
+
+                                String key = weekString(manpowerAllocation.getDate());
+
+                                if(weekNum == i){
+                                    double previousValue;
+                                    if(planned.get(key) == null){
+                                        previousValue = 0.0;
+                                    } else {
+                                        previousValue = planned.get(key);
+                                    }
+
+                                    double newValue = previousValue + manpowerAllocation.getWorkHours();
+                                    planned.put(key,newValue);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            ArrayList<String> planedKeys = new ArrayList<>();
+            for(Entry entry: hashSetPlanned ) {
+                planedKeys.add(entry.getKey().toString());
+            }
+
+            Collections.sort(planedKeys);
+
+            ArrayList<String> actualKeys = new ArrayList<>();
+            for(Entry entry: hashSetActual ) {
+                actualKeys.add(entry.getKey().toString());
+            }
+
+            Collections.sort(actualKeys);
+
+            if(planedKeys.size() > 0){
+                System.out.println();
+                System.out.println();
+                System.out.println("                    Histogram for " + currentProject.getName() + " project");
+                System.out.println();
+                System.out.println();
+                System.out.println("            Year/Month");
+                System.out.println("                ʌ");
+                System.out.println("                │");
+                System.out.println("                │");
+            }
+
+            double maxValue = 0.0;
+            for(int i = FIRST; i < planedKeys.size(); i++){
+
+                double plannedValue = planned.get(planedKeys.get(i));
+                if(plannedValue > maxValue){
+                    maxValue = plannedValue;
+                }
+            }
+
+            for(int i = FIRST; i < actualKeys.size(); i++){
+                double actualValue = actual.get(actualKeys.get(i));
+                if(actualValue > maxValue){
+                    maxValue = actualValue;
+                }
+            }
+
+            int INDENT = 16;
+            int HALVING = 2;
+            int SCALE = 5;
+            for(int i = FIRST; i < planedKeys.size(); i++){
+                System.out.println("                │");
+                System.out.println("                │");
+                int before = (INDENT - planedKeys.get(i).length())/HALVING;
+                int after = INDENT - planedKeys.get(i).length() - before;
+                printEmpty(before);
+                String key = planedKeys.get(i);
+                System.out.print(key);
+                printEmpty(after);
+                System.out.print("│");
+
+                double plannedValue = planned.get(key);
+                System.out.print(ANSI_BLUE_BACKGROUND);
+                for(int j = FIRST; j <= (int)(plannedValue / SCALE); j++){
+                    System.out.print("   ");
+                }
+                System.out.println(CYAN_BRIGHT + " " + new DataEvaluator().roundDouble(plannedValue,1) + " hours");
+
+                if(actual.get(key) != null){
+                    double actualValue = actual.get(key);
+                    System.out.print("                │");
+                    System.out.print(ANSI_RED_BACKGROUND);
+                    for(int j = FIRST; j <= (int)(actualValue / SCALE); j++){
+                        System.out.print("   ");
+                    }
+                    System.out.println(CYAN_BRIGHT + " " + new DataEvaluator().roundDouble(actualValue,1) + " hours");
+                }
+                System.out.print(CYAN_BRIGHT);
+
+            }
+
+            int MODULAR = 10;
+            if(planedKeys.size() > FIRST){
+                System.out.println(CYAN_BRIGHT + "                │");
+                System.out.print("                 ");
+                for (int i = FIRST; i <= (int)(maxValue / SCALE); i++){
+                    if(i % MODULAR == FIRST){
+                        System.out.print("─.─");
+                    } else {
+                        System.out.print("───");
+                    }
+                }
+
+                System.out.println("──────>");
+                System.out.print("                 ");
+                int value;
+                for (int i = FIRST; i <= (int)(maxValue / SCALE); i++){
+                    if(i % MODULAR == FIRST){
+                        value = i * SCALE;
+                        System.out.print(" " + value);
+                    } else {
+                        System.out.print("   ");
+                    }
+                }
+
+                System.out.print("  Hours");
+                System.out.println();
+                System.out.println();
+                System.out.println("            " + WHITE_UNDERLINED + "LEGEND:" + CYAN_BRIGHT);
+                System.out.println("                 " + ANSI_BLUE_BACKGROUND + "        " + CYAN_BRIGHT + " Planned Hours");
+                System.out.println("                 " + ANSI_RED_BACKGROUND + "        " + CYAN_BRIGHT + " Actual Hours ");
+
+            }
+        }
+        pause();
+    }//OSMAN
+
+    public int weekNumber(LocalDate date) throws Exception{
+
+        String input = date.toString();
+        String format = "yyyy-MM-dd";
+
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        Date dateInput = df.parse(input);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateInput);
+
+        return cal.get(Calendar.WEEK_OF_YEAR);
+    }
+
+    public String weekString (LocalDate date) throws Exception{
+        Calendar c = Calendar.getInstance(  );    // today
+        String input = date.toString();
+        String format = "yyyy-MM-dd";
+
+        SimpleDateFormat df = new SimpleDateFormat(format);
+        Date dateInput = df.parse(input);
+        c.setTime(dateInput);
+
+        int week = c.get(Calendar.WEEK_OF_YEAR);
+        int month = c.get(Calendar.WEEK_OF_MONTH);
+        int yearInt = c.get(Calendar.YEAR);
+
+        if (week == 1 && month >= 3){//if in the last week of december
+            yearInt = yearInt + 1;
+        }
+
+        String year = String.valueOf(yearInt);
+        year = year.substring(2);
+
+        String week2;
+        if(week < 10){
+            week2 = "0" + week;
+        } else {
+            week2 = String.valueOf(week);
+        }
+
+        return "" + year + "/" + week2;
+    }
 
     public void monitorCosts(){//Armin
         final int ALL_COSTS = 1;
@@ -2851,7 +3080,7 @@ public class ProjectManagementTool {
         general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-29")));
         general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-30")));
         general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-12-31")));
-        general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2018-01-01")));
+        general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),10,LocalDate.parse("2019-01-01")));
         general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-02")));
         general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-03")));
         general.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),20,LocalDate.parse("2019-01-04")));
@@ -2909,7 +3138,7 @@ public class ProjectManagementTool {
         cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
         cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
         cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
-        cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2019-01-01")));
         cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
         cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
         cost.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
@@ -2957,7 +3186,7 @@ public class ProjectManagementTool {
         risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
         risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
         risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
-        risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2019-01-01")));
         risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
         risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
         risk.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
@@ -3005,7 +3234,7 @@ public class ProjectManagementTool {
         part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
         part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
         part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
-        part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2019-01-01")));
         part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
         part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
         part.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
@@ -3054,7 +3283,7 @@ public class ProjectManagementTool {
         spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
         spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
         spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
-        spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2019-01-01")));
         spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
         spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
         spent.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
@@ -3102,7 +3331,7 @@ public class ProjectManagementTool {
         schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-29")));
         schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-30")));
         schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-12-31")));
-        schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2018-01-01")));
+        schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),3,LocalDate.parse("2019-01-01")));
         schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-02")));
         schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-03")));
         schedule.getPlannedManpower().add(new ManpowerAllocation(new Manpower("TBA"),4,LocalDate.parse("2019-01-04")));
@@ -3318,7 +3547,7 @@ public class ProjectManagementTool {
         mgmtTool.getRisks().get(6).setRiskStatus("Managed");
         mgmtTool.getRisks().get(7).setRiskStatus("Managed");
         mgmtTool.getRisks().get(8).setRiskStatus("Effort Made");
-        
+
         //additional actual team data
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1.5, LocalDate.parse("2018-12-11")));
         general.getActualTeamMembers().add(new TeamMemberAllocation(armin, 1.5, LocalDate.parse("2018-12-12")));
@@ -3463,7 +3692,7 @@ public class ProjectManagementTool {
         cost.getActualTeamMembers().add(new TeamMemberAllocation(armin, 3.1, LocalDate.parse("2018-12-31")));
         cost.getActualTeamMembers().add(new TeamMemberAllocation(armin, 3.1, LocalDate.parse("2019-01-01")));
         cost.getActualTeamMembers().add(new TeamMemberAllocation(armin, 3.1, LocalDate.parse("2019-01-02")));
-        
+
         risk.getActualTeamMembers().add(new TeamMemberAllocation(james, 3.2, LocalDate.parse("2018-12-11")));
         risk.getActualTeamMembers().add(new TeamMemberAllocation(james, 3.2, LocalDate.parse("2018-12-12")));
         risk.getActualTeamMembers().add(new TeamMemberAllocation(james, 3.2, LocalDate.parse("2018-12-13")));
@@ -3487,7 +3716,7 @@ public class ProjectManagementTool {
         risk.getActualTeamMembers().add(new TeamMemberAllocation(james, 3.2, LocalDate.parse("2018-12-31")));
         risk.getActualTeamMembers().add(new TeamMemberAllocation(james, 3.2, LocalDate.parse("2019-01-01")));
         risk.getActualTeamMembers().add(new TeamMemberAllocation(james, 3.2, LocalDate.parse("2019-01-02")));
-        
+
         part.getActualTeamMembers().add(new TeamMemberAllocation(osman, 3.3, LocalDate.parse("2018-12-11")));
         part.getActualTeamMembers().add(new TeamMemberAllocation(osman, 3.3, LocalDate.parse("2018-12-12")));
         part.getActualTeamMembers().add(new TeamMemberAllocation(osman, 3.3, LocalDate.parse("2018-12-13")));
