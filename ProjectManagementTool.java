@@ -25,7 +25,7 @@ public class ProjectManagementTool {
     public static final String BLUE = "\033[0;34m";    // BLUE
     public static final String CYAN_BRIGHT = "\033[0;96m";   // CYAN
 
-
+    //underline
     public static final String WHITE_UNDERLINED = "\033[4;37m";  // WHITE
     public static final String BLACK_BOLD = "\033[1;30m";  // BLACK
 
@@ -95,7 +95,8 @@ public class ProjectManagementTool {
         System.out.println("2. Edit Project Dates");
         System.out.println("3. Edit Task Information");
         System.out.println("4. Edit Team Member Information");
-        System.out.println("5. Return");
+        System.out.println("5. Edit Allocations");
+        System.out.println("6. Return");
         System.out.println("=========================================");
         System.out.println();
     }//Armin
@@ -212,7 +213,7 @@ public class ProjectManagementTool {
         } while (optionChoice != QUIT);
 
         writeProjectToJsonFile(); //Writes to project data store in Json file
-    }
+    }//Eyuell & Hamid
 
     //to register projects with error handling
     public void registerProject(){
@@ -430,7 +431,7 @@ public class ProjectManagementTool {
                             }
                         } else if (taskType == DEPENDANT){ //dependant on other task
                             String connectivityType;
-                            long connectivityDuration = 0;
+                            long connectivityDuration;
                             boolean repeat;
 
                             do{
@@ -673,7 +674,7 @@ public class ProjectManagementTool {
 
             } else if (option == 3) {
                 //Return
-                System.out.println("");
+                System.out.println();
                 input = false;
 
             } else {
@@ -684,10 +685,10 @@ public class ProjectManagementTool {
         }while (input);
     }//Armin
 
-//print only tasks
+    //print only tasks
     public void printTasks(){
         int option;
-        boolean input = true;
+        boolean input;
 
         do {
             System.out.println("What do you wish to print?");
@@ -706,7 +707,7 @@ public class ProjectManagementTool {
 
             } else if (option == 3) {
                 //Return
-                System.out.println("");
+                System.out.println();
                 input = false;
 
             } else {
@@ -722,13 +723,13 @@ public class ProjectManagementTool {
         Project currentProject = projects.get(FIRST);
         ArrayList<Task> tasks = currentProject.getTasks();
         String option;
-        boolean error=true;
+        boolean error;
 
         for (int i = 0; i <tasks.size() ; i++) {
             System.out.println("Name of task: " + tasks.get(i).getName());
             System.out.println("Planned start date: " + tasks.get(i).getPlannedStart());
             System.out.println("Planned finish date: " + tasks.get(i).getPlannedFinish());
-            
+
             System.out.println("Actual date of start: " + tasks.get(i).getActualStart());
             System.out.println("Actual End date: " + tasks.get(i).getActualFinish());
             System.out.println("Planned duration of task is "+tasks.get(i).getPlannedDuration()+" days.");
@@ -763,16 +764,16 @@ public class ProjectManagementTool {
     }//Armin
 
 
-    public void printSpecificTaskMilestones() { 
+    public void printSpecificTaskMilestones() {
         Project currentProject = projects.get(FIRST);
-        
+
         if (currentProject != null) {
             listTasks();
-            String taskID = "";
-            boolean error=true;
+            String taskID;
+            boolean error;
             String option;
-            do { 
-                try { 
+            do {
+                try {
                     System.out.println("Enter the id of a task");
                     taskID = new KeyboardInput().Line();
                     System.out.println("------------------------------------------------------------");
@@ -784,8 +785,8 @@ public class ProjectManagementTool {
                     System.out.println("Actual date of start: " + foundTask.getActualStart());
                     System.out.println("Actual Enddate: " + foundTask.getActualFinish());
                     System.out.println("Planned duration of task is "+foundTask.getPlannedDuration()+" days.");
-                    error = false; 
-                
+                    error = false;
+
                 } catch (Exception e) {
                     System.out.println("Input integer, or wrong taskID was inputted.");
                     System.out.println("------------------------------------------------------------");
@@ -796,7 +797,7 @@ public class ProjectManagementTool {
                     System.out.println("Do you wish to print milestones?");
                     System.out.println("1. Yes");
                     System.out.println("2. No");
-                    
+
                     option = new KeyboardInput().Line();
                     System.out.println("------------------------------------------------------------");
 
@@ -812,15 +813,15 @@ public class ProjectManagementTool {
                         System.out.println("Options are 1 or 2");
                         System.out.println("----------------------------------------------------------------");
                         error=true;
-                    } 
+                    }
                 }while (error);
             } while (error);
         }
-}//Armin
+    }//Armin
 
     public void printMileStones() {
         int option;
-        boolean input = true;
+        boolean input;
         do {
             System.out.println("Do you wish to print: ");
             System.out.println("1. All Milestones");
@@ -848,11 +849,10 @@ public class ProjectManagementTool {
     public void printSpecificMileStones() {
         Project currentProject = projects.get(FIRST);
         listMilestones();
-        String teamID = "";
 
         if (currentProject != null) {
             boolean error;
-            String milestoneID="";
+            String milestoneID;
             do {
                 try {
                     System.out.println("Enter the id of a Milestone you wish to print");
@@ -871,7 +871,7 @@ public class ProjectManagementTool {
                     error = true;
                 }
 
-            }while (error==true);
+            }while (error);
         }pause();
     }//Armin
 
@@ -880,7 +880,7 @@ public class ProjectManagementTool {
         Project currentProject = projects.get(FIRST);
         ArrayList<Milestone> milestones = currentProject.getMilestones();
         if (milestones != null) {
-            
+
             for (int i = 0; i < milestones.size(); i++) {
                 System.out.println("Name: "+milestones.get(i).getName());
                 System.out.println("Milestone Date: "+milestones.get(i).getDate());
@@ -893,7 +893,7 @@ public class ProjectManagementTool {
 
     public void printProjects() {
         int option;
-        boolean input = true;
+        boolean input;
         do {
             System.out.println("Do you wish to print: ");
             System.out.println("1. All projects");
@@ -910,7 +910,7 @@ public class ProjectManagementTool {
                 input = false;
 
             }else if (option==3){
-                System.out.println("");
+                System.out.println();
                 input = false;
 
             } else {
@@ -924,7 +924,7 @@ public class ProjectManagementTool {
     public void printAllProjects()  {
         System.out.println("Here is a List of all Current projects: ");
         System.out.println("----------------------------------------------------------------");
-        
+
         for (int i = 0; i < projects.size(); i++) {
             System.out.println("Project ID Assigned: "+projects.get(i).getProjectID());
             System.out.println("Project name: "+projects.get(i).getName());
@@ -937,35 +937,35 @@ public class ProjectManagementTool {
 
 
     public void printTeamMembers() {
-      int option;
-      boolean input = true;
+        int option;
+        boolean input;
 
-      do {
-              System.out.println("Do you wish to print a specific or All team members? ");
-              System.out.println("1. All team members");
-              System.out.println("2. Specific team member");
-              System.out.println("3. Return");
-              System.out.println("---------------------------------");
-              option = new KeyboardInput().Int();
+        do {
+            System.out.println("Do you wish to print a specific or All team members? ");
+            System.out.println("1. All team members");
+            System.out.println("2. Specific team member");
+            System.out.println("3. Return");
+            System.out.println("---------------------------------");
+            option = new KeyboardInput().Int();
 
-              if (option == 1) {
-                  printAllTeamMembers();
-                  input = false;
+            if (option == 1) {
+                printAllTeamMembers();
+                input = false;
 
-              } else if (option == 2) {
-                  printSpecificTeamMember();
-                  input = false;
+            } else if (option == 2) {
+                printSpecificTeamMember();
+                input = false;
 
-              } else if(option==3){
-                  System.out.println();
-                  input=false;
+            } else if(option==3){
+                System.out.println();
+                input=false;
 
-              }else{
-                  System.out.println("Options are 1, 2 or 3.");
-                  System.out.println("----------------------------------------------------------------");
-                  input=true;
-              }
-      }while (input);
+            }else{
+                System.out.println("Options are 1, 2 or 3.");
+                System.out.println("----------------------------------------------------------------");
+                input=true;
+            }
+        }while (input);
     }//Armin
 
 
@@ -1396,7 +1396,7 @@ public class ProjectManagementTool {
         cal.setTime(dateInput);
 
         return cal.get(Calendar.WEEK_OF_YEAR);
-    }
+    }//OSMAN
 
     public String weekString (LocalDate date) throws Exception{
         Calendar c = Calendar.getInstance(  );    // today
@@ -1426,7 +1426,7 @@ public class ProjectManagementTool {
         }
 
         return "" + year + "/" + week2;
-    }
+    }//OSMAN
 
     public void monitorCosts() throws IOException, InterruptedException {//Armin
         final int ALL_COSTS = 1;
@@ -1436,19 +1436,19 @@ public class ProjectManagementTool {
         final int RETURN = 5;
         int option;
         do {
-            System.out.println("");
+            System.out.println();
             System.out.println("========= COSTS =========");
-            System.out.println("");
+            System.out.println();
             System.out.println("WHAT DO YOU WISH TO DISPLAY?");
             System.out.println("SELECT FROM THE FOLLOWING OPTIONS");
-            System.out.println("");
+            System.out.println();
 
             System.out.println(" 1. ALL COSTS");
             System.out.println(" 2. SCHEDULE VARIANCE");
             System.out.println(" 3. COST VARIANCE");
             System.out.println(" 4. EARNED VALUE");
             System.out.println(" 5. RETURN");
-            System.out.println("");
+            System.out.println();
             System.out.print("Type the option number: ");
 
             option = new KeyboardInput().Int();
@@ -1484,7 +1484,7 @@ public class ProjectManagementTool {
             }
         } while (option!=RETURN);
     }//Armin
-    
+
     public void printAllCosts(){
 
         if(projects != null){
@@ -1492,10 +1492,9 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
-            int option;
 
             System.out.println("          ========ALL COSTS=========");
-            System.out.println("");
+            System.out.println();
             System.out.println("HOW MANY PERCENT OF THE PROJECT IS COMPLETED?");
             System.out.println("       ==INPUT IS BETWEEN 0 AND 1==         ");
             System.out.println(RED+"         OBS! 1 IS 100% 0 IS 0% ! ");
@@ -1551,7 +1550,7 @@ public class ProjectManagementTool {
             System.out.println(CYAN_BRIGHT);
 
             System.out.println("PROJECT ID: "+projectID);
-            System.out.println("");
+            System.out.println();
             System.out.println("========EARNED VALUE=========");
             System.out.println("-----------------------------");
             System.out.println("        "+earnedValue+" SEK  ");
@@ -1568,10 +1567,9 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
-            int option;
 
             System.out.println("        ========EARNED VALUE=========");
-            System.out.println("");
+            System.out.println();
             System.out.println("HOW MANY PERCENT OF THE PROJECT IS COMPLETED?");
             System.out.println("       ==INPUT IS BETWEEN 0 AND 1==         ");
             System.out.println(RED+"         OBS! 1 IS 100% 0 IS 0% ! ");
@@ -1622,7 +1620,7 @@ public class ProjectManagementTool {
             System.out.println(" ");
 
             System.out.println("PROJECT ID: "+projectID);
-            System.out.println("");
+            System.out.println();
             System.out.println("========EARNED VALUE=========");
             System.out.println("-----------------------------");
             System.out.println("        "+earnedValue+" SEK  ");
@@ -1639,10 +1637,9 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
-            int option;
 
             System.out.println("     ========SCHEDULE VARIANCE=========");
-            System.out.println("");
+            System.out.println();
             System.out.println("HOW MANY PERCENT OF THE PROJECT IS COMPLETED?");
             System.out.println("       ==INPUT IS BETWEEN 0 AND 1==         ");
             System.out.println(RED+"         OBS! 1 IS 100% 0 IS 0% ! ");
@@ -1675,7 +1672,6 @@ public class ProjectManagementTool {
 
             double deadline=projects.get(FIRST).getDuration()-durationTillToday;
             double projectLength=projects.get(FIRST).getDuration();
-            String projectID=projects.get(FIRST).getProjectID();
 
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
@@ -1706,7 +1702,6 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
-            int option;
 
             System.out.println("       ========COST VARIANCE=========");
             System.out.println(" ");
@@ -1736,12 +1731,11 @@ public class ProjectManagementTool {
             double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
             double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
             double ExecutedProgress = percentageDone;
-            double scheduleProgress = durationTillToday/projectDuration;;
+            double scheduleProgress = durationTillToday/projectDuration;
             double earnedValue = (Math.round((plannedBudget *percentageDone ))*100)/100.0;
 
             double deadline=projects.get(FIRST).getDuration()-durationTillToday;
             double projectLength=projects.get(FIRST).getDuration();
-            String projectID=projects.get(FIRST).getProjectID();
 
             System.out.println("Project budget($): " + plannedBudget);
             System.out.println("Project cost($): " + actualCost);
@@ -1768,7 +1762,6 @@ public class ProjectManagementTool {
 
     public void monitorTimeSpent() {
         Project currentProject = projects.get(FIRST);
-        Double ZERO = 0.0;
         double DIGIT_LIMITER = 10.0;
         if (currentProject != null) {
             String choice = "";
@@ -1788,7 +1781,7 @@ public class ProjectManagementTool {
             if (choice.equalsIgnoreCase("1")) {
                 ArrayList<Task> tasks = currentProject.getTasks();
                 Map<String, Double> memberIdHours = new HashMap<String,Double>();
-                double hoursWorked = 0;
+
                 if (tasks != null) {
                     for (Task oneTask : tasks) {
                         ArrayList<TeamMemberAllocation> allocations = oneTask.getActualTeamMembers();
@@ -1849,7 +1842,7 @@ public class ProjectManagementTool {
             System.out.println("There are no projects registered");
         }
         pause();
-    }
+    }//Hamid
 
 
     public void monitorParticipation(){
@@ -1916,7 +1909,8 @@ public class ProjectManagementTool {
         final int PROJECT_DURATION = 2;
         final int TASKS = 3;
         final int TEAM_MEMBERS = 4;
-        final int RETURN = 5;
+        final int ALLOCATIONS = 5;
+        final int RETURN = 6;
 
 
         do {
@@ -1936,6 +1930,9 @@ public class ProjectManagementTool {
                     editProjectDuration();
                     break;
 
+                case ALLOCATIONS:
+                    editAllocations();
+                    break;
 
                 case TEAM_MEMBERS:
                     editTeamMember();
@@ -1956,9 +1953,6 @@ public class ProjectManagementTool {
             }
         } while (option!=RETURN);
     }//Armin
-
-
-
 
     public void editProject() {//HAMID
         String id="";
@@ -1981,17 +1975,17 @@ public class ProjectManagementTool {
         error = true;
         do {
             try {
-                System.out.print("Do you want to edit project name or id ? (name/id) ");
+                System.out.print("Do you want to edit project name or id ? (name/id/budget) ");
                 option = new KeyboardInput().Line();
                 error= false;
             } catch (Exception e) {
                 System.out.println("Error, wrong input type");
             }
-        }while((!option.equalsIgnoreCase("name") && !option.equalsIgnoreCase("id")) || error);
+        }while((!option.equalsIgnoreCase("name") && !option.equalsIgnoreCase("id") && !option.equalsIgnoreCase("budget")) || error);
         Project project = retrieveProjectByID(id);
         error = true;
         if (option.equalsIgnoreCase("name")) {
-            String newName ="";
+            String newName;
             System.out.println("The name of this project is " + project.getName());
             do {
                 try {
@@ -2022,6 +2016,10 @@ public class ProjectManagementTool {
                     System.out.println("Error, wrong input type");
                 }
             }while(projectExists(newId) || error );
+        }
+        error = true;
+        if (option.equalsIgnoreCase("budget")) {
+            editBudget();
         }
         pause();
     }//HAMID
@@ -2072,11 +2070,12 @@ public class ProjectManagementTool {
                 System.out.println("What do you wish to edit?");
                 System.out.println("1. Name ");
                 System.out.println("2. change ID");
-                System.out.println("3. Remove");
-                
+                System.out.println("3. Qualification");
+                System.out.println("4. Remove");
+
                 option= new KeyboardInput().Int();
                 error = false;
-           
+
             }catch (Exception e) {
                 System.out.println("Error, wrong input type");
             }
@@ -2088,6 +2087,8 @@ public class ProjectManagementTool {
             editTeamMemberID();
         }
         else if(option==3){
+            editQualification();
+        }else if(option==4){
             removeTeamMember();
         }
         pause();
@@ -2124,18 +2125,19 @@ public class ProjectManagementTool {
     }//Armin
 
 
-
     public void editTasks(){
-        
+
         int option;
-        boolean input = true;
-        
+        boolean input;
+
         do {
             System.out.println("What do you wish to edit?");
             System.out.println("1. Name ");
             System.out.println("2. ID");
-            System.out.println("3. Remove Task");
-            System.out.println("4. Return");
+            System.out.println("3. Task Type");
+            System.out.println("4. Task Connectivity");
+            System.out.println("5. Remove Task");
+            System.out.println("6. Return");
             option = new KeyboardInput().Int();
 
             if (option == 1) {
@@ -2147,10 +2149,18 @@ public class ProjectManagementTool {
                 input = false;
 
             } else if (option == 3) {
-                removeTask();
+                editTaskType();//Hamid
                 input = false;
 
             } else if (option == 4) {
+                editTaskConnectivity();//Hamid
+                input = false;
+
+            } else if (option == 5) {
+                removeTask();
+                input = false;
+
+            } else if (option == 6) {
                 System.out.println(" ");
                 input = false;
 
@@ -2310,27 +2320,27 @@ public class ProjectManagementTool {
     public void updateTeamMemberName() {
 
         listTeamMembers();
-            Project currentProject = projects.get(FIRST);
-            System.out.println("Enter the id of a team member");
-            String memberID = new KeyboardInput().Line();
+        Project currentProject = projects.get(FIRST);
+        System.out.println("Enter the id of a team member");
+        String memberID = new KeyboardInput().Line();
+        System.out.println("----------------------------------------------------------------");
+
+        while (!teamMemberIDExists(currentProject, memberID)) {
+            System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
+            memberID = new KeyboardInput().Line();
             System.out.println("----------------------------------------------------------------");
+        }
 
-            while (!teamMemberIDExists(currentProject, memberID)) {
-                System.out.print("Team member does not exist or wrong ID. Enter correct ID again ");
-                memberID = new KeyboardInput().Line();
-                System.out.println("----------------------------------------------------------------");
-            }
+        TeamMember member = retrieveTeamMember(currentProject, memberID);
+        System.out.println("The team Member name is currently "+member.getName()+".");
+        System.out.println("----------------------------------------------------------------");
 
-            TeamMember member = retrieveTeamMember(currentProject, memberID);
-            System.out.println("The team Member name is currently "+member.getName()+".");
-            System.out.println("----------------------------------------------------------------");
+        System.out.println("Enter new Name: ");
+        String name = new KeyboardInput().Line();
+        member.setName(name);
 
-            System.out.println("Enter new Name: ");
-            String name = new KeyboardInput().Line();
-            member.setName(name);
-
-            System.out.println("Name changed to "+ name);
-            pause();
+        System.out.println("Name changed to "+ name);
+        pause();
     }//Armin
 
     public boolean teamMemberExists(Project project, String name){
@@ -2353,7 +2363,7 @@ public class ProjectManagementTool {
             }
         }
         return false;
-    }
+    }//Hamid
 
     public boolean teamMemberIDExists(Project project, String ID){
         if(project != null){
@@ -2416,8 +2426,8 @@ public class ProjectManagementTool {
         return taskChoice;
     }//Eyuell
 
-    public void updateDates(Task task, LocalDate plannedStrart, LocalDate plannedFinish, LocalDate actualStart, LocalDate actualFinish){
-        task.setPlannedStart(plannedStrart);
+    public void updateDates(Task task, LocalDate plannedStart, LocalDate plannedFinish, LocalDate actualStart, LocalDate actualFinish){
+        task.setPlannedStart(plannedStart);
         task.setPlannedFinish(plannedFinish);
         task.setActualStart(actualStart);
         task.setActualFinish(actualFinish);
@@ -2583,7 +2593,7 @@ public class ProjectManagementTool {
             }
         }
         return null;
-    }
+    }//Hamid
 
     public boolean checkProjectName(String name){
         if(projects != null){
@@ -2724,7 +2734,6 @@ public class ProjectManagementTool {
                         }
                     }
                 }
-                //System.out.println("Total planned hours = " + totalHours);
             }else{
                 System.out.println("There are no tasks in the project");
             }
@@ -2771,7 +2780,7 @@ public class ProjectManagementTool {
                         }
                     }
                 }
-                //System.out.println("Total Actual hours = " + totalHours);
+
             }else{
                 System.out.println("There are no tasks in the project");
             }
@@ -2780,26 +2789,6 @@ public class ProjectManagementTool {
         }
         return totalHours;
     }//Eyuell
-
-   /* public double earnedValue(LocalDate date){
-
-        /*Earned Value (EV)
-          Also known as Budgeted Cost of Work Performed (BCWP),
-          Earned Value is the amount of the task that is actually completed.
-          It is also calculated from the project budget.
-          EV = Percent Complete (actual) x Project Budget */
-
-        /*System.out.print("Enter progress on date " + date + " : (0.0 - 100.0) ");
-        double percent = new KeyboardInput().positiveDouble();
-        while (percent > 100.0){
-            System.out.println("Enter value between 0.0 and 100.0. try again ");
-            percent = new KeyboardInput().positiveDouble();
-        }
-
-        percent = percent/100.0;
-
-        return  Math.round((projects.get(FIRST).getBudget() * percent) * 100.0)/100.0;
-    }//Eyuell*/
 
     public double actualCost(LocalDate date){
 
@@ -2811,37 +2800,7 @@ public class ProjectManagementTool {
         double actualSum = actualHoursTillDate(date);
 
         return  Math.round(actualSum * SALARY * 100.0)/100.0;
-    }
-
-   /* public double scheduleVariance (LocalDate date){
-        /*Schedule Variance (SV)
-        In this, the first output calculated in the earned value analysis,
-        SV tells the amount that the project is ahead or behind schedule.
-        SV = EV – PV
-        but PV is Planned Value (PV)
-        Also known as Budgeted Cost of Work Scheduled (BCWS),
-        Planned Value is the amount of the task that is supposed to have been completed, in terms of the project budget.
-        It is calculated from the project budget.
-        PV = Percent Complete (planned) x project Budget*/ // PV is schedule days wise
-
-    //first we calculate PV
-       /* double plannedTotalSum = totalPlannedHours(projects.get(FIRST));
-        double actualTillDateSum = actualHoursTillDate(date);
-        double plannedPercentComplete = actualTillDateSum/plannedTotalSum;
-
-        double plannedValueTillDate = Math.round((plannedPercentComplete * projects.get(FIRST).getBudget()) * 100.0)/100.0;
-
-        return earnedValue(date) - plannedValueTillDate;
-    }//Eyuell*/
-
-    /*public double costVariance(LocalDate date){
-        /*Cost Variance (CV)
-        Similar to the schedule variance, the Cost Variance tells how far
-        the project is over or under budget.
-        CV = EV – AC*/
-
-       /* return (earnedValue(date) - actualCost(date));
-    }//Eyuell*/
+    }//Hamid
 
     public LocalDate choiceOfDate(){
 
