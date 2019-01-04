@@ -1,4 +1,7 @@
 package MiniProject;
+
+import javafx.scene.control.ComboBox;
+
 public class CostVariance extends Finance {
     private double actualCost;
 
@@ -24,8 +27,10 @@ public class CostVariance extends Finance {
     public String toString() {
         String costString;
         costString ="Project ID:  " +getProjectId()+System.lineSeparator();
-        costString +="*********************************************************************"+System.lineSeparator();
-        costString +="Cost Variance($): "+ getCostVariance()+System.lineSeparator();
-        costString +="*********************************************************************"+System.lineSeparator();
+        costString +=""+System.lineSeparator();
+        costString +="========COST VARIANCE========="+System.lineSeparator();
+        costString +="-----------------------------"+System.lineSeparator();
+        costString +="        "+ getCostVariance() +" SEK  "+System.lineSeparator();
+        costString +="-----------------------------"+System.lineSeparator();
         return costString;}
 }
