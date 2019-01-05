@@ -34,6 +34,7 @@ public class ProjectManagementTool {
     public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
     public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
     public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static final String PURPLE_BACKGROUND = "\033[45m"; // PURPLE
 
 
     private static final int FIRST = 0;
@@ -58,15 +59,15 @@ public class ProjectManagementTool {
 
     //Gateway to the system
     public static void main(String [] args) throws Exception {
-
-        System.out.println(CYAN_BRIGHT + "This program works on project schedules");
+        System.out.println();
+        System.out.println(CYAN_BRIGHT + "This program works on Project Management Tools");
         ProjectManagementTool start = new ProjectManagementTool();
         start.run();
     }
 
     //Main Menu of the program
     public void printMenuOption(){
-        System.out.println(CYAN_BRIGHT + "=========================================");
+        System.out.println(CYAN_BRIGHT + "==============================================");
         System.out.println("1. Register Project");
         System.out.println("2. Register Tasks and Milestones");
         System.out.println("3. Register Team members");
@@ -84,7 +85,7 @@ public class ProjectManagementTool {
         System.out.println("15. Monitor Risk");
         System.out.println("16. Edit Information");
         System.out.println("17. QUIT Program");
-        System.out.println("=========================================");
+        System.out.println("==============================================");
         System.out.println();
     }
 
@@ -473,16 +474,29 @@ public class ProjectManagementTool {
                                         repeat = true;
                                     }
                                 }else {
-                                    System.out.print("Enter the planned duration of the task ");
-                                    taskPlannedDuration = new KeyboardInput().positiveInt();
-                                    currentTask.setPlannedDuration(taskPlannedDuration);
-                                    if(startDate != null){
-                                        finishDate = startDate.plusDays(taskPlannedDuration);
-                                        currentTask.setPlannedFinish(finishDate);
-                                    } else {
-                                        startDate = finishDate.minusDays(taskPlannedDuration);
-                                        currentTask.setPlannedStart(startDate);
+                                    int BY_FINISH_DATE = 2;
+                                    int lengthOfTask = readLengthOfTask();
+                                    if(lengthOfTask == STAND_ALONE){
+                                        System.out.print("Enter the planned duration of the task : " + currentTask.getName());
+                                        taskPlannedDuration = new KeyboardInput().positiveInt();
+                                        currentTask.setPlannedDuration(taskPlannedDuration);
+                                        if(startDate != null){
+                                            finishDate = startDate.plusDays(taskPlannedDuration);
+                                            currentTask.setPlannedFinish(finishDate);
+                                        } else {
+                                            startDate = finishDate.minusDays(taskPlannedDuration);
+                                            currentTask.setPlannedStart(startDate);
+                                        }
+                                    } else if(lengthOfTask == BY_FINISH_DATE){
+                                        System.out.println("Enter the finish date of the task : " + currentTask.getName());
+                                        taskFinishDate = new DataEvaluator().readDate();
+                                        currentTask.setPlannedFinish(taskFinishDate);
+
+                                        long duration = ChronoUnit.DAYS.between(currentTask.getPlannedStart(), taskFinishDate) + DATE_SUBTRACTION_CORRECTION;
+
+                                        currentTask.setPlannedDuration(duration);
                                     }
+
                                 }
                             }while (repeat);
                         }
@@ -732,7 +746,7 @@ public class ProjectManagementTool {
 
             System.out.println("Actual date of start: " + tasks.get(i).getActualStart());
             System.out.println("Actual End date: " + tasks.get(i).getActualFinish());
-            System.out.println("Planned duration of task is "+tasks.get(i).getPlannedDuration()+" days.");
+            System.out.println("Planned duration of task: "+tasks.get(i).getPlannedDuration()+" days");
             System.out.println("------------------------------------------------------------");
         }
 
@@ -861,7 +875,7 @@ public class ProjectManagementTool {
 
                     Milestone foundMilestone = retrieveMilestone(currentProject, milestoneID);
                     System.out.println("Name: " + foundMilestone.getName());
-                    System.out.println("milestone date: " + foundMilestone.getDate());
+                    System.out.println("Date: " + foundMilestone.getDate());
                     System.out.println("----------------------------------------------------------------");
                     error = false;
 
@@ -883,7 +897,7 @@ public class ProjectManagementTool {
 
             for (int i = 0; i < milestones.size(); i++) {
                 System.out.println("Name: "+milestones.get(i).getName());
-                System.out.println("Milestone Date: "+milestones.get(i).getDate());
+                System.out.println("Date: "+milestones.get(i).getDate());
                 System.out.println("----------------------------------------------------------------");
             }
         }
@@ -919,6 +933,7 @@ public class ProjectManagementTool {
                 input = true;
             }
         }while (input) ;
+        pause();
     }//Armin
 
     public void printAllProjects()  {
@@ -1167,7 +1182,7 @@ public class ProjectManagementTool {
                             print = true;
                             LocalDate milestoneDate = currentMilestone.getDate();
                             if(day.equals(milestoneDate)){
-                                System.out.print(RED_BACKGROUND + "|##########|" + CYAN_BRIGHT);//12 pixels per day ?
+                                System.out.print(PURPLE_BACKGROUND + "|##########|" + CYAN_BRIGHT);//12 pixels per day ?
                                 print = false;
 
                             }
@@ -1195,7 +1210,7 @@ public class ProjectManagementTool {
 
                 if(milestones1 != null){
                     System.out.println();
-                    System.out.println("                     " + RED_BACKGROUND + "|##########|" + CYAN_BRIGHT + " : Milestones");
+                    System.out.println("                     " + PURPLE_BACKGROUND + "|##########|" + CYAN_BRIGHT + " : Milestones");
                 }
                 //
             }else{
@@ -2024,7 +2039,6 @@ public class ProjectManagementTool {
         pause();
     }//HAMID
 
-
     public void editTaskName(){
         Project currentProject = projects.get(FIRST);
         listTasks();
@@ -2259,7 +2273,6 @@ public class ProjectManagementTool {
             checkWithProjectTimes(currentProject);
 
         }
-        pause();
     }
 
 
@@ -2663,10 +2676,15 @@ public class ProjectManagementTool {
             outOfThree++;
         }
 
+        if(task.getActualFinish() != null && !task.getActualFinish().isEqual(today)){
+            task.setStatusOfTask(true);
+        }
+
         if(task.getActualStart() != null){
             if(!task.getStatusOfTask()){
                 task.setActualFinish(today);
             }
+
         }
 
         if(task.getActualFinish() != null){
@@ -2709,7 +2727,6 @@ public class ProjectManagementTool {
                         totalHours = totalHours + allocations.get(j).getWorkHours();
                     }
                 }
-                //System.out.println("Total planned hours = " + totalHours);
             }else{
                 System.out.println("There are no tasks in the project");
             }
@@ -2718,7 +2735,6 @@ public class ProjectManagementTool {
         }
         return totalHours;
     }//Eyuell
-
     public double plannedHoursTillDate(LocalDate date){
         double totalHours = 0.0;
         if (projects != null){
@@ -2855,7 +2871,7 @@ public class ProjectManagementTool {
             System.out.println("    6. Network Administrator");
             System.out.println();
             System.out.print("Enter qualification number ");
-            choice = new KeyboardInput().positiveNonZeroInt();
+            choice = new KeyboardInput().positiveInt();
         }while(choice > AVAILABLE_CHOICES);
 
         switch (choice){
@@ -2911,8 +2927,14 @@ public class ProjectManagementTool {
                 finishes.add(actualFinishDate);
             }
 
-            starts.add(plannedStartDate);
-            finishes.add(plannedFinishDate);
+            if(plannedStartDate != null){
+                starts.add(plannedStartDate);
+            }
+
+            if(plannedFinishDate != null){
+                finishes.add(plannedFinishDate);
+            }
+
         }
 
         if(startOrFinish.equals("start") && starts.size() > ZERO){
@@ -2920,8 +2942,10 @@ public class ProjectManagementTool {
             result = starts.get(ZERO);
         }else if(startOrFinish.equals("finish") && finishes.size() > ZERO){
             int numberOfFinishes = finishes.size();
-            Collections.sort(finishes);
-            result = finishes.get(numberOfFinishes - ONE);
+            if(numberOfFinishes > 0){
+                Collections.sort(finishes);
+                result = finishes.get(numberOfFinishes - ONE);
+            }
         }
         return result;
     }//Eyuell
