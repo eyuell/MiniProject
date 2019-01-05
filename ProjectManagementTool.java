@@ -2111,31 +2111,51 @@ public class ProjectManagementTool {
 
     public void editTeamMemberID(){
         Project currentProject = projects.get(FIRST);
+        if (currentProject!=null) { 
+        
+            boolean error;
+            String taskID;
+            TeamMember teamMember;
 
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("OBS! editing ID to an existing ID will override them.");
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("Type in id of the Team member you want to edit:");
-
-        String teamMemberID = new KeyboardInput().Line();
-
-        teamMemberIDExists(currentProject, teamMemberID);
-        while(!teamMemberIDExists(currentProject, teamMemberID)) {
-            System.out.print("TeamMember does not exist or wrong ID. Enter correct ID again ");
-            teamMemberID = new KeyboardInput().Line();
+            System.out.println("--------------------------");
+            System.out.println(    "EDIT TEAMMEMBER ID");
+            System.out.println("--------------------------");
+            System.out.println("");
+            listTeamMembers();
             System.out.println("----------------------------------------------------------------");
+            System.out.println(RED+"OBS! editing ID to an existing ID will override them."+CYAN_BRIGHT);
+            do {
+                try {
+
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("Type in id of the Team member you want to edit:");
+
+                    String teamMemberID = new KeyboardInput().Line();
+                    System.out.println("----------------------------------------------------------------");
+
+                    if (projects.get(FIRST).getProjectID() != null)
+                        teamMemberIDExists(currentProject, teamMemberID);
+
+                    teamMember = retrieveTeamMember(currentProject, teamMemberID);
+                    System.out.println("Your team member ID is currently : " + teamMember.getId());
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println("Enter new ID: ");
+                    
+                    String newID = new KeyboardInput().Line();
+                    System.out.println("----------------------------------------------------------------");
+
+                    teamMember.setId(newID);
+                    System.out.println("----------------------------------------------------------------");
+                    System.out.println(ANSI_BLUE_BACKGROUND + BLACK_BOLD + "You have now changed your ID to " + teamMember.getId());
+                    error = false;
+                    System.out.println(RESET + CYAN_BRIGHT); 
+                
+                }catch (Exception e ){
+                    System.out.println(RED+"Input must be a number"+CYAN_BRIGHT);
+                    error=true;
+                }
+            }while (error==true);
         }
-
-        TeamMember teamMember = retrieveTeamMember(currentProject,teamMemberID );
-        System.out.println("Your team member ID is currently : "+teamMember.getId());
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("Enter new ID: ");
-
-        String newID = new KeyboardInput().Line();
-        teamMember.setId(newID);
-
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("You have now changed your ID to "+ teamMember.getId());
     }//Armin
 
 
