@@ -243,7 +243,7 @@ public class ProjectManagementTool {
             System.out.println("    1. Set the dates now");
             System.out.println("    2. Get the dates from the tasks ");
             System.out.print("Enter option 1 or 2 ");
-            choice = new KeyboardInput().positiveInt();
+            choice = new KeyboardInput().positiveNonZeroInt();
             if(choice > SECOND_OPTION){
                 System.out.println("Incorrect option choice ");
             }
@@ -2855,7 +2855,7 @@ public class ProjectManagementTool {
             System.out.println("    6. Network Administrator");
             System.out.println();
             System.out.print("Enter qualification number ");
-            choice = new KeyboardInput().positiveInt();
+            choice = new KeyboardInput().positiveNonZeroInt();
         }while(choice > AVAILABLE_CHOICES);
 
         switch (choice){
@@ -2937,7 +2937,7 @@ public class ProjectManagementTool {
             System.out.println("    1. Completed ");
             System.out.println("    2. Active ");
             System.out.println("Enter status option");
-            option = new KeyboardInput().positiveInt();
+            option = new KeyboardInput().positiveNonZeroInt();
             if(option > ACTIVE){
                 repeat = true;
             }
