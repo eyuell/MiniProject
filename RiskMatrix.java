@@ -303,7 +303,7 @@ public class RiskMatrix {
                                     System.out.println("    5. Disappeared,");
                                     System.out.println("    6. Quit Updating.");
                                     System.out.println("Choose option of Status ");
-                                    choice = new KeyboardInput().positiveInt();
+                                    choice = new KeyboardInput().positiveNonZeroInt();
                                 } while (choice > QUIT);
 
                                 switch (choice){
