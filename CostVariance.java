@@ -29,8 +29,8 @@ public class CostVariance extends Finance {
         costString ="Project ID:  " +getProjectId()+System.lineSeparator();
         costString +=""+System.lineSeparator();
         costString +="========COST VARIANCE========="+System.lineSeparator();
-        costString +="-----------------------------"+System.lineSeparator();
+        costString +="______________________________"+System.lineSeparator();
         costString +="        "+ getCostVariance() +" SEK  "+System.lineSeparator();
-        costString +="-----------------------------"+System.lineSeparator();
+        costString +="______________________________"+System.lineSeparator();
         return costString;}
 }
