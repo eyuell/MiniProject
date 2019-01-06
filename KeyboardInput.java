@@ -193,4 +193,79 @@ public class KeyboardInput {
         Scanner newKeyTyped = new Scanner(System.in);
         newKeyTyped.nextLine();
     }
+
+    //Integer inputs collection
+    public int positiveNonZeroInt(){
+        int evaluatedKey = 0;   //to be returned
+        final int YES = 0;
+        final int ZERO = 0;
+        int repeat = 0;
+
+        Scanner newKeyTyped = new Scanner(System.in);
+
+        String typedKey = newKeyTyped.nextLine();   //reading string
+
+        if(typedKey.equals("0")){ //if zero, it shall be considered as error
+            typedKey = "-1";
+        }
+        while (repeat == YES ){
+            int initialLength = typedKey.length();
+            if(typedKey.contains("-") && typedKey.indexOf("-") == ZERO ){  //if the string starts with a negative
+                System.out.println("A positive value is needed");
+            }
+
+            // every character except numbers will be replaced by empty string
+            String shortedText = typedKey.replaceAll("[^0-9]", "");
+            int finalLength = shortedText.length();
+
+            // if the input is only of numbers and if input is not empty string
+            if ((initialLength == finalLength) && !typedKey.equals("")){
+                evaluatedKey = Integer.parseInt(typedKey); // the input string is converted to int
+                repeat ++;
+            }else { //otherwise the input is not a valid number format and another try will be made
+                System.out.print("Please enter the required type of input. ");
+                typedKey = newKeyTyped.nextLine();
+                repeat = YES;
+            }
+        }
+        return evaluatedKey;
+    }
+
+    //Double inputs collection
+    public double positiveNonZeroDouble(){
+        double evaluatedKey = 0.0;
+        final int YES = 0;
+        final int ZERO = 0;
+        int repeat = 0;
+
+        Scanner newKeyTyped = new Scanner(System.in);
+
+        String typedKey= newKeyTyped.nextLine();  //input as a string
+
+        if(typedKey.equals("0.0")){ //if zero, it shall be considered as error
+            typedKey = "-1.0";
+        }
+
+        while (repeat == YES ){
+            int initialLength = typedKey.length();
+            if(typedKey.contains("-") && typedKey.indexOf("-") == ZERO){  //if the string is negative
+                System.out.println("A positive value is needed");
+            }
+            // every character except numbers will be replaced by empty string
+            String shortedText = typedKey.replaceAll("[^0-9.]", "");
+            int finalLength = shortedText.length();
+
+            // if the input is only of numbers and if input is not empty string
+            if ((initialLength == finalLength) && !typedKey.equals("")){
+                evaluatedKey = Double.parseDouble(typedKey); // the input string is converted to Double
+                repeat++;
+
+            } else { //otherwise the input is not a valid number format and another try will be made
+                System.out.print("Please enter the required type of input. ");
+                typedKey= newKeyTyped.nextLine();
+                repeat = YES;
+            }
+        }
+        return evaluatedKey;
+    }
 }
