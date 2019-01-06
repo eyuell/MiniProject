@@ -740,19 +740,19 @@ public class ProjectManagementTool {
         ArrayList<Task> tasks = currentProject.getTasks();
         String option;
         boolean error;
-
-        for (int i = 0; i <tasks.size() ; i++) {
+        if(tasks != null) {
+        for (int i = 0; i < tasks.size(); i++) {
             System.out.println("Name of task: " + tasks.get(i).getName());
             System.out.println("Planned start date: " + tasks.get(i).getPlannedStart());
             System.out.println("Planned finish date: " + tasks.get(i).getPlannedFinish());
 
             System.out.println("Actual date of start: " + tasks.get(i).getActualStart());
             System.out.println("Actual End date: " + tasks.get(i).getActualFinish());
-            System.out.println("Planned duration of task: "+tasks.get(i).getPlannedDuration()+" days");
+            System.out.println("Planned duration of task: " + tasks.get(i).getPlannedDuration() + " days");
             System.out.println("------------------------------------------------------------");
         }
 
-        do{
+        do {
             System.out.println("------------------------------------------------------------");
             System.out.println("Do you wish to print milestones?");
             System.out.println("1. Yes");
@@ -761,29 +761,32 @@ public class ProjectManagementTool {
             option = new KeyboardInput().Line();
             System.out.println("------------------------------------------------------------");
 
-            if(option.equalsIgnoreCase("1")||option.equalsIgnoreCase("yes")){
+            if (option.equalsIgnoreCase("1") || option.equalsIgnoreCase("yes")) {
                 printMileStones();
                 error = false;
 
-            }else if (option.equalsIgnoreCase("2")||option.equalsIgnoreCase("no")){
+            } else if (option.equalsIgnoreCase("2") || option.equalsIgnoreCase("no")) {
                 System.out.println("Milestones not printed.");
                 error = false;
                 pause();
 
-            }else{
+            } else {
                 System.out.println("Options are 1 or 2");
                 System.out.println("----------------------------------------------------------------");
-                error=true;
+                error = true;
             }
-        }while (error);
-
+        } while (error);
+        } else {
+            System.out.println("There are no tasks registered");
+            System.out.println();
+        }
     }//Armin
 
 
     public void printSpecificTaskMilestones() {
         Project currentProject = projects.get(FIRST);
 
-        if (currentProject != null) {
+        if (currentProject.getMilestones() != null) {
             listTasks();
             String taskID;
             boolean error;
@@ -832,6 +835,9 @@ public class ProjectManagementTool {
                     }
                 }while (error);
             } while (error);
+        }else {
+            System.out.println("There are no Milestones registered.");
+            System.out.println();
         }
     }//Armin
 
@@ -866,7 +872,7 @@ public class ProjectManagementTool {
         Project currentProject = projects.get(FIRST);
         listMilestones();
 
-        if (currentProject != null) {
+        if (currentProject.getMilestones() != null) {
             boolean error;
             String milestoneID;
             do {
@@ -888,7 +894,11 @@ public class ProjectManagementTool {
                 }
 
             }while (error);
-        }pause();
+        } else {
+            System.out.println("There are no Milestones registered.");
+            System.out.println();
+        }
+        pause();
     }//Armin
 
 
@@ -902,6 +912,9 @@ public class ProjectManagementTool {
                 System.out.println("Date: "+milestones.get(i).getDate());
                 System.out.println("----------------------------------------------------------------");
             }
+        } else {
+            System.out.println("There are no Milestones registered.");
+            System.out.println();
         }
         pause();
     }//Armin
@@ -922,7 +935,7 @@ public class ProjectManagementTool {
                 input = false;
 
             } else if (option == 2) {
-                System.out.println("HAMID METHOD HERE!!!");
+                System.out.println("HAMID METHOD HERE!!!"  //when will this be coded?
                 input = false;
 
             }else if (option==3){
@@ -939,16 +952,21 @@ public class ProjectManagementTool {
     }//Armin
 
     public void printAllProjects()  {
+        if(projects != null) {
         System.out.println("Here is a List of all Current projects: ");
         System.out.println("----------------------------------------------------------------");
 
         for (int i = 0; i < projects.size(); i++) {
-            System.out.println("Project ID Assigned: "+projects.get(i).getProjectID());
-            System.out.println("Project name: "+projects.get(i).getName());
-            System.out.println("Project Start date: "+projects.get(i).getStartDate());
-            System.out.println("Project End date: "+projects.get(i).getFinishDate());
+            System.out.println("Project ID Assigned: " + projects.get(i).getProjectID());
+            System.out.println("Project name: " + projects.get(i).getName());
+            System.out.println("Project Start date: " + projects.get(i).getStartDate());
+            System.out.println("Project End date: " + projects.get(i).getFinishDate());
             System.out.println("----------------------------------------------------------------");
 
+        }
+        } else {
+            System.out.println("There are no projects registered.");
+            System.out.println();
         }
     }//Armin
 
@@ -991,7 +1009,7 @@ public class ProjectManagementTool {
         listTeamMembers();
         String teamID;
 
-        if (currentProject != null) {
+        if (currentProject.getTeamMembers() != null) {
             boolean error;
             for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
                 do {
@@ -1016,6 +1034,9 @@ public class ProjectManagementTool {
                     }
                 } while (error);
             }
+        } else {
+            System.out.println("There are no Team members registered");
+            System.out.println();
         }
         pause();
 
@@ -1024,12 +1045,17 @@ public class ProjectManagementTool {
 
     public void printAllTeamMembers() {
         Project currentProject = projects.get(FIRST);
+        if(currentProject.getTeamMembers() != null){
         System.out.println("Here is a list of all Team members currently registered: ");
         System.out.println("----------------------------------------------------------------");
         for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
             System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
             System.out.println("Profession: " + currentProject.getTeamMembers().get(i).getQualification());
             System.out.println("----------------------------------------------------------------");
+        }
+        } else {
+            System.out.println("There are no Team members registered");
+            System.out.println();
         }
     }//OSMAN
 
@@ -1262,6 +1288,9 @@ public class ProjectManagementTool {
                                     actual.put(key,newValue);
                                 }
                             }
+                        } else {
+                            System.out.println("There are no actual team-hours registered");
+                            System.out.println();
                         }
 
                         ArrayList<ManpowerAllocation> manpower = currentTask.getPlannedManpower();
@@ -1284,6 +1313,9 @@ public class ProjectManagementTool {
                                     planned.put(key,newValue);
                                 }
                             }
+                        } else {
+                            System.out.println("There are no planned man-hours registered");
+                            System.out.println();
                         }
                     }
                 }
