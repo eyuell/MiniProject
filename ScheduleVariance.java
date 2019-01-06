@@ -3,7 +3,7 @@ package MiniProject;
 import javafx.scene.Scene;
 
 public class ScheduleVariance extends Finance {
-    private float scheduleVariance;
+
     private double daysPassed;
     private double projectDuration;
     public static final String BLUE_BACKGROUND_BRIGHT = "\033[0;104m";// BLUE
@@ -27,7 +27,7 @@ public class ScheduleVariance extends Finance {
     }
 
     public float getScheduleVariance() {
-        this.scheduleVariance = (float) ((getEarnedValue()) - (this.getPlannedValue()));
+        float scheduleVariance = (float) ((getEarnedValue()) - (this.getPlannedValue()));
         if (scheduleVariance<0){
             System.out.println(ANSI_RED_BACKGROUND+BLACK_BOLD+"Project ID:  " + getProjectId());
 
@@ -53,10 +53,9 @@ public class ScheduleVariance extends Finance {
         return plannedPercentageCompleted;
     }
 
-
     public String toString() {
         String costString;
-        costString ="======SCHEDUAL VARIANCE======="+System.lineSeparator();
+        costString ="======SCHEDULE VARIANCE======="+System.lineSeparator();
         costString+="______________________________"+System.lineSeparator();
         costString+="          "+getScheduleVariance()+"SEK"+System.lineSeparator();
         costString+="______________________________"+System.lineSeparator();
@@ -66,4 +65,3 @@ public class ScheduleVariance extends Finance {
         return costString;
     }
 }
-
