@@ -906,7 +906,7 @@ public class ProjectManagementTool {
                 input = false;
 
             } else if (option == 2) {
-                System.out.println("HAMID METHOD HERE!!!");
+                printSpecificProject();
                 input = false;
 
             }else if (option==3){
@@ -935,6 +935,29 @@ public class ProjectManagementTool {
         }
     }//Armin
 
+    public void printSpecificProject(){
+        String projectId="";
+        boolean error= true;
+        do {
+            try {
+                System.out.println("Enter project id");
+                projectId = new MiniProject.KeyboardInput().Line();
+                if (!projectExists(projectId)) {
+                    System.out.println("This project id does not exist");
+                }
+                error = false;
+            } catch (Exception e) {
+                System.out.println("Error, wrong input type");
+            }
+        }while(error || !projectExists(projectId));
+        Project foundProject = retrieveProjectByID(projectId);
+        System.out.println("Project ID: " + foundProject.getProjectID());
+        System.out.println("Project name: " + foundProject.getName());
+        System.out.println("Project start date " + foundProject.getStartDate());
+        System.out.println("Project finish date " + foundProject.getFinishDate());
+        System.out.println("Project duration " + foundProject.getDuration);
+        System.out.println("Project budget " + foundProject.getBudget);
+    }
 
     public void printTeamMembers() {
         int option;
