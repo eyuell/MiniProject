@@ -2019,7 +2019,18 @@ public class ProjectManagementTool {
         }
         error = true;
         if (option.equalsIgnoreCase("budget")) {
-            editBudget();
+            double newBudget;
+            do {
+                try {
+                    System.out.println("Your present budget is " + project.getBudget());
+                    System.out.println("What is the new budget");
+                    newBudget = new MiniProject.KeyboardInput().Double();
+                    project.setBudget(newBudget);
+                    error = false;
+                } catch (Exception e) {
+                    System.out.println("Error, wrong input type");
+                }
+            }while(error);
         }
         pause();
     }//HAMID
@@ -2260,6 +2271,204 @@ public class ProjectManagementTool {
 
         }
         pause();
+    }
+
+    public void editTaskType() {
+        String taskId ="";
+        Task foundTask;
+        boolean error = true;
+        Project currentProject = projects.get(FIRST);
+        do {
+            try {
+                System.out.println("Enter the id of the task ");
+                taskId = new KeyboardInput().Line();
+                if (!tasksIDExists(currentProject, taskId)) {
+                    System.out.println("This id does not exist");
+                }
+                error = false;
+            } catch (Exception e) {
+                System.out.println("Error, wrong input type");
+            }
+        }while(!tasksIDExists(currentProject, taskId) || error);
+        foundTask = retrieveTask(taskId,currentProject);
+        System.out.println(foundTask.getName() + "'s type is " + foundTask.getTypeOfTask());
+        int typeOfTask = typeOfTask();
+        foundTask.setTypeOfTask(typeOfTask);
+
+    }
+
+    public void editTaskConnectivity() {
+        Project currentProject = projects.get(FIRST);
+        ArrayList<Connectivity> connectivities;
+        String taskId1;
+        String taskId2;
+        Task foundTask1;
+        Connectivity foundConnectivity;
+        int option = 0;
+        boolean error= true;
+        boolean repeat= true;
+        do {
+            try {
+                System.out.println("Enter first task id ");
+                taskId1 = new KeyboardInput().Line();
+                System.out.println("Enter id of task connected to the first task");
+                taskId2 = new KeyboardInput().Line();
+                foundTask1 = retrieveTask(taskId1, currentProject);
+                connectivities = foundTask1.getConnectivity();
+                for (Connectivity thisconnectivity : connectivities) {
+                    if (thisconnectivity.getLinkedTo().getId().equalsIgnoreCase(taskId2)) {
+                        foundConnectivity = thisconnectivity;
+                        repeat= false;
+                    }else{
+                        System.out.println("There is no connectivity between the tasks that you have entered");
+                    }
+                }
+                error = false;
+            } catch (Exception e) {
+                System.out.println("Error, wrong input type");
+            }
+        }while(error || repeat );
+
+        error = true;
+        do {
+            try {
+                System.out.println("What do you want to edit, enter number");
+                System.out.println("1.Remove connectivity between the chosen tasks");
+                System.out.println("2.Change the connectivity type between the two tasks");
+                System.out.println("3.Change the connectivity duration between the two tasks");
+                option = new KeyboardInput().Int();
+                error = false;
+            } catch (Exception e) {
+                System.out.println("Error, wrong input type");
+            }
+        }while(error || option>3 || option <1);
+
+        if(option == 1) {
+            connectivities.remove(foundConnectivity);
+            System.out.println("This connectivity is removed");
+
+        }else if(option == 2) {
+            System.out.println("The connectivity type between these tasks is " + foundConnectivity.getStartOrFinish());
+            String connectivityType = readConnectivityType();
+            foundConnectivity.setStartOrFinish(connectivityType);
+
+        }else if(option == 3) {
+            System.out.println("The duration of connectivity is " + foundConnectivity.getConnectivityDuration());
+            System.out.println("Enter new duration");
+            long newDuration = new KeyboardInput().Int();
+            foundConnectivity.setConnectivityDuration(newDuration);
+        }
+    }
+
+    public void editAllocations() {
+        Project currentProject = projects.get(FIRST);
+        boolean error = true;
+        String taskId = "";
+        String memberId = "";
+        Task foundTask;
+        TeamMember foundMember;
+        int option= 0;
+        ArrayList<TeamMemberAllocation> allocations;
+        do {
+            try {
+                do {
+                    System.out.println("Enter task id ");
+                    taskId = new KeyboardInput().Line();
+                    if(!tasksIDExists(currentProject,taskId)) {
+                        System.out.println("This id does not exist");
+                    }
+                }while(!tasksIDExists(currentProject,taskId));
+                do {
+                    System.out.println("Enter member id ");
+                    memberId = new KeyboardInput().Line();
+                    if (!teamMemberIDExists(currentProject.memberId)) {
+                        System.out.println("This id does not exist");
+                    }
+                }while(!teamMemberIDExists(currentProject.memberId));
+
+                foundTask = retrieveTask(taskId, currentProject);
+                foundMember = retrieveTeamMember(currentProject, memberId);
+                allocations = foundTask.getActualTeamMembers();
+                if (!foundTask.getActualTeamMembers().contains(foundMember)) {
+                    System.out.println("This member id has not been registered for this task");
+                }
+                error = false;
+            } catch (Exception e) {
+                System.out.println("Error wrong input type");
+            }
+        }while(error || !foundTask.getActualTeamMembers().contains(foundMember));
+        error = true;
+        do {
+            try {
+                System.out.println("What do you want to change, enter a number ");
+                System.out.println("1.Remove the team member from this task");
+                System.out.println("2.Change how many hours the team member has worked on this task");
+                System.out.println("3.Change the date that the team member worked on this task");
+                option = new KeyboardInput().Int();
+                error = false;
+            }catch(Exception e) {
+                System.out.println("Error, wrong input type");
+            }
+        }while(option <1 || option >3 || error );
+
+        if(option == 1) {
+            foundTask.getActualTeamMembers().remove(foundMember);
+        }
+        else if(option == 2) {
+            for (TeamMemberAllocation allocation : allocations) {
+                if (allocation.getTeamMember().getId().equalsIgnoreCase(memberId)) {
+                    System.out.println(foundMember.getName +" has worked "+allocation.getWorkHours() + " hours on " + foundTask.getName());
+                    System.out.println("Enter the new work hours for this task");
+                    double newWorkedHours = new MiniProject.KeyboardInput().Double();
+                    allocation.setWorkHours(newWorkedHours);
+                }
+            }
+        }else if(option == 3) {
+            for (TeamMemberAllocation allocation : allocations) {
+                if(allocation.getTeamMember().getId().equalsIgnoreCase(memberId)) {
+                    System.out.println(foundMember.getName+ " has worked on " + allocation.getDate()+ " date");
+                    System.out.println("what is the new date that you want to register");
+                    LocalDate editDate = new DataEvaluator().readDate();
+
+                    while(editDate.isAfter(foundTask.getActualFinish()) || editDate.isBefore(foundTask.getActualStart())){
+                        System.out.print("Date should be between Actual Start date ");
+                        if(foundTask.getActualFinish() != null){
+                            System.out.print("and finish date.");
+                        }else{
+                            System.out.println("and today.");
+                        }
+                        System.out.print(" Enter a correct date ");
+                        editDate = new DataEvaluator().readDate();
+                    }
+                    allocation.setDate(editDate);
+                }
+            }
+        }
+
+
+    }
+
+    public void editQualification() {
+        Project currentProject = projects.get(FIRST);
+        String thisId = "";
+        boolean error = true;
+        do {
+            try {
+                System.out.println("Enter the id of the team member ");
+                thisId = new MiniProject.KeyboardInput().Line();
+                error = false;
+            } catch (Exception e) {
+                System.out.println("Error, wrong input type");
+            }
+            if (!teamMemberIDExists(currentProject, thisId)) {
+                System.out.println("This id does not exist");
+            }
+        }while(error || !teamMemberIDExists(currentProject,thisId));
+        TeamMember foundMember = retrieveTeamMember(currentProject,thisId);
+        System.out.println("This member's qualification is " + foundMember.getQualification());
+        String qualification = readQualification();
+        foundMember.setQualification(qualification);
+                pause();
     }
 
 
