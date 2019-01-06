@@ -1578,11 +1578,11 @@ public class ProjectManagementTool {
             System.out.println("PROJECT ID: "+projectID);
             System.out.println("");
             System.out.println("========EARNED VALUE=========");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
             System.out.println("        "+earnedValue+" SEK  ");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
             System.out.println(CYAN_BRIGHT);
-           
+            
             pause();
         }
     }//Armin//COST
@@ -1658,9 +1658,9 @@ public class ProjectManagementTool {
             System.out.println("PROJECT ID: "+projectID);
             System.out.println("");
             System.out.println("========EARNED VALUE=========");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
             System.out.println("        "+earnedValue+" SEK  ");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
 
             pause();
         }
@@ -1703,7 +1703,6 @@ public class ProjectManagementTool {
             //project tasks total duration
             double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
             double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
-           
             double ExecutedProgress = percentageDone;
             double scheduleProgress = durationTillToday/projectDuration;;
             double earnedValue = (Math.round((plannedBudget *percentageDone ))*100)/100.0;
@@ -1739,7 +1738,7 @@ public class ProjectManagementTool {
             SystemStore Costs = new MiniProject.SystemStore();
             System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ));
             System.out.println(CYAN_BRIGHT);
-            
+           
             pause();
         }
     }//Armin
@@ -1781,7 +1780,6 @@ public class ProjectManagementTool {
             //project tasks total duration
             double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
             double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
-           
             double ExecutedProgress = percentageDone;
             double scheduleProgress = durationTillToday/projectDuration;;
             double earnedValue = (Math.round((plannedBudget *percentageDone ))*100)/100.0;
@@ -1813,7 +1811,7 @@ public class ProjectManagementTool {
 
             System.out.println("__________________________________________");
             System.out.println(" ");
-            
+
             SystemStore Costs = new MiniProject.SystemStore();
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
 
