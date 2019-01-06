@@ -3,7 +3,7 @@ package MiniProject;
 import javafx.scene.Scene;
 
 public class ScheduleVariance extends Finance {
-
+    private float scheduleVariance;
     private double daysPassed;
     private double projectDuration;
     public static final String BLUE_BACKGROUND_BRIGHT = "\033[0;104m";// BLUE
@@ -27,7 +27,7 @@ public class ScheduleVariance extends Finance {
     }
 
     public float getScheduleVariance() {
-        float scheduleVariance = (float) ((getEarnedValue()) - (this.getPlannedValue()));
+        this.scheduleVariance = (float) ((getEarnedValue()) - (this.getPlannedValue()));
         if (scheduleVariance<0){
             System.out.println(ANSI_RED_BACKGROUND+BLACK_BOLD+"Project ID:  " + getProjectId());
 
@@ -53,15 +53,16 @@ public class ScheduleVariance extends Finance {
         return plannedPercentageCompleted;
     }
 
+
     public String toString() {
         String costString;
-        costString ="======SCHEDULE VARIANCE======="+System.lineSeparator();
-        costString+="______________________________"+System.lineSeparator();
-        costString+="          "+getScheduleVariance()+"SEK"+System.lineSeparator();
-        costString+="______________________________"+System.lineSeparator();
-      
+        costString ="   ========SCHEDUAL VARIANCE========="+System.lineSeparator();
+        costString+="     ----------------------------"+System.lineSeparator();
+        costString+="              "+getScheduleVariance()+"SEK"+System.lineSeparator();
+        costString+="     ----------------------------"+System.lineSeparator();
         costString+=""+System.lineSeparator();
         costString+=BLACK_BOLD+"RED BACKGROUND = BEHIND, GREEN BACKGROUND = ON TRACK"+System.lineSeparator();
         return costString;
     }
 }
+
