@@ -515,6 +515,7 @@ public class ProjectManagementTool {
         pause();
     }//Eyuell
 
+    //planned man hour allocation
     public void assignManPower(){
 
         if (projects != null){
@@ -558,6 +559,7 @@ public class ProjectManagementTool {
         pause();
     }//Eyuell
 
+    //Actual dates and team allocation
     public void registerActualData(){
         LocalDate today = LocalDate.now();
 
@@ -2199,7 +2201,7 @@ public class ProjectManagementTool {
                     System.out.println(RED+"Input must be a number"+CYAN_BRIGHT);
                     error=true;
                 }
-            }while (error==true);
+            }while (error);
         }
     }//Armin
 
@@ -2504,6 +2506,7 @@ public class ProjectManagementTool {
         return taskChoice;
     }//Eyuell
 
+    //synchronize task dates
     public void updateDates(Task task, LocalDate plannedStart, LocalDate plannedFinish, LocalDate actualStart, LocalDate actualFinish){
         task.setPlannedStart(plannedStart);
         task.setPlannedFinish(plannedFinish);
@@ -2511,6 +2514,7 @@ public class ProjectManagementTool {
         task.setActualFinish(actualFinish);
     }//Eyuell
 
+    //checks if task dates are within project dates
     public void checkWithProjectTimes(Project project){
         LocalDate projectStart = project.getStartDate();
         LocalDate projectFinish = project.getFinishDate();
@@ -2544,6 +2548,7 @@ public class ProjectManagementTool {
         project.setDuration(duration);
     }//Eyuell
 
+    //how is the length of task defined
     public int readLengthOfTask(){
         int BY_DURATION = 1;
         int BY_FINISH_DATE = 2;
@@ -2634,34 +2639,34 @@ public class ProjectManagementTool {
         return foundTask;
     }//Eyuell
 
+    //returns an existing task or null
     public Task checkTaskExistence(String taskID, Project project){ //this one do not print a message if not found
-        Task foundTask = null;
+
         int EMPTY = 0;
         if (project.getTasks().size() != EMPTY){
             ArrayList<Task> tasksCopy = project.getTasks();
             for (int i = 0; i < tasksCopy.size(); i++){
                 if (tasksCopy.get(i).getId().equals(taskID)){
-                    foundTask = tasksCopy.get(i);
+                    return tasksCopy.get(i);
                 }
             }
         }
-        System.out.println();
-        return foundTask;
+        return null;
     }//Eyuell
 
+    //returns an existing milestone or null
     public Milestone checkMilestoneExistence(String milestoneID, Project project){
-        Milestone foundMilestone = null;
+
         int EMPTY = 0;
         ArrayList<Milestone> milestones = project.getMilestones();
         if (milestones.size() != EMPTY){
             for (int i = 0; i < milestones.size(); i++){
                 if (milestones.get(i).getId().equals(milestoneID)){
-                    foundMilestone = milestones.get(i);
+                    return milestones.get(i);
                 }
             }
         }
-        System.out.println();
-        return foundMilestone;
+        return null;
     }//Eyuell
 
     public Project retrieveProjectByID(String projectID) {
@@ -2673,6 +2678,7 @@ public class ProjectManagementTool {
         return null;
     }//Hamid
 
+    //project name exists or not
     public boolean checkProjectName(String name){
         if(projects != null){
             for(Project project : projects){
@@ -2800,6 +2806,7 @@ public class ProjectManagementTool {
         }
         return totalHours;
     }//Eyuell
+
     public double plannedHoursTillDate(LocalDate date){
         double totalHours = 0.0;
         if (projects != null){
@@ -2965,6 +2972,7 @@ public class ProjectManagementTool {
         return result;
     }//Eyuell
 
+    //existing start and finish dates evaluated and returned as needed
     public LocalDate tasksStartAndFinishDates (String startOrFinish, ArrayList<Task> tasks){
         int ZERO = 0;
         int ONE = 1;
@@ -3038,6 +3046,7 @@ public class ProjectManagementTool {
         }
     }//Eyuell
 
+    //After tasks are complete, the project dates are defined
     public void projectCompletenessCheck(){
         if(projects != null){
             for(int m = 0; m < projects.size(); m++){
@@ -3046,6 +3055,13 @@ public class ProjectManagementTool {
                 }
 
                 Project currentProject = projects.get(m);
+
+                if(currentProject.getStartDate() == null){
+                    if(currentProject.getTasks() != null){
+                        LocalDate start = tasksStartAndFinishDates("start",currentProject.getTasks());
+                        currentProject.setStartDate(start);
+                    }
+                }
 
                 if(currentProject.getFinishDate() == null){
 
@@ -3079,6 +3095,7 @@ public class ProjectManagementTool {
         projects = gson.fromJson(br, new TypeToken<ArrayList<Project>>(){}.getType());
     }//Eyuell
 
+    //data input before json file is created
     public void readFromSystemClass(){
         double BUDGET = 404175.0; //SEK budget (1585 * 255)
         LocalDate today = LocalDate.now();
