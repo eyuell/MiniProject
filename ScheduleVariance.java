@@ -50,18 +50,21 @@ public class ScheduleVariance extends Finance {
     public double getPlannedPercentageCompleted() {
         double plannedPercentageCompleted;
         plannedPercentageCompleted = (daysPassed / projectDuration);
+        
         return plannedPercentageCompleted;
     }
 
 
     public String toString() {
         String costString;
-        costString ="   ========SCHEDUAL VARIANCE========="+System.lineSeparator();
-        costString+="     ----------------------------"+System.lineSeparator();
-        costString+="              "+getScheduleVariance()+"SEK"+System.lineSeparator();
-        costString+="     ----------------------------"+System.lineSeparator();
+        
+        costString ="======SCHEDUAL VARIANCE======="+System.lineSeparator();
+        costString+="______________________________"+System.lineSeparator();
+        costString+="          "+getScheduleVariance()+"SEK"+System.lineSeparator();
+        costString+="______________________________"+System.lineSeparator();
         costString+=""+System.lineSeparator();
         costString+=BLACK_BOLD+"RED BACKGROUND = BEHIND, GREEN BACKGROUND = ON TRACK"+System.lineSeparator();
+
         return costString;
     }
 }
