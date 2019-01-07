@@ -95,7 +95,7 @@ public class ProjectManagementTool {
         System.out.println("1. Edit Project Information");
         System.out.println("2. Edit Task Information");
         System.out.println("3. Edit Team Member Information");
-        System.out.println("4. Edit Allocations");
+        System.out.println("4. Edit Team Member Allocation");
         System.out.println("5. Return");
         System.out.println("=========================================");
         System.out.println();
@@ -945,17 +945,17 @@ public class ProjectManagementTool {
 
     public void printAllProjects()  {
         if(projects != null){
-            System.out.println("Here is a List of all Current projects: ");
+        System.out.println("Here is a List of all Current projects: ");
+        System.out.println("----------------------------------------------------------------");
+
+        for (int i = 0; i < projects.size(); i++) {
+            System.out.println("Project ID Assigned: "+projects.get(i).getProjectID());
+            System.out.println("Project name: "+projects.get(i).getName());
+            System.out.println("Project Start date: "+projects.get(i).getStartDate());
+            System.out.println("Project End date: "+projects.get(i).getFinishDate());
             System.out.println("----------------------------------------------------------------");
 
-            for (int i = 0; i < projects.size(); i++) {
-                System.out.println("Project ID Assigned: "+projects.get(i).getProjectID());
-                System.out.println("Project name: "+projects.get(i).getName());
-                System.out.println("Project Start date: "+projects.get(i).getStartDate());
-                System.out.println("Project End date: "+projects.get(i).getFinishDate());
-                System.out.println("----------------------------------------------------------------");
-
-            }}
+        }}
         else {
             System.out.println("There are no projects registered");
             System.out.println();
@@ -1061,13 +1061,13 @@ public class ProjectManagementTool {
     public void printAllTeamMembers() {
         Project currentProject = projects.get(FIRST);
         if(currentProject.getTeamMembers() != null){
-        System.out.println("Here is a list of all Team members currently registered: ");
-        System.out.println("----------------------------------------------------------------");
-        for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
-            System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
-            System.out.println("Profession: " + currentProject.getTeamMembers().get(i).getQualification());
+            System.out.println("Here is a list of all Team members currently registered: ");
             System.out.println("----------------------------------------------------------------");
-        }
+            for (int i = 0; i < currentProject.getTeamMembers().size(); i++) {
+                System.out.println("Name: " + currentProject.getTeamMembers().get(i).getName());
+                System.out.println("Profession: " + currentProject.getTeamMembers().get(i).getQualification());
+                System.out.println("----------------------------------------------------------------");
+            }
         } else {
             System.out.println("There are no Team Members registered");
             System.out.println();
@@ -2390,65 +2390,76 @@ public class ProjectManagementTool {
 
     public void editTaskConnectivity() {
         Project currentProject = projects.get(FIRST);
-        ArrayList<Connectivity> connectivities = new ArrayList<>();
+        ArrayList<Connectivity> connectivities;
         String taskId1;
-        String taskId2;
         Task foundTask1;
+        Task foundTask2;
         Connectivity foundConnectivity = null;
         int option = 0;
-        boolean error= true;
-        boolean repeat= true;
-        do {
-            try {
-                System.out.println("Enter first task id ");
-                taskId1 = new KeyboardInput().Line();
-                System.out.println("Enter id of task connected to the first task");
-                taskId2 = new KeyboardInput().Line();
-                foundTask1 = retrieveTask(taskId1, currentProject);
-                connectivities = foundTask1.getConnectivity();
-                for (Connectivity thisConnectivity : connectivities) {
-                    if (thisConnectivity.getLinkedTo().getId().equalsIgnoreCase(taskId2)) {
-                        foundConnectivity = thisConnectivity;
-                        repeat= false;
-                    }else{
-                        System.out.println("There is no connectivity between the tasks that you have entered");
-                    }
-                }
-                error = false;
-            } catch (Exception e) {
-                System.out.println("Error, wrong input type");
-            }
-        }while(error || repeat );
 
-        error = true;
-        do {
-            try {
+        System.out.println("Enter task id ");
+        taskId1 = new KeyboardInput().Line();
+        foundTask1 = retrieveTask(taskId1, currentProject);
+        connectivities = foundTask1.getConnectivity();
+
+        if(connectivities.size() > 0){
+            System.out.println("The existing connectivities are: ");
+            for (int i = 0; i < connectivities.size(); i++) {
+                System.out.println("    Connectivity " + (i + 1) + " has connection with task id : " +
+                        connectivities.get(i).getLinkedTo().getId() + " with type : " + connectivities.get(i).getStartOrFinish() +
+                        " and " + connectivities.get(i).getConnectivityDuration() + " Days of gap.");
+            }
+            System.out.println("Which connectivity do you want to update? (the info will be overwritten)");
+            int connectivityNumber = new KeyboardInput().positiveNonZeroInt();
+            while (connectivityNumber > connectivities.size()){
+                System.out.println("Inter the connectivity number from above correctly :");
+                connectivityNumber = new KeyboardInput().positiveNonZeroInt();
+            }
+            foundConnectivity = connectivities.get(connectivityNumber - 1);//index
+
+            do {
                 System.out.println("What do you want to edit, enter number");
-                System.out.println("1. Remove connectivity between the chosen tasks");
-                System.out.println("2. Change the connectivity type between the two tasks");
-                System.out.println("3. Change the connectivity duration between the two tasks");
+                System.out.println("1. Remove connectivity");
+                System.out.println("2. Update whole info of Connectivity");
+                System.out.println("3. Update the connectivity type");
+                System.out.println("4. Change the connectivity duration");
                 option = new KeyboardInput().positiveNonZeroInt();
-                error = false;
-            } catch (Exception e) {
-                System.out.println("Error, wrong input type");
+            }while(option > 4);
+
+
+            if(option == 1) {
+                connectivities.remove(foundConnectivity);
+                System.out.println("This connectivity is removed");
+
+            }else if (option == 2) {
+                System.out.println("On which task does the current task depend on ? ");
+                String toBeConnectedToTaskID = readExistingTaskID(currentProject);
+                foundTask2 = retrieveTask(toBeConnectedToTaskID, currentProject);
+
+                String connectivityType = readConnectivityType();
+
+                System.out.print("Enter the duration of connectivity in Days. (It could be negative if applicable) ");
+                long connectivityDuration = new KeyboardInput().Int();
+
+                foundConnectivity.setLinkedTo(foundTask2);
+                foundConnectivity.setStartOrFinish(connectivityType);
+                foundConnectivity.setConnectivityDuration(connectivityDuration);
+            } else if(option == 3) {
+                System.out.println("The connectivity type is " + foundConnectivity.getStartOrFinish());
+                String connectivityType = readConnectivityType();
+                foundConnectivity.setStartOrFinish(connectivityType);
+
+            }else if(option == 4) {
+                System.out.println("The duration of connectivity is " + foundConnectivity.getConnectivityDuration());
+                System.out.println("Enter new duration");
+                long newDuration = new KeyboardInput().Int();
+                foundConnectivity.setConnectivityDuration(newDuration);
             }
-        }while(error || option > 3);
 
-        if(option == 1) {
-            connectivities.remove(foundConnectivity);
-            System.out.println("This connectivity is removed");
-
-        } else if(option == 2) {
-            System.out.println("The connectivity type between these tasks is " + foundConnectivity.getStartOrFinish());
-            String connectivityType = readConnectivityType();
-            foundConnectivity.setStartOrFinish(connectivityType);
-
-        }else if(option == 3) {
-            System.out.println("The duration of connectivity is " + foundConnectivity.getConnectivityDuration());
-            System.out.println("Enter new duration");
-            long newDuration = new KeyboardInput().Int();
-            foundConnectivity.setConnectivityDuration(newDuration);
+        } else {
+            System.out.println("There is no connectivity registered on the task ");
         }
+        pause();
     }//Hamid
 
     public void editAllocations() {
@@ -2480,7 +2491,7 @@ public class ProjectManagementTool {
                 foundTask = retrieveTask(taskId, currentProject);
                 foundMember = retrieveTeamMember(currentProject, memberId);
                 allocations = foundTask.getActualTeamMembers();
-                if (!foundTask.getActualTeamMembers().contains(foundMember)) {
+                if (!allocations.contains(foundMember)) {
                     System.out.println("This member id has not been registered for this task");
                 }
                 error = false;
