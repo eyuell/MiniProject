@@ -1550,15 +1550,18 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
+            int option;
 
             System.out.println("          ========ALL COSTS=========");
-            System.out.println();
+            System.out.println("");
             System.out.println("HOW MANY PERCENT OF THE PROJECT IS COMPLETED?");
             System.out.println("       ==INPUT IS BETWEEN 0 AND 1==         ");
             System.out.println(RED+"         OBS! 1 IS 100% 0 IS 0% ! ");
             System.out.println(CYAN_BRIGHT);
 
             percentageDone = new KeyboardInput().Double();{
+                System.out.println("__________________________________________");
+
                 if(percentageDone>1){
                     percentageDone=1;
                 }
@@ -1585,39 +1588,47 @@ public class ProjectManagementTool {
             double deadline=projects.get(FIRST).getDuration()-durationTillToday;
             double projectLength=projects.get(FIRST).getDuration();
             String projectID=projects.get(FIRST).getProjectID();
+            System.out.println("__________________________________________");
+            System.out.println("Project budget(SEK)         : "+plannedBudget);
+            System.out.println("__________________________________________");
 
-            System.out.println("Project budget($): " + plannedBudget);
-            System.out.println("Project cost($): " + actualCost);
-            System.out.println("-------------------------------------------------");
+            System.out.println("Project cost(SEK)           : " + actualCost);
+            System.out.println("__________________________________________");
 
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("Program Executed Progress   : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("__________________________________________");
+
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
 
-            System.out.println("Days passed since start: "+ durationTillToday+" days");
-            System.out.println("Project length: "+projectLength+" days");
-            System.out.println("Days until Deadline: "+ deadline+ " days");
-            System.out.println("-------------------------------------------------");
+            System.out.println("Days passed since start     : "+ durationTillToday+" days");
+            System.out.println("__________________________________________");
+
+            System.out.println("Project length              : "+projectLength+" days");
+            System.out.println("__________________________________________");
+
+            System.out.println("Days until Deadline         : "+ deadline+ " days");
+            System.out.println("__________________________________________");
 
             System.out.println(" ");
             SystemStore Costs = new MiniProject.SystemStore();
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
 
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()));
             System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ));
             System.out.println(CYAN_BRIGHT);
 
             System.out.println("PROJECT ID: "+projectID);
-            System.out.println();
+            System.out.println("");
             System.out.println("========EARNED VALUE=========");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
             System.out.println("        "+earnedValue+" SEK  ");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
             System.out.println(CYAN_BRIGHT);
             pause();
 
         }
-    }//Armin
+    }//Armin//COST
 
     public void monitorEarnedValue() {//Armin
         if (projects != null) {
@@ -1625,15 +1636,17 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
+            int option;
 
             System.out.println("        ========EARNED VALUE=========");
-            System.out.println();
+            System.out.println("");
             System.out.println("HOW MANY PERCENT OF THE PROJECT IS COMPLETED?");
             System.out.println("       ==INPUT IS BETWEEN 0 AND 1==         ");
             System.out.println(RED+"         OBS! 1 IS 100% 0 IS 0% ! ");
             System.out.println(CYAN_BRIGHT);
 
             percentageDone = new KeyboardInput().Double();{
+                System.out.println("__________________________________________");
 
                 if(percentageDone>1){
                     percentageDone=1;
@@ -1662,27 +1675,35 @@ public class ProjectManagementTool {
 
             double deadline=projects.get(FIRST).getDuration()-durationTillToday;
             double projectLength=projects.get(FIRST).getDuration();
+            System.out.println("__________________________________________");
+            System.out.println("Project budget              : " + plannedBudget+"SEK");
 
-            System.out.println("Project budget: " + plannedBudget+"SEK");
-            System.out.println("Project cost: " + actualCost+"SEK");
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
+            System.out.println("Project cost                : " + actualCost+"SEK");
 
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("__________________________________________");
+            System.out.println("Program Executed Progress   : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+
+            System.out.println("__________________________________________");
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
 
-            System.out.println("Days passed since start: "+ durationTillToday+" days");
-            System.out.println("Project length: "+projectLength+" days");
-            System.out.println("Days until Deadline: "+ deadline+ " days");
-            System.out.println("-------------------------------------------------");
+            System.out.println("Days passed since start     : "+ durationTillToday+" days");
+            System.out.println("__________________________________________");
+
+            System.out.println("Project length              : "+projectLength+" days");
+            System.out.println("__________________________________________");
+
+            System.out.println("Days until Deadline         : "+ deadline+ " days");
+            System.out.println("__________________________________________");
             System.out.println(" ");
 
             System.out.println("PROJECT ID: "+projectID);
-            System.out.println();
+            System.out.println("");
             System.out.println("========EARNED VALUE=========");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
             System.out.println("        "+earnedValue+" SEK  ");
-            System.out.println("-----------------------------");
+            System.out.println("_____________________________");
 
             pause();
         }
@@ -1695,16 +1716,17 @@ public class ProjectManagementTool {
             System.out.println();
 
             double percentageDone;
+            int option;
 
             System.out.println("     ========SCHEDULE VARIANCE=========");
-            System.out.println();
+            System.out.println("");
             System.out.println("HOW MANY PERCENT OF THE PROJECT IS COMPLETED?");
             System.out.println("       ==INPUT IS BETWEEN 0 AND 1==         ");
             System.out.println(RED+"         OBS! 1 IS 100% 0 IS 0% ! ");
             System.out.println(CYAN_BRIGHT);
 
             percentageDone = new KeyboardInput().Double();{
-                System.out.println("-------------------------------------------------");
+                System.out.println("__________________________________________");
 
                 if(percentageDone>1){
                     percentageDone=1;
@@ -1730,19 +1752,29 @@ public class ProjectManagementTool {
 
             double deadline=projects.get(FIRST).getDuration()-durationTillToday;
             double projectLength=projects.get(FIRST).getDuration();
+            String projectID=projects.get(FIRST).getProjectID();
+            System.out.println("__________________________________________");
+            System.out.println("Project budget(SEK)         : " + plannedBudget);
 
-            System.out.println("Project budget($): " + plannedBudget);
-            System.out.println("Project cost($): " + actualCost);
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
+            System.out.println("Project cost(SEK)           : " + actualCost);
 
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("__________________________________________");
+            System.out.println("Program Executed Progress   : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+
+            System.out.println("__________________________________________");
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
-            System.out.println("-------------------------------------------------");
 
-            System.out.println("Days passed since start: "+ durationTillToday+" days");
-            System.out.println("Project length: "+projectLength+" days");
-            System.out.println("Days until Deadline: "+ deadline+ " days");
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
+            System.out.println("Days passed since start     : "+ durationTillToday+" days");
+
+            System.out.println("__________________________________________");
+            System.out.println("Project length              : "+projectLength+" days");
+
+            System.out.println("__________________________________________");
+            System.out.println("Days until Deadline         : "+ deadline+ " days");
+
+            System.out.println("__________________________________________");
             System.out.println(" ");
 
 
@@ -1753,13 +1785,13 @@ public class ProjectManagementTool {
         }
     }//Armin
 
-
     public void monitorCostVariance(){//COST
         if(projects != null){
             Project foundProject = projects.get(FIRST);
             System.out.println();
 
             double percentageDone;
+            int option;
 
             System.out.println("       ========COST VARIANCE=========");
             System.out.println(" ");
@@ -1769,6 +1801,8 @@ public class ProjectManagementTool {
             System.out.println(CYAN_BRIGHT);
 
             percentageDone = new KeyboardInput().Double();{
+                System.out.println("__________________________________________");
+
                 if(percentageDone>1){
                     percentageDone=1;
                 }
@@ -1789,32 +1823,44 @@ public class ProjectManagementTool {
             double projectDuration = ChronoUnit.DAYS.between(tasksStartDate, tasksFinishDate) + DATE_SUBTRACTION_CORRECTION;
             double durationTillToday = ChronoUnit.DAYS.between(tasksStartDate, today) + DATE_SUBTRACTION_CORRECTION;
             double ExecutedProgress = percentageDone;
-            double scheduleProgress = durationTillToday/projectDuration;
+            double scheduleProgress = durationTillToday/projectDuration;;
             double earnedValue = (Math.round((plannedBudget *percentageDone ))*100)/100.0;
 
             double deadline=projects.get(FIRST).getDuration()-durationTillToday;
             double projectLength=projects.get(FIRST).getDuration();
+            String projectID=projects.get(FIRST).getProjectID();
 
-            System.out.println("Project budget($): " + plannedBudget);
-            System.out.println("Project cost($): " + actualCost);
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
+            System.out.println("Project budget(SEK)         : " + plannedBudget);
 
-            System.out.println("Program Executed Progress : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+            System.out.println("__________________________________________");
+            System.out.println("Project cost(SEK)           : " + actualCost);
+
+            System.out.println("__________________________________________");
+            System.out.println("Program Executed Progress   : " + Math.round(((ExecutedProgress) * 100.0) * 100) / 100.0 + " %"); //this is only monetary wise
+
+            System.out.println("__________________________________________");
             System.out.println("Program Time Based Progress : " + Math.round(((scheduleProgress) * 100.0) * 100) / 100.0 + " %");
-            System.out.println("-------------------------------------------------");
 
-            System.out.println("Days passed since start: "+ durationTillToday+" days");
-            System.out.println("Project length: "+projectLength+" days");
-            System.out.println("Days until Deadline: "+ deadline+ " days");
-            System.out.println("-------------------------------------------------");
+            System.out.println("__________________________________________");
+            System.out.println("Days passed since start     : "+ durationTillToday+" days");
 
+            System.out.println("__________________________________________");
+            System.out.println("Project length              : "+projectLength+" days");
+
+            System.out.println("__________________________________________");
+            System.out.println("Days until Deadline         : "+ deadline+ " days");
+
+            System.out.println("__________________________________________");
             System.out.println(" ");
+
             SystemStore Costs = new MiniProject.SystemStore();
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
 
             pause();
         }
     }//Armin
+
 
 
 
