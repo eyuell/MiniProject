@@ -2623,57 +2623,95 @@ public class ProjectManagementTool {
 
 
     public void removeTeamMember(){
-        System.out.println("Enter the id of a team member you wish to remove");
-        String memberID = new KeyboardInput().Line();
         Project currentProject = projects.get(FIRST);
+        if (currentProject!=null) {
 
-        while (! teamMemberIDExists(currentProject, memberID))
-        {
-            System.out.println("Team member does not exist or wrong ID. Enter correct ID again ");
+            boolean error=true;
+            String memberID;
+
+            System.out.println("_______________________");
+            System.out.println("  REMOVE TEAM MEMBER");
+            System.out.println("_______________________");
+            System.out.println("");
+            listTeamMembers();
+
             System.out.println("----------------------------------------------------------------");
-            memberID = new KeyboardInput().Line();
-        }
+            System.out.println(RED + "OBS! Once removed the member must be recreated. You can not undo this action." + CYAN_BRIGHT);
 
-        TeamMember member = retrieveTeamMember(currentProject, memberID);
-        System.out.println("The team member you have removed is "+member.getName());
-        System.out.println("----------------------------------------------------------------");
+            do {
+                try {
+                    System.out.println("Enter the id of a team member you wish to remove");
+                    memberID = new KeyboardInput().Line();
+                    System.out.println("----------------------------------------------------------------");
 
-        if(memberID.equals(member.getId())) {
-            currentProject.getTeamMembers().remove(member);
+                    currentProject = projects.get(FIRST);
+                    TeamMember member = retrieveTeamMember(currentProject, memberID);
+
+                    if (memberID.equals(member.getId())) {
+                        teamMemberIDExists(currentProject, memberID);
+
+                        currentProject.getTeamMembers().remove(member);
+
+                        System.out.println("The team member you have removed is " + member.getName());
+                        System.out.println("----------------------------------------------------------------");
+
+                        System.out.println(ANSI_BLUE_BACKGROUND+BLACK_BOLD+"Successfully removed.");
+                        System.out.println(RESET+CYAN_BRIGHT);
+                        error=false;
+
+                    }
+
+                } catch (Exception e) {
+                    System.out.println(RED + "Input must be a number" + CYAN_BRIGHT);
+                    error = true;
+                }
+            } while (error);
         }
-        System.out.println("Successfully removed.");
-        pause();
     }//Armin
 
 
     public void removeTask(){
-
-        listTasks();
-        System.out.println("Enter the id of the task you wish to remove");
-        String taskID = new KeyboardInput().Line();
-        System.out.println("----------------------------------------------------------------");
-
         Project currentProject = projects.get(FIRST);
+        if (currentProject!=null) {
 
-        do {
-            if (retrieveTask(taskID, currentProject) == null)
-            {
-                System.out.print("Task does not exist or wrong ID. Enter correct ID again ");
-                taskID = new KeyboardInput().Line();
-            }
+            boolean error = true;
+            String taskID;
 
-        } while (this.retrieveTask(taskID, currentProject) == null) ;
+            System.out.println("_______________________");
+            System.out.println("      REMOVE TASK");
+            System.out.println("_______________________");
+            System.out.println("");
+            listTasks();
 
-        Task task = retrieveTask(taskID,currentProject);
-        System.out.println("The task you are removing is "+task.getName());
-        System.out.println("----------------------------------------------------------------");
+            System.out.println("----------------------------------------------------------------");
+            System.out.println(RED + "OBS! Once removed the task must be recreated. You can not undo this action." + CYAN_BRIGHT);
 
-        if(taskID.equals(task.getId())){
-            currentProject.getTasks().remove(task);
-        }
-        System.out.println("Successfully removed.");
+            do {
+                try {
+                    System.out.println("Enter the id of the task you wish to remove");
+                    taskID = new KeyboardInput().Line();
+                    System.out.println("----------------------------------------------------------------");
 
-        pause();
+                    currentProject = projects.get(FIRST);
+                    Task task = retrieveTask(taskID, currentProject);
+                    if (taskID.equals(task.getId())) {
+
+                        System.out.println("The task you are removing is " + task.getName());
+                        System.out.println("----------------------------------------------------------------");
+
+                        currentProject.getTasks().remove(task);
+
+                        System.out.println(ANSI_BLUE_BACKGROUND + BLACK_BOLD + "Successfully removed.");
+                        System.out.println(RESET + CYAN_BRIGHT);
+                        error = false;
+                    }
+                } catch (Exception e) {
+                    System.out.println(RED + "Input must be a number" + CYAN_BRIGHT);
+                    error = true;
+                }
+            } while (error);
+
+        }pause();
     }//Armin
 
     public void updateTeamMemberName() {
