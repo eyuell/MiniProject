@@ -91,12 +91,11 @@ public class ProjectManagementTool {
     //Second switch for option16 in menu
     public void printMenuOptions(){
         System.out.println("=========================================");
-        System.out.println("1. Edit Project ID and Name");
-        System.out.println("2. Edit Project Dates");
-        System.out.println("3. Edit Task Information");
-        System.out.println("4. Edit Team Member Information");
-        System.out.println("5. Edit Allocations");
-        System.out.println("6. Return");
+        System.out.println("1. Edit Project Information");
+        System.out.println("2. Edit Task Information");
+        System.out.println("3. Edit Team Member Information");
+        System.out.println("4. Edit Allocations");
+        System.out.println("5. Return");
         System.out.println("=========================================");
         System.out.println();
     }//Armin
@@ -955,8 +954,8 @@ public class ProjectManagementTool {
         System.out.println("Project name: " + foundProject.getName());
         System.out.println("Project start date " + foundProject.getStartDate());
         System.out.println("Project finish date " + foundProject.getFinishDate());
-        System.out.println("Project duration " + foundProject.getDuration);
-        System.out.println("Project budget " + foundProject.getBudget);
+        System.out.println("Project duration " + foundProject.getDuration());
+        System.out.println("Project budget " + foundProject.getBudget());
     }
 
     public void printTeamMembers() {
@@ -1929,11 +1928,10 @@ public class ProjectManagementTool {
         int option;
 
         final int PROJECT = 1;
-        final int PROJECT_DURATION = 2;
-        final int TASKS = 3;
-        final int TEAM_MEMBERS = 4;
-        final int ALLOCATIONS = 5;
-        final int RETURN = 6;
+        final int TASKS = 2;
+        final int TEAM_MEMBERS = 3;
+        final int ALLOCATIONS = 4;
+        final int RETURN = 5;
 
 
         do {
@@ -1947,10 +1945,6 @@ public class ProjectManagementTool {
             switch (option) {
                 case TASKS:
                     editTasks();
-                    break;
-
-                case PROJECT_DURATION:
-                    editProjectDuration();
                     break;
 
                 case ALLOCATIONS:
@@ -1979,12 +1973,13 @@ public class ProjectManagementTool {
 
     public void editProject() {//HAMID
         String id="";
-        String option= "";
+        int option = 0;
+        int OPTIONS = 5;
         boolean error = true ;
 
         do {
             try {
-                System.out.print("What is the id of the project that you want to edit ");
+                System.out.print("What is the id of the project that you want to edit ?");
                 id = new KeyboardInput().Line();
                 error = false;
             }catch(Exception e){
@@ -1998,23 +1993,23 @@ public class ProjectManagementTool {
         error = true;
         do {
             try {
-                System.out.print("Do you want to edit project name or id ? (name/id/budget) ");
-                option = new KeyboardInput().Line();
+                option = choiceOfProjectEdit();
                 error= false;
             } catch (Exception e) {
                 System.out.println("Error, wrong input type");
             }
-        }while((!option.equalsIgnoreCase("name") && !option.equalsIgnoreCase("id") && !option.equalsIgnoreCase("budget")) || error);
+        }while((option > OPTIONS ) || error);
         Project project = retrieveProjectByID(id);
         error = true;
-        if (option.equalsIgnoreCase("name")) {
+        if (option == 1) {
             String newName;
-            System.out.println("The name of this project is " + project.getName());
+            System.out.println("The name of this project is:- " + project.getName());
             do {
                 try {
                     System.out.print("What is the new name that you want to put? ");
                     newName = new KeyboardInput().Line();
                     project.setName(newName);
+                    System.out.println("Project name is successfully updated to: " + project.getName());
                     error = false;
                 } catch (Exception e) {
                     System.out.println("Error, wrong input type");
@@ -2022,17 +2017,18 @@ public class ProjectManagementTool {
             }while(error);
         }
         error = true;
-        if (option.equalsIgnoreCase("id")) {
+        if (option == 2) {
             String newId = "";
             do {
                 try {
-                    System.out.print("What is the new id that you want put? ");
+                    System.out.print("What is the new project id that you want put? ");
                     newId = new KeyboardInput().Line();
                     error = false;
                     if (projectExists(newId)) {
                         System.out.println("This id already exists");
                     } else {
                         project.setProjectID(newId);
+                        System.out.println("Project id is successfully updated to: " + project.getProjectID());
                         break;
                     }
                 } catch (Exception e) {
@@ -2041,23 +2037,56 @@ public class ProjectManagementTool {
             }while(projectExists(newId) || error );
         }
         error = true;
-        if (option.equalsIgnoreCase("budget")) {
+        if (option == 3) {
             double newBudget;
             do {
                 try {
-                    System.out.println("Your present budget is " + project.getBudget());
-                    System.out.println("What is the new budget");
-                    newBudget = new MiniProject.KeyboardInput().Double();
+                    System.out.println("The current budget of the project is: " + project.getBudget() + " SEK");
+                    System.out.println("What is the new budget ?");
+                    newBudget = new MiniProject.KeyboardInput().positiveDouble();
                     project.setBudget(newBudget);
+                    System.out.println("Project budget is successfully updated to: " + project.getBudget() + " SEK");
                     error = false;
                 } catch (Exception e) {
                     System.out.println("Error, wrong input type");
                 }
             }while(error);
         }
+
+        if (option == 4) {
+            editProjectDuration();
+        }
+
+        if (option == 5) {
+            System.out.println("Exiting edit...");
+        }
         pause();
     }//HAMID
 
+
+    public int choiceOfProjectEdit(){
+        int choice;
+        int OPTIONS_MAX = 5;
+        System.out.println();
+        System.out.println("Options of Editing Project");
+        System.out.println("    1. Name");
+        System.out.println("    2. ID ");
+        System.out.println("    3. Budget");
+        System.out.println("    4. Dates & Duration");
+        System.out.println("    5. Exit");
+        System.out.println();
+        System.out.print("Enter option number : ");
+        choice = new KeyboardInput().positiveNonZeroInt();
+
+        while(choice > OPTIONS_MAX){
+            System.out.println();
+            System.out.println("Option number not correctly entered.");
+            System.out.print("Enter option number again: ");
+            choice = new KeyboardInput().positiveNonZeroInt();
+        }
+
+        return choice;
+    }//James
 
     public void editTaskName(){
         Project currentProject = projects.get(FIRST);
@@ -2103,17 +2132,17 @@ public class ProjectManagementTool {
             try{
                 System.out.println("What do you wish to edit?");
                 System.out.println("1. Name ");
-                System.out.println("2. change ID");
+                System.out.println("2. ID");
                 System.out.println("3. Qualification");
                 System.out.println("4. Remove");
 
-                option= new KeyboardInput().Int();
+                option= new KeyboardInput().positiveNonZeroInt();
                 error = false;
 
             }catch (Exception e) {
                 System.out.println("Error, wrong input type");
             }
-        }while((option>3 && option <1) || error);
+        }while(option > 3 || error);
         if(option==1){
             updateTeamMemberName();
         }
@@ -2294,7 +2323,7 @@ public class ProjectManagementTool {
 
         }
         pause();
-    }
+    }//OSMAN
 
     public void editTaskType() {
         String taskId ="";
@@ -2315,18 +2344,21 @@ public class ProjectManagementTool {
         }while(!tasksIDExists(currentProject, taskId) || error);
         foundTask = retrieveTask(taskId,currentProject);
         System.out.println(foundTask.getName() + "'s type is " + foundTask.getTypeOfTask());
+        System.out.println();
+        System.out.print("Type info will be overwritten, ");
         int typeOfTask = typeOfTask();
         foundTask.setTypeOfTask(typeOfTask);
-
-    }
+        System.out.println("Task Type is successfully updated!");
+        pause();
+    }//Hamid
 
     public void editTaskConnectivity() {
         Project currentProject = projects.get(FIRST);
-        ArrayList<Connectivity> connectivities;
+        ArrayList<Connectivity> connectivities = new ArrayList<>();
         String taskId1;
         String taskId2;
         Task foundTask1;
-        Connectivity foundConnectivity;
+        Connectivity foundConnectivity = null;
         int option = 0;
         boolean error= true;
         boolean repeat= true;
@@ -2338,9 +2370,9 @@ public class ProjectManagementTool {
                 taskId2 = new KeyboardInput().Line();
                 foundTask1 = retrieveTask(taskId1, currentProject);
                 connectivities = foundTask1.getConnectivity();
-                for (Connectivity thisconnectivity : connectivities) {
-                    if (thisconnectivity.getLinkedTo().getId().equalsIgnoreCase(taskId2)) {
-                        foundConnectivity = thisconnectivity;
+                for (Connectivity thisConnectivity : connectivities) {
+                    if (thisConnectivity.getLinkedTo().getId().equalsIgnoreCase(taskId2)) {
+                        foundConnectivity = thisConnectivity;
                         repeat= false;
                     }else{
                         System.out.println("There is no connectivity between the tasks that you have entered");
@@ -2356,21 +2388,21 @@ public class ProjectManagementTool {
         do {
             try {
                 System.out.println("What do you want to edit, enter number");
-                System.out.println("1.Remove connectivity between the chosen tasks");
-                System.out.println("2.Change the connectivity type between the two tasks");
-                System.out.println("3.Change the connectivity duration between the two tasks");
-                option = new KeyboardInput().Int();
+                System.out.println("1. Remove connectivity between the chosen tasks");
+                System.out.println("2. Change the connectivity type between the two tasks");
+                System.out.println("3. Change the connectivity duration between the two tasks");
+                option = new KeyboardInput().positiveNonZeroInt();
                 error = false;
             } catch (Exception e) {
                 System.out.println("Error, wrong input type");
             }
-        }while(error || option>3 || option <1);
+        }while(error || option > 3);
 
         if(option == 1) {
             connectivities.remove(foundConnectivity);
             System.out.println("This connectivity is removed");
 
-        }else if(option == 2) {
+        } else if(option == 2) {
             System.out.println("The connectivity type between these tasks is " + foundConnectivity.getStartOrFinish());
             String connectivityType = readConnectivityType();
             foundConnectivity.setStartOrFinish(connectivityType);
@@ -2381,17 +2413,17 @@ public class ProjectManagementTool {
             long newDuration = new KeyboardInput().Int();
             foundConnectivity.setConnectivityDuration(newDuration);
         }
-    }
+    }//Hamid
 
     public void editAllocations() {
         Project currentProject = projects.get(FIRST);
         boolean error = true;
-        String taskId = "";
+        String taskId;
         String memberId = "";
-        Task foundTask;
-        TeamMember foundMember;
+        Task foundTask = null;
+        TeamMember foundMember = null;
         int option= 0;
-        ArrayList<TeamMemberAllocation> allocations;
+        ArrayList<TeamMemberAllocation> allocations = new ArrayList<>();
         do {
             try {
                 do {
@@ -2402,12 +2434,12 @@ public class ProjectManagementTool {
                     }
                 }while(!tasksIDExists(currentProject,taskId));
                 do {
-                    System.out.println("Enter member id ");
+                    System.out.println("Enter team member id ");
                     memberId = new KeyboardInput().Line();
-                    if (!teamMemberIDExists(currentProject.memberId)) {
+                    if (!teamMemberIDExists(currentProject,memberId)) {
                         System.out.println("This id does not exist");
                     }
-                }while(!teamMemberIDExists(currentProject.memberId));
+                }while(!teamMemberIDExists(currentProject,memberId));
 
                 foundTask = retrieveTask(taskId, currentProject);
                 foundMember = retrieveTeamMember(currentProject, memberId);
@@ -2424,15 +2456,15 @@ public class ProjectManagementTool {
         do {
             try {
                 System.out.println("What do you want to change, enter a number ");
-                System.out.println("1.Remove the team member from this task");
-                System.out.println("2.Change how many hours the team member has worked on this task");
-                System.out.println("3.Change the date that the team member worked on this task");
-                option = new KeyboardInput().Int();
+                System.out.println("1. Remove the team member from this task");
+                System.out.println("2. Change how many hours the team member has worked on this task");
+                System.out.println("3. Change the date that the team member worked on this task");
+                option = new KeyboardInput().positiveNonZeroInt();
                 error = false;
             }catch(Exception e) {
                 System.out.println("Error, wrong input type");
             }
-        }while(option <1 || option >3 || error );
+        }while(option >3 || error );
 
         if(option == 1) {
             foundTask.getActualTeamMembers().remove(foundMember);
@@ -2440,7 +2472,7 @@ public class ProjectManagementTool {
         else if(option == 2) {
             for (TeamMemberAllocation allocation : allocations) {
                 if (allocation.getTeamMember().getId().equalsIgnoreCase(memberId)) {
-                    System.out.println(foundMember.getName +" has worked "+allocation.getWorkHours() + " hours on " + foundTask.getName());
+                    System.out.println(foundMember.getName() +" has worked "+allocation.getWorkHours() + " hours on " + foundTask.getName());
                     System.out.println("Enter the new work hours for this task");
                     double newWorkedHours = new MiniProject.KeyboardInput().Double();
                     allocation.setWorkHours(newWorkedHours);
@@ -2449,8 +2481,8 @@ public class ProjectManagementTool {
         }else if(option == 3) {
             for (TeamMemberAllocation allocation : allocations) {
                 if(allocation.getTeamMember().getId().equalsIgnoreCase(memberId)) {
-                    System.out.println(foundMember.getName+ " has worked on " + allocation.getDate()+ " date");
-                    System.out.println("what is the new date that you want to register");
+                    System.out.println(foundMember.getName() + " has worked on " + allocation.getDate()+ " date");
+                    System.out.println("What is the new date that you want to register ?");
                     LocalDate editDate = new DataEvaluator().readDate();
 
                     while(editDate.isAfter(foundTask.getActualFinish()) || editDate.isBefore(foundTask.getActualStart())){
@@ -2468,8 +2500,7 @@ public class ProjectManagementTool {
             }
         }
 
-
-    }
+    }//Hamid
 
     public void editQualification() {
         Project currentProject = projects.get(FIRST);
@@ -2489,9 +2520,12 @@ public class ProjectManagementTool {
         }while(error || !teamMemberIDExists(currentProject,thisId));
         TeamMember foundMember = retrieveTeamMember(currentProject,thisId);
         System.out.println("This member's qualification is " + foundMember.getQualification());
+        System.out.println("Qualification info is about to be overwritten");
+        System.out.println();
         String qualification = readQualification();
         foundMember.setQualification(qualification);
-                pause();
+        System.out.println();
+        System.out.println("Qualification info is updated");
     }
 
 
