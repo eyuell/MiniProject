@@ -2303,10 +2303,11 @@ public class ProjectManagementTool {
             System.out.println("What do you wish to edit?");
             System.out.println("1. Name ");
             System.out.println("2. ID");
-            System.out.println("3. Task Type");
-            System.out.println("4. Task Connectivity");
-            System.out.println("5. Remove Task");
-            System.out.println("6. Return");
+            System.out.println("3. Dates");
+            System.out.println("4. Task Type");
+            System.out.println("5. Task Connectivity");
+            System.out.println("6. Remove Task");
+            System.out.println("7. Return");
             option = new KeyboardInput().Int();
 
             if (option == 1) {
@@ -2318,18 +2319,22 @@ public class ProjectManagementTool {
                 input = false;
 
             } else if (option == 3) {
-                editTaskType();//Hamid
+                editTaskDates();//James
                 input = false;
 
             } else if (option == 4) {
-                editTaskConnectivity();//Hamid
+                editTaskType();//Hamid
                 input = false;
 
             } else if (option == 5) {
-                removeTask();
+                editTaskConnectivity();//Hamid
                 input = false;
 
             } else if (option == 6) {
+                removeTask();
+                input = false;
+
+            } else if (option == 7) {
                 System.out.println(" ");
                 input = false;
 
@@ -2431,6 +2436,122 @@ public class ProjectManagementTool {
         pause();
     }//OSMAN
 
+    public void editTaskDates(){
+        Project currentProject = projects.get(FIRST);
+        String taskId = readExistingTaskID(currentProject);
+        Task foundTask = retrieveTask(taskId, currentProject);
+
+        if(foundTask.getTypeOfTask() == 1){
+            System.out.println("Enter the start date of the task ");
+            LocalDate taskStartDate = new DataEvaluator().readDate();
+            foundTask.setPlannedStart(taskStartDate);
+
+            int lengthOfTask = readLengthOfTask();
+            if(lengthOfTask == 1){
+                System.out.print("Enter the planned duration of the task ");
+                long taskPlannedDuration = new KeyboardInput().positiveInt();
+                foundTask.setPlannedDuration(taskPlannedDuration);
+                LocalDate finishDate = foundTask.getPlannedStart().plusDays(taskPlannedDuration);
+                foundTask.setPlannedFinish(finishDate);
+            }else if(lengthOfTask == 2){
+                System.out.println("Enter the finish date of the task ");
+                LocalDate taskFinishDate = new DataEvaluator().readDate();
+                foundTask.setPlannedFinish(taskFinishDate);
+
+                long duration = ChronoUnit.DAYS.between(foundTask.getPlannedStart(), taskFinishDate) + DATE_SUBTRACTION_CORRECTION;
+
+                foundTask.setPlannedDuration(duration);
+            }
+        } else if (foundTask.getTypeOfTask() == 2){
+            if(foundTask.getConnectivity().size() == 0){
+                System.out.println("How many connectivity does this task has with other tasks ?");
+                int numberOfConnectivity = new KeyboardInput().positiveNonZeroInt();
+                if (numberOfConnectivity >= 1){
+                    for(int j = 1; j <= numberOfConnectivity; j++){ // if  there is connectivity, it should start from one
+                        System.out.println("Connectivity " + ( j ) + ": ");
+                        System.out.println("On which task does the current task depend on ? ");
+                        String toBeConnectedToTaskID = readExistingTaskID(currentProject);
+                        Task toConnectWith = retrieveTask(toBeConnectedToTaskID, currentProject);
+
+                        String connectivityType = readConnectivityType();
+
+                        System.out.print("Enter the duration of connectivity. (It could be negative if applicable) ");
+                        long connectivityDuration = new KeyboardInput().Int();
+
+                        foundTask.getConnectivity().add(new Connectivity(toConnectWith, connectivityType, connectivityDuration));
+                    }
+                }
+            }
+
+            LocalDate startDate = new DataEvaluator().extractConnectivityDate("start",foundTask.getConnectivity() );
+            LocalDate finishDate = new DataEvaluator().extractConnectivityDate("finish",foundTask.getConnectivity() );
+
+            if(startDate != null &&  finishDate != null){
+                if(finishDate.isAfter(startDate)){
+
+                    long duration = ChronoUnit.DAYS.between(startDate, finishDate) + DATE_SUBTRACTION_CORRECTION;
+
+                    foundTask.setPlannedStart(startDate);
+                    foundTask.setPlannedFinish(finishDate);
+                    foundTask.setPlannedDuration(duration);
+
+                } else {
+                    System.out.println("There is an error on connectivity that results an end date before a start date. Correct the data again");
+                }
+            } else {
+
+                int lengthOfTask = readLengthOfTask();
+                if(lengthOfTask == 1){
+                    System.out.print("Enter the planned duration of the task : " + foundTask.getName() + " ");
+                    long taskPlannedDuration = new KeyboardInput().positiveInt();
+                    foundTask.setPlannedDuration(taskPlannedDuration);
+                    if(startDate != null){
+                        foundTask.setPlannedStart(startDate);
+                        finishDate = startDate.plusDays(taskPlannedDuration);
+                        foundTask.setPlannedFinish(finishDate);
+                    } else {
+                        startDate = finishDate.minusDays(taskPlannedDuration);
+                        foundTask.setPlannedStart(startDate);
+                        foundTask.setPlannedFinish(finishDate);
+                    }
+                } else if(lengthOfTask == 2){
+                    if(startDate != null){
+                        System.out.println("Enter the Finish date of the task : " + foundTask.getName() + " ");
+                        LocalDate fDate = new DataEvaluator().readDate();
+
+                        while (fDate.isBefore(startDate)){
+                            System.out.println("Finish date of the task should not be before a Start date. ");
+                            System.out.print("Enter the finish date correctly ");
+                            fDate = new DataEvaluator().readDate();
+                        }
+
+                        foundTask.setPlannedFinish(fDate);
+                        foundTask.setPlannedStart(startDate);
+                        long duration = ChronoUnit.DAYS.between(startDate, fDate) + DATE_SUBTRACTION_CORRECTION;
+                        foundTask.setPlannedDuration(duration);
+
+                    } else {
+                        System.out.println("Enter the Start date of the task : " + foundTask.getName() + " ");
+                        LocalDate sDate = new DataEvaluator().readDate();
+
+                        while (sDate.isAfter(finishDate)){
+                            System.out.println("Start date of the task should not be after a Finish date. ");
+                            System.out.print("Enter the Start date correctly ");
+                            sDate = new DataEvaluator().readDate();
+                        }
+
+                        foundTask.setPlannedStart(sDate);
+                        foundTask.setPlannedFinish(finishDate);
+                        long duration = ChronoUnit.DAYS.between(sDate, finishDate) + DATE_SUBTRACTION_CORRECTION;
+                        foundTask.setPlannedDuration(duration);
+                    }
+                }
+            }
+            checkWithProjectTimes(currentProject);
+        }
+        pause();
+    }//James
+    
     public void editTaskType() {
         String taskId ="";
         Task foundTask;
