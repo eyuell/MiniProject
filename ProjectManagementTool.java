@@ -95,7 +95,7 @@ public class ProjectManagementTool {
         System.out.println("1. Edit Project Information");
         System.out.println("2. Edit Task Information");
         System.out.println("3. Edit Team Member Information");
-        System.out.println("4. Edit Team Member Allocation");
+        System.out.println("4. Edit Allocations");
         System.out.println("5. Return");
         System.out.println("=========================================");
         System.out.println();
@@ -334,7 +334,7 @@ public class ProjectManagementTool {
                     }
                 }
             }
-        }else{
+        } else {
             System.out.println("A project does not exist to add tasks on ");
         }
         pause();
@@ -2679,6 +2679,7 @@ public class ProjectManagementTool {
         pause();
     }//Hamid
 
+    //actual manhour allocations
     public void editTeamMemberAllocation() {
         Project currentProject = projects.get(FIRST);
         boolean possibility = false;
@@ -2707,7 +2708,7 @@ public class ProjectManagementTool {
             }
         }
 
-        if(possibility){
+        if(possibility){//for one occurance
             System.out.println("What do you want to change? ");
             System.out.println("    1. Remove the team member from this task on this day.");
             System.out.println("    2. Change how many hours the team member has worked on this task.");
@@ -2769,6 +2770,7 @@ public class ProjectManagementTool {
         return memberID;
     }//OSMAN
     
+    //planned manhour allocation
     public void editManpowerAllocation() {
         Project currentProject = projects.get(FIRST);
         boolean possibility = false;
