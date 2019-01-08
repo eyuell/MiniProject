@@ -71,7 +71,7 @@ public class ProjectManagementTool {
         System.out.println("1. Register Project");
         System.out.println("2. Register Tasks and Milestones");
         System.out.println("3. Register Team members");
-        System.out.println("4. Assign time to Tasks");
+        System.out.println("4. Assign Dates to Tasks");
         System.out.println("5. Assign Manpower to Tasks");
         System.out.println("6. Register Actual Resources to Tasks");
         System.out.println("7. Display All projects");
@@ -108,7 +108,7 @@ public class ProjectManagementTool {
         final int REGISTER_PROJECT = 1;
         final int REGISTER_TASKS_MILESTONES = 2;
         final int REGISTER_TEAM_MEMBERS = 3;
-        final int ASSIGN_TIME = 4;
+        final int ASSIGN_DATES = 4;
         final int ASSIGN_MANPOWER = 5;
         final int REGISTER_ACTUAL_DATA = 6;
         final int PRINT_ALL_PROJECTS = 7;
@@ -148,8 +148,8 @@ public class ProjectManagementTool {
                     registerTeamMember();
                     break;
 
-                case ASSIGN_TIME:
-                    assignTime();
+                case ASSIGN_DATES:
+                    assignDates();
                     break;
 
                 case ASSIGN_MANPOWER:
@@ -385,9 +385,11 @@ public class ProjectManagementTool {
     }//Eyuell
 
     //assign start, finish and duration of tasks
-    public void assignTime(){
+    public void assignDates(){
         int STAND_ALONE = 1;
         int DEPENDANT = 2;
+        int DURATION = 1;
+        int START_FINISH_DATE = 2;
         if(projects != null){
             Project foundProject = projects.get(FIRST);
             ArrayList<Task> allTasks = foundProject.getTasks();
@@ -411,16 +413,15 @@ public class ProjectManagementTool {
                             taskStartDate = new DataEvaluator().readDate();
                             currentTask.setPlannedStart(taskStartDate);
 
-                            int BY_FINISH_DATE = 2;
                             int lengthOfTask = readLengthOfTask();
 
-                            if(lengthOfTask == STAND_ALONE){
+                            if(lengthOfTask == DURATION){
                                 System.out.print("Enter the planned duration of the task ");
                                 taskPlannedDuration = new KeyboardInput().positiveInt();
                                 currentTask.setPlannedDuration(taskPlannedDuration);
                                 LocalDate finishDate = currentTask.getPlannedStart().plusDays(taskPlannedDuration);
                                 currentTask.setPlannedFinish(finishDate);
-                            }else if(lengthOfTask == BY_FINISH_DATE){
+                            }else if(lengthOfTask == START_FINISH_DATE){
                                 System.out.println("Enter the finish date of the task ");
                                 taskFinishDate = new DataEvaluator().readDate();
                                 currentTask.setPlannedFinish(taskFinishDate);
@@ -473,10 +474,10 @@ public class ProjectManagementTool {
                                         repeat = true;
                                     }
                                 }else {
-                                    int BY_FINISH_DATE = 2;
+
                                     int lengthOfTask = readLengthOfTask();
-                                    if(lengthOfTask == STAND_ALONE){
-                                        System.out.print("Enter the planned duration of the task : " + currentTask.getName());
+                                    if(lengthOfTask == DURATION){
+                                        System.out.print("Enter the planned duration of the task : " + currentTask.getName() + " ");
                                         taskPlannedDuration = new KeyboardInput().positiveInt();
                                         currentTask.setPlannedDuration(taskPlannedDuration);
                                         if(startDate != null){
@@ -486,14 +487,37 @@ public class ProjectManagementTool {
                                             startDate = finishDate.minusDays(taskPlannedDuration);
                                             currentTask.setPlannedStart(startDate);
                                         }
-                                    } else if(lengthOfTask == BY_FINISH_DATE){
-                                        System.out.println("Enter the finish date of the task : " + currentTask.getName());
-                                        taskFinishDate = new DataEvaluator().readDate();
-                                        currentTask.setPlannedFinish(taskFinishDate);
+                                    } else if(lengthOfTask == START_FINISH_DATE){
+                                        if(startDate != null){
+                                            System.out.println("Enter the Finish date of the task : " + currentTask.getName() + " ");
+                                            LocalDate fDate = new DataEvaluator().readDate();
 
-                                        long duration = ChronoUnit.DAYS.between(currentTask.getPlannedStart(), taskFinishDate) + DATE_SUBTRACTION_CORRECTION;
+                                            while (fDate.isBefore(startDate)){
+                                                System.out.println("Finish date of the task should not be before a Start date. ");
+                                                System.out.print("Enter the finish date correctly ");
+                                                fDate = new DataEvaluator().readDate();
+                                            }
 
-                                        currentTask.setPlannedDuration(duration);
+                                            currentTask.setPlannedFinish(fDate);
+                                            currentTask.setPlannedStart(startDate);
+                                            long duration = ChronoUnit.DAYS.between(startDate, fDate) + DATE_SUBTRACTION_CORRECTION;
+                                            currentTask.setPlannedDuration(duration);
+
+                                        } else {
+                                            System.out.println("Enter the Start date of the task : " + currentTask.getName() + " ");
+                                            LocalDate sDate = new DataEvaluator().readDate();
+
+                                            while (sDate.isAfter(finishDate)){
+                                                System.out.println("Start date of the task should not be after a Finish date. ");
+                                                System.out.print("Enter the Start date correctly ");
+                                                sDate = new DataEvaluator().readDate();
+                                            }
+
+                                            currentTask.setPlannedStart(sDate);
+                                            currentTask.setPlannedFinish(finishDate);
+                                            long duration = ChronoUnit.DAYS.between(sDate, finishDate) + DATE_SUBTRACTION_CORRECTION;
+                                            currentTask.setPlannedDuration(duration);
+                                        }
                                     }
                                 }
                             }while (repeat);
@@ -2870,7 +2894,7 @@ public class ProjectManagementTool {
         int taskChoice;
         System.out.println("How is the length of the task defined by: ");
         System.out.println("    1. Duration ");
-        System.out.println("    2. Finish date ");
+        System.out.println("    2. Start or Finish date ");
         do{
             System.out.print("Which option? 1 or 2 ? ");
             taskChoice = new KeyboardInput().Int();
