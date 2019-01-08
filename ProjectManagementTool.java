@@ -2532,92 +2532,173 @@ public class ProjectManagementTool {
         pause();
     }//Hamid
 
-    public void editAllocations() {
-        Project currentProject = projects.get(FIRST);
-        boolean error = true;
-        String taskId;
-        String memberId = "";
-        Task foundTask = null;
-        TeamMember foundMember = null;
-        int option= 0;
-        ArrayList<TeamMemberAllocation> allocations = new ArrayList<>();
-        do {
-            try {
-                do {
-                    System.out.println("Enter task id ");
-                    taskId = new KeyboardInput().Line();
-                    if(!tasksIDExists(currentProject,taskId)) {
-                        System.out.println("This id does not exist");
-                    }
-                }while(!tasksIDExists(currentProject,taskId));
-                do {
-                    System.out.println("Enter team member id ");
-                    memberId = new KeyboardInput().Line();
-                    if (!teamMemberIDExists(currentProject,memberId)) {
-                        System.out.println("This id does not exist");
-                    }
-                }while(!teamMemberIDExists(currentProject,memberId));
-
-                foundTask = retrieveTask(taskId, currentProject);
-                foundMember = retrieveTeamMember(currentProject, memberId);
-                allocations = foundTask.getActualTeamMembers();
-                if (!allocations.contains(foundMember)) {
-                    System.out.println("This member id has not been registered for this task");
-                }
-                error = false;
-            } catch (Exception e) {
-                System.out.println("Error wrong input type");
-            }
-        }while(error || !foundTask.getActualTeamMembers().contains(foundMember));
-        error = true;
-        do {
-            try {
-                System.out.println("What do you want to change, enter a number ");
-                System.out.println("1. Remove the team member from this task");
-                System.out.println("2. Change how many hours the team member has worked on this task");
-                System.out.println("3. Change the date that the team member worked on this task");
-                option = new KeyboardInput().positiveNonZeroInt();
-                error = false;
-            }catch(Exception e) {
-                System.out.println("Error, wrong input type");
-            }
-        }while(option >3 || error );
-
-        if(option == 1) {
-            foundTask.getActualTeamMembers().remove(foundMember);
-        }
-        else if(option == 2) {
-            for (TeamMemberAllocation allocation : allocations) {
-                if (allocation.getTeamMember().getId().equalsIgnoreCase(memberId)) {
-                    System.out.println(foundMember.getName() +" has worked "+allocation.getWorkHours() + " hours on " + foundTask.getName());
-                    System.out.println("Enter the new work hours for this task");
-                    double newWorkedHours = new MiniProject.KeyboardInput().Double();
-                    allocation.setWorkHours(newWorkedHours);
-                }
-            }
-        }else if(option == 3) {
-            for (TeamMemberAllocation allocation : allocations) {
-                if(allocation.getTeamMember().getId().equalsIgnoreCase(memberId)) {
-                    System.out.println(foundMember.getName() + " has worked on " + allocation.getDate()+ " date");
-                    System.out.println("What is the new date that you want to register ?");
-                    LocalDate editDate = new DataEvaluator().readDate();
-
-                    while(editDate.isAfter(foundTask.getActualFinish()) || editDate.isBefore(foundTask.getActualStart())){
-                        System.out.print("Date should be between Actual Start date ");
-                        if(foundTask.getActualFinish() != null){
-                            System.out.print("and finish date.");
-                        }else{
-                            System.out.println("and today.");
-                        }
-                        System.out.print(" Enter a correct date ");
-                        editDate = new DataEvaluator().readDate();
-                    }
-                    allocation.setDate(editDate);
-                }
-            }
+    public void editAllocations(){
+        System.out.println("From the following two allocations: ");
+        System.out.println("    1. Manpower Allocation (Planned Man-hour)");
+        System.out.println("    2. Team Member Allocation (Actual Man-hour)");
+        System.out.println("    3. Exit editing ");
+        System.out.print("Which one are you interested to edit on ? (1 or 2) ");
+        int choice = new KeyboardInput().positiveNonZeroInt();
+        while(choice > 3){
+            System.out.print("Choose 1, 2, or 3. Enter again. ");
+            choice = new KeyboardInput().positiveNonZeroInt();
         }
 
+        switch (choice){
+            case 1:
+                editManpowerAllocation();
+                break;
+            case 2:
+                editTeamMemberAllocation();
+                break;
+            default:
+                System.out.println("Exiting...");
+                break;
+        }
+        pause();
     }//Hamid
+
+    public void editTeamMemberAllocation() {
+        Project currentProject = projects.get(FIRST);
+        boolean possibility = false;
+        String taskId;
+        String memberId;
+        Task foundTask;
+        TeamMember foundMember;
+        TeamMemberAllocation foundAllocation = null;
+        int option;
+        ArrayList<TeamMemberAllocation> allocations;
+
+        taskId = readExistingTaskID(currentProject);
+        System.out.println("On which date?");
+        LocalDate date = new DataEvaluator().readDate();
+
+        memberId = readExistingTeamMemberID(currentProject);
+
+        foundTask = retrieveTask(taskId, currentProject);
+        foundMember = retrieveTeamMember(currentProject, memberId);
+        allocations = foundTask.getActualTeamMembers();
+
+        for (TeamMemberAllocation allocate :allocations){
+            if(allocate.getDate().isEqual(date) && allocate.getTeamMember().getId().equals(memberId)) {
+                possibility = true;
+                foundAllocation = allocate;
+            }
+        }
+
+        if(possibility){
+            System.out.println("What do you want to change? ");
+            System.out.println("    1. Remove the team member from this task on this day.");
+            System.out.println("    2. Change how many hours the team member has worked on this task.");
+            System.out.println("    3. Change the date that the team member worked on this task.");
+            System.out.print("Enter choice number ");
+            option = new KeyboardInput().positiveNonZeroInt();
+
+            while (option > 3){
+                System.out.println("Enter the correct choice number (1, 2, or 3) ");
+                option = new KeyboardInput().positiveNonZeroInt();
+            }
+
+            if(option == 1) {
+                foundTask.getActualTeamMembers().remove(foundAllocation);
+                System.out.println();
+                System.out.println("Successfully removed.");
+            } else if(option == 2) {
+                System.out.println(foundMember.getName() +" has worked " + foundAllocation.getWorkHours() + " hours on " + foundTask.getName() + " On date " + date);
+                System.out.print("Enter the new work hours for this task, on this day ");
+                double newWorkedHours = new KeyboardInput().positiveDouble();
+                foundAllocation.setWorkHours(newWorkedHours);
+                System.out.println();
+                System.out.println("Successfully updated.");
+            }else if(option == 3) {
+                System.out.println(foundMember.getName() + " has worked on " + foundAllocation.getDate()+ " date");
+                System.out.println("What is the new date that you want to register ?");
+                LocalDate editDate = new DataEvaluator().readDate();
+
+                while(editDate.isAfter(foundTask.getActualFinish()) || editDate.isBefore(foundTask.getActualStart())){
+                    System.out.print("Date should be between Actual Start and Finish dates ");
+                    System.out.print(" Enter a correct date ");
+                    editDate = new DataEvaluator().readDate();
+                }
+
+                foundAllocation.setDate(editDate);
+                System.out.println();
+                System.out.println("Successfully updated.");
+            }
+        } else {
+            System.out.println("Allocation is not found");
+        }
+    }//Hamid & OSMAN
+
+    public void editManpowerAllocation() {
+        Project currentProject = projects.get(FIRST);
+        boolean possibility = false;
+        String taskId;
+        Task foundTask;
+        ManpowerAllocation foundAllocation = null;
+        int option;
+        ArrayList<ManpowerAllocation> allocations;
+
+        taskId = readExistingTaskID(currentProject);
+        System.out.println("On which date?");
+        LocalDate date = new DataEvaluator().readDate();
+
+        String qualification = readQualification();
+
+        foundTask = retrieveTask(taskId, currentProject);
+
+        allocations = foundTask.getPlannedManpower();
+
+        for (ManpowerAllocation allocate :allocations){
+            if(allocate.getDate().isEqual(date) && allocate.getManpower().getQualification().equals(qualification)) {
+                possibility = true;
+                foundAllocation = allocate;
+            }
+        }
+
+        if(possibility){
+            System.out.println("What do you want to change? ");
+            System.out.println("    1. Remove the manpower allocation from this task on this day.");
+            System.out.println("    2. Change how many hours a manpower is required on this task on this day.");
+            System.out.println("    3. Change the date that the manpower is planned for this task.");
+            System.out.print("Enter choice number ");
+            option = new KeyboardInput().positiveNonZeroInt();
+
+            while (option > 3){
+                System.out.println("Enter the correct choice number (1, 2, or 3) ");
+                option = new KeyboardInput().positiveNonZeroInt();
+            }
+
+            if(option == 1) {
+                foundTask.getPlannedManpower().remove(foundAllocation);
+                System.out.println();
+                System.out.println("Successfully removed");
+            } else if(option == 2) {
+                System.out.println(qualification +" is planned to be executed for " + foundAllocation.getWorkHours() + " hours for date " + date);
+                System.out.print("Enter the new work hours for this task, on this day ");
+                double newWorkedHours = new KeyboardInput().positiveDouble();
+                foundAllocation.setWorkHours(newWorkedHours);
+                System.out.println();
+                System.out.println("Successfully updated.");
+            }else if(option == 3) {
+                System.out.println(qualification + " is planned to be executed on date " + foundAllocation.getDate());
+                System.out.println("What is the new date that you want to register for?");
+                LocalDate editDate = new DataEvaluator().readDate();
+
+                while(editDate.isAfter(foundTask.getPlannedFinish()) || editDate.isBefore(foundTask.getPlannedStart())){
+                    System.out.print("Date should be between Planned Start and Finish dates ");
+                    System.out.print(" Enter a correct date ");
+                    editDate = new DataEvaluator().readDate();
+                }
+
+                foundAllocation.setDate(editDate);
+                System.out.println();
+                System.out.println("Successfully updated.");
+            }
+        } else {
+            System.out.println("Manpower Allocation is not found");
+        }
+    }//OSMAN
 
     public void editQualification() {
         Project currentProject = projects.get(FIRST);
