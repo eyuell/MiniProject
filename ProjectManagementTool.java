@@ -2630,6 +2630,24 @@ public class ProjectManagementTool {
         }
     }//Hamid & OSMAN
 
+    public String readExistingTeamMemberID(Project project){
+        String memberID;
+        boolean repeatLoop;
+        listTeamMembers();
+        do{
+            repeatLoop = false;
+            System.out.print("Enter ID of existing Team Member from the above list ");
+            memberID = new KeyboardInput().Line();
+            if (retrieveTeamMember(project, memberID) == null){
+                System.out.println();
+                System.out.println("Member ID is not yet registered.");
+                repeatLoop = true;
+            }
+        } while(repeatLoop);
+
+        return memberID;
+    }//OSMAN
+    
     public void editManpowerAllocation() {
         Project currentProject = projects.get(FIRST);
         boolean possibility = false;
