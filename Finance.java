@@ -1,3 +1,4 @@
+package MiniProject;
 
 public class Finance {//Super
     private double budget;
