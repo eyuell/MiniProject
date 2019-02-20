@@ -1,4 +1,4 @@
-package MiniProject;
+package Git.MiniProject;
 
 import com.google.gson.Gson; //to convert from object to json
 import com.google.gson.GsonBuilder;
@@ -123,8 +123,8 @@ public class ProjectManagementTool {
         final int EDIT_INFO = 16;
         final int QUIT = 17;
 
-        readFromSystemClass(); //to read data by initiating a project with set values in the internal system
-        //readFromJsonFile(); //to read data from stored json file
+        //readFromSystemClass(); //to read data by initiating a project with set values in the internal system
+        readFromJsonFile(); //to read data from stored json file
 
         //checking all tasks are complete with major timeline info
         projectCompletenessCheck();
@@ -1637,7 +1637,7 @@ public class ProjectManagementTool {
             System.out.println("__________________________________________");
 
             System.out.println(" ");
-            SystemStore Costs = new MiniProject.SystemStore();
+            SystemStore Costs = new SystemStore();
             System.out.println("__________________________________________");
 
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()));
@@ -1804,7 +1804,7 @@ public class ProjectManagementTool {
             System.out.println(" ");
 
 
-            SystemStore Costs = new MiniProject.SystemStore();
+            SystemStore Costs = new SystemStore();
             System.out.println(Costs.registerScheduleVariance(plannedBudget, earnedValue, plannedSum, actualSum, foundProject.getProjectID() ));
             System.out.println(CYAN_BRIGHT);
             pause();
@@ -1880,7 +1880,7 @@ public class ProjectManagementTool {
             System.out.println("__________________________________________");
             System.out.println(" ");
 
-            SystemStore Costs = new MiniProject.SystemStore();
+            SystemStore Costs = new SystemStore();
             System.out.println(Costs.registerCostVariance(plannedBudget, earnedValue, plannedSum, actualSum, actualCost, foundProject.getProjectID()).toString());
 
             pause();

@@ -1,6 +1,4 @@
-package MiniProject;
-
-import javafx.scene.control.ComboBox;
+package Git.MiniProject;
 
 public class CostVariance extends Finance {
     private double actualCost;

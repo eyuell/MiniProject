@@ -1,6 +1,4 @@
-package MiniProject;
-
-import javafx.scene.Scene;
+package Git.MiniProject;
 
 public class ScheduleVariance extends Finance {
     private float scheduleVariance;

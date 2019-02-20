@@ -1,4 +1,4 @@
-package MiniProject;
+package Git.MiniProject;
 
 public class Finance {//Super
     private double budget;
@@ -39,7 +39,7 @@ public class Finance {//Super
         this.earnedValue = earnedValue;
     }
     
-      public void setBudget(double budget) {
+    public void setBudget(double budget) {
         this.budget = budget;
     }
 
@@ -54,5 +54,4 @@ public class Finance {//Super
     public void setDaysPassed(double daysPassed) {
         this.daysPassed = daysPassed;
     }
-}
 }

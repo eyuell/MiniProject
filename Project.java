@@ -1,4 +1,4 @@
-package MiniProject;
+package Git.MiniProject;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -74,4 +74,8 @@ public class Project {
     }
 
     public void setBudget(double budget) { this.budget = budget; }
+
+    public String toString(){
+        return "ID: " + getProjectID() + ", Name: " + getName() + ", Budget: " + getBudget();
+    }
 }

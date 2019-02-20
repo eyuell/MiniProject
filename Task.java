@@ -1,4 +1,4 @@
-package MiniProject;
+package Git.MiniProject;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

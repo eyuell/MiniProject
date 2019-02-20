@@ -1,4 +1,4 @@
-package PersonalCodeTraining.MiniProject;
+package Git.MiniProject;
 
 public class RiskEvaluator{
 

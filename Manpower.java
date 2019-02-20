@@ -1,4 +1,4 @@
-package MiniProject;
+package Git.MiniProject;
 
 public class Manpower {
     private String qualification;
